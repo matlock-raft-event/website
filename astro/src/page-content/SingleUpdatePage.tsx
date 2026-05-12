@@ -1,5 +1,4 @@
 import { styled, useTheme } from "@mui/material/styles";
-import Grid2 from "@mui/material/Unstable_Grid2";
 
 import donateImg from "~/assets/images/donate-img.jpg";
 import Block from "~/components/Block";
@@ -52,14 +51,10 @@ const Content = ({ update }: SingleUpdatePageProps) => {
 
       <Section bgColor={secondaryColor}>
         <Heading color={secondaryColor} subtitle={createdOn} title={title} />
-        <Grid2
-          container
-          justifyContent="center"
-          pt={!isMobile ? 4 : 0}
-          spacing={4}
-          sx={{ ...(isMobile && { paddingX: 4 }) }}
+        <div
+          className={`grid grid-cols-12 gap-8 justify-items-center ${!isMobile ? "pt-8" : "pt-0"} ${isMobile ? "px-8" : ""}`}
         >
-          <Grid2 order={{ sm: 1, xs: 2 }} sm={5} xs={9}>
+          <div className="col-span-9 sm:col-span-5 order-2 sm:order-1">
             <ImageContainer>
               {
                 image
@@ -90,13 +85,13 @@ const Content = ({ update }: SingleUpdatePageProps) => {
                   )
               }
             </ImageContainer>
-          </Grid2>
-          <Grid2 order={{ sm: 2, xs: 1 }} sm={7} xs={12}>
+          </div>
+          <div className="col-span-12 sm:col-span-7 order-1 sm:order-2">
             <BlockContainer>
               {content && <Block value={content as never} />}
             </BlockContainer>
-          </Grid2>
-        </Grid2>
+          </div>
+        </div>
 
       </Section>
 

@@ -1,6 +1,5 @@
 import { Typography } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
-import Grid2 from "@mui/material/Unstable_Grid2";
 
 import Footer from "~/components/Footer";
 import Heading from "~/components/Heading";
@@ -35,11 +34,11 @@ const Content = ({ sponsor }: SingleSponsorPageProps) => {
 
       <Section bgColor={secondaryColor}>
         <Heading color={secondaryColor} subtitle="Sponsor" title={title} />
-        <Grid2 container spacing={5}>
-          <Grid2 sm={4} xs={12}>
+        <div className="grid grid-cols-12 gap-10">
+          <div className="col-span-12 sm:col-span-4">
             <SponsorItem altText={sponsor.name} image={sponsor.logo} readOnly />
-          </Grid2>
-          <Grid2 sm={8} xs={12}>
+          </div>
+          <div className="col-span-12 sm:col-span-8">
             <div className="flex flex-col gap-4">
               {
                 sponsor.description &&
@@ -77,8 +76,8 @@ const Content = ({ sponsor }: SingleSponsorPageProps) => {
                                 </div>
               }
             </div>
-          </Grid2>
-        </Grid2>
+          </div>
+        </div>
         <div className="flex flex-row justify-center mt-16">
           <Button href="/sponsors">View all sponsors</Button>
         </div>

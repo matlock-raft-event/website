@@ -1,5 +1,4 @@
 import { useTheme } from "@mui/material/styles";
-import Grid2 from "@mui/material/Unstable_Grid2";
 
 import donateImg from "~/assets/images/donate-img.jpg";
 import helpOutImg from "~/assets/images/help-out-img.jpg";
@@ -22,20 +21,20 @@ const GetInvolvedSection = () => {
     <Section bgColor={color}>
       <Heading color={color} subtitle="It's for a mighty good cause" title="Get Involved" />
 
-      <Grid2 container px={isMobile ? 8 : undefined} spacing={3}>
-        <Grid2 md={3} sm={6} xs={12}>
+      <div className={`grid grid-cols-12 gap-6 ${isMobile ? "px-16" : ""}`}>
+        <div className="col-span-12 sm:col-span-6 md:col-span-3">
           <ImageLink href="/take-part" label="Take Part" src={resolveSrc(takePartImg)} />
-        </Grid2>
-        <Grid2 md={3} sm={6} xs={12}>
+        </div>
+        <div className="col-span-12 sm:col-span-6 md:col-span-3">
           <ImageLink href="/volunteer" label="Help Out" src={resolveSrc(helpOutImg)} />
-        </Grid2>
-        <Grid2 md={3} sm={6} xs={12}>
+        </div>
+        <div className="col-span-12 sm:col-span-6 md:col-span-3">
           <ImageLink href="/donate" label="Donate" src={resolveSrc(donateImg)} />
-        </Grid2>
-        <Grid2 md={3} sm={6} xs={12}>
+        </div>
+        <div className="col-span-12 sm:col-span-6 md:col-span-3">
           <ImageLink href="/sponsors" label="Sponsor Us" src={resolveSrc(sponsorUsImg)} />
-        </Grid2>
-      </Grid2>
+        </div>
+      </div>
     </Section>
   );
 };

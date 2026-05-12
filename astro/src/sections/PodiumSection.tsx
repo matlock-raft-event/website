@@ -1,6 +1,5 @@
 import { useMemo } from "react";
 import { useTheme } from "@mui/material/styles";
-import Grid2 from "@mui/material/Unstable_Grid2";
 
 import Heading from "~/components/Heading";
 import PodiumCard from "~/components/PodiumCard";
@@ -27,7 +26,7 @@ const PodiumSection = () => {
   const isMobile = useResponsive("down", "sm");
 
   const firstPlaceGridItem = (
-    <Grid2 key="first" sm={4} xs={10}>
+    <div key="first" className="col-span-10 sm:col-span-4">
       {
         firstPlace?.img &&
                 <PodiumCard
@@ -36,10 +35,10 @@ const PodiumSection = () => {
                   title={firstPlace.name ?? ""}
                 />
       }
-    </Grid2>
+    </div>
   );
   const secondPlaceGridItem = (
-    <Grid2 key="second" mt={isMobile ? 0 : 8} sm={4} xs={6}>
+    <div key="second" className={`col-span-6 sm:col-span-4 ${isMobile ? "mt-0" : "mt-16"}`}>
       {
         secondPlace?.img &&
                 <PodiumCard
@@ -48,10 +47,10 @@ const PodiumSection = () => {
                   title={secondPlace.name ?? ""}
                 />
       }
-    </Grid2>
+    </div>
   );
   const thirdPlaceGridItem = (
-    <Grid2 key="third" mt={isMobile ? 0 : 16} sm={4} xs={6}>
+    <div key="third" className={`col-span-6 sm:col-span-4 ${isMobile ? "mt-0" : "mt-32"}`}>
       {
         thirdPlace?.img &&
                 <PodiumCard
@@ -60,7 +59,7 @@ const PodiumSection = () => {
                   title={thirdPlace.name ?? ""}
                 />
       }
-    </Grid2>
+    </div>
   );
 
   const orderedGridItems = useMemo(
@@ -75,15 +74,11 @@ const PodiumSection = () => {
     <Section bgColor={theme.palette.green}>
       <Heading color={theme.palette.green} subtitle="Proud to present 2024's" title="Heroic Winners" />
 
-      <Grid2
-        container
-        justifyContent="center"
-        pt={!isMobile ? 4 : 0}
-        spacing={4}
-        sx={{ ...(isMobile && { paddingX: 4 }) }}
+      <div
+        className={`grid grid-cols-12 gap-8 justify-items-center ${!isMobile ? "pt-8" : "pt-0"} ${isMobile ? "px-8" : ""}`}
       >
         {orderedGridItems.map(item => item)}
-      </Grid2>
+      </div>
 
     </Section>
   );

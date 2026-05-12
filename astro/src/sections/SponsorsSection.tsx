@@ -1,6 +1,5 @@
 import { Typography } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
-import Grid2 from "@mui/material/Unstable_Grid2";
 
 import Heading from "~/components/Heading";
 import Section from "~/components/Section";
@@ -42,19 +41,19 @@ const SponsorsSection = () => {
           </Typography>
         </div>
 
-        <Grid2 container justifyContent="center" spacing={3}>
+        <div className="grid grid-cols-12 gap-6 justify-items-center">
           {
             (sponsors ?? []).map(sponsor => (
-              <Grid2 key={sponsor.name} xs={isMobile ? 4 : 2}>
+              <div key={sponsor.name} className={isMobile ? "col-span-4" : "col-span-2"}>
                 <SponsorItem
                   altText={sponsor.name}
                   href={sponsor.slug ? `/sponsors/${sponsor.slug}` : undefined}
                   image={sponsor.logo}
                 />
-              </Grid2>
+              </div>
             ))
           }
-        </Grid2>
+        </div>
       </div>
 
     </Section>

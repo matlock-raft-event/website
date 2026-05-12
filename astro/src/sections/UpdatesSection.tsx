@@ -1,6 +1,5 @@
 import { useMemo } from "react";
 import { useTheme } from "@mui/material/styles";
-import Grid2 from "@mui/material/Unstable_Grid2";
 import { toPlainText } from "@portabletext/react";
 
 import logoSvg from "~/assets/images/logo.svg";
@@ -49,10 +48,10 @@ const UpdatesSection = ({ preview = false }: UpdatesSectionProps) => {
         subtitle="Keep ahead of the tide"
         title="Latest Updates"
       />
-      <Grid2 container spacing={3}>
+      <div className="grid grid-cols-12 gap-6">
         {
           updates.map(update => (
-            <Grid2 key={update.title} sm={4} xs={12}>
+            <div key={update.title} className="col-span-12 sm:col-span-4">
               <ImageCard
                 aspectRatio="3 / 2"
                 description={update.content ? toPlainText(update.content as never) : undefined}
@@ -63,10 +62,10 @@ const UpdatesSection = ({ preview = false }: UpdatesSectionProps) => {
                 }}
                 title={update.title ?? ""}
               />
-            </Grid2>
+            </div>
           ))
         }
-      </Grid2>
+      </div>
       {
         preview &&
                 <div className="flex flex-row justify-center mt-8">
