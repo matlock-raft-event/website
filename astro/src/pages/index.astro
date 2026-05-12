@@ -3,5 +3,5 @@ import BaseLayout from "~/layouts/BaseLayout.astro";
 import IndexPage from "~/page-content/IndexPage";
 ---
 <BaseLayout title="The Matlock Raft Event">
-    <IndexPage client:only="react" />
+    <IndexPage client:load />
 </BaseLayout>

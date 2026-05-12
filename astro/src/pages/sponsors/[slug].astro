@@ -36,5 +36,5 @@ const { sponsor } = Astro.props as { sponsor: SponsorDoc };
 const title = `${sponsor.name ?? "Sponsor"} - Matlock Raft Event`;
 ---
 <BaseLayout description="A single sponsor of the event." title={title}>
-    <SingleSponsorPage client:only="react" sponsor={sponsor} />
+    <SingleSponsorPage client:load sponsor={sponsor} />
 </BaseLayout>
