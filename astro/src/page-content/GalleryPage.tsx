@@ -1,7 +1,6 @@
-import type { MouseEvent } from "react";
 import { useMemo, useRef, useState } from "react";
 import { Masonry } from "@mui/lab";
-import { ImageListItem, ToggleButton, ToggleButtonGroup, Typography } from "@mui/material";
+import { ImageListItem, Typography } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 import Lightbox from "yet-another-react-lightbox";
 import Captions from "yet-another-react-lightbox/plugins/captions";
@@ -13,6 +12,7 @@ import Heading from "~/components/Heading";
 import ImageCard from "~/components/ImageCard";
 import PageShell from "~/components/PageShell";
 import Section from "~/components/Section";
+import { ToggleGroup, ToggleGroupItem } from "~/components/ui/toggle";
 import Waves from "~/components/Waves";
 import useResponsive from "~/hooks/useResponsive";
 import useSanityFetch from "~/hooks/useSanityFetch";
@@ -65,10 +65,6 @@ const Content = () => {
   const [yearFilter, setYearFilter] = useState<string | undefined>(undefined);
   const activeYear = yearFilter ?? yearFilters[yearFilters.length - 1];
 
-  const handleYearFilter = (_event: MouseEvent<HTMLElement>, newYearFilter: string | null) => {
-    if (newYearFilter) setYearFilter(newYearFilter);
-  };
-
   const filteredGalleryData = useMemo(
     () => galleryData.filter(item => item.year?.toString() === activeYear),
     [galleryData, activeYear]
@@ -101,27 +97,26 @@ const Content = () => {
               </Typography>
             </div>
             <div>
-              <ToggleButtonGroup
+              <ToggleGroup
                 aria-label="year"
-                exclusive
-                onChange={handleYearFilter}
-                size="small"
-                value={activeYear}
+                onValueChange={(values: string[]) => {
+                  if (values[0]) setYearFilter(values[0]);
+                }}
+                value={activeYear ? [activeYear] : []}
               >
                 {
                   yearFilters.map(value => (
-                    <ToggleButton
+                    <ToggleGroupItem
                       key={value}
                       aria-label={value}
-                      color="red"
-                      sx={{ border: "none", textTransform: "uppercase" }}
+                      className="uppercase border-0"
                       value={value}
                     >
                       {value}
-                    </ToggleButton>
+                    </ToggleGroupItem>
                   ))
                 }
-              </ToggleButtonGroup>
+              </ToggleGroup>
             </div>
 
             <Masonry columns={isMobile ? 2 : 4} spacing={2}>
