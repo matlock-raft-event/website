@@ -1,5 +1,3 @@
-import { useTheme } from "@mui/material/styles";
-
 import Block from "~/components/Block";
 import Heading from "~/components/Heading";
 import Section from "~/components/Section";
@@ -12,15 +10,13 @@ type ContactInstructions = {
 };
 
 const ContactUsSection = () => {
-  const theme = useTheme();
-
   const { data: contactInstructions } = useSanityFetch<ContactInstructions>(
     "*[_type == \"contactInstructions\"][0]{ general, sponsors, press }"
   );
 
   return (
-    <Section bgColor={theme.palette.secondary}>
-      <Heading color={theme.palette.secondary} subtitle="Need to get in touch?" title="Contact us" />
+    <Section palette="cream">
+      <Heading palette="cream" subtitle="Need to get in touch?" title="Contact us" />
 
       <div className="mx-auto w-full max-w-4xl px-4">
 

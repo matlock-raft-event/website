@@ -1,5 +1,4 @@
 import { useMemo, useRef, useState } from "react";
-import { useTheme } from "@mui/material/styles";
 import Lightbox from "yet-another-react-lightbox";
 import Captions from "yet-another-react-lightbox/plugins/captions";
 import Thumbnails from "yet-another-react-lightbox/plugins/thumbnails";
@@ -39,8 +38,6 @@ type ZoomRef = {
 };
 
 const Content = () => {
-  const theme = useTheme();
-
   const captionsRef = useRef<CaptionsRef>(null);
   const thumbnailsRef = useRef<ThumbnailRef>(null);
   const zoomRef = useRef<ZoomRef>(null);
@@ -81,8 +78,8 @@ const Content = () => {
     <>
       <main>
         <InnerHeroSection />
-        <Section bgColor={theme.palette.secondary}>
-          <Heading color={theme.palette.secondary} subtitle="It’s everything it looks" title="Gallery" />
+        <Section palette="cream">
+          <Heading palette="cream" subtitle="It’s everything it looks" title="Gallery" />
 
           <div className="flex flex-col items-center gap-2">
             <div className="mx-auto w-full max-w-4xl px-4">
@@ -135,7 +132,7 @@ const Content = () => {
           </div>
 
         </Section>
-        <Waves bottomColor={theme.palette.secondary.main} topColor={theme.palette.secondary.main} variant={2} />
+        <Waves bottomColor="var(--color-cream)" topColor="var(--color-cream)" variant={2} />
         <Footer />
       </main>
 
@@ -166,7 +163,7 @@ const Content = () => {
             "--yarl__color_backdrop": "rgba(0, 0, 0, .9)",
             "--yarl__thumbnails_thumbnail_height": "40px",
             "--yarl__thumbnails_thumbnail_width": "60px",
-            "--yarl__thumbnails_thumbnail_active_border_color": theme.palette.yellow.main
+            "--yarl__thumbnails_thumbnail_active_border_color": "var(--color-yellow)"
           }
         }}
         thumbnails={{ ref: thumbnailsRef }}

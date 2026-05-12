@@ -1,5 +1,4 @@
 import { useMemo } from "react";
-import { useTheme } from "@mui/material/styles";
 
 import Heading from "~/components/Heading";
 import PodiumCard from "~/components/PodiumCard";
@@ -69,10 +68,9 @@ const PodiumSection = () => {
     [isMobile, winners]
   );
 
-  const theme = useTheme();
   return (
-    <Section bgColor={theme.palette.green}>
-      <Heading color={theme.palette.green} subtitle="Proud to present 2024's" title="Heroic Winners" />
+    <Section palette="green">
+      <Heading palette="green" subtitle="Proud to present 2024's" title="Heroic Winners" />
 
       <div
         className={`grid grid-cols-12 gap-8 justify-items-center ${!isMobile ? "pt-8" : "pt-0"} ${isMobile ? "px-8" : ""}`}

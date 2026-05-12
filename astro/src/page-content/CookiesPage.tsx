@@ -1,5 +1,3 @@
-import { useTheme } from "@mui/material/styles";
-
 import Block from "~/components/Block";
 import Footer from "~/components/Footer";
 import Heading from "~/components/Heading";
@@ -14,7 +12,6 @@ type CookiesInfo = {
 };
 
 const Content = () => {
-  const theme = useTheme();
   const { data } = useSanityFetch<CookiesInfo>(
     "*[_type == \"cookiesInfo\"][0]{ content }"
   );
@@ -22,11 +19,11 @@ const Content = () => {
   return (
     <main>
       <InnerHeroSection />
-      <Section bgColor={theme.palette.secondary}>
-        <Heading color={theme.palette.secondary} title="Cookies Policy" />
+      <Section palette="cream">
+        <Heading palette="cream" title="Cookies Policy" />
         {data?.content && <Block value={data.content as never} />}
       </Section>
-      <Waves bottomColor={theme.palette.secondary.main} topColor={theme.palette.secondary.main} />
+      <Waves bottomColor="var(--color-cream)" topColor="var(--color-cream)" />
       <Footer />
     </main>
   );

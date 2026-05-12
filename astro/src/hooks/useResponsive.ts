@@ -1,31 +1,74 @@
-import type { Breakpoint } from "@mui/material";
-import { useMediaQuery } from "@mui/material";
-import { useTheme } from "@mui/material/styles";
+import { useEffect, useState } from "react";
 
-type ReturnType = boolean;
+type Breakpoint = "xs" | "sm" | "md" | "lg" | "xl";
 
 type Query = "up" | "down" | "between" | "only";
 
 type Value = Breakpoint | number;
 
-const useResponsive = (query: Query, start?: Value, end?: Value): ReturnType => {
-  const theme = useTheme();
+const BREAKPOINTS: Record<Breakpoint, number> = {
+  xs: 0,
+  sm: 600,
+  md: 960,
+  lg: 1200,
+  xl: 1536,
+};
 
-  const mediaUp = useMediaQuery(theme.breakpoints.up(start as Value));
+const ORDER: Breakpoint[] = ["xs", "sm", "md", "lg", "xl"];
 
-  const mediaDown = useMediaQuery(theme.breakpoints.down(start as Value));
+const toPx = (value: Value): number =>
+  typeof value === "number" ? value : BREAKPOINTS[value];
 
-  const mediaBetween = useMediaQuery(theme.breakpoints.between(start as Value, end as Value));
+const nextLarger = (value: Value): number | null => {
+  if (typeof value === "number") return null;
+  const index = ORDER.indexOf(value);
+  if (index === -1 || index === ORDER.length - 1) return null;
+  return BREAKPOINTS[ORDER[index + 1]];
+};
 
-  const mediaOnly = useMediaQuery(theme.breakpoints.only(start as Breakpoint));
+const buildQuery = (query: Query, start?: Value, end?: Value): string => {
+  if (query === "up") {
+    return `(min-width: ${toPx(start as Value)}px)`;
+  }
 
-  if (query === "up") return mediaUp;
+  if (query === "down") {
+    return `(max-width: ${toPx(start as Value) - 0.05}px)`;
+  }
 
-  if (query === "down") return mediaDown;
+  if (query === "between") {
+    return `(min-width: ${toPx(start as Value)}px) and (max-width: ${toPx(end as Value) - 0.05}px)`;
+  }
 
-  if (query === "between") return mediaBetween;
+  // "only"
+  const lower = toPx(start as Value);
+  const upper = nextLarger(start as Value);
+  if (upper === null) {
+    return `(min-width: ${lower}px)`;
+  }
+  return `(min-width: ${lower}px) and (max-width: ${upper - 0.05}px)`;
+};
 
-  return mediaOnly;
+const useMatchMedia = (query: string): boolean => {
+  const [matches, setMatches] = useState<boolean>(() => {
+    if (typeof window === "undefined") return false;
+    return window.matchMedia(query).matches;
+  });
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    const mql = window.matchMedia(query);
+    const handler = (event: MediaQueryListEvent) => setMatches(event.matches);
+    setMatches(mql.matches);
+    mql.addEventListener("change", handler);
+    return () => mql.removeEventListener("change", handler);
+  }, [query]);
+
+  return matches;
+};
+
+const useResponsive = (query: Query, start?: Value, end?: Value): boolean => {
+  const mediaQuery = buildQuery(query, start, end);
+  return useMatchMedia(mediaQuery);
 };
 
 export default useResponsive;

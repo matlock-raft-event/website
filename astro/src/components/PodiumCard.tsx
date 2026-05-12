@@ -1,18 +1,5 @@
-import { styled } from "@mui/material/styles";
-
 import PodiumBadge from "~/components/PodiumBadge";
 import SanityImage from "~/components/SanityImage";
-
-const StyledDiv = styled("div")(({ theme }) => ({
-  position: "relative",
-  padding: "4%",
-  paddingBottom: "8%",
-  borderRadius: 2,
-  backgroundColor: "#ffffff",
-  boxShadow: theme.shadows[5],
-  transition: "all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1)",
-  display: "flex"
-}));
 
 interface PodiumCardProps {
   image: unknown;
@@ -21,7 +8,7 @@ interface PodiumCardProps {
 }
 
 const PodiumCard = ({ image, podium, title }: PodiumCardProps) => (
-  <StyledDiv>
+  <div className="relative p-[4%] pb-[8%] rounded-[2px] bg-white shadow-[7px_7px_0_0_rgba(0,0,0,0.25)] transition-all duration-[600ms] ease-[cubic-bezier(0.165,0.84,0.44,1)] flex">
     <div
       style={{
         position: "absolute",
@@ -54,7 +41,7 @@ const PodiumCard = ({ image, podium, title }: PodiumCardProps) => (
         {title}
       </h4>
     </div>
-  </StyledDiv>
+  </div>
 );
 
 export default PodiumCard;

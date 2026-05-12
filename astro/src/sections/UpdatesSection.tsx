@@ -1,5 +1,4 @@
 import { useMemo } from "react";
-import { useTheme } from "@mui/material/styles";
 import { toPlainText } from "@portabletext/react";
 
 import logoSvg from "~/assets/images/logo.svg";
@@ -39,12 +38,10 @@ const UpdatesSection = ({ preview = false }: UpdatesSectionProps) => {
     [data, preview]
   );
 
-  const theme = useTheme();
-
   return (
-    <Section bgColor={preview ? theme.palette.primary : theme.palette.secondary}>
+    <Section palette={preview ? "mint" : "cream"}>
       <Heading
-        color={preview ? theme.palette.primary : theme.palette.secondary}
+        palette={preview ? "mint" : "cream"}
         subtitle="Keep ahead of the tide"
         title="Latest Updates"
       />

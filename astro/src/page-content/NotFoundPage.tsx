@@ -1,25 +1,15 @@
-import { styled, useTheme } from "@mui/material/styles";
-
 import Footer from "~/components/Footer";
 import Heading from "~/components/Heading";
 import PageShell from "~/components/PageShell";
 import Section from "~/components/Section";
 
-const StyledCode = styled("code")(({ theme }) => ({
-  color: theme.palette.secondary.contrastText,
-  padding: 4,
-  backgroundColor: theme.palette.secondary.dark,
-  borderRadius: theme.shape.borderRadius
-}));
-
 const Content = () => {
-  const theme = useTheme();
   const isDev = import.meta.env.DEV;
 
   return (
     <main>
-      <Section bgColor={theme.palette.secondary}>
-        <Heading color={theme.palette.secondary} title="Page Not Found" />
+      <Section palette="cream">
+        <Heading palette="cream" title="Page Not Found" />
         <p className="my-24 text-sm sm:text-base lg:text-lg leading-relaxed">
                     Sorry 😔, we couldn’t find what you were looking for.
           <br />
@@ -30,7 +20,7 @@ const Content = () => {
                   <br />
                                     Try creating a page in
                   {" "}
-                  <StyledCode>astro/src/pages/</StyledCode>
+                  <code className="text-[var(--color-cream-contrast)] p-1 bg-[var(--color-cream-dark)] rounded-sm">astro/src/pages/</code>
                                     .
                   <br />
                 </>

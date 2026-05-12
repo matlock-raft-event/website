@@ -1,5 +1,3 @@
-import { useTheme } from "@mui/material/styles";
-
 import Heading from "~/components/Heading";
 import Iconify from "~/components/Iconify";
 import Section from "~/components/Section";
@@ -33,43 +31,40 @@ const TIMINGS = [
   }
 ];
 
-const TimingsSection = () => {
-  const theme = useTheme();
-  return (
-    <Section bgColor={theme.palette.secondary}>
-      <Heading
-        color={theme.palette.secondary}
-        subtitle="What time is it?"
-        title="What happens and when?"
-      />
+const TimingsSection = () => (
+  <Section palette="cream">
+    <Heading
+      palette="cream"
+      subtitle="What time is it?"
+      title="What happens and when?"
+    />
 
-      <div className="mx-auto w-full max-w-4xl px-4">
-        <p className="text-sm sm:text-base lg:text-lg leading-relaxed mb-8">
+    <div className="mx-auto w-full max-w-4xl px-4">
+      <p className="text-sm sm:text-base lg:text-lg leading-relaxed mb-8">
                     Once the rafts have set off, the timings always vary based on how fast the river is flowing, if
                     there’s any obstacles along the route etc, so we’d recommend getting there slightly earlier just
                     in case, it’s always worth the wait!
-        </p>
-      </div>
+      </p>
+    </div>
 
-      <div className="mx-auto w-full max-w-4xl px-4">
-        <ol className="relative border-l-2 border-red ml-6">
-          {
-            TIMINGS.map(item => (
-              <li key={item.time} className="mb-8 ml-8 last:mb-0">
-                <span className="absolute -left-5 flex h-10 w-10 items-center justify-center rounded-full bg-red shadow-[2px_2px_0_0_rgba(0,0,0,0.25)]">
-                  <Iconify color="var(--color-red-contrast)" icon="ph:clock" width={20} />
-                </span>
-                <span className="block font-serif font-medium text-sm sm:text-base md:text-lg">
-                  {item.time}
-                </span>
-                <p className="text-sm sm:text-base lg:text-lg leading-relaxed">{item.description}</p>
-              </li>
-            ))
-          }
-        </ol>
-      </div>
-    </Section>
-  );
-};
+    <div className="mx-auto w-full max-w-4xl px-4">
+      <ol className="relative border-l-2 border-red ml-6">
+        {
+          TIMINGS.map(item => (
+            <li key={item.time} className="mb-8 ml-8 last:mb-0">
+              <span className="absolute -left-5 flex h-10 w-10 items-center justify-center rounded-full bg-red shadow-[2px_2px_0_0_rgba(0,0,0,0.25)]">
+                <Iconify color="var(--color-red-contrast)" icon="ph:clock" width={20} />
+              </span>
+              <span className="block font-serif font-medium text-sm sm:text-base md:text-lg">
+                {item.time}
+              </span>
+              <p className="text-sm sm:text-base lg:text-lg leading-relaxed">{item.description}</p>
+            </li>
+          ))
+        }
+      </ol>
+    </div>
+  </Section>
+);
 
 export default TimingsSection;

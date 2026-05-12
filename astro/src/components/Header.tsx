@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { useTheme } from "@mui/material/styles";
 
 import FacebookIcon from "~/components/FacebookIcon";
 import Iconify from "~/components/Iconify";
@@ -10,7 +9,6 @@ import DrawerContent from "~/components/ui/drawer/drawer-content";
 import DrawerTitle from "~/components/ui/drawer/drawer-title";
 import Waves from "~/components/Waves";
 import useResponsive from "~/hooks/useResponsive";
-import { GREEN } from "~/theme/palette";
 
 const links = [
   { label: "About", to: "/about" },
@@ -33,8 +31,6 @@ const NavLink = ({
   </Button>
 );
 const Header = () => {
-  const theme = useTheme();
-
   const isMobile = useResponsive("down", "md");
 
   const [open, setOpen] = useState(false);
@@ -112,16 +108,16 @@ const Header = () => {
 
                     <div>
                       <Waves
-                        bottomColor={theme.palette.green.dark}
+                        bottomColor="var(--color-green-dark)"
                         style={{ marginBottom: -1 }}
-                        topColor={theme.palette.green.main}
+                        topColor="var(--color-green)"
                       />
                       <div className="flex flex-col p-6 bg-green-dark">
                         <h5 className="text-secondary font-bold text-lg md:text-xl">
                                                   Find us on Facebook:
                         </h5>
                         <FacebookIcon
-                          color={theme.palette.secondary.main}
+                          color="var(--color-cream)"
                           href="https://www.facebook.com/matlockraftevent/"
                         />
                       </div>
@@ -134,10 +130,7 @@ const Header = () => {
           : (
             <>
               <div
-                style={{
-                  backgroundColor: GREEN.main,
-                  height: 60
-                }}
+                className="bg-green h-[60px]"
               >
                 <div className="mx-auto w-full max-w-6xl px-4">
                   <div className="flex flex-row">
@@ -179,7 +172,7 @@ const Header = () => {
 
               </div>
               <Waves
-                bottomColor={GREEN.main}
+                bottomColor="var(--color-green)"
                 style={{
                   height: 20,
                   transform: "rotate(180deg)",

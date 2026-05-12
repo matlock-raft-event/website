@@ -1,20 +1,7 @@
 import type { CSSProperties } from "react";
 import { useState } from "react";
-import { styled, useTheme } from "@mui/material/styles";
 
 import SanityImage from "~/components/SanityImage";
-
-const StyledButton = styled("a")(({ theme }) => ({
-  aspectRatio: "1 / 1",
-  display: "flex",
-  justifyContent: "center",
-  alignItems: "center",
-  padding: "5%",
-  borderRadius: theme.shape.borderRadius,
-  backgroundColor: "#ffffff",
-  boxShadow: theme.shadows[5],
-  transition: "all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1)"
-}));
 
 type SponsorItemProps = {
   image: unknown;
@@ -31,8 +18,6 @@ const SponsorItem = ({
   onClick,
   readOnly = false
 }: SponsorItemProps) => {
-  const theme = useTheme();
-
   const [hover, setHover] = useState(false);
   const onMouseEnter = () => setHover(true);
   const onMouseLeave = () => setHover(false);
@@ -41,12 +26,13 @@ const SponsorItem = ({
     ? null
     : ({
       cursor: "pointer",
-      boxShadow: theme.shadows[10],
+      boxShadow: "14px 14px 0px 0px rgba(0, 0, 0, 0.25)",
       transform: "scale(1.01) rotate(-0.5deg)"
     });
 
   return (
-    <StyledButton
+    <a
+      className="aspect-square flex justify-center items-center p-[5%] rounded-[2px] bg-white shadow-[7px_7px_0_0_rgba(0,0,0,0.25)] transition-all duration-[600ms] ease-[cubic-bezier(0.165,0.84,0.44,1)]"
       href={href}
       onClick={onClick}
       onKeyDown={onClick}
@@ -65,7 +51,7 @@ const SponsorItem = ({
           objectFit: "contain"
         }}
       />
-    </StyledButton>
+    </a>
   );
 };
 

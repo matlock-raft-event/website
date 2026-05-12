@@ -1,5 +1,3 @@
-import { useTheme } from "@mui/material/styles";
-
 import Block from "~/components/Block";
 import Heading from "~/components/Heading";
 import Section from "~/components/Section";
@@ -14,16 +12,14 @@ type AboutData = {
 };
 
 const AboutSection = () => {
-  const theme = useTheme();
-
   const { data: about } = useSanityFetch<AboutData>(
     "*[_type == \"about\"][0]{ bio, rnliBio, rnliLink, dasacBio, dasacLink }"
   );
 
   return (
-    <Section bgColor={theme.palette.secondary}>
+    <Section palette="cream">
       <Heading
-        color={theme.palette.secondary}
+        palette="cream"
         subtitle="It all started in 1961"
         title="What is The Matlock Raft Event?"
       />

@@ -1,5 +1,3 @@
-import { useTheme } from "@mui/material/styles";
-
 import Block from "~/components/Block";
 import Heading from "~/components/Heading";
 import Section from "~/components/Section";
@@ -19,12 +17,10 @@ const FaqsSection = () => {
     "*[_type == \"faq\"]{ question, answer }"
   );
 
-  const theme = useTheme();
-
   return (
-    <Section bgColor={theme.palette.secondary}>
+    <Section palette="cream">
       <Heading
-        color={theme.palette.secondary}
+        palette="cream"
         subtitle="You asked, we answered!"
         title="Frequently Asked Questions"
       />

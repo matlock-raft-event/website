@@ -1,5 +1,3 @@
-import { styled, useTheme } from "@mui/material/styles";
-
 import HeaderImg from "~/assets/images/header.jpg";
 import Header from "~/components/Header";
 import Waves from "~/components/Waves";
@@ -7,42 +5,11 @@ import useResponsive from "~/hooks/useResponsive";
 
 const resolveSrc = (asset: unknown): string => (asset as { src?: string }).src ?? (asset as unknown as string);
 
-const StyledOverlay = styled("div")(() => ({
-  width: "100%",
-  height: "100%",
-  position: "absolute",
-  top: 0,
-  left: 0,
-  backgroundColor: "black",
-  opacity: 0.3,
-  zIndex: 10
-}));
-
-const StyledGradient = styled("div")(() => ({
-  width: "100%",
-  height: "calc(100% + 2px)",
-  position: "absolute",
-  top: 0,
-  left: 0,
-  backgroundImage: "linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2), rgba(53,58,60,1))",
-  zIndex: 10
-}));
-
-const StyledWaves = styled(Waves)(() => ({
-  position: "absolute",
-  width: "100%",
-  left: 0,
-  bottom: 0,
-  zIndex: 11,
-  marginBottom: -1
-}));
-
 interface InnerHeroSectionProps {
   wavesColor?: string;
 }
 
 const InnerHeroSection = ({ wavesColor }: InnerHeroSectionProps) => {
-  const theme = useTheme();
   const isMobile = useResponsive("down", "sm");
 
   return (
@@ -65,7 +32,7 @@ const InnerHeroSection = ({ wavesColor }: InnerHeroSectionProps) => {
                     display: "block"
                   }}
                 />
-                <StyledGradient />
+                <div className="w-full h-[calc(100%+2px)] absolute top-0 left-0 bg-[linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.2),rgba(53,58,60,1))] z-10" />
               </>
             )
             : (
@@ -81,8 +48,8 @@ const InnerHeroSection = ({ wavesColor }: InnerHeroSectionProps) => {
                     display: "block"
                   }}
                 />
-                <StyledOverlay />
-                <StyledWaves bottomColor={wavesColor} topColor="unset" variant={3} />
+                <div className="w-full h-full absolute top-0 left-0 bg-black opacity-30 z-10" />
+                <Waves className="absolute w-full left-0 bottom-0 z-[11] -mb-px" bottomColor={wavesColor} topColor="unset" variant={3} />
               </>
             )
         }
@@ -90,7 +57,7 @@ const InnerHeroSection = ({ wavesColor }: InnerHeroSectionProps) => {
 
       {
         isMobile &&
-                <Waves topColor={theme.palette.dark.main} variant={3} />
+                <Waves topColor="var(--color-dark)" variant={3} />
       }
     </div>
   );

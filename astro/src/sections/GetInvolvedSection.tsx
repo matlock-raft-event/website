@@ -1,5 +1,3 @@
-import { useTheme } from "@mui/material/styles";
-
 import donateImg from "~/assets/images/donate-img.jpg";
 import helpOutImg from "~/assets/images/help-out-img.jpg";
 import sponsorUsImg from "~/assets/images/sponsor-us-img.jpg";
@@ -12,14 +10,11 @@ import useResponsive from "~/hooks/useResponsive";
 const resolveSrc = (asset: unknown): string => (asset as { src?: string }).src ?? (asset as unknown as string);
 
 const GetInvolvedSection = () => {
-  const theme = useTheme();
-  const color = theme.palette.yellow;
-
   const isMobile = useResponsive("down", "sm");
 
   return (
-    <Section bgColor={color}>
-      <Heading color={color} subtitle="It's for a mighty good cause" title="Get Involved" />
+    <Section palette="yellow">
+      <Heading palette="yellow" subtitle="It's for a mighty good cause" title="Get Involved" />
 
       <div className={`grid grid-cols-12 gap-6 ${isMobile ? "px-16" : ""}`}>
         <div className="col-span-12 sm:col-span-6 md:col-span-3">

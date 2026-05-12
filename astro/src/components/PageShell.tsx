@@ -1,7 +1,5 @@
 import type { ReactNode } from "react";
 
-import GlobalThemeProvider from "~/theme";
-
 import "yet-another-react-lightbox/styles.css";
 import "yet-another-react-lightbox/plugins/thumbnails.css";
 import "yet-another-react-lightbox/plugins/captions.css";
@@ -11,9 +9,7 @@ type PageShellProps = {
 };
 
 const PageShell = ({ children }: PageShellProps) => (
-  <GlobalThemeProvider>
-    {children}
-  </GlobalThemeProvider>
+  <>{children}</>
 );
 
 export default PageShell;

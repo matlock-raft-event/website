@@ -1,15 +1,7 @@
 import type { CSSProperties } from "react";
 import { useState } from "react";
-import { styled } from "@mui/material/styles";
 
 import SanityImage from "~/components/SanityImage";
-
-const StyledDiv = styled("div")(() => ({
-  position: "relative",
-  borderRadius: 2,
-  transition: "all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1)",
-  display: "block"
-}));
 
 interface ImageCardProps {
   aspectRatio?: string;
@@ -51,7 +43,8 @@ const ImageCard = (
     });
 
   return (
-    <StyledDiv
+    <div
+      className="relative rounded-[2px] transition-all duration-[600ms] ease-[cubic-bezier(0.165,0.84,0.44,1)] block"
       onClick={onClick}
       onKeyDown={onClick}
       onMouseEnter={onMouseEnter}
@@ -113,7 +106,7 @@ const ImageCard = (
         )
       }
 
-    </StyledDiv>
+    </div>
   );
 };
 

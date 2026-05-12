@@ -1,5 +1,3 @@
-import { styled, useTheme } from "@mui/material/styles";
-
 import donateImg from "~/assets/images/donate-img.jpg";
 import Block from "~/components/Block";
 import Footer from "~/components/Footer";
@@ -12,17 +10,6 @@ import useResponsive from "~/hooks/useResponsive";
 import InnerHeroSection from "~/sections/InnerHeroSection";
 
 const resolveSrc = (asset: unknown): string => (asset as { src?: string }).src ?? (asset as unknown as string);
-
-const ImageContainer = styled("div")(({ theme }) => ({
-  backgroundColor: "white",
-  padding: "1%",
-  paddingBottom: "2%",
-  boxShadow: theme.shadows[5]
-}));
-
-const BlockContainer = styled("div")(({ theme }) => ({
-  marginTop: theme.spacing(4)
-}));
 
 type SingleUpdatePageProps = {
   update: {
@@ -40,22 +27,19 @@ const Content = ({ update }: SingleUpdatePageProps) => {
   const createdOn = update.date ? new Date(update.date).toDateString() : undefined;
   const image = update.img;
 
-  const theme = useTheme();
-  const secondaryColor = theme.palette.secondary;
-
   const isMobile = useResponsive("down", "sm");
 
   return (
     <main>
       <InnerHeroSection />
 
-      <Section bgColor={secondaryColor}>
-        <Heading color={secondaryColor} subtitle={createdOn} title={title} />
+      <Section palette="cream">
+        <Heading palette="cream" subtitle={createdOn} title={title} />
         <div
           className={`grid grid-cols-12 gap-8 justify-items-center ${!isMobile ? "pt-8" : "pt-0"} ${isMobile ? "px-8" : ""}`}
         >
           <div className="col-span-9 sm:col-span-5 order-2 sm:order-1">
-            <ImageContainer>
+            <div className="bg-white p-[1%] pb-[2%] shadow-[7px_7px_0_0_rgba(0,0,0,0.25)]">
               {
                 image
                   ? (
@@ -67,7 +51,7 @@ const Content = ({ update }: SingleUpdatePageProps) => {
                         height: "auto",
                         objectFit: "cover",
                         objectPosition: "center",
-                        borderRadius: theme.shape.borderRadius,
+                        borderRadius: 2,
                         display: "block"
                       }}
                     />
@@ -84,18 +68,18 @@ const Content = ({ update }: SingleUpdatePageProps) => {
                     />
                   )
               }
-            </ImageContainer>
+            </div>
           </div>
           <div className="col-span-12 sm:col-span-7 order-1 sm:order-2">
-            <BlockContainer>
+            <div className="mt-8">
               {content && <Block value={content as never} />}
-            </BlockContainer>
+            </div>
           </div>
         </div>
 
       </Section>
 
-      <Waves bottomColor={secondaryColor.main} topColor={secondaryColor.main} variant={2} />
+      <Waves bottomColor="var(--color-cream)" topColor="var(--color-cream)" variant={2} />
 
       <Footer />
     </main>

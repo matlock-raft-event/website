@@ -1,5 +1,3 @@
-import { useTheme } from "@mui/material/styles";
-
 import Block from "~/components/Block";
 import Heading from "~/components/Heading";
 import Section from "~/components/Section";
@@ -12,16 +10,14 @@ type AboutData = {
 };
 
 const RnliSection = () => {
-  const theme = useTheme();
-
   const { data: about } = useSanityFetch<AboutData>(
     "*[_type == \"about\"][0]{ rnliBio, rnliLink }"
   );
 
   return (
-    <Section bgColor={theme.palette.primary}>
+    <Section palette="mint">
       <Heading
-        color={theme.palette.primary}
+        palette="mint"
         subtitle="Saving lives at sea with your support"
         title="RNLI"
       />

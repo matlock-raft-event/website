@@ -1,31 +1,6 @@
-import * as React from "react";
-import type { PaletteColor } from "@mui/material/styles";
-import { styled, useTheme } from "@mui/material/styles";
-
 import { Button } from "~/components/ui/button";
 
 import FacebookIcon from "./FacebookIcon";
-
-const StyledSection = styled("section")(({ theme }) => ({
-  width: "100%",
-  paddingBottom: theme.spacing(4)
-}));
-
-const StyledRow = styled("div")(({ theme }) => ({
-  display: "flex",
-  justifyContent: "center",
-  padding: 8,
-  gap: 16,
-  alignItems: "center",
-  flexDirection: "column",
-  [theme.breakpoints.up("sm")]: {
-    flexDirection: "row"
-  }
-}));
-
-type FooterProps = {
-  color?: PaletteColor;
-};
 
 const links = [
   { label: "About", to: "/about" },
@@ -48,68 +23,53 @@ const NavLink = ({
   </Button>
 );
 
-const Footer = ({ color }: FooterProps) => {
-  const theme = useTheme();
-
-  const bgColor = color?.main ?? theme.palette.secondary.main;
-  const textColor = color?.contrastText ?? theme.palette.secondary.contrastText;
-
-  return (
-    <StyledSection style={{ backgroundColor: bgColor }}>
-      <div className="flex flex-col items-center gap-4">
-        <div className="flex flex-col">
-          <p
-            className="font-bold text-xs uppercase tracking-wider"
-            style={{ color: textColor }}
-          >
+const Footer = () => (
+  <section className="w-full pb-8 bg-cream">
+    <div className="flex flex-col items-center gap-4">
+      <div className="flex flex-col">
+        <p className="font-bold text-xs uppercase tracking-wider text-cream-contrast">
                         FIND US ELSEWHERE
-          </p>
-          <StyledRow>
-            <FacebookIcon color={textColor} href="https://www.facebook.com/matlockraftevent/" />
-          </StyledRow>
+        </p>
+        <div className="flex flex-col sm:flex-row justify-center items-center p-2 gap-4">
+          <FacebookIcon color="var(--color-cream-contrast)" href="https://www.facebook.com/matlockraftevent/" />
         </div>
+      </div>
 
-        <StyledRow>
-          {
-            links.map(link => (
-              <NavLink
-                key={link.label}
-                label={link.label}
-                to={link.to}
-              />
-            ))
-          }
-        </StyledRow>
-        <p
-          className="text-sm leading-relaxed text-center"
-          style={{ color: textColor }}
-        >
+      <div className="flex flex-col sm:flex-row justify-center items-center p-2 gap-4">
+        {
+          links.map(link => (
+            <NavLink
+              key={link.label}
+              label={link.label}
+              to={link.to}
+            />
+          ))
+        }
+      </div>
+      <p className="text-sm leading-relaxed text-center text-cream-contrast">
                     &#169; Copyright
-          {" "}
-          {new Date().getFullYear()}
-          {" "}
+        {" "}
+        {new Date().getFullYear()}
+        {" "}
                     -
-          {" "}
-          <strong>Dasac’s Matlock Raft Event</strong>
-          {" "}
+        {" "}
+        <strong>Dasac’s Matlock Raft Event</strong>
+        {" "}
                     - In the aid of the the
                     Royal National Lifeboats Institute (RNLI)
-        </p>
-        <p
-          className="text-sm leading-relaxed text-center"
-          style={{ color: textColor }}
-        >
+      </p>
+      <p className="text-sm leading-relaxed text-center text-cream-contrast">
                     Website designed and coded with ♥ by
-          {" "}
-          <strong>Ian Ryde</strong>
-          {" "}
+        {" "}
+        <strong>Ian Ryde</strong>
+        {" "}
                     and
-          {" "}
-          <strong>Sam Hepburn</strong>
+        {" "}
+        <strong>Sam Hepburn</strong>
                     .
-        </p>
-      </div>
-    </StyledSection>
-  );
-};
+      </p>
+    </div>
+  </section>
+);
+
 export default Footer;

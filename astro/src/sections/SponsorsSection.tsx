@@ -1,5 +1,3 @@
-import { useTheme } from "@mui/material/styles";
-
 import Heading from "~/components/Heading";
 import Section from "~/components/Section";
 import SponsorItem from "~/components/SponsorItem";
@@ -17,14 +15,12 @@ const SponsorsSection = () => {
     "*[_type == \"sponsor\"]{ name, slug, logo }"
   );
 
-  const theme = useTheme();
-
   const isMobile = useResponsive("down", "sm");
 
   return (
-    <Section bgColor={theme.palette.secondary}>
+    <Section palette="cream">
       <Heading
-        color={theme.palette.secondary}
+        palette="cream"
         subtitle="The people we couldn't do this without"
         title="Our Amazing Sponsors"
       />

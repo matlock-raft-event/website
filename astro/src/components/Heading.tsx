@@ -1,14 +1,15 @@
-import type { PaletteColor } from "@mui/material/styles";
-import { styled, useTheme } from "@mui/material/styles";
-
 import useResponsive from "~/hooks/useResponsive";
 
-const StyledContainer = styled("div")(({ theme }) => ({
-  display: "flex",
-  flexDirection: "column",
-  alignItems: "center",
-  paddingBottom: theme.spacing(3)
-}));
+import type { Palette } from "./Section";
+
+const PALETTE_TEXT: Record<Palette, string> = {
+  mint: "text-mint-contrast",
+  cream: "text-cream-contrast",
+  red: "text-red-contrast",
+  green: "text-green-contrast",
+  yellow: "text-yellow-contrast",
+  dark: "text-dark-contrast"
+};
 
 const Bullet = () => (
   <span>
@@ -19,23 +20,16 @@ const Bullet = () => (
 );
 
 type HeadingProps = {
-  color?: PaletteColor;
+  palette?: Palette;
   subtitle?: string;
   title: string;
 };
 
-const Heading = ({
-  color,
-  subtitle,
-  title
-}: HeadingProps) => {
-  const theme = useTheme();
-  const textColor = color?.contrastText ?? theme.palette.primary.contrastText;
-
+const Heading = ({ palette = "mint", subtitle, title }: HeadingProps) => {
   const isMobile = useResponsive("down", "sm");
 
   return (
-    <StyledContainer style={{ color: textColor }}>
+    <div className={`flex flex-col items-center pb-6 ${PALETTE_TEXT[palette]}`}>
       {
         subtitle &&
                 <div className={`flex flex-row items-center mb-2 ${isMobile ? "gap-2" : "gap-4"}`}>
@@ -45,7 +39,7 @@ const Heading = ({
                 </div>
       }
       <h2 className="font-display font-extrabold text-3xl sm:text-4xl lg:text-5xl leading-tight text-center">{title}</h2>
-    </StyledContainer>
+    </div>
   );
 };
 

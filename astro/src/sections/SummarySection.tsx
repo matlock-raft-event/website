@@ -1,5 +1,3 @@
-import { useTheme } from "@mui/material/styles";
-
 import Heading from "~/components/Heading";
 import Section from "~/components/Section";
 import { Button } from "~/components/ui/button";
@@ -18,11 +16,10 @@ const SummarySection = () => {
     "*[_type == \"summary\"][0]{ _id, yearsActive, bio, eventCount, moneyRaised }"
   );
 
-  const theme = useTheme();
   return (
-    <Section bgColor={theme.palette.secondary}>
+    <Section palette="cream">
       <Heading
-        color={theme.palette.secondary}
+        palette="cream"
         subtitle="Hello daring adventurer"
         title="Ready To Brave The Cold Derwent Waters?"
       />

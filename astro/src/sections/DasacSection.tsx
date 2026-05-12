@@ -1,5 +1,3 @@
-import { useTheme } from "@mui/material/styles";
-
 import Block from "~/components/Block";
 import Heading from "~/components/Heading";
 import Section from "~/components/Section";
@@ -12,16 +10,14 @@ type AboutData = {
 };
 
 const DasacSection = () => {
-  const theme = useTheme();
-
   const { data: about } = useSanityFetch<AboutData>(
     "*[_type == \"about\"][0]{ dasacBio, dasacLink }"
   );
 
   return (
-    <Section bgColor={theme.palette.secondary}>
+    <Section palette="cream">
       <Heading
-        color={theme.palette.secondary}
+        palette="cream"
         subtitle="The organisers"
         title="DASAC"
       />

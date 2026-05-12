@@ -1,5 +1,3 @@
-import { useTheme } from "@mui/material/styles";
-
 import Footer from "~/components/Footer";
 import Heading from "~/components/Heading";
 import PageShell from "~/components/PageShell";
@@ -24,15 +22,12 @@ type SingleSponsorPageProps = {
 const Content = ({ sponsor }: SingleSponsorPageProps) => {
   const title = sponsor.name ?? "Sponsor";
 
-  const theme = useTheme();
-  const secondaryColor = theme.palette.secondary;
-
   return (
     <main>
       <InnerHeroSection />
 
-      <Section bgColor={secondaryColor}>
-        <Heading color={secondaryColor} subtitle="Sponsor" title={title} />
+      <Section palette="cream">
+        <Heading palette="cream" subtitle="Sponsor" title={title} />
         <div className="grid grid-cols-12 gap-10">
           <div className="col-span-12 sm:col-span-4">
             <SponsorItem altText={sponsor.name} image={sponsor.logo} readOnly />
@@ -82,7 +77,7 @@ const Content = ({ sponsor }: SingleSponsorPageProps) => {
         </div>
       </Section>
 
-      <Waves bottomColor={secondaryColor.main} topColor={secondaryColor.main} variant={2} />
+      <Waves bottomColor="var(--color-cream)" topColor="var(--color-cream)" variant={2} />
 
       <Footer />
     </main>

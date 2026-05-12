@@ -1,22 +1,7 @@
 import type { CSSProperties } from "react";
 import { useState } from "react";
-import { styled, useTheme } from "@mui/material/styles";
 
 import useResponsive from "~/hooks/useResponsive";
-
-const StyledLink = styled("a")(({ theme }) => ({
-  aspectRatio: "3 / 2",
-  display: "flex",
-  justifyContent: "center",
-  alignItems: "center",
-  borderRadius: 2,
-  backgroundColor: "#ffffff",
-  border: "8px solid white",
-  boxShadow: theme.shadows[5],
-  transition: "all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1)",
-  overflow: "hidden",
-  position: "relative"
-}));
 
 interface ImageLinkProps {
   src: string;
@@ -25,21 +10,21 @@ interface ImageLinkProps {
 }
 
 const ImageLink = ({ src, label, href }: ImageLinkProps) => {
-  const theme = useTheme();
   const [hover, setHover] = useState(false);
   const onMouseEnter = () => setHover(true);
   const onMouseLeave = () => setHover(false);
 
   const hoverStyles: CSSProperties | null = {
     cursor: "pointer",
-    boxShadow: theme.shadows[10],
+    boxShadow: "14px 14px 0px 0px rgba(0, 0, 0, 0.25)",
     transform: "scale(1.01) rotate(-0.5deg)"
   };
 
   const isMobile = useResponsive("down", "sm");
 
   return (
-    <StyledLink
+    <a
+      className="aspect-[3/2] flex justify-center items-center rounded-[2px] bg-white border-[8px] border-white shadow-[7px_7px_0_0_rgba(0,0,0,0.25)] transition-all duration-[600ms] ease-[cubic-bezier(0.165,0.84,0.44,1)] overflow-hidden relative"
       href={href}
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
@@ -63,7 +48,7 @@ const ImageLink = ({ src, label, href }: ImageLinkProps) => {
       >
         {label}
       </h3>
-    </StyledLink>
+    </a>
   );
 };
 

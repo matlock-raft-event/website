@@ -1,5 +1,4 @@
 import { useEffect } from "react";
-import { styled, useTheme } from "@mui/material/styles";
 
 import HeaderImg from "~/assets/images/header.jpg";
 import RnliFundraiseImg from "~/assets/images/rnlifundraise.png";
@@ -12,44 +11,6 @@ import useResponsive from "~/hooks/useResponsive";
 import useSanityFetch from "~/hooks/useSanityFetch";
 
 const resolveSrc = (asset: unknown): string => (asset as { src?: string }).src ?? (asset as unknown as string);
-
-const StyledImg = styled("img")(() => ({
-  width: "100%",
-  height: "auto",
-  display: "block",
-  objectFit: "cover",
-  objectPosition: "center"
-}));
-
-const StyledOverlay = styled("div")(() => ({
-  width: "100%",
-  height: "100%",
-  position: "absolute",
-  top: 0,
-  left: 0,
-  backgroundColor: "black",
-  opacity: 0.3,
-  zIndex: 10
-}));
-
-const StyledGradient = styled("div")(() => ({
-  width: "100%",
-  height: "calc(100% + 2px)",
-  position: "absolute",
-  top: 0,
-  left: 0,
-  backgroundImage: "linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2), rgba(53,58,60,1))",
-  zIndex: 10
-}));
-
-const StyledWaves = styled(Waves)(() => ({
-  position: "absolute",
-  width: "100%",
-  left: 0,
-  bottom: 0,
-  zIndex: 11,
-  marginBottom: -1
-}));
 
 type HeroContentProps = {
   title?: string;
@@ -64,8 +25,6 @@ const HeroContent = (
     buttonText,
     buttonLink
   }: HeroContentProps) => {
-  const theme = useTheme();
-
   const isMobile = useResponsive("down", "md");
   const isTablet = useResponsive("between", "md", "xl");
   useEffect(() => console.log(isTablet), [isTablet]);
@@ -92,7 +51,7 @@ const HeroContent = (
       <div
         className={`flex flex-row items-center gap-1 ${isMobile ? "justify-center" : ""}`}
       >
-        <Iconify color={theme.palette.yellow.main} icon="ph:map-pin-bold" />
+        <Iconify color="var(--color-yellow)" icon="ph:map-pin-bold" />
         <p className="font-semibold text-sm text-secondary font-avenir">
                     Matlock, Derbyshire - 26th December
           {" "}
@@ -126,7 +85,7 @@ const HeroContent = (
     return (
       <div
         style={{
-          backgroundColor: theme.palette.dark.main,
+          backgroundColor: "var(--color-dark)",
           marginTop: -1
         }}
       >
@@ -163,7 +122,6 @@ type HeroData = {
 };
 
 const HeroSection = () => {
-  const theme = useTheme();
   const isMobile = useResponsive("down", "lg");
 
   const { data } = useSanityFetch<HeroData>(
@@ -180,15 +138,15 @@ const HeroSection = () => {
       <Header />
 
       <div style={{ position: "relative" }}>
-        <StyledImg src={resolveSrc(HeaderImg)} />
+        <img className="w-full h-auto block object-cover object-center" src={resolveSrc(HeaderImg)} />
         {
           isMobile
-            ? <StyledGradient />
-            : <StyledOverlay />
+            ? <div className="w-full h-[calc(100%+2px)] absolute top-0 left-0 bg-[linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.2),rgba(53,58,60,1))] z-10" />
+            : <div className="w-full h-full absolute top-0 left-0 bg-black opacity-30 z-10" />
         }
         {
           !isMobile &&
-                    <StyledWaves topColor="unset" variant={3} />
+                    <Waves className="absolute w-full left-0 bottom-0 z-[11] -mb-px" topColor="unset" variant={3} />
         }
       </div>
       <HeroContent
@@ -199,7 +157,7 @@ const HeroSection = () => {
       />
       {
         isMobile &&
-                <Waves topColor={theme.palette.dark.main} variant={3} />
+                <Waves topColor="var(--color-dark)" variant={3} />
       }
     </div>
   );
