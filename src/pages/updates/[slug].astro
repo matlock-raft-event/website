@@ -3,7 +3,7 @@ import BaseLayout from "~/layouts/BaseLayout.astro";
 import { sanityClient } from "~/lib/sanity";
 import { updatesForPathsQuery } from "~/lib/queries";
 import type { UpdatesForPathsQueryResult } from "~/lib/sanity.types";
-import SingleUpdatePage from "~/page-content/SingleUpdatePage";
+import SingleUpdatePage from "~/page-content/single-update-page";
 
 type UpdateDoc = UpdatesForPathsQueryResult[number];
 
