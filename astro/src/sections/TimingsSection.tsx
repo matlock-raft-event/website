@@ -1,12 +1,3 @@
-import {
-  Timeline,
-  TimelineConnector,
-  TimelineContent,
-  TimelineDot,
-  TimelineItem,
-  timelineItemClasses,
-  TimelineSeparator
-} from "@mui/lab";
 import { useTheme } from "@mui/material/styles";
 
 import Heading from "~/components/Heading";
@@ -61,38 +52,21 @@ const TimingsSection = () => {
       </div>
 
       <div className="mx-auto w-full max-w-4xl px-4">
-        <Timeline
-          sx={{
-            [`& .${timelineItemClasses.root}:before`]: {
-              flex: 0,
-              padding: 0
-            }
-          }}
-        >
+        <ol className="relative border-l-2 border-red ml-6">
           {
             TIMINGS.map(item => (
-              <TimelineItem key={item.time}>
-                <TimelineSeparator>
-                  <TimelineConnector />
-                  <TimelineDot sx={{ bgcolor: theme.palette.red.main }}>
-                    <Iconify color="red.contrastText" icon="ph:clock" />
-                  </TimelineDot>
-                  <TimelineConnector />
-                </TimelineSeparator>
-                <TimelineContent sx={{
-                  py: "12px",
-                  px: 2
-                }}
-                >
-                  <span className="font-serif font-medium text-sm sm:text-base md:text-lg">
-                    {item.time}
-                  </span>
-                  <p className="text-sm sm:text-base lg:text-lg leading-relaxed">{item.description}</p>
-                </TimelineContent>
-              </TimelineItem>
+              <li key={item.time} className="mb-8 ml-8 last:mb-0">
+                <span className="absolute -left-5 flex h-10 w-10 items-center justify-center rounded-full bg-red shadow-[2px_2px_0_0_rgba(0,0,0,0.25)]">
+                  <Iconify color="var(--color-red-contrast)" icon="ph:clock" width={20} />
+                </span>
+                <span className="block font-serif font-medium text-sm sm:text-base md:text-lg">
+                  {item.time}
+                </span>
+                <p className="text-sm sm:text-base lg:text-lg leading-relaxed">{item.description}</p>
+              </li>
             ))
           }
-        </Timeline>
+        </ol>
       </div>
     </Section>
   );

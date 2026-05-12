@@ -1,6 +1,4 @@
 import { useMemo, useRef, useState } from "react";
-import { Masonry } from "@mui/lab";
-import { ImageListItem } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 import Lightbox from "yet-another-react-lightbox";
 import Captions from "yet-another-react-lightbox/plugins/captions";
@@ -14,7 +12,6 @@ import PageShell from "~/components/PageShell";
 import Section from "~/components/Section";
 import { ToggleGroup, ToggleGroupItem } from "~/components/ui/toggle";
 import Waves from "~/components/Waves";
-import useResponsive from "~/hooks/useResponsive";
 import useSanityFetch from "~/hooks/useSanityFetch";
 import { urlFor } from "~/lib/sanity";
 import InnerHeroSection from "~/sections/InnerHeroSection";
@@ -80,8 +77,6 @@ const Content = () => {
     [filteredGalleryData]
   );
 
-  const isMobile = useResponsive("down", "sm");
-
   return (
     <>
       <main>
@@ -119,23 +114,23 @@ const Content = () => {
               </ToggleGroup>
             </div>
 
-            <Masonry columns={isMobile ? 2 : 4} spacing={2}>
+            <div className="columns-2 sm:columns-4 gap-4">
               {
                 filteredGalleryData.map((image, imageIndex) => (
                   image.img
                     ? (
-                      <ImageListItem key={image._id}>
+                      <div key={image._id} className="mb-4 break-inside-avoid">
                         <ImageCard
                           hideBorders
                           image={image.img}
                           onClick={() => setIndex(imageIndex)}
                         />
-                      </ImageListItem>
+                      </div>
                     )
                     : null
                 ))
               }
-            </Masonry>
+            </div>
 
           </div>
 
