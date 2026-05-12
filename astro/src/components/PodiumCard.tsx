@@ -1,4 +1,4 @@
-import { Stack, Typography } from "@mui/material";
+import { Typography } from "@mui/material";
 import { styled } from "@mui/material/styles";
 
 import PodiumBadge from "~/components/PodiumBadge";
@@ -38,7 +38,7 @@ const PodiumCard = ({ image, podium, title }: PodiumCardProps) => (
     >
       <PodiumBadge height="inherit" podium={podium} width="25%" />
     </div>
-    <Stack spacing={1}>
+    <div className="flex flex-col gap-2">
       <SanityImage
         alt={title}
         image={image}
@@ -55,7 +55,7 @@ const PodiumCard = ({ image, podium, title }: PodiumCardProps) => (
       <Typography fontFamily={TITLE_FONT_FAMILY} sx={{ textAlign: "center" }} variant="h4">
         {title}
       </Typography>
-    </Stack>
+    </div>
   </StyledDiv>
 );
 

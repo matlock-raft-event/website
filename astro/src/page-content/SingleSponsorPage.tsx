@@ -1,4 +1,4 @@
-import { Link, Stack, Typography } from "@mui/material";
+import { Link, Typography } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 import Grid2 from "@mui/material/Unstable_Grid2";
 
@@ -40,7 +40,7 @@ const Content = ({ sponsor }: SingleSponsorPageProps) => {
             <SponsorItem altText={sponsor.name} image={sponsor.logo} readOnly />
           </Grid2>
           <Grid2 sm={8} xs={12}>
-            <Stack spacing={2}>
+            <div className="flex flex-col gap-4">
               {
                 sponsor.description &&
                                 <div>
@@ -77,12 +77,12 @@ const Content = ({ sponsor }: SingleSponsorPageProps) => {
                                   <Typography variant="body1">{sponsor.testimonial}</Typography>
                                 </div>
               }
-            </Stack>
+            </div>
           </Grid2>
         </Grid2>
-        <Stack direction="row" justifyContent="center" mt={8}>
+        <div className="flex flex-row justify-center mt-16">
           <Button href="/sponsors">View all sponsors</Button>
-        </Stack>
+        </div>
       </Section>
 
       <Waves bottomColor={secondaryColor.main} topColor={secondaryColor.main} variant={2} />

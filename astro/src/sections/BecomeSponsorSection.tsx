@@ -1,4 +1,4 @@
-import { Container, Stack, Typography } from "@mui/material";
+import { Container, Typography } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 
 import Heading from "~/components/Heading";
@@ -12,7 +12,7 @@ const BecomeSponsorSection = () => {
     <Section bgColor={theme.palette.primary}>
       <Heading subtitle="Want to support the event?" title="Become a Sponsor" />
       <Container maxWidth="md">
-        <Stack alignItems="center">
+        <div className="flex flex-col items-center">
           <Typography>
                         The impact of our event and the funds we raise would not be possible without our fantastic
                         sponsors. They&apos;re the real MVPs in keeping the event alive.
@@ -24,7 +24,7 @@ const BecomeSponsorSection = () => {
           <Button href="/contact">
                         Contact Us
           </Button>
-        </Stack>
+        </div>
       </Container>
     </Section>
   );

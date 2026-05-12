@@ -1,4 +1,4 @@
-import { Container, Stack } from "@mui/material";
+import { Container } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 
 import Block from "~/components/Block";
@@ -26,7 +26,7 @@ const RnliSection = () => {
         subtitle="Saving lives at sea with your support"
         title="RNLI"
       />
-      <Stack alignItems="center" spacing={2}>
+      <div className="flex flex-col items-center gap-4">
         {
           about?.rnliBio &&
                     <Container maxWidth="md">
@@ -43,7 +43,7 @@ const RnliSection = () => {
                         Learn more about the RNLI
                     </Button>
         }
-      </Stack>
+      </div>
     </Section>
   );
 };

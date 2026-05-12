@@ -1,4 +1,4 @@
-import { Container, Stack, Typography } from "@mui/material";
+import { Container, Typography } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 
 import Heading from "~/components/Heading";
@@ -28,7 +28,7 @@ const SummarySection = () => {
         subtitle="Hello daring adventurer"
         title="Ready To Brave The Cold Derwent Waters?"
       />
-      <Stack alignItems="center" spacing={3}>
+      <div className="flex flex-col items-center gap-6">
 
         <Container maxWidth="md">
           <Typography textAlign="center" variant="body1">
@@ -36,40 +36,40 @@ const SummarySection = () => {
           </Typography>
         </Container>
 
-        <Stack direction="row" justifyContent="center" spacing={8}>
-          <Stack alignItems="flex-end" flex={1}>
-            <Stack alignItems="center">
+        <div className="flex flex-row justify-center gap-16">
+          <div className="flex flex-col items-end flex-1">
+            <div className="flex flex-col items-center">
               <Typography fontFamily={TITLE_FONT_FAMILY} variant="h1">
                 {summary?.yearsActive}
               </Typography>
               <Typography sx={{ lineHeight: 1 }} variant="subtitle1">
                                 Years
               </Typography>
-            </Stack>
-          </Stack>
-          <Stack alignItems="center">
+            </div>
+          </div>
+          <div className="flex flex-col items-center">
             <Typography fontFamily={TITLE_FONT_FAMILY} variant="h1">
               {summary?.moneyRaised}
             </Typography>
             <Typography sx={{ lineHeight: 1 }} variant="subtitle1">
                             Raised
             </Typography>
-          </Stack>
-          <Stack alignItems="flex-start" flex={1}>
-            <Stack alignItems="center">
+          </div>
+          <div className="flex flex-col items-start flex-1">
+            <div className="flex flex-col items-center">
               <Typography fontFamily={TITLE_FONT_FAMILY} variant="h1">
                 {summary?.eventCount}
               </Typography>
               <Typography sx={{ lineHeight: 1 }} variant="subtitle1">
                                 Events
               </Typography>
-            </Stack>
-          </Stack>
-        </Stack>
+            </div>
+          </div>
+        </div>
 
         <Button href="/info">Learn more</Button>
 
-      </Stack>
+      </div>
     </Section>
   );
 };

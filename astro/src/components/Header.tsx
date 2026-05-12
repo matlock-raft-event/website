@@ -1,6 +1,6 @@
 import * as React from "react";
 import { useState } from "react";
-import { Box, Container, Drawer, Fab, Stack, Typography } from "@mui/material";
+import { Box, Container, Drawer, Fab, Typography } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 
 import FacebookIcon from "~/components/FacebookIcon";
@@ -62,7 +62,7 @@ const Header = () => {
         isMobile
           ? (
             <>
-              <Stack direction="row" justifyContent="space-between" p={2}>
+              <div className="flex flex-row justify-between p-4">
                 <Box component="a" href="/">
                   <Logo
                     sx={{
@@ -83,7 +83,7 @@ const Header = () => {
                     <Iconify icon="ph:list" />
                   </Fab>
                 </Box>
-              </Stack>
+              </div>
               <Drawer
                 anchor="top"
                 onClose={toggleDrawer}
@@ -111,15 +111,9 @@ const Header = () => {
                   <Iconify icon="ph:x-bold" />
                 </Fab>
 
-                <Stack justifyContent="space-between" sx={{ minHeight: "100vh" }}>
+                <div className="flex flex-col justify-between min-h-screen">
 
-                  <Stack
-                    spacing={2}
-                    sx={{
-                      paddingY: 4,
-                      paddingX: 3
-                    }}
-                  >
+                  <div className="flex flex-col gap-4 py-8 px-6">
                     {
                       links.map(link => (
                         <Button
@@ -140,7 +134,7 @@ const Header = () => {
                                                 Donate
                       </Button>
                     </div>
-                  </Stack>
+                  </div>
 
                   <div>
                     <Waves
@@ -148,7 +142,7 @@ const Header = () => {
                       style={{ marginBottom: -1 }}
                       topColor={theme.palette.green.main}
                     />
-                    <Stack padding={3} sx={{ backgroundColor: theme.palette.green.dark }}>
+                    <div className="flex flex-col p-6 bg-green-dark">
                       <Typography color="secondary" variant="h5">
                                                 Find us on Facebook:
                       </Typography>
@@ -156,9 +150,9 @@ const Header = () => {
                         color={theme.palette.secondary.main}
                         href="https://www.facebook.com/matlockraftevent/"
                       />
-                    </Stack>
+                    </div>
                   </div>
-                </Stack>
+                </div>
 
               </Drawer>
             </>
@@ -172,16 +166,8 @@ const Header = () => {
                 }}
               >
                 <Container>
-                  <Stack direction="row">
-                    <Stack
-                      alignItems="center"
-                      direction="row"
-                      flex={3}
-                      justifyContent="space-around"
-                      padding={2}
-                      spacing={2}
-                      width={1}
-                    >
+                  <div className="flex flex-row">
+                    <div className="flex flex-row items-center flex-[3] justify-around p-4 gap-4 w-full">
                       {
                         links.slice(0, 3)
                           .map(link => (
@@ -192,7 +178,7 @@ const Header = () => {
                             />
                           ))
                       }
-                    </Stack>
+                    </div>
                     <Box
                       component="a"
                       flex={1}
@@ -215,15 +201,7 @@ const Header = () => {
                         }}
                       />
                     </Box>
-                    <Stack
-                      alignItems="center"
-                      direction="row"
-                      flex={3}
-                      justifyContent="space-around"
-                      padding={2}
-                      spacing={2}
-                      width={1}
-                    >
+                    <div className="flex flex-row items-center flex-[3] justify-around p-4 gap-4 w-full">
                       {
                         links.slice(3, 5)
                           .map(link => (
@@ -237,8 +215,8 @@ const Header = () => {
                       <Button href="/donate">
                                                 Donate
                       </Button>
-                    </Stack>
-                  </Stack>
+                    </div>
+                  </div>
                 </Container>
 
               </div>

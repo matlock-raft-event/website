@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { Container, Stack, Typography } from "@mui/material";
+import { Container, Typography } from "@mui/material";
 import { styled, useTheme } from "@mui/material/styles";
 
 import HeaderImg from "~/assets/images/header.jpg";
@@ -73,11 +73,8 @@ const HeroContent = (
   useEffect(() => console.log(isTablet), [isTablet]);
   // eslint-disable-next-line react/no-unstable-nested-components
   const Content = () => (
-    <Stack
-      justifyContent="center"
-      px={1}
-      py={2}
-      spacing={2}
+    <div
+      className="flex flex-col justify-center px-2 py-4 gap-4"
       style={{
         height: "100%",
         zIndex: 12,
@@ -101,11 +98,8 @@ const HeroContent = (
       >
         {title?.replace("&nbsp;", " ") ?? "Boxing Day fun for all the family!"}
       </Typography>
-      <Stack
-        alignItems="center"
-        direction="row"
-        justifyContent={isMobile ? "center" : undefined}
-        spacing={0.5}
+      <div
+        className={`flex flex-row items-center gap-1 ${isMobile ? "justify-center" : ""}`}
       >
         <Iconify color={theme.palette.yellow.main} icon="ph:map-pin-bold" />
         <Typography
@@ -117,12 +111,9 @@ const HeroContent = (
           {" "}
           {new Date().getFullYear()}
         </Typography>
-      </Stack>
-      <Stack
-        alignItems="center"
-        direction="row"
-        justifyContent={isMobile ? "center" : undefined}
-        spacing={2}
+      </div>
+      <div
+        className={`flex flex-row items-center gap-4 ${isMobile ? "justify-center" : ""}`}
       >
         <div>
           <Button href={buttonLink ?? "https://www.google.com"} size="lg">
@@ -137,11 +128,11 @@ const HeroContent = (
             objectFit: "contain"
           }}
         />
-      </Stack>
+      </div>
 
       <HeroCountdown />
 
-    </Stack>
+    </div>
   );
 
   if (isMobile) {

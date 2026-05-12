@@ -1,4 +1,4 @@
-import { Container, Stack, Typography } from "@mui/material";
+import { Container, Typography } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 
 import Footer from "~/components/Footer";
@@ -17,7 +17,7 @@ const Content = () => {
       <Section bgColor={theme.palette.secondary}>
         <Heading color={theme.palette.secondary} subtitle="Help us to raise more than ever" title="Donate" />
         <Container maxWidth="md">
-          <Stack alignItems="center" spacing={2}>
+          <div className="flex flex-col items-center gap-4">
             <Typography variant="body1">
                             Every year, our volunteer bucket collectors are positioned along the route ready to collect
                             donations from our generous spectators. Can&apos;t make it this year or just can&apos;t wait
@@ -33,7 +33,7 @@ const Content = () => {
             >
                             Donate Online Now
             </Button>
-          </Stack>
+          </div>
         </Container>
       </Section>
       <Waves bottomColor={theme.palette.secondary.main} topColor={theme.palette.secondary.main} variant={2} />

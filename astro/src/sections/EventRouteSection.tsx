@@ -1,6 +1,6 @@
 /* eslint-disable max-len */
 
-import { Box, Container, Stack } from "@mui/material";
+import { Box, Container } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 
 import Map from "~/assets/images/event-map.svg";
@@ -26,7 +26,7 @@ const EventRouteSection = () => {
         subtitle="Where we're going, we don't need roads..."
         title="Event Route"
       />
-      <Stack alignItems="center" spacing={4}>
+      <div className="flex flex-col items-center gap-8">
         <Container maxWidth="md">
           <img alt="Event route map" src={(Map as { src?: string }).src ?? (Map as unknown as string)} style={{ width: "100%" }} />
         </Container>
@@ -37,7 +37,7 @@ const EventRouteSection = () => {
         >
                     View Interactive Map
         </Button>
-      </Stack>
+      </div>
 
     </Box>
   );

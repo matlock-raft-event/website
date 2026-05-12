@@ -1,5 +1,6 @@
 import * as React from "react";
-import { Box, Stack } from "@mui/material";
+import { Fragment } from "react";
+import { Box } from "@mui/material";
 
 import { useCountdownDate } from "~/hooks/useCountdownDate";
 import useResponsive from "~/hooks/useResponsive";
@@ -39,32 +40,36 @@ const HeroCountdown = () => {
   } = useCountdownDate(new Date("12/26/2026 11:00"));
   const isMobile = useResponsive("down", "md");
 
+  const items = [
+    { label: "Days", value: days },
+    { label: "Hours", value: hours },
+    { label: "Minutes", value: minutes },
+    { label: "Seconds", value: seconds }
+  ];
+
   return (
-    <Stack
-      direction="row"
-      divider={
-        <Box sx={{
-          color: "white",
-          mx: {
-            xs: 1,
-            sm: 2.5
-          }
-        }}
-        >
-                    :
-        </Box>
-      }
-      justifyContent={isMobile ? "center" : "start"}
+    <Box
+      className={`flex flex-row ${isMobile ? "justify-center" : "justify-start"}`}
       sx={{ typography: "h2" }}
     >
-      <TimeBlock label="Days" value={days} />
-
-      <TimeBlock label="Hours" value={hours} />
-
-      <TimeBlock label="Minutes" value={minutes} />
-
-      <TimeBlock label="Seconds" value={seconds} />
-    </Stack>
+      {items.map((item, i) => (
+        <Fragment key={item.label}>
+          {i > 0 && (
+            <Box sx={{
+              color: "white",
+              mx: {
+                xs: 1,
+                sm: 2.5
+              }
+            }}
+            >
+                            :
+            </Box>
+          )}
+          <TimeBlock label={item.label} value={item.value} />
+        </Fragment>
+      ))}
+    </Box>
   );
 };
 

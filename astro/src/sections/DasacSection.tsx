@@ -1,4 +1,3 @@
-import { Stack } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 
 import Block from "~/components/Block";
@@ -26,7 +25,7 @@ const DasacSection = () => {
         subtitle="The organisers"
         title="DASAC"
       />
-      <Stack alignItems="center" spacing={2}>
+      <div className="flex flex-col items-center gap-4">
         {
           about?.dasacBio &&
                     <div>
@@ -43,7 +42,7 @@ const DasacSection = () => {
                         Learn more about DASAC
                     </Button>
         }
-      </Stack>
+      </div>
     </Section>
   );
 };

@@ -1,4 +1,4 @@
-import { Container, Stack, Typography } from "@mui/material";
+import { Container, Typography } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 import Grid2 from "@mui/material/Unstable_Grid2";
 
@@ -30,7 +30,7 @@ const SponsorsSection = () => {
         subtitle="The people we couldn't do this without"
         title="Our Amazing Sponsors"
       />
-      <Stack alignItems="center" spacing={2}>
+      <div className="flex flex-col items-center gap-4">
         <Container maxWidth="md">
           <Typography variant="body1">
                         Every year many local businesses help to keep the raft event going by sponsoring the event. In
@@ -55,7 +55,7 @@ const SponsorsSection = () => {
             ))
           }
         </Grid2>
-      </Stack>
+      </div>
 
     </Section>
   );

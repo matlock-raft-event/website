@@ -1,6 +1,6 @@
 import type { CSSProperties } from "react";
 import { useState } from "react";
-import { Stack, Typography } from "@mui/material";
+import { Typography } from "@mui/material";
 import { styled } from "@mui/material/styles";
 
 import SanityImage from "~/components/SanityImage";
@@ -105,12 +105,7 @@ const ImageCard = (
       }
       {
         (title || description) && (
-          <Stack
-            sx={{
-              p: 3,
-              py: 2
-            }}
-          >
+          <div className="flex flex-col px-6 py-4">
             {
               title &&
                             <Typography fontFamily={TITLE_FONT_FAMILY} variant="h4">
@@ -123,7 +118,7 @@ const ImageCard = (
                               {description}
                             </TypographyMaxLine>
             }
-          </Stack>
+          </div>
         )
       }
 

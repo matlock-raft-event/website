@@ -1,5 +1,4 @@
 import { useMemo } from "react";
-import { Stack } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 import Grid2 from "@mui/material/Unstable_Grid2";
 import { toPlainText } from "@portabletext/react";
@@ -70,9 +69,9 @@ const UpdatesSection = ({ preview = false }: UpdatesSectionProps) => {
       </Grid2>
       {
         preview &&
-                <Stack direction="row" justifyContent="center" mt={4}>
+                <div className="flex flex-row justify-center mt-8">
                   <Button href="/updates">View all updates</Button>
-                </Stack>
+                </div>
       }
     </Section>
   );

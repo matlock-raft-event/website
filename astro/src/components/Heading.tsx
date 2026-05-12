@@ -1,4 +1,4 @@
-import { Stack, Typography } from "@mui/material";
+import { Typography } from "@mui/material";
 import type { PaletteColor } from "@mui/material/styles";
 import { styled, useTheme } from "@mui/material/styles";
 
@@ -40,11 +40,11 @@ const Heading = ({
     <StyledContainer style={{ color: textColor }}>
       {
         subtitle &&
-                <Stack alignItems="center" direction="row" mb={1} spacing={isMobile ? 1 : 2}>
+                <div className={`flex flex-row items-center mb-2 ${isMobile ? "gap-2" : "gap-4"}`}>
                   <Bullet />
                   <Typography textAlign="center" textTransform="uppercase" variant="h6">{subtitle}</Typography>
                   <Bullet />
-                </Stack>
+                </div>
       }
       <Typography fontFamily={TITLE_FONT_FAMILY} textAlign="center" variant="h2">{title}</Typography>
     </StyledContainer>

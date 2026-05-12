@@ -1,7 +1,7 @@
 import type { MouseEvent } from "react";
 import { useMemo, useRef, useState } from "react";
 import { Masonry } from "@mui/lab";
-import { Container, ImageListItem, Stack, ToggleButton, ToggleButtonGroup, Typography } from "@mui/material";
+import { Container, ImageListItem, ToggleButton, ToggleButtonGroup, Typography } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 import Lightbox from "yet-another-react-lightbox";
 import Captions from "yet-another-react-lightbox/plugins/captions";
@@ -93,7 +93,7 @@ const Content = () => {
         <Section bgColor={theme.palette.secondary}>
           <Heading color={theme.palette.secondary} subtitle="It’s everything it looks" title="Gallery" />
 
-          <Stack alignItems="center" spacing={1}>
+          <div className="flex flex-col items-center gap-2">
             <Container maxWidth="md">
               <Typography variant="body1">
                                 Do you have photos we can feature in our gallery? Direct message them to us on Facebook
@@ -142,7 +142,7 @@ const Content = () => {
               }
             </Masonry>
 
-          </Stack>
+          </div>
 
         </Section>
         <Waves bottomColor={theme.palette.secondary.main} topColor={theme.palette.secondary.main} variant={2} />

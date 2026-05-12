@@ -1,4 +1,4 @@
-import { Container, Stack, Typography } from "@mui/material";
+import { Container, Typography } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 
 import ApplicationFormPdf from "~/assets/documents/Application-Form.pdf";
@@ -32,8 +32,8 @@ const TakePartSection = () => {
     <Section bgColor={theme.palette.secondary}>
       <Heading color={theme.palette.secondary} subtitle="So you're brave enough?" title="Take Part" />
       <Container maxWidth="md">
-        <Stack alignItems="center" spacing={2}>
-          <Stack alignItems="center" spacing={1}>
+        <div className="flex flex-col items-center gap-4">
+          <div className="flex flex-col items-center gap-2">
             <Typography variant="body1">
                             The Raft Event is approximately 3 miles long, the water is cold and in places deep and
                             turbulent. There is a weir with a descent totalling around 30 meters of rapid white water.
@@ -46,8 +46,8 @@ const TakePartSection = () => {
                             on
                             Boxing Day: the RNLI. Do it once and we promise you will be hooked!
             </Typography>
-          </Stack>
-          <Stack alignItems="center" spacing={2}>
+          </div>
+          <div className="flex flex-col items-center gap-4">
             <Typography variant="subtitle1">
                             To take part in the raft event, you need to complete the following steps:
             </Typography>
@@ -65,9 +65,9 @@ const TakePartSection = () => {
                 />
               ))
             }
-          </Stack>
+          </div>
 
-          <Stack direction="row" py={2} spacing={2}>
+          <div className="flex flex-row py-4 gap-4">
             <Button
               download="Raft-Event-Rules"
               href={RulesPdf}
@@ -92,7 +92,7 @@ const TakePartSection = () => {
             >
                             Application Form
             </Button>
-          </Stack>
+          </div>
 
           <Typography>
                         Once ready and your raft has been checked, be prepared to face whatever the Derbyshire Dales,
@@ -105,7 +105,7 @@ const TakePartSection = () => {
                         the day, the deeper people will dig in their pockets and donate to the RNLI. Derwent and
                         thousands of excited spectators have to offer on a typical Boxing Day. Best of luck!
           </Typography>
-        </Stack>
+        </div>
       </Container>
     </Section>
   );

@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Stack, Typography } from "@mui/material";
+import { Typography } from "@mui/material";
 import type { PaletteColor } from "@mui/material/styles";
 import { styled, useTheme } from "@mui/material/styles";
 
@@ -75,8 +75,8 @@ const Footer = ({ color }: FooterProps) => {
 
   return (
     <StyledSection style={{ backgroundColor: bgColor }}>
-      <Stack alignItems="center" spacing={2}>
-        <Stack>
+      <div className="flex flex-col items-center gap-4">
+        <div className="flex flex-col">
           <Typography
             sx={{ color: textColor }}
             variant="overline"
@@ -86,7 +86,7 @@ const Footer = ({ color }: FooterProps) => {
           <StyledRow>
             <FacebookIcon color={textColor} href="https://www.facebook.com/matlockraftevent/" />
           </StyledRow>
-        </Stack>
+        </div>
 
         <StyledRow>
           {
@@ -129,7 +129,7 @@ const Footer = ({ color }: FooterProps) => {
           <strong>Sam Hepburn</strong>
                     .
         </Typography>
-      </Stack>
+      </div>
     </StyledSection>
   );
 };

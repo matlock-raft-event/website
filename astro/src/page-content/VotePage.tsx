@@ -1,4 +1,4 @@
-import { Stack, Typography } from "@mui/material";
+import { Typography } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 
 import Footer from "~/components/Footer";
@@ -19,7 +19,7 @@ const Content = () => {
           subtitle="It's time to choose your favourite"
           title="Vote For Your Boat"
         />
-        <Stack alignItems="center" spacing={2}>
+        <div className="flex flex-col items-center gap-4">
           <Typography>
                         Okay, maybe it&apos;s generous of us to call them boats... But for the first time in
                         2023,
@@ -60,7 +60,7 @@ const Content = () => {
             </iframe>
             <script async src="https://cdn.strawpoll.com/dist/widgets.js" />
           </div>
-        </Stack>
+        </div>
 
       </Section>
       <Waves bottomColor={theme.palette.secondary.main} topColor={theme.palette.secondary.main} />
