@@ -3,19 +3,22 @@ import PageShell from "~/components/PageShell";
 import Waves from "~/components/Waves";
 import ContactUsSection from "~/sections/ContactUsSection";
 import InnerHeroSection from "~/sections/InnerHeroSection";
+import type { ContactInstructionsQueryResult } from "~/lib/sanity.types";
 
-const Content = () => (
+type Props = { contactInstructions: ContactInstructionsQueryResult };
+
+const Content = ({ contactInstructions }: Props) => (
   <main>
     <InnerHeroSection />
-    <ContactUsSection />
+    <ContactUsSection contactInstructions={contactInstructions} />
     <Waves bottomColor="var(--color-cream)" topColor="var(--color-cream)" variant={2} />
     <Footer />
   </main>
 );
 
-const ContactPage = () => (
+const ContactPage = (props: Props) => (
   <PageShell>
-    <Content />
+    <Content {...props} />
   </PageShell>
 );
 

@@ -2,19 +2,11 @@ import Heading from "~/components/Heading";
 import Section from "~/components/Section";
 import SponsorItem from "~/components/SponsorItem";
 import useResponsive from "~/hooks/useResponsive";
-import useSanityFetch from "~/hooks/useSanityFetch";
+import type { SponsorsQueryResult } from "~/lib/sanity.types";
 
-type Sponsor = {
-  name?: string;
-  slug?: string;
-  logo?: unknown;
-};
+type Props = { sponsors: SponsorsQueryResult };
 
-const SponsorsSection = () => {
-  const { data: sponsors } = useSanityFetch<Sponsor[]>(
-    "*[_type == \"sponsor\"]{ name, slug, logo }"
-  );
-
+const SponsorsSection = ({ sponsors }: Props) => {
   const isMobile = useResponsive("down", "sm");
 
   return (
@@ -41,7 +33,7 @@ const SponsorsSection = () => {
             (sponsors ?? []).map(sponsor => (
               <div key={sponsor.name} className={isMobile ? "col-span-4" : "col-span-2"}>
                 <SponsorItem
-                  altText={sponsor.name}
+                  altText={sponsor.name ?? undefined}
                   href={sponsor.slug ? `/sponsors/${sponsor.slug}` : undefined}
                   image={sponsor.logo}
                 />

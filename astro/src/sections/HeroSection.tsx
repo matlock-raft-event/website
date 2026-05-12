@@ -1,5 +1,3 @@
-import { useEffect } from "react";
-
 import HeaderImg from "~/assets/images/header.jpg";
 import RnliFundraiseImg from "~/assets/images/rnlifundraise.png";
 import Header from "~/components/Header";
@@ -8,15 +6,15 @@ import Iconify from "~/components/Iconify";
 import { Button } from "~/components/ui/button";
 import Waves from "~/components/Waves";
 import useResponsive from "~/hooks/useResponsive";
-import useSanityFetch from "~/hooks/useSanityFetch";
+import type { HeroQueryResult } from "~/lib/sanity.types";
 
 const resolveSrc = (asset: unknown): string => (asset as { src?: string }).src ?? (asset as unknown as string);
 
 type HeroContentProps = {
-  title?: string;
-  subtitle?: string;
-  buttonText?: string;
-  buttonLink?: string;
+  title?: string | null;
+  subtitle?: string | null;
+  buttonText?: string | null;
+  buttonLink?: string | null;
 };
 const HeroContent = (
   {
@@ -27,7 +25,6 @@ const HeroContent = (
   }: HeroContentProps) => {
   const isMobile = useResponsive("down", "md");
   const isTablet = useResponsive("between", "md", "xl");
-  useEffect(() => console.log(isTablet), [isTablet]);
   // eslint-disable-next-line react/no-unstable-nested-components
   const Content = () => (
     <div
@@ -114,24 +111,15 @@ const HeroContent = (
   );
 };
 
-type HeroData = {
-  title?: string;
-  subtitle?: string;
-  buttonLink?: string;
-  buttonText?: string;
-};
+type Props = { hero: HeroQueryResult };
 
-const HeroSection = () => {
+const HeroSection = ({ hero }: Props) => {
   const isMobile = useResponsive("down", "lg");
 
-  const { data } = useSanityFetch<HeroData>(
-    "*[_type == \"hero\"][0]{ title, subtitle, buttonLink, buttonText }"
-  );
-
-  const title = data?.title;
-  const subtitle = data?.subtitle;
-  const buttonLink = data?.buttonLink;
-  const buttonText = data?.buttonText;
+  const title = hero?.title;
+  const subtitle = hero?.subtitle;
+  const buttonLink = hero?.buttonLink;
+  const buttonText = hero?.buttonText;
 
   return (
     <div style={{ position: "relative" }}>

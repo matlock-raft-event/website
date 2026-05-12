@@ -4,34 +4,26 @@ import Heading from "~/components/Heading";
 import PageShell from "~/components/PageShell";
 import Section from "~/components/Section";
 import Waves from "~/components/Waves";
-import useSanityFetch from "~/hooks/useSanityFetch";
+import type { CookiesInfoQueryResult } from "~/lib/sanity.types";
 import InnerHeroSection from "~/sections/InnerHeroSection";
 
-type CookiesInfo = {
-  content?: unknown;
-};
+type Props = { cookiesInfo: CookiesInfoQueryResult };
 
-const Content = () => {
-  const { data } = useSanityFetch<CookiesInfo>(
-    "*[_type == \"cookiesInfo\"][0]{ content }"
-  );
+const Content = ({ cookiesInfo }: Props) => (
+  <main>
+    <InnerHeroSection />
+    <Section palette="cream">
+      <Heading palette="cream" title="Cookies Policy" />
+      {cookiesInfo?.content ? <Block value={cookiesInfo.content as never} /> : null}
+    </Section>
+    <Waves bottomColor="var(--color-cream)" topColor="var(--color-cream)" />
+    <Footer />
+  </main>
+);
 
-  return (
-    <main>
-      <InnerHeroSection />
-      <Section palette="cream">
-        <Heading palette="cream" title="Cookies Policy" />
-        {data?.content && <Block value={data.content as never} />}
-      </Section>
-      <Waves bottomColor="var(--color-cream)" topColor="var(--color-cream)" />
-      <Footer />
-    </main>
-  );
-};
-
-const CookiesPage = () => (
+const CookiesPage = (props: Props) => (
   <PageShell>
-    <Content />
+    <Content {...props} />
   </PageShell>
 );
 

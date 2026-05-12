@@ -4,20 +4,11 @@ import Heading from "~/components/Heading";
 import PodiumCard from "~/components/PodiumCard";
 import Section from "~/components/Section";
 import useResponsive from "~/hooks/useResponsive";
-import useSanityFetch from "~/hooks/useSanityFetch";
+import type { WinnersQueryResult } from "~/lib/sanity.types";
 
-type Winner = {
-  name?: string;
-  year?: number;
-  position?: number;
-  img?: unknown;
-};
+type Props = { winners: WinnersQueryResult };
 
-const PodiumSection = () => {
-  const { data: winners } = useSanityFetch<Winner[]>(
-    "*[_type == \"winner\"]{ name, year, position, img }"
-  );
-
+const PodiumSection = ({ winners }: Props) => {
   const firstPlace = winners?.find(item => item.position === 1);
   const secondPlace = winners?.find(item => item.position === 2);
   const thirdPlace = winners?.find(item => item.position === 3);

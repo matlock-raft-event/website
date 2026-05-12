@@ -2,34 +2,26 @@ import Block from "~/components/Block";
 import Heading from "~/components/Heading";
 import Section from "~/components/Section";
 import { Button } from "~/components/ui/button";
-import useSanityFetch from "~/hooks/useSanityFetch";
+import type { AboutQueryResult } from "~/lib/sanity.types";
 
-type AboutData = {
-  rnliBio?: unknown;
-  rnliLink?: string;
-};
+type Props = { about: AboutQueryResult };
 
-const RnliSection = () => {
-  const { data: about } = useSanityFetch<AboutData>(
-    "*[_type == \"about\"][0]{ rnliBio, rnliLink }"
-  );
-
-  return (
-    <Section palette="mint">
-      <Heading
-        palette="mint"
-        subtitle="Saving lives at sea with your support"
-        title="RNLI"
-      />
-      <div className="flex flex-col items-center gap-4">
-        {
-          about?.rnliBio &&
+const RnliSection = ({ about }: Props) => (
+  <Section palette="mint">
+    <Heading
+      palette="mint"
+      subtitle="Saving lives at sea with your support"
+      title="RNLI"
+    />
+    <div className="flex flex-col items-center gap-4">
+      {
+        about?.rnliBio &&
                     <div className="mx-auto w-full max-w-4xl px-4">
                       <Block value={about.rnliBio as never} />
                     </div>
-        }
-        {
-          about?.rnliLink &&
+      }
+      {
+        about?.rnliLink &&
                     <Button
                       href={about.rnliLink}
                       rel="noreferrer"
@@ -37,10 +29,9 @@ const RnliSection = () => {
                     >
                         Learn more about the RNLI
                     </Button>
-        }
-      </div>
-    </Section>
-  );
-};
+      }
+    </div>
+  </Section>
+);
 
 export default RnliSection;

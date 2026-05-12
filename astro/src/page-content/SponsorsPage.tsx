@@ -4,11 +4,14 @@ import Waves from "~/components/Waves";
 import BecomeSponsorSection from "~/sections/BecomeSponsorSection";
 import InnerHeroSection from "~/sections/InnerHeroSection";
 import SponsorsSection from "~/sections/SponsorsSection";
+import type { SponsorsQueryResult } from "~/lib/sanity.types";
 
-const Content = () => (
+type Props = { sponsors: SponsorsQueryResult };
+
+const Content = ({ sponsors }: Props) => (
   <main>
     <InnerHeroSection />
-    <SponsorsSection />
+    <SponsorsSection sponsors={sponsors} />
     <Waves bottomColor="var(--color-mint)" topColor="var(--color-cream)" variant={2} />
     <BecomeSponsorSection />
     <Waves bottomColor="var(--color-cream)" topColor="var(--color-mint)" variant={3} />
@@ -16,9 +19,9 @@ const Content = () => (
   </main>
 );
 
-const SponsorsPage = () => (
+const SponsorsPage = (props: Props) => (
   <PageShell>
-    <Content />
+    <Content {...props} />
   </PageShell>
 );
 

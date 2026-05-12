@@ -1,10 +1,15 @@
 ---
 import BaseLayout from "~/layouts/BaseLayout.astro";
 import UpdatesPage from "~/page-content/UpdatesPage";
+import { sanityClient } from "~/lib/sanity";
+import { updatesQuery } from "~/lib/queries";
+import type { UpdatesQueryResult } from "~/lib/sanity.types";
+
+const updates = await sanityClient.fetch<UpdatesQueryResult>(updatesQuery);
 ---
 <BaseLayout
     description="Get the latest updates and news about The Matlock Raft Event. Stay informed about schedules, special announcements, and more."
     title="Event Updates - Matlock Raft Event"
 >
-    <UpdatesPage client:load />
+    <UpdatesPage client:load updates={updates} />
 </BaseLayout>

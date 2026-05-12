@@ -5,18 +5,11 @@ import Section from "~/components/Section";
 import SponsorItem from "~/components/SponsorItem";
 import { Button } from "~/components/ui/button";
 import Waves from "~/components/Waves";
+import type { SponsorsForPathsQueryResult } from "~/lib/sanity.types";
 import InnerHeroSection from "~/sections/InnerHeroSection";
 
 type SingleSponsorPageProps = {
-  sponsor: {
-    name?: string;
-    slug?: string;
-    logo?: unknown;
-    url?: string;
-    address?: string;
-    description?: string;
-    testimonial?: string;
-  };
+  sponsor: SponsorsForPathsQueryResult[number];
 };
 
 const Content = ({ sponsor }: SingleSponsorPageProps) => {
@@ -30,7 +23,7 @@ const Content = ({ sponsor }: SingleSponsorPageProps) => {
         <Heading palette="cream" subtitle="Sponsor" title={title} />
         <div className="grid grid-cols-12 gap-10">
           <div className="col-span-12 sm:col-span-4">
-            <SponsorItem altText={sponsor.name} image={sponsor.logo} readOnly />
+            <SponsorItem altText={sponsor.name ?? undefined} image={sponsor.logo} readOnly />
           </div>
           <div className="col-span-12 sm:col-span-8">
             <div className="flex flex-col gap-4">

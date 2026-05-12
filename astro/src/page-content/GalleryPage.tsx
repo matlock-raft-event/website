@@ -1,5 +1,5 @@
 import { useMemo, useRef, useState } from "react";
-import Lightbox from "yet-another-react-lightbox";
+import Lightbox, { type CaptionsRef, type ThumbnailsRef, type ZoomRef } from "yet-another-react-lightbox";
 import Captions from "yet-another-react-lightbox/plugins/captions";
 import Thumbnails from "yet-another-react-lightbox/plugins/thumbnails";
 import Zoom from "yet-another-react-lightbox/plugins/zoom";
@@ -11,41 +11,18 @@ import PageShell from "~/components/PageShell";
 import Section from "~/components/Section";
 import { ToggleGroup, ToggleGroupItem } from "~/components/ui/toggle";
 import Waves from "~/components/Waves";
-import useSanityFetch from "~/hooks/useSanityFetch";
 import { urlFor } from "~/lib/sanity";
+import type { GalleryQueryResult } from "~/lib/sanity.types";
 import InnerHeroSection from "~/sections/InnerHeroSection";
 
-type GalleryImage = {
-  _id?: string;
-  year?: number;
-  author?: string;
-  img?: unknown;
-};
+type Props = { galleryImages: GalleryQueryResult };
 
-type CaptionsRef = {
-  visible: boolean;
-  show: () => void;
-  hide: () => void;
-};
-type ThumbnailRef = {
-  visible: boolean;
-  show: () => void;
-  hide: () => void;
-};
-type ZoomRef = {
-  zoomIn: () => void;
-  zoomOut: () => void;
-};
+const Content = ({ galleryImages }: Props) => {
+  const captionsRef = useRef<CaptionsRef | null>(null);
+  const thumbnailsRef = useRef<ThumbnailsRef | null>(null);
+  const zoomRef = useRef<ZoomRef | null>(null);
 
-const Content = () => {
-  const captionsRef = useRef<CaptionsRef>(null);
-  const thumbnailsRef = useRef<ThumbnailRef>(null);
-  const zoomRef = useRef<ZoomRef>(null);
-
-  const { data } = useSanityFetch<GalleryImage[]>(
-    "*[_type == \"galleryImage\"]{ _id, year, author, img }"
-  );
-  const galleryData = useMemo(() => data ?? [], [data]);
+  const galleryData = useMemo(() => galleryImages ?? [], [galleryImages]);
 
   const [index, setIndex] = useState(-1);
 
@@ -137,7 +114,7 @@ const Content = () => {
       </main>
 
       <Lightbox
-        captions={{ ref: captionsRef }}
+        captions={{ ref: captionsRef as never }}
         close={() => setIndex(-1)}
         index={index}
         on={{
@@ -166,16 +143,16 @@ const Content = () => {
             "--yarl__thumbnails_thumbnail_active_border_color": "var(--color-yellow)"
           }
         }}
-        thumbnails={{ ref: thumbnailsRef }}
-        zoom={{ ref: zoomRef }}
+        thumbnails={{ ref: thumbnailsRef as never }}
+        zoom={{ ref: zoomRef as never }}
       />
     </>
   );
 };
 
-const GalleryPage = () => (
+const GalleryPage = (props: Props) => (
   <PageShell>
-    <Content />
+    <Content {...props} />
   </PageShell>
 );
 

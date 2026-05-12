@@ -1,54 +1,44 @@
 import Block from "~/components/Block";
 import Heading from "~/components/Heading";
 import Section from "~/components/Section";
-import useSanityFetch from "~/hooks/useSanityFetch";
+import type { ContactInstructionsQueryResult } from "~/lib/sanity.types";
 
-type ContactInstructions = {
-  general?: unknown;
-  sponsors?: unknown;
-  press?: unknown;
-};
+type Props = { contactInstructions: ContactInstructionsQueryResult };
 
-const ContactUsSection = () => {
-  const { data: contactInstructions } = useSanityFetch<ContactInstructions>(
-    "*[_type == \"contactInstructions\"][0]{ general, sponsors, press }"
-  );
+const ContactUsSection = ({ contactInstructions }: Props) => (
+  <Section palette="cream">
+    <Heading palette="cream" subtitle="Need to get in touch?" title="Contact us" />
 
-  return (
-    <Section palette="cream">
-      <Heading palette="cream" subtitle="Need to get in touch?" title="Contact us" />
+    <div className="mx-auto w-full max-w-4xl px-4">
 
-      <div className="mx-auto w-full max-w-4xl px-4">
-
-        <p className="text-sm sm:text-base lg:text-lg leading-relaxed mb-8">
+      <p className="text-sm sm:text-base lg:text-lg leading-relaxed mb-8">
                     We&apos;re all ears for participants and those eager to join the excitement! Connect with us on our
                     Facebook page, or become a part of our Facebook group where you can share your event snapshots and
                     videos with the community. Got questions or simply want to chat about the event? We&apos;re here to
                     fill you in on all the details. We&apos;ll get back to you as soon as we can!
-        </p>
+      </p>
 
-        <p className="font-display font-semibold text-base">General Enquiries</p>
-        {
-          contactInstructions?.general &&
+      <p className="font-display font-semibold text-base">General Enquiries</p>
+      {
+        contactInstructions?.general &&
                     <Block value={contactInstructions.general as never} />
-        }
+      }
 
-        <p className="font-display font-semibold text-base">Sponsors</p>
-        {
-          contactInstructions?.sponsors &&
+      <p className="font-display font-semibold text-base">Sponsors</p>
+      {
+        contactInstructions?.sponsors &&
                     <Block value={contactInstructions.sponsors as never} />
-        }
+      }
 
-        <p className="font-display font-semibold text-base">Press</p>
-        {
-          contactInstructions?.press &&
+      <p className="font-display font-semibold text-base">Press</p>
+      {
+        contactInstructions?.press &&
                     <Block value={contactInstructions.press as never} />
-        }
+      }
 
-      </div>
+    </div>
 
-    </Section>
-  );
-};
+  </Section>
+);
 
 export default ContactUsSection;

@@ -5,22 +5,25 @@ import EventRouteSection from "~/sections/EventRouteSection";
 import FaqsSection from "~/sections/FaqsSection";
 import InnerHeroSection from "~/sections/InnerHeroSection";
 import TimingsSection from "~/sections/TimingsSection";
+import type { FaqsQueryResult } from "~/lib/sanity.types";
 
-const Content = () => (
+type Props = { faqs: FaqsQueryResult };
+
+const Content = ({ faqs }: Props) => (
   <main>
     <InnerHeroSection wavesColor="var(--color-green)" />
     <EventRouteSection />
     <Waves bottomColor="var(--color-cream)" topColor="var(--color-green)" variant={3} />
     <TimingsSection />
-    <FaqsSection />
+    <FaqsSection faqs={faqs} />
     <Waves bottomColor="var(--color-cream)" topColor="var(--color-cream)" variant={3} />
     <Footer />
   </main>
 );
 
-const InfoPage = () => (
+const InfoPage = (props: Props) => (
   <PageShell>
-    <Content />
+    <Content {...props} />
   </PageShell>
 );
 

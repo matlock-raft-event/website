@@ -1,26 +1,14 @@
 ---
 import BaseLayout from "~/layouts/BaseLayout.astro";
 import { sanityClient } from "~/lib/sanity";
+import { updatesForPathsQuery } from "~/lib/queries";
+import type { UpdatesForPathsQueryResult } from "~/lib/sanity.types";
 import SingleUpdatePage from "~/page-content/SingleUpdatePage";
 
-type UpdateDoc = {
-    title?: string;
-    slug?: string;
-    date?: string;
-    img?: unknown;
-    content?: unknown;
-};
+type UpdateDoc = UpdatesForPathsQueryResult[number];
 
 export async function getStaticPaths() {
-    const updates = await sanityClient.fetch<UpdateDoc[]>(
-        `*[_type == "update" && defined(slug)]{
-            title,
-            slug,
-            date,
-            img,
-            content
-        }`,
-    );
+    const updates = await sanityClient.fetch<UpdatesForPathsQueryResult>(updatesForPathsQuery);
 
     return updates.map((update) => ({
         params: { slug: update.slug },

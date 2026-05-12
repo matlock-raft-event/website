@@ -7,18 +7,13 @@ import SanityImage from "~/components/SanityImage";
 import Section from "~/components/Section";
 import Waves from "~/components/Waves";
 import useResponsive from "~/hooks/useResponsive";
+import type { UpdatesForPathsQueryResult } from "~/lib/sanity.types";
 import InnerHeroSection from "~/sections/InnerHeroSection";
 
 const resolveSrc = (asset: unknown): string => (asset as { src?: string }).src ?? (asset as unknown as string);
 
 type SingleUpdatePageProps = {
-  update: {
-    title?: string;
-    slug?: string;
-    date?: string;
-    img?: unknown;
-    content?: unknown;
-  };
+  update: UpdatesForPathsQueryResult[number];
 };
 
 const Content = ({ update }: SingleUpdatePageProps) => {
@@ -72,7 +67,7 @@ const Content = ({ update }: SingleUpdatePageProps) => {
           </div>
           <div className="col-span-12 sm:col-span-7 order-1 sm:order-2">
             <div className="mt-8">
-              {content && <Block value={content as never} />}
+              {content ? <Block value={content as never} /> : null}
             </div>
           </div>
         </div>

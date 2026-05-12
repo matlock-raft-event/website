@@ -9,6 +9,7 @@ interface ImageCardProps {
   fallbackSrc?: string;
   title?: string;
   description?: string;
+  href?: string;
   onClick?: VoidFunction;
   readOnly?: boolean;
   hideBorders?: boolean;
@@ -21,6 +22,7 @@ const ImageCard = (
     image,
     fallbackSrc,
     title,
+    href,
     onClick = () => null,
     readOnly = false,
     hideBorders = false
@@ -42,11 +44,14 @@ const ImageCard = (
       backgroundColor: "#ffffff"
     });
 
+  const Wrapper = href ? "a" : "div";
+
   return (
-    <div
+    <Wrapper
       className="relative rounded-[2px] transition-all duration-[600ms] ease-[cubic-bezier(0.165,0.84,0.44,1)] block"
-      onClick={onClick}
-      onKeyDown={onClick}
+      href={href}
+      onClick={href ? undefined : onClick}
+      onKeyDown={href ? undefined : onClick}
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
       style={{
@@ -106,7 +111,7 @@ const ImageCard = (
         )
       }
 
-    </div>
+    </Wrapper>
   );
 };
 

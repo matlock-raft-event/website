@@ -6,36 +6,25 @@ import Heading from "~/components/Heading";
 import ImageCard from "~/components/ImageCard";
 import Section from "~/components/Section";
 import { Button } from "~/components/ui/button";
-import useSanityFetch from "~/hooks/useSanityFetch";
+import type { UpdatesQueryResult } from "~/lib/sanity.types";
 
 const fallbackLogo = (logoSvg as { src?: string }).src ?? (logoSvg as unknown as string);
 
-type Update = {
-  title?: string;
-  slug?: string;
-  date?: string;
-  img?: unknown;
-  content?: unknown;
-};
-
 interface UpdatesSectionProps {
   preview?: boolean;
+  updates: UpdatesQueryResult;
 }
 
-const UpdatesSection = ({ preview = false }: UpdatesSectionProps) => {
-  const { data } = useSanityFetch<Update[]>(
-    "*[_type == \"update\"]{ title, slug, date, img, content }"
-  );
-
-  const updates = useMemo(
+const UpdatesSection = ({ preview = false, updates }: UpdatesSectionProps) => {
+  const sortedUpdates = useMemo(
     () => {
-      if (!data) return [];
-      const sorted = [...data].sort(
+      if (!updates) return [];
+      const sorted = [...updates].sort(
         (a, b) => Date.parse(b.date ?? "") - Date.parse(a.date ?? "")
       );
       return preview ? sorted.slice(0, 3) : sorted;
     },
-    [data, preview]
+    [updates, preview]
   );
 
   return (
@@ -47,16 +36,14 @@ const UpdatesSection = ({ preview = false }: UpdatesSectionProps) => {
       />
       <div className="grid grid-cols-12 gap-6">
         {
-          updates.map(update => (
+          sortedUpdates.map(update => (
             <div key={update.title} className="col-span-12 sm:col-span-4">
               <ImageCard
                 aspectRatio="3 / 2"
                 description={update.content ? toPlainText(update.content as never) : undefined}
                 fallbackSrc={fallbackLogo}
+                href={update.slug ? `/updates/${update.slug}` : undefined}
                 image={update.img}
-                onClick={() => {
-                  if (update.slug) window.location.href = `/updates/${update.slug}`;
-                }}
                 title={update.title ?? ""}
               />
             </div>

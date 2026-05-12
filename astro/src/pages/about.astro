@@ -1,10 +1,15 @@
 ---
 import BaseLayout from "~/layouts/BaseLayout.astro";
 import AboutPage from "~/page-content/AboutPage";
+import { sanityClient } from "~/lib/sanity";
+import { aboutQuery } from "~/lib/queries";
+import type { AboutQueryResult } from "~/lib/sanity.types";
+
+const about = await sanityClient.fetch<AboutQueryResult>(aboutQuery);
 ---
 <BaseLayout
     description="Learn about the history, goals, and mission of our event. Join us as we share the journey and values that drive us to create a memorable experience for all participants, and a difference for The RNLI."
     title="About The Event - Matlock Raft Event"
 >
-    <AboutPage client:load />
+    <AboutPage client:load about={about} />
 </BaseLayout>
