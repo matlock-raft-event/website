@@ -13,7 +13,7 @@ interface Props {
   color?: string;
 }
 
-const Iconify = forwardRef<SVGElement, Props>(({ icon, width = 20, className, style, color }, ref) => (
+const Iconify = forwardRef<SVGSVGElement, Props>(({ icon, width = 20, className, style, color }, ref) => (
   <Icon
     ref={ref}
     className={className}
