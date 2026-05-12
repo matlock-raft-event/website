@@ -1,5 +1,4 @@
 import type { ReactNode } from "react";
-import { CssBaseline } from "@mui/material";
 import type { ThemeOptions } from "@mui/material/styles";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 
@@ -26,7 +25,6 @@ const GlobalThemeProvider = ({ children }: GlobalThemeProviderProps) => {
 
   return (
     <ThemeProvider theme={theme}>
-      <CssBaseline />
       {children}
     </ThemeProvider>
   );

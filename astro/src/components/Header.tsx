@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Fab, Typography } from "@mui/material";
+import { Typography } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 
 import FacebookIcon from "~/components/FacebookIcon";
@@ -60,29 +60,31 @@ const Header = () => {
                 </a>
 
                 <div>
-                  {/* @ts-ignore */}
-                  <Fab aria-label="open menu" color="green" onClick={() => setOpen(true)}>
+                  <Button
+                    aria-label="open menu"
+                    color="green"
+                    onClick={() => setOpen(true)}
+                    size="icon-lg"
+                    variant="solid"
+                  >
                     <Iconify icon="ph:list" />
-                  </Fab>
+                  </Button>
                 </div>
               </div>
               <Drawer direction="top" onOpenChange={setOpen} open={open}>
                 <DrawerContent className="bg-green border-0 data-[vaul-drawer-direction=top]:h-screen data-[vaul-drawer-direction=top]:max-h-screen data-[vaul-drawer-direction=top]:mb-0 data-[vaul-drawer-direction=top]:rounded-none">
                   <DrawerTitle className="sr-only">Mobile navigation</DrawerTitle>
 
-                  <Fab
+                  <Button
                     aria-label="close menu"
-                    color="secondary"
+                    className="absolute top-4 right-4"
+                    color="green"
                     onClick={() => setOpen(false)}
-                    size="large"
-                    sx={{
-                      position: "absolute",
-                      top: theme.spacing(2),
-                      right: theme.spacing(2)
-                    }}
+                    size="icon-lg"
+                    variant="solid"
                   >
                     <Iconify icon="ph:x-bold" />
-                  </Fab>
+                  </Button>
 
                   <div className="flex flex-col justify-between min-h-screen">
 
