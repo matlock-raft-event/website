@@ -33,12 +33,12 @@
         }
     },
     "rules": {
-        // 4 space indents
+        // 2 space indents
         "indent": "off",
         "react/jsx-indent": "off",
         "@typescript-eslint/indent": [
             "warn",
-            4
+            2
         ],
         // Only use double quotes
         "@typescript-eslint/quotes": [
@@ -73,13 +73,8 @@
         ],
         // Don't enforce linebreaks inside parentheses of function parameters or arguments
         "function-paren-newline": "off",
-        // Lines must be less than 120 chars
-        "max-len": [
-            "error",
-            {
-                "code": 120
-            }
-        ],
+        // Line length unrestricted (long Tailwind class strings are normal)
+        "max-len": "off",
         // Don't enforce linebreaks to be placed before/after
         "operator-linebreak": "off",
         // Don't enforce linebreaks in arrow functions
@@ -126,16 +121,16 @@
         ],
         // Allow optional props without a default value
         "react/require-default-props": "off",
-        // Don't complain about devDependencies
-        "import/no-extraneous-dependencies": [
-            "error",
-            {
-                "devDependencies": true
-            }
-        ],
+        // Resolver gets confused between root (Gatsby) and astro/ packages.
+        // Turn off until the root Gatsby project is removed.
+        "import/no-extraneous-dependencies": "off",
         // Organise imports
         "simple-import-sort/imports": "warn",
-        "simple-import-sort/exports": "warn"
+        "simple-import-sort/exports": "warn",
+        // Path aliases resolve without explicit extensions
+        "import/extensions": "off",
+        // Don't insist that every import path is resolvable from the linter's CWD
+        "import/no-unresolved": "off"
     },
     "overrides": [
         // override "simple-import-sort" config

@@ -10,32 +10,32 @@ import useSanityFetch from "~/hooks/useSanityFetch";
 import InnerHeroSection from "~/sections/InnerHeroSection";
 
 type CookiesInfo = {
-    content?: unknown;
+  content?: unknown;
 };
 
 const Content = () => {
-    const theme = useTheme();
-    const { data } = useSanityFetch<CookiesInfo>(
-        `*[_type == "cookiesInfo"][0]{ content }`,
-    );
+  const theme = useTheme();
+  const { data } = useSanityFetch<CookiesInfo>(
+    "*[_type == \"cookiesInfo\"][0]{ content }"
+  );
 
-    return (
-        <main>
-            <InnerHeroSection />
-            <Section bgColor={theme.palette.secondary}>
-                <Heading color={theme.palette.secondary} title="Cookies Policy" />
-                {data?.content && <Block value={data.content as never} />}
-            </Section>
-            <Waves bottomColor={theme.palette.secondary.main} topColor={theme.palette.secondary.main} />
-            <Footer />
-        </main>
-    );
+  return (
+    <main>
+      <InnerHeroSection />
+      <Section bgColor={theme.palette.secondary}>
+        <Heading color={theme.palette.secondary} title="Cookies Policy" />
+        {data?.content && <Block value={data.content as never} />}
+      </Section>
+      <Waves bottomColor={theme.palette.secondary.main} topColor={theme.palette.secondary.main} />
+      <Footer />
+    </main>
+  );
 };
 
 const CookiesPage = () => (
-    <PageShell>
-        <Content />
-    </PageShell>
+  <PageShell>
+    <Content />
+  </PageShell>
 );
 
 export default CookiesPage;

@@ -13,31 +13,31 @@ import useResponsive from "~/hooks/useResponsive";
 const resolveSrc = (asset: unknown): string => (asset as { src?: string }).src ?? (asset as unknown as string);
 
 const GetInvolvedSection = () => {
-    const theme = useTheme();
-    const color = theme.palette.yellow;
+  const theme = useTheme();
+  const color = theme.palette.yellow;
 
-    const isMobile = useResponsive("down", "sm");
+  const isMobile = useResponsive("down", "sm");
 
-    return (
-        <Section bgColor={color}>
-            <Heading color={color} subtitle="It's for a mighty good cause" title="Get Involved" />
+  return (
+    <Section bgColor={color}>
+      <Heading color={color} subtitle="It's for a mighty good cause" title="Get Involved" />
 
-            <Grid2 container px={isMobile ? 8 : undefined} spacing={3}>
-                <Grid2 md={3} sm={6} xs={12}>
-                    <ImageLink href="/take-part" label="Take Part" src={resolveSrc(takePartImg)} />
-                </Grid2>
-                <Grid2 md={3} sm={6} xs={12}>
-                    <ImageLink href="/volunteer" label="Help Out" src={resolveSrc(helpOutImg)} />
-                </Grid2>
-                <Grid2 md={3} sm={6} xs={12}>
-                    <ImageLink href="/donate" label="Donate" src={resolveSrc(donateImg)} />
-                </Grid2>
-                <Grid2 md={3} sm={6} xs={12}>
-                    <ImageLink href="/sponsors" label="Sponsor Us" src={resolveSrc(sponsorUsImg)} />
-                </Grid2>
-            </Grid2>
-        </Section>
-    );
+      <Grid2 container px={isMobile ? 8 : undefined} spacing={3}>
+        <Grid2 md={3} sm={6} xs={12}>
+          <ImageLink href="/take-part" label="Take Part" src={resolveSrc(takePartImg)} />
+        </Grid2>
+        <Grid2 md={3} sm={6} xs={12}>
+          <ImageLink href="/volunteer" label="Help Out" src={resolveSrc(helpOutImg)} />
+        </Grid2>
+        <Grid2 md={3} sm={6} xs={12}>
+          <ImageLink href="/donate" label="Donate" src={resolveSrc(donateImg)} />
+        </Grid2>
+        <Grid2 md={3} sm={6} xs={12}>
+          <ImageLink href="/sponsors" label="Sponsor Us" src={resolveSrc(sponsorUsImg)} />
+        </Grid2>
+      </Grid2>
+    </Section>
+  );
 };
 
 export default GetInvolvedSection;

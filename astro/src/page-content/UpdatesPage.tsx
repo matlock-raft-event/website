@@ -7,21 +7,21 @@ import InnerHeroSection from "~/sections/InnerHeroSection";
 import UpdatesSection from "~/sections/UpdatesSection";
 
 const Content = () => {
-    const theme = useTheme();
-    return (
-        <main>
-            <InnerHeroSection />
-            <UpdatesSection />
-            <Waves bottomColor={theme.palette.secondary.main} topColor={theme.palette.secondary.main} variant={2} />
-            <Footer />
-        </main>
-    );
+  const theme = useTheme();
+  return (
+    <main>
+      <InnerHeroSection />
+      <UpdatesSection />
+      <Waves bottomColor={theme.palette.secondary.main} topColor={theme.palette.secondary.main} variant={2} />
+      <Footer />
+    </main>
+  );
 };
 
 const UpdatesPage = () => (
-    <PageShell>
-        <Content />
-    </PageShell>
+  <PageShell>
+    <Content />
+  </PageShell>
 );
 
 export default UpdatesPage;
