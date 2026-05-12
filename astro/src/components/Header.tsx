@@ -10,7 +10,6 @@ import { Button } from "~/components/ui/button";
 import Waves from "~/components/Waves";
 import useResponsive from "~/hooks/useResponsive";
 import { GREEN } from "~/theme/palette";
-import { TITLE_FONT_FAMILY } from "~/theme/typography";
 
 const links = [
   { label: "About", to: "/about" },
@@ -23,34 +22,15 @@ const links = [
 const NavLink = ({
   label,
   to
-}: { label: string, to: string }) => {
-  const theme = useTheme();
-  return (
-    <Typography
-      key={label}
-      color="secondary"
-      component="a"
-      href={to}
-      sx={{
-        transition:
-                    "all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1)",
-        fontFamily: TITLE_FONT_FAMILY,
-        fontWeight: 600,
-        textTransform: "uppercase",
-        textShadow: `0px 2px ${theme.palette.dark.light}`,
-        textDecorationColor: "transparent",
-        "&:hover": {
-          transform: "scale(1.05)",
-          textDecorationColor: theme.palette.secondary.main,
-          textShadow: "none"
-        }
-      }}
-      variant="h6"
-    >
-      {label}
-    </Typography>
-  );
-};
+}: { label: string, to: string }) => (
+  <Button
+    color="cream"
+    href={to}
+    variant="link"
+  >
+    {label}
+  </Button>
+);
 const Header = () => {
   const theme = useTheme();
 
@@ -142,20 +122,14 @@ const Header = () => {
                   >
                     {
                       links.map(link => (
-                        <Typography
+                        <Button
                           key={link.label}
-                          color="secondary"
-                          component="a"
+                          className="text-secondary text-4xl justify-start px-0 h-auto py-1 no-underline hover:no-underline"
                           href={link.to}
-                          sx={{
-                            fontFamily: TITLE_FONT_FAMILY,
-                            textDecoration: "none",
-                            textTransform: "uppercase"
-                          }}
-                          variant="h2"
+                          variant="link"
                         >
                           {link.label}
-                        </Typography>
+                        </Button>
                       ))
                     }
                     <div>

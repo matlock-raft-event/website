@@ -17,15 +17,16 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme {
-    --color-primary: #bbf1df;
-    --color-primary-light: #c9f4e5;
-    --color-primary-dark: #96c1b2;
-    --color-primary-contrast: #1c5053;
+    /* Literal palette ---------------------------------------------------- */
+    --color-mint: #bbf1df;
+    --color-mint-light: #c9f4e5;
+    --color-mint-dark: #96c1b2;
+    --color-mint-contrast: #1c5053;
 
-    --color-secondary: #f3f3e5;
-    --color-secondary-light: #f6f6ec;
-    --color-secondary-dark: #dbdbce;
-    --color-secondary-contrast: #353a3c;
+    --color-cream: #f3f3e5;
+    --color-cream-light: #f6f6ec;
+    --color-cream-dark: #dbdbce;
+    --color-cream-contrast: #353a3c;
 
     --color-red: #cb2a33;
     --color-red-light: #d5555c;
@@ -46,6 +47,17 @@
     --color-dark-light: #5d6163;
     --color-dark-dark: #2a2e30;
     --color-dark-contrast: #ffffff;
+
+    /* Semantic aliases — for shadcn / brand conventions ------------------ */
+    --color-primary: var(--color-red);
+    --color-primary-light: var(--color-red-light);
+    --color-primary-dark: var(--color-red-dark);
+    --color-primary-contrast: var(--color-red-contrast);
+
+    --color-secondary: var(--color-cream);
+    --color-secondary-light: var(--color-cream-light);
+    --color-secondary-dark: var(--color-cream-dark);
+    --color-secondary-contrast: var(--color-cream-contrast);
 
     --font-sans: "Inter Variable", sans-serif;
     --font-serif: "Rokkitt Variable", serif;

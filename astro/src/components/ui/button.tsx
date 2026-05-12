@@ -53,12 +53,12 @@ const buttonVariants = cva(
       {
         variant: "solid",
         color: "mint",
-        class: "bg-primary text-primary-contrast hover:bg-primary-dark"
+        class: "bg-mint text-mint-contrast hover:bg-mint-dark"
       },
       {
         variant: "solid",
         color: "cream",
-        class: "bg-secondary text-secondary-contrast hover:bg-secondary-dark"
+        class: "bg-cream text-cream-contrast hover:bg-cream-dark"
       },
       {
         variant: "solid",
@@ -85,12 +85,12 @@ const buttonVariants = cva(
       {
         variant: "outline",
         color: "mint",
-        class: "border-primary text-primary-contrast hover:bg-primary"
+        class: "border-mint text-mint-contrast hover:bg-mint"
       },
       {
         variant: "outline",
         color: "cream",
-        class: "border-secondary-dark text-secondary-contrast hover:bg-secondary"
+        class: "border-cream-dark text-cream-contrast hover:bg-cream"
       },
       {
         variant: "outline",
@@ -117,12 +117,12 @@ const buttonVariants = cva(
       {
         variant: "ghost",
         color: "mint",
-        class: "text-primary-contrast hover:bg-primary/30"
+        class: "text-mint-contrast hover:bg-mint/30"
       },
       {
         variant: "ghost",
         color: "cream",
-        class: "text-secondary-contrast hover:bg-secondary"
+        class: "text-cream-contrast hover:bg-cream"
       },
       {
         variant: "ghost",
@@ -144,17 +144,17 @@ const buttonVariants = cva(
       {
         variant: "link",
         color: "yellow",
-        class: "text-yellow-contrast"
+        class: "text-yellow"
       },
       {
         variant: "link",
         color: "mint",
-        class: "text-primary-contrast"
+        class: "text-mint"
       },
       {
         variant: "link",
         color: "cream",
-        class: "text-secondary-contrast"
+        class: "text-cream"
       },
       {
         variant: "link",
