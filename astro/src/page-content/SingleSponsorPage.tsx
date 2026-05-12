@@ -1,4 +1,4 @@
-import { Link, Typography } from "@mui/material";
+import { Typography } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 import Grid2 from "@mui/material/Unstable_Grid2";
 
@@ -59,15 +59,14 @@ const Content = ({ sponsor }: SingleSponsorPageProps) => {
                 sponsor.url &&
                                 <div>
                                   <Typography variant="h6">Our website</Typography>
-                                  <Link
-                                    color="red.main"
+                                  <a
+                                    className="text-red text-base hover:underline"
                                     href={sponsor.url}
                                     rel="noopener"
                                     target="_blank"
-                                    variant="body1"
                                   >
                                     {sponsor.url}
-                                  </Link>
+                                  </a>
                                 </div>
               }
               {

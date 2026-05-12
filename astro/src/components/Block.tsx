@@ -1,7 +1,7 @@
 /* eslint react/no-unstable-nested-components: 0 */
 /* eslint @typescript-eslint/no-explicit-any: 0 */
 
-import { Link, Typography } from "@mui/material";
+import { Typography } from "@mui/material";
 import type { PortableTextProps } from "@portabletext/react";
 import { PortableText } from "@portabletext/react";
 import type { PortableTextBlock, TypedObject } from "@portabletext/types";
@@ -23,14 +23,14 @@ const Block = <B extends TypedObject = PortableTextBlock>({ value, components, .
         const { slug = {} } = val;
         const href = `/${slug.current}`;
         return (
-          <Link href={href}>{children}</Link>
+          <a className="text-red underline hover:text-red-dark" href={href}>{children}</a>
         );
       },
       link: ({ value: val, children }: any) => {
         const { blank, href } = val;
         return blank
-          ? <Link href={href} rel="noopener noreferrer" target="_blank">{children}</Link>
-          : <Link href={href}>{children}</Link>;
+          ? <a className="text-red underline hover:text-red-dark" href={href} rel="noopener noreferrer" target="_blank">{children}</a>
+          : <a className="text-red underline hover:text-red-dark" href={href}>{children}</a>;
       },
       ...components?.marks
     }

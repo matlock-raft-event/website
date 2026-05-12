@@ -1,12 +1,13 @@
-import { Accordion, AccordionDetails, AccordionSummary, Typography } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 
 import Block from "~/components/Block";
 import Heading from "~/components/Heading";
-import Iconify from "~/components/Iconify";
 import Section from "~/components/Section";
+import Accordion from "~/components/ui/accordion/accordion";
+import AccordionContent from "~/components/ui/accordion/accordion-content";
+import AccordionItem from "~/components/ui/accordion/accordion-item";
+import AccordionTrigger from "~/components/ui/accordion/accordion-trigger";
 import useSanityFetch from "~/hooks/useSanityFetch";
-import { TITLE_FONT_FAMILY } from "~/theme/typography";
 
 type Faq = {
   question?: string;
@@ -28,34 +29,20 @@ const FaqsSection = () => {
         title="Frequently Asked Questions"
       />
       <div className="mx-auto w-full max-w-4xl px-4">
-        {
-          (faqs ?? []).map(faq => (
-            <Accordion
-              key={faq.question}
-              sx={{
-                bgcolor: "transparent",
-                boxShadow: "none"
-              }}
-            >
-              <AccordionSummary
-                aria-controls={`faq-${faq.question}-content`}
-                expandIcon={<Iconify color="secondary.contrastText" icon="ph:caret-down" />}
-                id={`faq-${faq.question}-header`}
-              >
-                <Typography
-                  color="secondary.contrastText"
-                  fontFamily={TITLE_FONT_FAMILY}
-                  variant="h4"
-                >
+        <Accordion>
+          {
+            (faqs ?? []).map(faq => (
+              <AccordionItem key={faq.question} value={faq.question}>
+                <AccordionTrigger className="text-cream-contrast font-display text-xl py-4">
                   {faq.question}
-                </Typography>
-              </AccordionSummary>
-              <AccordionDetails>
-                {faq.answer && <Block value={faq.answer as never} />}
-              </AccordionDetails>
-            </Accordion>
-          ))
-        }
+                </AccordionTrigger>
+                <AccordionContent>
+                  {faq.answer ? <Block value={faq.answer as never} /> : null}
+                </AccordionContent>
+              </AccordionItem>
+            ))
+          }
+        </Accordion>
       </div>
     </Section>
   );
