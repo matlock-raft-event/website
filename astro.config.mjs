@@ -14,6 +14,7 @@ export default defineConfig({
         sanity({
             projectId: "6m6e8mul",
             dataset: "production",
+            studioBasePath: "/studio",
             useCdn: true,
         }),
     ],

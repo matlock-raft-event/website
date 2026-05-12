@@ -15,6 +15,336 @@
 export declare const internalGroqTypeReferenceTo: unique symbol;
 
 // Source: schema.json
+export type SanityImageAssetReference = {
+  _ref: string;
+  _type: "reference";
+  _weak?: boolean;
+  [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+};
+
+export type Winner = {
+  _id: string;
+  _type: "winner";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  name?: string;
+  img?: {
+    asset?: SanityImageAssetReference;
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    _type: "image";
+  };
+  year?: number;
+  position?: number;
+};
+
+export type SanityImageCrop = {
+  _type: "sanity.imageCrop";
+  top?: number;
+  bottom?: number;
+  left?: number;
+  right?: number;
+};
+
+export type SanityImageHotspot = {
+  _type: "sanity.imageHotspot";
+  x?: number;
+  y?: number;
+  height?: number;
+  width?: number;
+};
+
+export type Update = {
+  _id: string;
+  _type: "update";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  slug?: string;
+  title?: string;
+  content?: Array<{
+    children?: Array<{
+      marks?: Array<string>;
+      text?: string;
+      _type: "span";
+      _key: string;
+    }>;
+    style?: "normal" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "blockquote";
+    listItem?: "bullet" | "number";
+    markDefs?: Array<{
+      href?: string;
+      _type: "link";
+      _key: string;
+    }>;
+    level?: number;
+    _type: "block";
+    _key: string;
+  }>;
+  img?: {
+    asset?: SanityImageAssetReference;
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    _type: "image";
+  };
+  date?: string;
+};
+
+export type Summary = {
+  _id: string;
+  _type: "summary";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  yearsActive?: string;
+  bio?: string;
+  eventCount?: string;
+  moneyRaised?: string;
+};
+
+export type Sponsor = {
+  _id: string;
+  _type: "sponsor";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  slug?: string;
+  name?: string;
+  url?: string;
+  logo?: {
+    asset?: SanityImageAssetReference;
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    _type: "image";
+  };
+  description?: string;
+  address?: string;
+  testimonial?: string;
+};
+
+export type SanityFileAssetReference = {
+  _ref: string;
+  _type: "reference";
+  _weak?: boolean;
+  [internalGroqTypeReferenceTo]?: "sanity.fileAsset";
+};
+
+export type Hero = {
+  _id: string;
+  _type: "hero";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  title?: string;
+  subtitle?: string;
+  buttonText?: string;
+  buttonLink?: string;
+  video?: {
+    asset?: SanityFileAssetReference;
+    media?: unknown;
+    _type: "file";
+  };
+};
+
+export type GalleryImage = {
+  _id: string;
+  _type: "galleryImage";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  year?: number;
+  img?: {
+    asset?: SanityImageAssetReference;
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    _type: "image";
+  };
+  author?: string;
+};
+
+export type Faq = {
+  _id: string;
+  _type: "faq";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  question?: string;
+  answer?: Array<{
+    children?: Array<{
+      marks?: Array<string>;
+      text?: string;
+      _type: "span";
+      _key: string;
+    }>;
+    style?: "normal" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "blockquote";
+    listItem?: "bullet" | "number";
+    markDefs?: Array<{
+      href?: string;
+      _type: "link";
+      _key: string;
+    }>;
+    level?: number;
+    _type: "block";
+    _key: string;
+  }>;
+};
+
+export type CookiesInfo = {
+  _id: string;
+  _type: "cookiesInfo";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  content?: Array<{
+    children?: Array<{
+      marks?: Array<string>;
+      text?: string;
+      _type: "span";
+      _key: string;
+    }>;
+    style?: "normal" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "blockquote";
+    listItem?: "bullet" | "number";
+    markDefs?: Array<{
+      href?: string;
+      _type: "link";
+      _key: string;
+    }>;
+    level?: number;
+    _type: "block";
+    _key: string;
+  }>;
+};
+
+export type ContactInstructions = {
+  _id: string;
+  _type: "contactInstructions";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  general?: Array<{
+    children?: Array<{
+      marks?: Array<string>;
+      text?: string;
+      _type: "span";
+      _key: string;
+    }>;
+    style?: "normal" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "blockquote";
+    listItem?: "bullet" | "number";
+    markDefs?: Array<{
+      href?: string;
+      _type: "link";
+      _key: string;
+    }>;
+    level?: number;
+    _type: "block";
+    _key: string;
+  }>;
+  press?: Array<{
+    children?: Array<{
+      marks?: Array<string>;
+      text?: string;
+      _type: "span";
+      _key: string;
+    }>;
+    style?: "normal" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "blockquote";
+    listItem?: "bullet" | "number";
+    markDefs?: Array<{
+      href?: string;
+      _type: "link";
+      _key: string;
+    }>;
+    level?: number;
+    _type: "block";
+    _key: string;
+  }>;
+  sponsors?: Array<{
+    children?: Array<{
+      marks?: Array<string>;
+      text?: string;
+      _type: "span";
+      _key: string;
+    }>;
+    style?: "normal" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "blockquote";
+    listItem?: "bullet" | "number";
+    markDefs?: Array<{
+      href?: string;
+      _type: "link";
+      _key: string;
+    }>;
+    level?: number;
+    _type: "block";
+    _key: string;
+  }>;
+};
+
+export type About = {
+  _id: string;
+  _type: "about";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  bio?: Array<{
+    children?: Array<{
+      marks?: Array<string>;
+      text?: string;
+      _type: "span";
+      _key: string;
+    }>;
+    style?: "normal" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "blockquote";
+    listItem?: "bullet" | "number";
+    markDefs?: Array<{
+      href?: string;
+      _type: "link";
+      _key: string;
+    }>;
+    level?: number;
+    _type: "block";
+    _key: string;
+  }>;
+  rnliBio?: Array<{
+    children?: Array<{
+      marks?: Array<string>;
+      text?: string;
+      _type: "span";
+      _key: string;
+    }>;
+    style?: "normal" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "blockquote";
+    listItem?: "bullet" | "number";
+    markDefs?: Array<{
+      href?: string;
+      _type: "link";
+      _key: string;
+    }>;
+    level?: number;
+    _type: "block";
+    _key: string;
+  }>;
+  rnliLink?: string;
+  dasacBio?: Array<{
+    children?: Array<{
+      marks?: Array<string>;
+      text?: string;
+      _type: "span";
+      _key: string;
+    }>;
+    style?: "normal" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "blockquote";
+    listItem?: "bullet" | "number";
+    markDefs?: Array<{
+      href?: string;
+      _type: "link";
+      _key: string;
+    }>;
+    level?: number;
+    _type: "block";
+    _key: string;
+  }>;
+  dasacLink?: string;
+};
+
 export type SanityImagePaletteSwatch = {
   _type: "sanity.imagePaletteSwatch";
   background?: string;
@@ -48,157 +378,9 @@ export type SanityImageMetadata = {
   palette?: SanityImagePalette;
   lqip?: string;
   blurHash?: string;
+  thumbHash?: string;
   hasAlpha?: boolean;
   isOpaque?: boolean;
-};
-
-export type SanityImageHotspot = {
-  _type: "sanity.imageHotspot";
-  x?: number;
-  y?: number;
-  height?: number;
-  width?: number;
-};
-
-export type SanityImageCrop = {
-  _type: "sanity.imageCrop";
-  top?: number;
-  bottom?: number;
-  left?: number;
-  right?: number;
-};
-
-export type Geopoint = {
-  _type: "geopoint";
-  lat?: number;
-  lng?: number;
-  alt?: number;
-};
-
-export type Slug = {
-  _type: "slug";
-  current?: string;
-  source?: string;
-};
-
-export type SanityAssetSourceData = {
-  _type: "sanity.assetSourceData";
-  name?: string;
-  id?: string;
-  url?: string;
-};
-
-export type SanityImageAssetReference = {
-  _ref: string;
-  _type: "reference";
-  _weak?: boolean;
-  [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-};
-
-export type Winner = {
-  _id: string;
-  _type: "winner";
-  _createdAt: string;
-  _updatedAt: string;
-  _rev: string;
-  name?: string;
-  img?: {
-    asset?: SanityImageAssetReference;
-    hotspot?: SanityImageHotspot;
-    crop?: SanityImageCrop;
-    _type: "image";
-  };
-  year?: number;
-  position?: number;
-};
-
-export type Update = {
-  _id: string;
-  _type: "update";
-  _createdAt: string;
-  _updatedAt: string;
-  _rev: string;
-  slug?: string;
-  title?: string;
-  content?: Array<{
-    children?: Array<{
-      marks?: Array<string>;
-      text?: string;
-      _type: "span";
-      _key: string;
-    }>;
-    style?: "normal" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "blockquote";
-    list?: "bullet" | "number";
-    markDefs?: Array<{
-      href?: string;
-      _type: "link";
-      _key: string;
-    }>;
-    _type: "block";
-    _key: string;
-  }>;
-  img?: {
-    asset?: SanityImageAssetReference;
-    hotspot?: SanityImageHotspot;
-    crop?: SanityImageCrop;
-    _type: "image";
-  };
-  date?: string;
-};
-
-export type Summary = {
-  _id: string;
-  _type: "summary";
-  _createdAt: string;
-  _updatedAt: string;
-  _rev: string;
-  yearsActive?: string;
-  bio?: string;
-  eventCount?: string;
-  moneyRaised?: string;
-};
-
-export type Sponsor = {
-  _id: string;
-  _type: "sponsor";
-  _createdAt: string;
-  _updatedAt: string;
-  _rev: string;
-  slug?: string;
-  name?: string;
-  url?: string;
-  logo?: {
-    asset?: SanityImageAssetReference;
-    hotspot?: SanityImageHotspot;
-    crop?: SanityImageCrop;
-    _type: "image";
-  };
-  description?: string;
-  address?: string;
-  testimonial?: string;
-};
-
-export type SanityFileAssetReference = {
-  _ref: string;
-  _type: "reference";
-  _weak?: boolean;
-  [internalGroqTypeReferenceTo]?: "sanity.fileAsset";
-};
-
-export type Hero = {
-  _id: string;
-  _type: "hero";
-  _createdAt: string;
-  _updatedAt: string;
-  _rev: string;
-  title?: string;
-  subtitle?: string;
-  buttonText?: string;
-  buttonLink?: string;
-  video?: {
-    asset?: SanityFileAssetReference;
-    _type: "file";
-  };
 };
 
 export type SanityFileAsset = {
@@ -217,25 +399,17 @@ export type SanityFileAsset = {
   mimeType?: string;
   size?: number;
   assetId?: string;
+  uploadId?: string;
   path?: string;
   url?: string;
   source?: SanityAssetSourceData;
 };
 
-export type GalleryImage = {
-  _id: string;
-  _type: "galleryImage";
-  _createdAt: string;
-  _updatedAt: string;
-  _rev: string;
-  year?: number;
-  img?: {
-    asset?: SanityImageAssetReference;
-    hotspot?: SanityImageHotspot;
-    crop?: SanityImageCrop;
-    _type: "image";
-  };
-  author?: string;
+export type SanityAssetSourceData = {
+  _type: "sanity.assetSourceData";
+  name?: string;
+  id?: string;
+  url?: string;
 };
 
 export type SanityImageAsset = {
@@ -261,201 +435,43 @@ export type SanityImageAsset = {
   source?: SanityAssetSourceData;
 };
 
-export type Faq = {
-  _id: string;
-  _type: "faq";
-  _createdAt: string;
-  _updatedAt: string;
-  _rev: string;
-  question?: string;
-  answer?: Array<{
-    children?: Array<{
-      marks?: Array<string>;
-      text?: string;
-      _type: "span";
-      _key: string;
-    }>;
-    style?: "normal" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "blockquote";
-    list?: "bullet" | "number";
-    markDefs?: Array<{
-      href?: string;
-      _type: "link";
-      _key: string;
-    }>;
-    _type: "block";
-    _key: string;
-  }>;
+export type Geopoint = {
+  _type: "geopoint";
+  lat?: number;
+  lng?: number;
+  alt?: number;
 };
 
-export type CookiesInfo = {
-  _id: string;
-  _type: "cookiesInfo";
-  _createdAt: string;
-  _updatedAt: string;
-  _rev: string;
-  content?: Array<{
-    children?: Array<{
-      marks?: Array<string>;
-      text?: string;
-      _type: "span";
-      _key: string;
-    }>;
-    style?: "normal" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "blockquote";
-    list?: "bullet" | "number";
-    markDefs?: Array<{
-      href?: string;
-      _type: "link";
-      _key: string;
-    }>;
-    _type: "block";
-    _key: string;
-  }>;
-};
-
-export type ContactInstructions = {
-  _id: string;
-  _type: "contactInstructions";
-  _createdAt: string;
-  _updatedAt: string;
-  _rev: string;
-  general?: Array<{
-    children?: Array<{
-      marks?: Array<string>;
-      text?: string;
-      _type: "span";
-      _key: string;
-    }>;
-    style?: "normal" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "blockquote";
-    list?: "bullet" | "number";
-    markDefs?: Array<{
-      href?: string;
-      _type: "link";
-      _key: string;
-    }>;
-    _type: "block";
-    _key: string;
-  }>;
-  press?: Array<{
-    children?: Array<{
-      marks?: Array<string>;
-      text?: string;
-      _type: "span";
-      _key: string;
-    }>;
-    style?: "normal" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "blockquote";
-    list?: "bullet" | "number";
-    markDefs?: Array<{
-      href?: string;
-      _type: "link";
-      _key: string;
-    }>;
-    _type: "block";
-    _key: string;
-  }>;
-  sponsors?: Array<{
-    children?: Array<{
-      marks?: Array<string>;
-      text?: string;
-      _type: "span";
-      _key: string;
-    }>;
-    style?: "normal" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "blockquote";
-    list?: "bullet" | "number";
-    markDefs?: Array<{
-      href?: string;
-      _type: "link";
-      _key: string;
-    }>;
-    _type: "block";
-    _key: string;
-  }>;
-};
-
-export type About = {
-  _id: string;
-  _type: "about";
-  _createdAt: string;
-  _updatedAt: string;
-  _rev: string;
-  bio?: Array<{
-    children?: Array<{
-      marks?: Array<string>;
-      text?: string;
-      _type: "span";
-      _key: string;
-    }>;
-    style?: "normal" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "blockquote";
-    list?: "bullet" | "number";
-    markDefs?: Array<{
-      href?: string;
-      _type: "link";
-      _key: string;
-    }>;
-    _type: "block";
-    _key: string;
-  }>;
-  rnliBio?: Array<{
-    children?: Array<{
-      marks?: Array<string>;
-      text?: string;
-      _type: "span";
-      _key: string;
-    }>;
-    style?: "normal" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "blockquote";
-    list?: "bullet" | "number";
-    markDefs?: Array<{
-      href?: string;
-      _type: "link";
-      _key: string;
-    }>;
-    _type: "block";
-    _key: string;
-  }>;
-  rnliLink?: string;
-  dasacBio?: Array<{
-    children?: Array<{
-      marks?: Array<string>;
-      text?: string;
-      _type: "span";
-      _key: string;
-    }>;
-    style?: "normal" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "blockquote";
-    list?: "bullet" | "number";
-    markDefs?: Array<{
-      href?: string;
-      _type: "link";
-      _key: string;
-    }>;
-    _type: "block";
-    _key: string;
-  }>;
-  dasacLink?: string;
+export type Slug = {
+  _type: "slug";
+  current?: string;
+  source?: string;
 };
 
 export type AllSanitySchemaTypes =
-  | SanityImagePaletteSwatch
-  | SanityImagePalette
-  | SanityImageDimensions
-  | SanityImageMetadata
-  | SanityImageHotspot
-  | SanityImageCrop
-  | Geopoint
-  | Slug
-  | SanityAssetSourceData
   | SanityImageAssetReference
   | Winner
+  | SanityImageCrop
+  | SanityImageHotspot
   | Update
   | Summary
   | Sponsor
   | SanityFileAssetReference
   | Hero
-  | SanityFileAsset
   | GalleryImage
-  | SanityImageAsset
   | Faq
   | CookiesInfo
   | ContactInstructions
-  | About;
+  | About
+  | SanityImagePaletteSwatch
+  | SanityImagePalette
+  | SanityImageDimensions
+  | SanityImageMetadata
+  | SanityFileAsset
+  | SanityAssetSourceData
+  | SanityImageAsset
+  | Geopoint
+  | Slug;
 
 // Source: src/lib/queries.ts
 // Variable: heroQuery
@@ -487,6 +503,7 @@ export type WinnersQueryResult = Array<{
   position: number | null;
   img: {
     asset?: SanityImageAssetReference;
+    media?: unknown;
     hotspot?: SanityImageHotspot;
     crop?: SanityImageCrop;
     _type: "image";
@@ -502,6 +519,7 @@ export type UpdatesQueryResult = Array<{
   date: string | null;
   img: {
     asset?: SanityImageAssetReference;
+    media?: unknown;
     hotspot?: SanityImageHotspot;
     crop?: SanityImageCrop;
     _type: "image";
@@ -514,12 +532,13 @@ export type UpdatesQueryResult = Array<{
       _key: string;
     }>;
     style?: "blockquote" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "normal";
-    list?: "bullet" | "number";
+    listItem?: "bullet" | "number";
     markDefs?: Array<{
       href?: string;
       _type: "link";
       _key: string;
     }>;
+    level?: number;
     _type: "block";
     _key: string;
   }> | null;
@@ -534,6 +553,7 @@ export type UpdatesForPathsQueryResult = Array<{
   date: string | null;
   img: {
     asset?: SanityImageAssetReference;
+    media?: unknown;
     hotspot?: SanityImageHotspot;
     crop?: SanityImageCrop;
     _type: "image";
@@ -546,12 +566,13 @@ export type UpdatesForPathsQueryResult = Array<{
       _key: string;
     }>;
     style?: "blockquote" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "normal";
-    list?: "bullet" | "number";
+    listItem?: "bullet" | "number";
     markDefs?: Array<{
       href?: string;
       _type: "link";
       _key: string;
     }>;
+    level?: number;
     _type: "block";
     _key: string;
   }> | null;
@@ -569,12 +590,13 @@ export type AboutQueryResult = {
       _key: string;
     }>;
     style?: "blockquote" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "normal";
-    list?: "bullet" | "number";
+    listItem?: "bullet" | "number";
     markDefs?: Array<{
       href?: string;
       _type: "link";
       _key: string;
     }>;
+    level?: number;
     _type: "block";
     _key: string;
   }> | null;
@@ -586,12 +608,13 @@ export type AboutQueryResult = {
       _key: string;
     }>;
     style?: "blockquote" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "normal";
-    list?: "bullet" | "number";
+    listItem?: "bullet" | "number";
     markDefs?: Array<{
       href?: string;
       _type: "link";
       _key: string;
     }>;
+    level?: number;
     _type: "block";
     _key: string;
   }> | null;
@@ -604,12 +627,13 @@ export type AboutQueryResult = {
       _key: string;
     }>;
     style?: "blockquote" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "normal";
-    list?: "bullet" | "number";
+    listItem?: "bullet" | "number";
     markDefs?: Array<{
       href?: string;
       _type: "link";
       _key: string;
     }>;
+    level?: number;
     _type: "block";
     _key: string;
   }> | null;
@@ -628,12 +652,13 @@ export type ContactInstructionsQueryResult = {
       _key: string;
     }>;
     style?: "blockquote" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "normal";
-    list?: "bullet" | "number";
+    listItem?: "bullet" | "number";
     markDefs?: Array<{
       href?: string;
       _type: "link";
       _key: string;
     }>;
+    level?: number;
     _type: "block";
     _key: string;
   }> | null;
@@ -645,12 +670,13 @@ export type ContactInstructionsQueryResult = {
       _key: string;
     }>;
     style?: "blockquote" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "normal";
-    list?: "bullet" | "number";
+    listItem?: "bullet" | "number";
     markDefs?: Array<{
       href?: string;
       _type: "link";
       _key: string;
     }>;
+    level?: number;
     _type: "block";
     _key: string;
   }> | null;
@@ -662,12 +688,13 @@ export type ContactInstructionsQueryResult = {
       _key: string;
     }>;
     style?: "blockquote" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "normal";
-    list?: "bullet" | "number";
+    listItem?: "bullet" | "number";
     markDefs?: Array<{
       href?: string;
       _type: "link";
       _key: string;
     }>;
+    level?: number;
     _type: "block";
     _key: string;
   }> | null;
@@ -686,12 +713,13 @@ export type FaqsQueryResult = Array<{
       _key: string;
     }>;
     style?: "blockquote" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "normal";
-    list?: "bullet" | "number";
+    listItem?: "bullet" | "number";
     markDefs?: Array<{
       href?: string;
       _type: "link";
       _key: string;
     }>;
+    level?: number;
     _type: "block";
     _key: string;
   }> | null;
@@ -705,6 +733,7 @@ export type SponsorsQueryResult = Array<{
   slug: string | null;
   logo: {
     asset?: SanityImageAssetReference;
+    media?: unknown;
     hotspot?: SanityImageHotspot;
     crop?: SanityImageCrop;
     _type: "image";
@@ -719,6 +748,7 @@ export type SponsorsForPathsQueryResult = Array<{
   slug: string;
   logo: {
     asset?: SanityImageAssetReference;
+    media?: unknown;
     hotspot?: SanityImageHotspot;
     crop?: SanityImageCrop;
     _type: "image";
@@ -738,6 +768,7 @@ export type GalleryQueryResult = Array<{
   author: string | null;
   img: {
     asset?: SanityImageAssetReference;
+    media?: unknown;
     hotspot?: SanityImageHotspot;
     crop?: SanityImageCrop;
     _type: "image";
@@ -756,12 +787,13 @@ export type CookiesInfoQueryResult = {
       _key: string;
     }>;
     style?: "blockquote" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "normal";
-    list?: "bullet" | "number";
+    listItem?: "bullet" | "number";
     markDefs?: Array<{
       href?: string;
       _type: "link";
       _key: string;
     }>;
+    level?: number;
     _type: "block";
     _key: string;
   }> | null;
