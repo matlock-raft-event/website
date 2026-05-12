@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { Typography } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 
 import FacebookIcon from "~/components/FacebookIcon";
@@ -118,9 +117,9 @@ const Header = () => {
                         topColor={theme.palette.green.main}
                       />
                       <div className="flex flex-col p-6 bg-green-dark">
-                        <Typography color="secondary" variant="h5">
+                        <h5 className="text-secondary font-bold text-lg md:text-xl">
                                                   Find us on Facebook:
-                        </Typography>
+                        </h5>
                         <FacebookIcon
                           color={theme.palette.secondary.main}
                           href="https://www.facebook.com/matlockraftevent/"

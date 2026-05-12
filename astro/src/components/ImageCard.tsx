@@ -1,23 +1,14 @@
 import type { CSSProperties } from "react";
 import { useState } from "react";
-import { Typography } from "@mui/material";
 import { styled } from "@mui/material/styles";
 
 import SanityImage from "~/components/SanityImage";
-import { TITLE_FONT_FAMILY } from "~/theme/typography";
 
 const StyledDiv = styled("div")(() => ({
   position: "relative",
   borderRadius: 2,
   transition: "all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1)",
   display: "block"
-}));
-
-const TypographyMaxLine = styled(Typography)(() => ({
-  display: "-webkit-box",
-  overflow: "hidden",
-  WebkitBoxOrient: "vertical",
-  WebkitLineClamp: 3
 }));
 
 interface ImageCardProps {
@@ -108,15 +99,15 @@ const ImageCard = (
           <div className="flex flex-col px-6 py-4">
             {
               title &&
-                            <Typography fontFamily={TITLE_FONT_FAMILY} variant="h4">
+                            <h4 className="font-display font-bold text-xl md:text-2xl">
                               {title}
-                            </Typography>
+                            </h4>
             }
             {
               description &&
-                            <TypographyMaxLine>
+                            <p className="line-clamp-3 text-sm sm:text-base lg:text-lg leading-relaxed">
                               {description}
-                            </TypographyMaxLine>
+                            </p>
             }
           </div>
         )

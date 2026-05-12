@@ -1,6 +1,6 @@
 import { useMemo, useRef, useState } from "react";
 import { Masonry } from "@mui/lab";
-import { ImageListItem, Typography } from "@mui/material";
+import { ImageListItem } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 import Lightbox from "yet-another-react-lightbox";
 import Captions from "yet-another-react-lightbox/plugins/captions";
@@ -91,10 +91,10 @@ const Content = () => {
 
           <div className="flex flex-col items-center gap-2">
             <div className="mx-auto w-full max-w-4xl px-4">
-              <Typography variant="body1">
+              <p className="text-sm sm:text-base lg:text-lg leading-relaxed">
                                 Do you have photos we can feature in our gallery? Direct message them to us on Facebook
                                 or post them in our Facebook group and your photos could be featured right here!
-              </Typography>
+              </p>
             </div>
             <div>
               <ToggleGroup

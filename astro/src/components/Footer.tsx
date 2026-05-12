@@ -1,9 +1,8 @@
 import * as React from "react";
-import { Typography } from "@mui/material";
 import type { PaletteColor } from "@mui/material/styles";
 import { styled, useTheme } from "@mui/material/styles";
 
-import { TITLE_FONT_FAMILY } from "~/theme/typography";
+import { Button } from "~/components/ui/button";
 
 import FacebookIcon from "./FacebookIcon";
 
@@ -39,33 +38,15 @@ const links = [
 const NavLink = ({
   label,
   to
-}: { label: string, to: string }) => {
-  const theme = useTheme();
-  return (
-    <Typography
-      key={label}
-      color="secondary.contrastText"
-      component="a"
-      href={to}
-      sx={{
-        transition:
-                    "all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1)",
-        fontFamily: TITLE_FONT_FAMILY,
-        fontWeight: 600,
-        textTransform: "uppercase",
-        textDecorationColor: "transparent",
-        "&:hover": {
-          transform: "scale(1.05)",
-          textDecorationColor: theme.palette.secondary.contrastText,
-          textShadow: "none"
-        }
-      }}
-      variant="h6"
-    >
-      {label}
-    </Typography>
-  );
-};
+}: { label: string, to: string }) => (
+  <Button
+    className="text-cream-contrast"
+    href={to}
+    variant="link"
+  >
+    {label}
+  </Button>
+);
 
 const Footer = ({ color }: FooterProps) => {
   const theme = useTheme();
@@ -77,12 +58,12 @@ const Footer = ({ color }: FooterProps) => {
     <StyledSection style={{ backgroundColor: bgColor }}>
       <div className="flex flex-col items-center gap-4">
         <div className="flex flex-col">
-          <Typography
-            sx={{ color: textColor }}
-            variant="overline"
+          <p
+            className="font-bold text-xs uppercase tracking-wider"
+            style={{ color: textColor }}
           >
                         FIND US ELSEWHERE
-          </Typography>
+          </p>
           <StyledRow>
             <FacebookIcon color={textColor} href="https://www.facebook.com/matlockraftevent/" />
           </StyledRow>
@@ -99,10 +80,9 @@ const Footer = ({ color }: FooterProps) => {
             ))
           }
         </StyledRow>
-        <Typography
-          sx={{ color: textColor }}
-          textAlign="center"
-          variant="body2"
+        <p
+          className="text-sm leading-relaxed text-center"
+          style={{ color: textColor }}
         >
                     &#169; Copyright
           {" "}
@@ -114,11 +94,10 @@ const Footer = ({ color }: FooterProps) => {
           {" "}
                     - In the aid of the the
                     Royal National Lifeboats Institute (RNLI)
-        </Typography>
-        <Typography
-          sx={{ color: textColor }}
-          textAlign="center"
-          variant="body2"
+        </p>
+        <p
+          className="text-sm leading-relaxed text-center"
+          style={{ color: textColor }}
         >
                     Website designed and coded with ♥ by
           {" "}
@@ -128,7 +107,7 @@ const Footer = ({ color }: FooterProps) => {
           {" "}
           <strong>Sam Hepburn</strong>
                     .
-        </Typography>
+        </p>
       </div>
     </StyledSection>
   );

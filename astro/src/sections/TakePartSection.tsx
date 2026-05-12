@@ -1,4 +1,3 @@
-import { Typography } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 
 import ApplicationFormPdf from "~/assets/documents/Application-Form.pdf";
@@ -34,31 +33,31 @@ const TakePartSection = () => {
       <div className="mx-auto w-full max-w-4xl px-4">
         <div className="flex flex-col items-center gap-4">
           <div className="flex flex-col items-center gap-2">
-            <Typography variant="body1">
+            <p className="text-sm sm:text-base lg:text-lg leading-relaxed">
                             The Raft Event is approximately 3 miles long, the water is cold and in places deep and
                             turbulent. There is a weir with a descent totalling around 30 meters of rapid white water.
                             Are you okay with that? Still want to get cold and wet on Boxing Day? Don’t say we didn’t
                             warn
                             you!
-            </Typography>
-            <Typography variant="body1">
+            </p>
+            <p className="text-sm sm:text-base lg:text-lg leading-relaxed">
                             Welcome to an elite club of individuals that choose to give something back to a great cause
                             on
                             Boxing Day: the RNLI. Do it once and we promise you will be hooked!
-            </Typography>
+            </p>
           </div>
           <div className="flex flex-col items-center gap-4">
-            <Typography variant="subtitle1">
+            <p className="font-display font-semibold text-base">
                             To take part in the raft event, you need to complete the following steps:
-            </Typography>
+            </p>
             {
               STEPS.map(item => (
                 <StepCard
                   key={item.key}
                   content={
-                    <Typography variant="body2">
+                    <p className="text-sm leading-relaxed">
                       {item.description}
-                    </Typography>
+                    </p>
                   }
                   title={item.key}
                 />
@@ -93,17 +92,17 @@ const TakePartSection = () => {
             </Button>
           </div>
 
-          <Typography>
+          <p className="text-sm sm:text-base lg:text-lg leading-relaxed">
                         Once ready and your raft has been checked, be prepared to face whatever the Derbyshire Dales,
                         the River Derwent and thousands of excited spectators have to offer on a typical Boxing Day.
                         Best of luck!
-          </Typography>
-          <Typography>
+          </p>
+          <p className="text-sm sm:text-base lg:text-lg leading-relaxed">
                         This event is only possible thanks to the brave drivers and guest participants working hard to
                         create some stunning rafts for all of the spectators to enjoy. The more fun and excitement on
                         the day, the deeper people will dig in their pockets and donate to the RNLI. Derwent and
                         thousands of excited spectators have to offer on a typical Boxing Day. Best of luck!
-          </Typography>
+          </p>
         </div>
       </div>
     </Section>

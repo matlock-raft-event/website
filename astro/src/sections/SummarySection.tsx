@@ -1,11 +1,9 @@
-import { Typography } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 
 import Heading from "~/components/Heading";
 import Section from "~/components/Section";
 import { Button } from "~/components/ui/button";
 import useSanityFetch from "~/hooks/useSanityFetch";
-import { TITLE_FONT_FAMILY } from "~/theme/typography";
 
 type Summary = {
   _id?: string;
@@ -31,38 +29,38 @@ const SummarySection = () => {
       <div className="flex flex-col items-center gap-6">
 
         <div className="mx-auto w-full max-w-4xl px-4">
-          <Typography textAlign="center" variant="body1">
+          <p className="text-sm sm:text-base lg:text-lg leading-relaxed text-center">
             {summary?.bio}
-          </Typography>
+          </p>
         </div>
 
         <div className="flex flex-row justify-center gap-16">
           <div className="flex flex-col items-end flex-1">
             <div className="flex flex-col items-center">
-              <Typography fontFamily={TITLE_FONT_FAMILY} variant="h1">
+              <h1 className="font-extrabold text-3xl sm:text-4xl md:text-5xl lg:text-6xl leading-tight font-display">
                 {summary?.yearsActive}
-              </Typography>
-              <Typography sx={{ lineHeight: 1 }} variant="subtitle1">
+              </h1>
+              <p className="font-display font-semibold text-base leading-none">
                                 Years
-              </Typography>
+              </p>
             </div>
           </div>
           <div className="flex flex-col items-center">
-            <Typography fontFamily={TITLE_FONT_FAMILY} variant="h1">
+            <h1 className="font-extrabold text-3xl sm:text-4xl md:text-5xl lg:text-6xl leading-tight font-display">
               {summary?.moneyRaised}
-            </Typography>
-            <Typography sx={{ lineHeight: 1 }} variant="subtitle1">
+            </h1>
+            <p className="font-display font-semibold text-base leading-none">
                             Raised
-            </Typography>
+            </p>
           </div>
           <div className="flex flex-col items-start flex-1">
             <div className="flex flex-col items-center">
-              <Typography fontFamily={TITLE_FONT_FAMILY} variant="h1">
+              <h1 className="font-extrabold text-3xl sm:text-4xl md:text-5xl lg:text-6xl leading-tight font-display">
                 {summary?.eventCount}
-              </Typography>
-              <Typography sx={{ lineHeight: 1 }} variant="subtitle1">
+              </h1>
+              <p className="font-display font-semibold text-base leading-none">
                                 Events
-              </Typography>
+              </p>
             </div>
           </div>
         </div>

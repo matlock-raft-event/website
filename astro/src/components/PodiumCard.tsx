@@ -1,9 +1,7 @@
-import { Typography } from "@mui/material";
 import { styled } from "@mui/material/styles";
 
 import PodiumBadge from "~/components/PodiumBadge";
 import SanityImage from "~/components/SanityImage";
-import { TITLE_FONT_FAMILY } from "~/theme/typography";
 
 const StyledDiv = styled("div")(({ theme }) => ({
   position: "relative",
@@ -52,9 +50,9 @@ const PodiumCard = ({ image, podium, title }: PodiumCardProps) => (
           maxWidth: "100%"
         }}
       />
-      <Typography fontFamily={TITLE_FONT_FAMILY} sx={{ textAlign: "center" }} variant="h4">
+      <h4 className="font-display font-bold text-xl md:text-2xl text-center">
         {title}
-      </Typography>
+      </h4>
     </div>
   </StyledDiv>
 );

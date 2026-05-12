@@ -1,4 +1,3 @@
-import { Typography } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 
 import Footer from "~/components/Footer";
@@ -43,21 +42,21 @@ const Content = ({ sponsor }: SingleSponsorPageProps) => {
               {
                 sponsor.description &&
                                 <div>
-                                  <Typography variant="h6">What we do</Typography>
-                                  <Typography variant="body1">{sponsor.description}</Typography>
+                                  <h6 className="font-serif font-medium text-sm sm:text-base md:text-lg">What we do</h6>
+                                  <p className="text-sm sm:text-base lg:text-lg leading-relaxed">{sponsor.description}</p>
                                 </div>
               }
               {
                 sponsor.address &&
                                 <div>
-                                  <Typography variant="h6">Where to find us</Typography>
-                                  <Typography variant="body1">{sponsor.address}</Typography>
+                                  <h6 className="font-serif font-medium text-sm sm:text-base md:text-lg">Where to find us</h6>
+                                  <p className="text-sm sm:text-base lg:text-lg leading-relaxed">{sponsor.address}</p>
                                 </div>
               }
               {
                 sponsor.url &&
                                 <div>
-                                  <Typography variant="h6">Our website</Typography>
+                                  <h6 className="font-serif font-medium text-sm sm:text-base md:text-lg">Our website</h6>
                                   <a
                                     className="text-red text-base hover:underline"
                                     href={sponsor.url}
@@ -71,8 +70,8 @@ const Content = ({ sponsor }: SingleSponsorPageProps) => {
               {
                 sponsor.testimonial &&
                                 <div>
-                                  <Typography variant="h6">Why we sponsored The Matlock Raft Event</Typography>
-                                  <Typography variant="body1">{sponsor.testimonial}</Typography>
+                                  <h6 className="font-serif font-medium text-sm sm:text-base md:text-lg">Why we sponsored The Matlock Raft Event</h6>
+                                  <p className="text-sm sm:text-base lg:text-lg leading-relaxed">{sponsor.testimonial}</p>
                                 </div>
               }
             </div>

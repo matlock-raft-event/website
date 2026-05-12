@@ -1,9 +1,7 @@
-import { Typography } from "@mui/material";
 import type { PaletteColor } from "@mui/material/styles";
 import { styled, useTheme } from "@mui/material/styles";
 
 import useResponsive from "~/hooks/useResponsive";
-import { TITLE_FONT_FAMILY } from "~/theme/typography";
 
 const StyledContainer = styled("div")(({ theme }) => ({
   display: "flex",
@@ -14,9 +12,9 @@ const StyledContainer = styled("div")(({ theme }) => ({
 
 const Bullet = () => (
   <span>
-    <Typography variant="h6">
+    <h6 className="font-serif font-medium text-sm sm:text-base md:text-lg">
             &#8226;
-    </Typography>
+    </h6>
   </span>
 );
 
@@ -42,11 +40,11 @@ const Heading = ({
         subtitle &&
                 <div className={`flex flex-row items-center mb-2 ${isMobile ? "gap-2" : "gap-4"}`}>
                   <Bullet />
-                  <Typography textAlign="center" textTransform="uppercase" variant="h6">{subtitle}</Typography>
+                  <h6 className="font-serif font-medium text-sm sm:text-base md:text-lg text-center uppercase">{subtitle}</h6>
                   <Bullet />
                 </div>
       }
-      <Typography fontFamily={TITLE_FONT_FAMILY} textAlign="center" variant="h2">{title}</Typography>
+      <h2 className="font-display font-extrabold text-3xl sm:text-4xl lg:text-5xl leading-tight text-center">{title}</h2>
     </StyledContainer>
   );
 };

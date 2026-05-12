@@ -1,4 +1,3 @@
-import { Typography } from "@mui/material";
 import { styled, useTheme } from "@mui/material/styles";
 
 import Footer from "~/components/Footer";
@@ -21,7 +20,7 @@ const Content = () => {
     <main>
       <Section bgColor={theme.palette.secondary}>
         <Heading color={theme.palette.secondary} title="Page Not Found" />
-        <Typography my={12} variant="body1">
+        <p className="my-24 text-sm sm:text-base lg:text-lg leading-relaxed">
                     Sorry 😔, we couldn’t find what you were looking for.
           <br />
           {
@@ -41,7 +40,7 @@ const Content = () => {
           <br />
           <a href="/">Go home</a>
                     .
-        </Typography>
+        </p>
       </Section>
       <Footer />
     </main>

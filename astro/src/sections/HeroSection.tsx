@@ -1,5 +1,4 @@
 import { useEffect } from "react";
-import { Typography } from "@mui/material";
 import { styled, useTheme } from "@mui/material/styles";
 
 import HeaderImg from "~/assets/images/header.jpg";
@@ -11,7 +10,6 @@ import { Button } from "~/components/ui/button";
 import Waves from "~/components/Waves";
 import useResponsive from "~/hooks/useResponsive";
 import useSanityFetch from "~/hooks/useSanityFetch";
-import { PRIMARY_FONT_FAMILY, TITLE_FONT_FAMILY } from "~/theme/typography";
 
 const resolveSrc = (asset: unknown): string => (asset as { src?: string }).src ?? (asset as unknown as string);
 
@@ -81,36 +79,25 @@ const HeroContent = (
         ...(!isMobile && { width: "61.8vw" })
       }}
     >
-      <Typography
-        color="yellow.main"
-        fontFamily={PRIMARY_FONT_FAMILY}
-        sx={{ pt: isTablet ? 12 : 0 }}
-        textAlign={isMobile ? "center" : undefined}
-        variant="h5"
+      <h5
+        className={`font-bold text-lg md:text-xl text-yellow font-avenir ${isTablet ? "pt-24" : "pt-0"} ${isMobile ? "text-center" : ""}`}
       >
-        {subtitle?.replace("&nbsp;", " ") ?? "MATLOCK'S VERY OWN ANNUAL CHARITY RAFT EVENT"}
-      </Typography>
-      <Typography
-        color="secondary.main"
-        fontFamily={TITLE_FONT_FAMILY}
-        textAlign={isMobile ? "center" : undefined}
-        variant="h1"
+        {subtitle?.replace("&nbsp;", " ") ?? "MATLOCK'S VERY OWN ANNUAL CHARITY RAFT EVENT"}
+      </h5>
+      <h1
+        className={`font-extrabold text-3xl sm:text-4xl md:text-5xl lg:text-6xl leading-tight text-secondary font-display ${isMobile ? "text-center" : ""}`}
       >
-        {title?.replace("&nbsp;", " ") ?? "Boxing Day fun for all the family!"}
-      </Typography>
+        {title?.replace("&nbsp;", " ") ?? "Boxing Day fun for all the family!"}
+      </h1>
       <div
         className={`flex flex-row items-center gap-1 ${isMobile ? "justify-center" : ""}`}
       >
         <Iconify color={theme.palette.yellow.main} icon="ph:map-pin-bold" />
-        <Typography
-          color="secondary.main"
-          fontFamily={PRIMARY_FONT_FAMILY}
-          variant="subtitle2"
-        >
+        <p className="font-semibold text-sm text-secondary font-avenir">
                     Matlock, Derbyshire - 26th December
           {" "}
           {new Date().getFullYear()}
-        </Typography>
+        </p>
       </div>
       <div
         className={`flex flex-row items-center gap-4 ${isMobile ? "justify-center" : ""}`}

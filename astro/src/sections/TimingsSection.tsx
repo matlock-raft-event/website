@@ -7,7 +7,6 @@ import {
   timelineItemClasses,
   TimelineSeparator
 } from "@mui/lab";
-import { Typography } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 
 import Heading from "~/components/Heading";
@@ -54,11 +53,11 @@ const TimingsSection = () => {
       />
 
       <div className="mx-auto w-full max-w-4xl px-4">
-        <Typography mb={4} variant="body1">
+        <p className="text-sm sm:text-base lg:text-lg leading-relaxed mb-8">
                     Once the rafts have set off, the timings always vary based on how fast the river is flowing, if
                     there’s any obstacles along the route etc, so we’d recommend getting there slightly earlier just
                     in case, it’s always worth the wait!
-        </Typography>
+        </p>
       </div>
 
       <div className="mx-auto w-full max-w-4xl px-4">
@@ -85,10 +84,10 @@ const TimingsSection = () => {
                   px: 2
                 }}
                 >
-                  <Typography component="span" variant="h6">
+                  <span className="font-serif font-medium text-sm sm:text-base md:text-lg">
                     {item.time}
-                  </Typography>
-                  <Typography>{item.description}</Typography>
+                  </span>
+                  <p className="text-sm sm:text-base lg:text-lg leading-relaxed">{item.description}</p>
                 </TimelineContent>
               </TimelineItem>
             ))

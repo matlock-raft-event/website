@@ -1,4 +1,3 @@
-import { Typography } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 
 import Block from "~/components/Block";
@@ -25,26 +24,26 @@ const ContactUsSection = () => {
 
       <div className="mx-auto w-full max-w-4xl px-4">
 
-        <Typography mb={4} variant="body1">
+        <p className="text-sm sm:text-base lg:text-lg leading-relaxed mb-8">
                     We&apos;re all ears for participants and those eager to join the excitement! Connect with us on our
                     Facebook page, or become a part of our Facebook group where you can share your event snapshots and
                     videos with the community. Got questions or simply want to chat about the event? We&apos;re here to
                     fill you in on all the details. We&apos;ll get back to you as soon as we can!
-        </Typography>
+        </p>
 
-        <Typography variant="subtitle1">General Enquiries</Typography>
+        <p className="font-display font-semibold text-base">General Enquiries</p>
         {
           contactInstructions?.general &&
                     <Block value={contactInstructions.general as never} />
         }
 
-        <Typography variant="subtitle1">Sponsors</Typography>
+        <p className="font-display font-semibold text-base">Sponsors</p>
         {
           contactInstructions?.sponsors &&
                     <Block value={contactInstructions.sponsors as never} />
         }
 
-        <Typography variant="subtitle1">Press</Typography>
+        <p className="font-display font-semibold text-base">Press</p>
         {
           contactInstructions?.press &&
                     <Block value={contactInstructions.press as never} />

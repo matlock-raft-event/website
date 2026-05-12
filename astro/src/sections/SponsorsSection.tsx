@@ -1,4 +1,3 @@
-import { Typography } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 
 import Heading from "~/components/Heading";
@@ -31,14 +30,14 @@ const SponsorsSection = () => {
       />
       <div className="flex flex-col items-center gap-4">
         <div className="mx-auto w-full max-w-4xl px-4">
-          <Typography variant="body1">
+          <p className="text-sm sm:text-base lg:text-lg leading-relaxed">
                         Every year many local businesses help to keep the raft event going by sponsoring the event. In
                         return for their generosity, each sponsor is advertised on our website, social media channels
                         and the posters and banners displayed in and around Matlock.
-          </Typography>
-          <Typography variant="body1">
+          </p>
+          <p className="text-sm sm:text-base lg:text-lg leading-relaxed">
                         Thank you to all of the businesses that have helped to sponsor past and present events.
-          </Typography>
+          </p>
         </div>
 
         <div className="grid grid-cols-12 gap-6 justify-items-center">

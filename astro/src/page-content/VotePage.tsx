@@ -1,4 +1,3 @@
-import { Typography } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 
 import Footer from "~/components/Footer";
@@ -20,7 +19,7 @@ const Content = () => {
           title="Vote For Your Boat"
         />
         <div className="flex flex-col items-center gap-4">
-          <Typography>
+          <p className="text-sm sm:text-base lg:text-lg leading-relaxed">
                         Okay, maybe it&apos;s generous of us to call them boats... But for the first time in
                         2023,
             {" "}
@@ -29,7 +28,7 @@ const Content = () => {
                         can vote for your winner of The Matlock Raft Event! This is your
                         opportunity to be part of the action and help us to crown this years triumphant raft. Every vote
                         counts!
-          </Typography>
+          </p>
           <br />
           <div
             className="strawpoll-embed"

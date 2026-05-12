@@ -1,7 +1,6 @@
 /* eslint react/no-unstable-nested-components: 0 */
 /* eslint @typescript-eslint/no-explicit-any: 0 */
 
-import { Typography } from "@mui/material";
 import type { PortableTextProps } from "@portabletext/react";
 import { PortableText } from "@portabletext/react";
 import type { PortableTextBlock, TypedObject } from "@portabletext/types";
@@ -9,13 +8,13 @@ import type { PortableTextBlock, TypedObject } from "@portabletext/types";
 const Block = <B extends TypedObject = PortableTextBlock>({ value, components, ...rest }: PortableTextProps<B>) => {
   const blockComponents = {
     block: {
-      h1: ({ children }: any) => <Typography my={1} variant="h1">{children}</Typography>,
-      h2: ({ children }: any) => <Typography my={1} variant="h2">{children}</Typography>,
-      h3: ({ children }: any) => <Typography my={1} variant="h3">{children}</Typography>,
-      h4: ({ children }: any) => <Typography my={1} variant="h4">{children}</Typography>,
-      h5: ({ children }: any) => <Typography my={1} variant="h5">{children}</Typography>,
-      h6: ({ children }: any) => <Typography my={1} variant="subtitle1">{children}</Typography>,
-      normal: ({ children }: any) => <Typography mb={1} variant="body1">{children}</Typography>
+      h1: ({ children }: any) => <h1 className="my-2 font-display font-extrabold text-3xl sm:text-4xl md:text-5xl lg:text-6xl leading-tight">{children}</h1>,
+      h2: ({ children }: any) => <h2 className="my-2 font-extrabold text-3xl sm:text-4xl lg:text-5xl leading-tight">{children}</h2>,
+      h3: ({ children }: any) => <h3 className="my-2 font-bold text-2xl md:text-3xl">{children}</h3>,
+      h4: ({ children }: any) => <h4 className="my-2 font-bold text-xl md:text-2xl">{children}</h4>,
+      h5: ({ children }: any) => <h5 className="my-2 font-bold text-lg md:text-xl">{children}</h5>,
+      h6: ({ children }: any) => <p className="my-2 font-display font-semibold text-base">{children}</p>,
+      normal: ({ children }: any) => <p className="mb-2 text-sm sm:text-base lg:text-lg leading-relaxed">{children}</p>
     },
 
     marks: {

@@ -1,7 +1,4 @@
 import type { ReactNode } from "react";
-import { Typography } from "@mui/material";
-
-import { TITLE_FONT_FAMILY } from "~/theme/typography";
 
 type StepCardProps = {
   icon?: ReactNode;
@@ -15,13 +12,9 @@ const StepCard = ({ icon, title, content }: StepCardProps) => {
         {icon}
       </div>
       <div className="flex flex-col gap-2">
-        <Typography
-          color="secondary.contrastText"
-          fontFamily={TITLE_FONT_FAMILY}
-          variant="h3"
-        >
+        <h3 className="text-secondary-contrast font-display font-bold text-2xl md:text-3xl">
           {title}
-        </Typography>
+        </h3>
         {content}
       </div>
     </div>

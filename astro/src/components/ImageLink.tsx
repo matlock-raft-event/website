@@ -1,10 +1,8 @@
 import type { CSSProperties } from "react";
 import { useState } from "react";
-import { Typography } from "@mui/material";
 import { styled, useTheme } from "@mui/material/styles";
 
 import useResponsive from "~/hooks/useResponsive";
-import { TITLE_FONT_FAMILY } from "~/theme/typography";
 
 const StyledLink = styled("a")(({ theme }) => ({
   aspectRatio: "3 / 2",
@@ -60,21 +58,11 @@ const ImageLink = ({ src, label, href }: ImageLinkProps) => {
           objectFit: "cover"
         }}
       />
-      <Typography
-        color="white"
-        position="relative"
-        sx={{
-          fontFamily: TITLE_FONT_FAMILY,
-          zIndex: 1,
-          ...(isMobile && {
-            fontSize: "2rem"
-          })
-        }}
-        textTransform="uppercase"
-        variant="h3"
+      <h3
+        className={`text-white font-display font-bold text-2xl md:text-3xl uppercase relative z-[1] ${isMobile ? "text-[2rem]" : ""}`}
       >
         {label}
-      </Typography>
+      </h3>
     </StyledLink>
   );
 };
