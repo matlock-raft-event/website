@@ -1,12 +1,14 @@
-import * as React from "react";
 import { useState } from "react";
-import { Drawer, Fab, Typography } from "@mui/material";
+import { Fab, Typography } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 
 import FacebookIcon from "~/components/FacebookIcon";
 import Iconify from "~/components/Iconify";
 import Logo from "~/components/Logo";
 import { Button } from "~/components/ui/button";
+import Drawer from "~/components/ui/drawer/drawer";
+import DrawerContent from "~/components/ui/drawer/drawer-content";
+import DrawerTitle from "~/components/ui/drawer/drawer-title";
 import Waves from "~/components/Waves";
 import useResponsive from "~/hooks/useResponsive";
 import { GREEN } from "~/theme/palette";
@@ -37,16 +39,6 @@ const Header = () => {
   const isMobile = useResponsive("down", "md");
 
   const [open, setOpen] = useState(false);
-  const toggleDrawer = (event: React.KeyboardEvent | React.MouseEvent) => {
-    if (
-      event.type === "keydown" &&
-            ((event as React.KeyboardEvent).key === "Tab" ||
-                (event as React.KeyboardEvent).key === "Shift")
-    ) {
-      return;
-    }
-    setOpen(!open);
-  };
 
   return (
     <div
@@ -69,81 +61,72 @@ const Header = () => {
 
                 <div>
                   {/* @ts-ignore */}
-                  <Fab aria-label="add" color="green" onClick={toggleDrawer}>
+                  <Fab aria-label="open menu" color="green" onClick={() => setOpen(true)}>
                     <Iconify icon="ph:list" />
                   </Fab>
                 </div>
               </div>
-              <Drawer
-                anchor="top"
-                onClose={toggleDrawer}
-                open={open}
-                sx={{
-                  "& .MuiDrawer-paper": {
-                    boxSizing: "border-box",
-                    backgroundColor: theme.palette.green.main,
-                    height: "100vh",
-                    width: "100vw"
-                  }
-                }}
-              >
-                <Fab
-                  aria-label="close menu"
-                  color="secondary"
-                  onClick={toggleDrawer}
-                  size="large"
-                  sx={{
-                    position: "absolute",
-                    top: theme.spacing(2),
-                    right: theme.spacing(2)
-                  }}
-                >
-                  <Iconify icon="ph:x-bold" />
-                </Fab>
+              <Drawer direction="top" onOpenChange={setOpen} open={open}>
+                <DrawerContent className="bg-green border-0 data-[vaul-drawer-direction=top]:h-screen data-[vaul-drawer-direction=top]:max-h-screen data-[vaul-drawer-direction=top]:mb-0 data-[vaul-drawer-direction=top]:rounded-none">
+                  <DrawerTitle className="sr-only">Mobile navigation</DrawerTitle>
 
-                <div className="flex flex-col justify-between min-h-screen">
+                  <Fab
+                    aria-label="close menu"
+                    color="secondary"
+                    onClick={() => setOpen(false)}
+                    size="large"
+                    sx={{
+                      position: "absolute",
+                      top: theme.spacing(2),
+                      right: theme.spacing(2)
+                    }}
+                  >
+                    <Iconify icon="ph:x-bold" />
+                  </Fab>
 
-                  <div className="flex flex-col gap-4 py-8 px-6">
-                    {
-                      links.map(link => (
+                  <div className="flex flex-col justify-between min-h-screen">
+
+                    <div className="flex flex-col gap-6 py-8 px-6">
+                      {
+                        links.map(link => (
+                          <Button
+                            key={link.label}
+                            className="text-secondary text-4xl justify-start px-0 h-auto py-3 no-underline hover:no-underline"
+                            href={link.to}
+                            variant="link"
+                          >
+                            {link.label}
+                          </Button>
+                        ))
+                      }
+                      <div className="pt-2">
                         <Button
-                          key={link.label}
-                          className="text-secondary text-4xl justify-start px-0 h-auto py-1 no-underline hover:no-underline"
-                          href={link.to}
-                          variant="link"
+                          href="/donate"
+                          size="lg"
                         >
-                          {link.label}
+                                                  Donate
                         </Button>
-                      ))
-                    }
+                      </div>
+                    </div>
+
                     <div>
-                      <Button
-                        href="/donate"
-                        size="lg"
-                      >
-                                                Donate
-                      </Button>
-                    </div>
-                  </div>
-
-                  <div>
-                    <Waves
-                      bottomColor={theme.palette.green.dark}
-                      style={{ marginBottom: -1 }}
-                      topColor={theme.palette.green.main}
-                    />
-                    <div className="flex flex-col p-6 bg-green-dark">
-                      <Typography color="secondary" variant="h5">
-                                                Find us on Facebook:
-                      </Typography>
-                      <FacebookIcon
-                        color={theme.palette.secondary.main}
-                        href="https://www.facebook.com/matlockraftevent/"
+                      <Waves
+                        bottomColor={theme.palette.green.dark}
+                        style={{ marginBottom: -1 }}
+                        topColor={theme.palette.green.main}
                       />
+                      <div className="flex flex-col p-6 bg-green-dark">
+                        <Typography color="secondary" variant="h5">
+                                                  Find us on Facebook:
+                        </Typography>
+                        <FacebookIcon
+                          color={theme.palette.secondary.main}
+                          href="https://www.facebook.com/matlockraftevent/"
+                        />
+                      </div>
                     </div>
                   </div>
-                </div>
-
+                </DrawerContent>
               </Drawer>
             </>
           )

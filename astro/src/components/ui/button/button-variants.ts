@@ -1,8 +1,4 @@
-import type { AnchorHTMLAttributes } from "react";
-import { Button as ButtonPrimitive } from "@base-ui/react/button";
-import { cva, type VariantProps } from "class-variance-authority";
-
-import { cn } from "~/lib/utils";
+import { cva } from "class-variance-authority";
 
 const buttonVariants = cva(
   "group/button inline-flex shrink-0 font-serif leading-0! items-center justify-center uppercase rounded-none border border-transparent bg-clip-padding text-base font-medium whitespace-nowrap transition-all outline-none select-none focus-visible:border-ring focus-visible:ring-1 focus-visible:ring-ring/50 active:not-aria-[haspopup]:translate-y-px disabled:pointer-events-none disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-1 aria-invalid:ring-destructive/20 dark:aria-invalid:border-destructive/50 dark:aria-invalid:ring-destructive/40 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
@@ -170,55 +166,4 @@ const buttonVariants = cva(
   }
 );
 
-type CommonProps = VariantProps<typeof buttonVariants> & { className?: string };
-
-type ButtonAsButton =
-  & CommonProps
-  & Omit<ButtonPrimitive.Props, "color">
-  & { href?: undefined };
-
-type ButtonAsLink =
-  & CommonProps
-  & Omit<AnchorHTMLAttributes<HTMLAnchorElement>, "color">
-  & { href: string };
-
-type ButtonProps = ButtonAsButton | ButtonAsLink;
-
-const Button = ({
-  className,
-  variant,
-  color,
-  size,
-  ...props
-}: ButtonProps) => {
-  const classes = cn(buttonVariants({
-    variant,
-    color,
-    size,
-    className
-  }));
-
-  if ("href" in props && props.href !== undefined) {
-    const { children, ...rest } = props as AnchorHTMLAttributes<HTMLAnchorElement>;
-    return (
-      <a
-        className={classes}
-        data-slot="button"
-        {...rest}
-      >
-        {children}
-      </a>
-    );
-  }
-
-  return (
-    <ButtonPrimitive
-      className={classes}
-      data-slot="button"
-      {...(props as ButtonPrimitive.Props)}
-    />
-  );
-};
-
-export { Button, buttonVariants };
-export type { ButtonProps };
+export default buttonVariants;
