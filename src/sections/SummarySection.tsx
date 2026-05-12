@@ -1,82 +1,60 @@
-import { Button, Container, Stack, Typography } from "@mui/material";
-import { useTheme } from "@mui/material/styles";
-import { graphql, navigate, useStaticQuery } from "gatsby";
-
 import Heading from "~/components/Heading";
 import Section from "~/components/Section";
-import { TITLE_FONT_FAMILY } from "~/theme/typography";
+import { Button } from "~/components/ui/button";
+import type { SummaryQueryResult } from "~/lib/sanity.types";
 
-const SummarySection = () => {
-    const data: Queries.SummaryQuery = useStaticQuery(graphql`
-      query Summary {
-        allSanitySummary {
-         edges {
-          node {
-          _id,
-           yearsActive,
-           bio,
-           eventCount,
-           moneyRaised
-          }
-         }
-      }
-    }
-    `);
+type Props = { summary: SummaryQueryResult };
 
-    const summary = data.allSanitySummary.edges.map(edge => edge.node)[0];
+const SummarySection = ({ summary }: Props) => (
+  <Section palette="cream">
+    <Heading
+      palette="cream"
+      subtitle="Hello daring adventurer"
+      title="Ready To Brave The Cold Derwent Waters?"
+    />
+    <div className="flex flex-col items-center gap-6">
 
-    const theme = useTheme();
-    return (
-        <Section bgColor={theme.palette.secondary}>
-            <Heading
-                color={theme.palette.secondary}
-                subtitle="Hello daring adventurer"
-                title="Ready To Brave The Cold Derwent Waters?"
-            />
-            <Stack alignItems="center" spacing={3}>
+      <div className="mx-auto w-full max-w-4xl px-4">
+        <p className="text-sm sm:text-base lg:text-lg leading-relaxed text-center">
+          {summary?.bio}
+        </p>
+      </div>
 
-                <Container maxWidth="md">
-                    <Typography textAlign="center" variant="body1">
-                        {summary.bio}
-                    </Typography>
-                </Container>
-
-                <Stack direction="row" justifyContent="center" spacing={8}>
-                    <Stack alignItems="flex-end" flex={1}>
-                        <Stack alignItems="center">
-                            <Typography fontFamily={TITLE_FONT_FAMILY} variant="h1">
-                                {summary.yearsActive}
-                            </Typography>
-                            <Typography sx={{ lineHeight: 1 }} variant="subtitle1">
+      <div className="flex flex-row justify-center gap-16">
+        <div className="flex flex-col items-end flex-1">
+          <div className="flex flex-col items-center">
+            <h1 className="font-extrabold text-3xl sm:text-4xl md:text-5xl lg:text-6xl leading-tight font-display">
+              {summary?.yearsActive}
+            </h1>
+            <p className="font-display font-semibold text-base leading-none">
                                 Years
-                            </Typography>
-                        </Stack>
-                    </Stack>
-                    <Stack alignItems="center">
-                        <Typography fontFamily={TITLE_FONT_FAMILY} variant="h1">
-                            {summary.moneyRaised}
-                        </Typography>
-                        <Typography sx={{ lineHeight: 1 }} variant="subtitle1">
+            </p>
+          </div>
+        </div>
+        <div className="flex flex-col items-center">
+          <h1 className="font-extrabold text-3xl sm:text-4xl md:text-5xl lg:text-6xl leading-tight font-display">
+            {summary?.moneyRaised}
+          </h1>
+          <p className="font-display font-semibold text-base leading-none">
                             Raised
-                        </Typography>
-                    </Stack>
-                    <Stack alignItems="flex-start" flex={1}>
-                        <Stack alignItems="center">
-                            <Typography fontFamily={TITLE_FONT_FAMILY} variant="h1">
-                                {summary.eventCount}
-                            </Typography>
-                            <Typography sx={{ lineHeight: 1 }} variant="subtitle1">
+          </p>
+        </div>
+        <div className="flex flex-col items-start flex-1">
+          <div className="flex flex-col items-center">
+            <h1 className="font-extrabold text-3xl sm:text-4xl md:text-5xl lg:text-6xl leading-tight font-display">
+              {summary?.eventCount}
+            </h1>
+            <p className="font-display font-semibold text-base leading-none">
                                 Events
-                            </Typography>
-                        </Stack>
-                    </Stack>
-                </Stack>
+            </p>
+          </div>
+        </div>
+      </div>
 
-                <Button onClick={() => navigate("/info")}>Learn more</Button>
+      <Button href="/info">Learn more</Button>
 
-            </Stack>
-        </Section>
-    );
-};
+    </div>
+  </Section>
+);
 
 export default SummarySection;

@@ -1,74 +1,50 @@
-import * as React from "react";
-import { Container, Stack, Typography } from "@mui/material";
-import { useTheme } from "@mui/material/styles";
-import Grid2 from "@mui/material/Unstable_Grid2";
-import { graphql, navigate, useStaticQuery } from "gatsby";
-
 import Heading from "~/components/Heading";
 import Section from "~/components/Section";
 import SponsorItem from "~/components/SponsorItem";
 import useResponsive from "~/hooks/useResponsive";
+import type { SponsorsQueryResult } from "~/lib/sanity.types";
 
-const SponsorsSection = () => {
-    const data: Queries.SponsorsQueryQuery = useStaticQuery(graphql`
-      query SponsorsQuery {
-        allSanitySponsor {
-         edges {
-          node {
-           name,
-           slug,
-           logo {
-             asset {
-               gatsbyImageData(placeholder: BLURRED)
-             }
-           }
-          }
-         }
-      }
-    }
-    `);
+type Props = { sponsors: SponsorsQueryResult };
 
-    const sponsors = data.allSanitySponsor.edges.map(edge => edge.node);
+const SponsorsSection = ({ sponsors }: Props) => {
+  const isMobile = useResponsive("down", "sm");
 
-    const theme = useTheme();
-
-    const isMobile = useResponsive("down", "sm");
-
-    return (
-        <Section bgColor={theme.palette.secondary}>
-            <Heading
-                color={theme.palette.secondary}
-                subtitle="The people we couldn't do this without"
-                title="Our Amazing Sponsors"
-            />
-            <Stack alignItems="center" spacing={2}>
-                <Container maxWidth="md">
-                    <Typography variant="body1">
+  return (
+    <Section palette="cream">
+      <Heading
+        palette="cream"
+        subtitle="The people we couldn't do this without"
+        title="Our Amazing Sponsors"
+      />
+      <div className="flex flex-col items-center gap-4">
+        <div className="mx-auto w-full max-w-4xl px-4">
+          <p className="text-sm sm:text-base lg:text-lg leading-relaxed">
                         Every year many local businesses help to keep the raft event going by sponsoring the event. In
                         return for their generosity, each sponsor is advertised on our website, social media channels
                         and the posters and banners displayed in and around Matlock.
-                    </Typography>
-                    <Typography variant="body1">
+          </p>
+          <p className="text-sm sm:text-base lg:text-lg leading-relaxed">
                         Thank you to all of the businesses that have helped to sponsor past and present events.
-                    </Typography>
-                </Container>
+          </p>
+        </div>
 
-                <Grid2 container justifyContent="center" spacing={3}>
-                    {
-                        sponsors.map(sponsor => (
-                            <Grid2 key={sponsor.name} xs={isMobile ? 4 : 2}>
-                                <SponsorItem
-                                    img={sponsor.logo?.asset?.gatsbyImageData}
-                                    onClick={() => navigate(`/sponsors/${sponsor.slug}`)}
-                                />
-                            </Grid2>
-                        ))
-                    }
-                </Grid2>
-            </Stack>
+        <div className="grid grid-cols-12 gap-6 justify-items-center">
+          {
+            (sponsors ?? []).map(sponsor => (
+              <div key={sponsor.name} className={isMobile ? "col-span-4" : "col-span-2"}>
+                <SponsorItem
+                  altText={sponsor.name ?? undefined}
+                  href={sponsor.slug ? `/sponsors/${sponsor.slug}` : undefined}
+                  image={sponsor.logo}
+                />
+              </div>
+            ))
+          }
+        </div>
+      </div>
 
-        </Section>
-    );
+    </Section>
+  );
 };
 
 export default SponsorsSection;

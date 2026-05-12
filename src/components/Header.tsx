@@ -1,307 +1,192 @@
-import * as React from "react";
 import { useState } from "react";
-import { Box, Button, Container, Drawer, Fab, Stack, Typography } from "@mui/material";
-import { useTheme } from "@mui/material/styles";
-import { Link } from "gatsby";
 
 import FacebookIcon from "~/components/FacebookIcon";
 import Iconify from "~/components/Iconify";
 import Logo from "~/components/Logo";
+import { Button } from "~/components/ui/button";
+import Drawer from "~/components/ui/drawer/drawer";
+import DrawerContent from "~/components/ui/drawer/drawer-content";
+import DrawerTitle from "~/components/ui/drawer/drawer-title";
 import Waves from "~/components/Waves";
 import useResponsive from "~/hooks/useResponsive";
-import { GREEN } from "~/theme/palette";
-import { TITLE_FONT_FAMILY } from "~/theme/typography";
 
 const links = [
-    {
-        label: "About",
-        to: "/about"
-    },
-    {
-        label: "Info",
-        to: "/info"
-    },
-    {
-        label: "Sponsors",
-        to: "/sponsors"
-    },
-    {
-        label: "Contact",
-        to: "/contact"
-    },
-    {
-        label: "Gallery",
-        to: "/gallery"
-    }
+  { label: "About", to: "/about" },
+  { label: "Info", to: "/info" },
+  { label: "Sponsors", to: "/sponsors" },
+  { label: "Contact", to: "/contact" },
+  { label: "Gallery", to: "/gallery" }
 ];
 
 const NavLink = ({
-    label,
-    to
-}: { label: string, to: string }) => {
-    const theme = useTheme();
-    return (
-        <Typography
-            key={label}
-            color="secondary"
-            component={Link}
-            sx={{
-                transition:
-                    "all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1)",
-                fontFamily: TITLE_FONT_FAMILY,
-                fontWeight: 600,
-                textTransform: "uppercase",
-                textShadow: `0px 2px ${theme.palette.dark.light}`,
-                textDecorationColor: "transparent",
-                "&:hover": {
-                    transform: "scale(1.05)",
-                    textDecorationColor: theme.palette.secondary.main,
-                    textShadow: "none"
-                }
-            }}
-            to={to}
-            variant="h6"
-        >
-            {label}
-        </Typography>
-    );
-};
+  label,
+  to
+}: { label: string, to: string }) => (
+  <Button
+    color="cream"
+    href={to}
+    variant="link"
+  >
+    {label}
+  </Button>
+);
 const Header = () => {
-    const theme = useTheme();
+  const isMobile = useResponsive("down", "md");
 
-    const isMobile = useResponsive("down", "md");
+  const [open, setOpen] = useState(false);
 
-    const [open, setOpen] = useState(false);
-    const toggleDrawer = (event: React.KeyboardEvent | React.MouseEvent) => {
-        if (
-            event.type === "keydown" &&
-            ((event as React.KeyboardEvent).key === "Tab" ||
-                (event as React.KeyboardEvent).key === "Shift")
-        ) {
-            return;
-        }
-        setOpen(!open);
-    };
+  return (
+    <div
+      style={{
+        position: "absolute",
+        top: 0,
+        left: 0,
+        width: "100%",
+        zIndex: 20
+      }}
+    >
+      {
+        isMobile
+          ? (
+            <>
+              <div className="flex flex-row justify-between p-4">
+                <a href="/">
+                  <Logo className="absolute top-2 left-2 z-[21] max-w-[200px] w-1/5 mt-1" />
+                </a>
 
-    return (
-        <div
-            style={{
-                position: "absolute",
-                top: 0,
-                left: 0,
-                width: "100%",
-                zIndex: 20
-            }}
-        >
-            {
-                isMobile
-                    ? (
-                        <>
-                            <Stack direction="row" justifyContent="space-between" p={2}>
-                                <Box component={Link} to="/">
-                                    <Logo
-                                        sx={{
-                                            position: "absolute",
-                                            top: theme.spacing(1),
-                                            left: theme.spacing(1),
-                                            zIndex: 21,
-                                            maxWidth: 200,
-                                            width: "20%",
-                                            marginTop: theme.spacing(0.5)
-                                        }}
-                                    />
-                                </Box>
+                <div>
+                  <Button
+                    aria-label="open menu"
+                    color="green"
+                    onClick={() => setOpen(true)}
+                    size="icon-lg"
+                    variant="solid"
+                  >
+                    <Iconify icon="ph:list" />
+                  </Button>
+                </div>
+              </div>
+              <Drawer direction="top" onOpenChange={setOpen} open={open}>
+                <DrawerContent className="bg-green border-0 data-[vaul-drawer-direction=top]:h-screen data-[vaul-drawer-direction=top]:max-h-screen data-[vaul-drawer-direction=top]:mb-0 data-[vaul-drawer-direction=top]:rounded-none">
+                  <DrawerTitle className="sr-only">Mobile navigation</DrawerTitle>
 
-                                <Box>
-                                    {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */}
-                                    {/* @ts-ignore */}
-                                    <Fab aria-label="add" color="green" onClick={toggleDrawer}>
-                                        <Iconify icon="ph:list" />
-                                    </Fab>
-                                </Box>
-                            </Stack>
-                            <Drawer
-                                anchor="top"
-                                onClose={toggleDrawer}
-                                open={open}
-                                sx={{
-                                    "& .MuiDrawer-paper": {
-                                        boxSizing: "border-box",
-                                        backgroundColor: theme.palette.green.main,
-                                        height: "100vh",
-                                        width: "100vw"
-                                    }
-                                }}
-                            >
-                                <Fab
-                                    aria-label="close menu"
-                                    color="secondary"
-                                    onClick={toggleDrawer}
-                                    size="large"
-                                    sx={{
-                                        position: "absolute",
-                                        top: theme.spacing(2),
-                                        right: theme.spacing(2)
-                                    }}
-                                >
-                                    <Iconify icon="ph:x-bold" />
-                                </Fab>
+                  <Button
+                    aria-label="close menu"
+                    className="absolute top-4 right-4"
+                    color="green"
+                    onClick={() => setOpen(false)}
+                    size="icon-lg"
+                    variant="solid"
+                  >
+                    <Iconify icon="ph:x-bold" />
+                  </Button>
 
-                                <Stack justifyContent="space-between" sx={{ minHeight: "100vh" }}>
+                  <div className="flex flex-col justify-between min-h-screen">
 
-                                    <Stack
-                                        spacing={2}
-                                        sx={{
-                                            paddingY: 4,
-                                            paddingX: 3
-                                        }}
-                                    >
-                                        {
-                                            links.map(link => (
-                                                <Typography
-                                                    key={link.label}
-                                                    color="secondary"
-                                                    component={Link}
-                                                    sx={{
-                                                        fontFamily: TITLE_FONT_FAMILY,
-                                                        textDecoration: "none",
-                                                        textTransform: "uppercase"
-                                                    }}
-                                                    to={link.to}
-                                                    variant="h2"
-                                                >
-                                                    {link.label}
-                                                </Typography>
-                                            ))
-                                        }
-                                        <div>
-                                            <Button
-                                                component={Link}
-                                                size="large"
-                                                to="/donate"
-                                            >
-                                                Donate
-                                            </Button>
-                                        </div>
-                                    </Stack>
+                    <div className="flex flex-col gap-6 py-8 px-6">
+                      {
+                        links.map(link => (
+                          <Button
+                            key={link.label}
+                            className="text-secondary text-4xl justify-start px-0 h-auto py-3 no-underline hover:no-underline"
+                            href={link.to}
+                            variant="link"
+                          >
+                            {link.label}
+                          </Button>
+                        ))
+                      }
+                      <div className="pt-2">
+                        <Button
+                          href="/donate"
+                          size="lg"
+                        >
+                                                  Donate
+                        </Button>
+                      </div>
+                    </div>
 
-                                    <div>
-                                        <Waves
-                                            bottomColor={theme.palette.green.dark}
-                                            style={{ marginBottom: -1 }}
-                                            topColor={theme.palette.green.main}
-                                        />
-                                        <Stack padding={3} sx={{ backgroundColor: theme.palette.green.dark }}>
-                                            <Typography color="secondary" variant="h5">
-                                                Find us on Facebook:
-                                            </Typography>
-                                            <FacebookIcon color={theme.palette.secondary.main} href="www.google.com" />
-                                        </Stack>
-                                    </div>
-                                </Stack>
-
-                            </Drawer>
-                        </>
-                    )
-                    : (
-                        <>
-                            <div
-                                style={{
-                                    backgroundColor: GREEN.main,
-                                    height: 60
-                                }}
-                            >
-                                <Container>
-                                    <Stack direction="row">
-                                        <Stack
-                                            alignItems="center"
-                                            direction="row"
-                                            flex={3}
-                                            justifyContent="space-around"
-                                            padding={2}
-                                            spacing={2}
-                                            width={1}
-                                        >
-                                            {
-                                                links.slice(0, 3)
-                                                    .map(link => (
-                                                        <NavLink
-                                                            key={link.label}
-                                                            label={link.label}
-                                                            to={link.to}
-                                                        />
-                                                    ))
-                                            }
-                                        </Stack>
-                                        <Box
-                                            component={Link}
-                                            flex={1}
-                                            sx={{
-                                                position: "relative",
-                                                zIndex: 16
-                                            }}
-                                            to="/"
-                                        >
-                                            <Logo
-                                                sx={{
-                                                    position: "absolute",
-                                                    top: 0,
-                                                    right: "50%",
-                                                    transform: "translate(50%, -0%)",
-                                                    zIndex: 21,
-                                                    maxWidth: 260,
-                                                    width: "100%",
-                                                    marginTop: theme.spacing(0.5)
-                                                }}
-                                            />
-                                        </Box>
-                                        <Stack
-                                            alignItems="center"
-                                            direction="row"
-                                            flex={3}
-                                            justifyContent="space-around"
-                                            padding={2}
-                                            spacing={2}
-                                            width={1}
-                                        >
-                                            {
-                                                links.slice(3, 5)
-                                                    .map(link => (
-                                                        <NavLink
-                                                            key={link.label}
-                                                            label={link.label}
-                                                            to={link.to}
-                                                        />
-                                                    ))
-                                            }
-                                            <Button
-                                                component={Link}
-                                                to="/donate"
-                                            >
-                                                Donate
-                                            </Button>
-                                        </Stack>
-                                    </Stack>
-                                </Container>
-
-                            </div>
-                            <Waves
-                                bottomColor={GREEN.main}
-                                style={{
-                                    height: 20,
-                                    // Issue with waves due to painting a rectangle and one wave
-                                    transform: "rotate(180deg)",
-                                    zIndex: 15,
-                                    marginTop: -1
-                                }}
-                                topColor="unset"
-                                variant={3}
+                    <div>
+                      <Waves
+                        bottomColor="var(--color-green-dark)"
+                        style={{ marginBottom: -1 }}
+                        topColor="var(--color-green)"
+                      />
+                      <div className="flex flex-col p-6 bg-green-dark">
+                        <h5 className="text-secondary font-bold text-lg md:text-xl">
+                                                  Find us on Facebook:
+                        </h5>
+                        <FacebookIcon
+                          color="var(--color-cream)"
+                          href="https://www.facebook.com/matlockraftevent/"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </DrawerContent>
+              </Drawer>
+            </>
+          )
+          : (
+            <>
+              <div
+                className="bg-green h-[60px]"
+              >
+                <div className="mx-auto w-full max-w-6xl px-4">
+                  <div className="flex flex-row">
+                    <div className="flex flex-row items-center flex-[3] justify-around p-4 gap-4 w-full">
+                      {
+                        links.slice(0, 3)
+                          .map(link => (
+                            <NavLink
+                              key={link.label}
+                              label={link.label}
+                              to={link.to}
                             />
-                        </>
-                    )
-            }
-        </div>
-    );
+                          ))
+                      }
+                    </div>
+                    <a
+                      className="flex-1 relative z-[16]"
+                      href="/"
+                    >
+                      <Logo className="absolute top-0 right-1/2 translate-x-1/2 z-[21] max-w-[260px] w-full mt-1" />
+                    </a>
+                    <div className="flex flex-row items-center flex-[3] justify-around p-4 gap-4 w-full">
+                      {
+                        links.slice(3, 5)
+                          .map(link => (
+                            <NavLink
+                              key={link.label}
+                              label={link.label}
+                              to={link.to}
+                            />
+                          ))
+                      }
+                      <Button href="/donate">
+                                                Donate
+                      </Button>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+              <Waves
+                bottomColor="var(--color-green)"
+                style={{
+                  height: 20,
+                  transform: "rotate(180deg)",
+                  zIndex: 15,
+                  marginTop: -1
+                }}
+                topColor="unset"
+                variant={3}
+              />
+            </>
+          )
+      }
+    </div>
+  );
 };
 
 export default Header;

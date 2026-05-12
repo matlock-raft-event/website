@@ -1,105 +1,77 @@
-import { ReactNode, useMemo } from "react";
-import { Box, Container } from "@mui/material";
-import { useTheme } from "@mui/material/styles";
-import { PaletteColor } from "@mui/material/styles/createPalette";
+import type { ReactNode } from "react";
 
 import Cloud from "~/components/shadows/Cloud";
 import Tree from "~/components/shadows/Tree";
 import Water from "~/components/shadows/Water";
 
+export type Palette = "mint" | "cream" | "red" | "green" | "yellow" | "dark";
+
 interface SectionProps {
-    bgColor?: PaletteColor;
-    children?: ReactNode;
+  palette?: Palette;
+  children?: ReactNode;
 }
 
-const Section = ({
-    bgColor,
-    children
-}: SectionProps) => {
-    const theme = useTheme();
+const PALETTE_BG: Record<Palette, string> = {
+  mint: "bg-mint",
+  cream: "bg-cream",
+  red: "bg-red",
+  green: "bg-green",
+  yellow: "bg-yellow",
+  dark: "bg-dark"
+};
 
-    const ShadowComponent = useMemo(() => {
-        switch (bgColor) {
-            case theme.palette.green:
-                return Tree;
-            case theme.palette.yellow:
-            case theme.palette.secondary:
-                return Cloud;
-            case theme.palette.primary:
-                return Water;
-            default:
-                return null;
-        }
-    },
-    [bgColor]
-    );
+const PALETTE_SHADOW_COLOR: Record<Palette, string> = {
+  mint: "var(--color-mint-dark)",
+  cream: "var(--color-cream-dark)",
+  red: "var(--color-red-dark)",
+  green: "var(--color-green-dark)",
+  yellow: "var(--color-yellow-dark)",
+  dark: "var(--color-dark-dark)"
+};
 
-    return (
-        <Box
-            sx={{
-                backgroundColor: bgColor?.main ?? theme.palette.primary.main,
-                paddingTop: "2em",
-                paddingBottom: "3em",
-                position: "relative",
-                overflow: "hidden"
-            }}
-        >
-            <Container
-                maxWidth="lg"
-                style={{
-                    position: "relative",
-                    zIndex: 4
-                }}
-            >
-                {children}
-            </Container>
-            {
-                ShadowComponent !== null &&
-                <>
-                    <ShadowComponent
-                        color={bgColor?.dark}
-                        style={{
-                            position: "absolute",
-                            top: 1,
-                            left: 0,
-                            width: "15%",
-                            zIndex: 3
-                        }}
-                    />
-                    <ShadowComponent
-                        color={bgColor?.dark}
-                        style={{
-                            position: "absolute",
-                            top: "10%",
-                            right: 0,
-                            width: "15%",
-                            zIndex: 3
-                        }}
-                    />
-                    <ShadowComponent
-                        color={bgColor?.dark}
-                        style={{
-                            position: "absolute",
-                            bottom: "8%",
-                            left: "-10%",
-                            width: "15%",
-                            zIndex: 3
-                        }}
-                    />
-                    <ShadowComponent
-                        color={bgColor?.dark}
-                        style={{
-                            position: "absolute",
-                            bottom: "13%",
-                            right: "-5%",
-                            width: "15%",
-                            zIndex: 3
-                        }}
-                    />
-                </>
-            }
-        </Box>
-    );
+const SHADOW_BY_PALETTE: Record<Palette, "tree" | "cloud" | "water" | null> = {
+  green: "tree",
+  yellow: "cloud",
+  cream: "cloud",
+  mint: "water",
+  red: null,
+  dark: null
+};
+
+const SHADOWS = { tree: Tree, cloud: Cloud, water: Water };
+
+const Section = ({ palette = "mint", children }: SectionProps) => {
+  const shadowKey = SHADOW_BY_PALETTE[palette];
+  const ShadowComponent = shadowKey ? SHADOWS[shadowKey] : null;
+  const shadowColor = PALETTE_SHADOW_COLOR[palette];
+
+  return (
+    <div className={`relative overflow-hidden pt-[2em] pb-[3em] ${PALETTE_BG[palette]}`}>
+      <div className="mx-auto w-full max-w-6xl px-4 relative z-[4]">
+        {children}
+      </div>
+      {ShadowComponent && (
+        <>
+          <ShadowComponent
+            color={shadowColor}
+            style={{ position: "absolute", top: 1, left: 0, width: "15%", zIndex: 3 }}
+          />
+          <ShadowComponent
+            color={shadowColor}
+            style={{ position: "absolute", top: "10%", right: 0, width: "15%", zIndex: 3 }}
+          />
+          <ShadowComponent
+            color={shadowColor}
+            style={{ position: "absolute", bottom: "8%", left: "-10%", width: "15%", zIndex: 3 }}
+          />
+          <ShadowComponent
+            color={shadowColor}
+            style={{ position: "absolute", bottom: "13%", right: "-5%", width: "15%", zIndex: 3 }}
+          />
+        </>
+      )}
+    </div>
+  );
 };
 
 export default Section;

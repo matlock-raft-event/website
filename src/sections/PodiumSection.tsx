@@ -1,104 +1,76 @@
 import { useMemo } from "react";
-import { useTheme } from "@mui/material/styles";
-import Grid2 from "@mui/material/Unstable_Grid2";
-import { graphql, useStaticQuery } from "gatsby";
 
 import Heading from "~/components/Heading";
 import PodiumCard from "~/components/PodiumCard";
 import Section from "~/components/Section";
 import useResponsive from "~/hooks/useResponsive";
+import type { WinnersQueryResult } from "~/lib/sanity.types";
 
-const PodiumSection = () => {
-    const data: Queries.WinnersQueryQuery = useStaticQuery(graphql`
-      query WinnersQuery {
-        allSanityWinner {
-         edges {
-          node {
-           name,
-           year,
-           position,
-           img {
-             asset {
-               gatsbyImageData(placeholder: BLURRED)
-             }
-           }
-          }
-         }
+type Props = { winners: WinnersQueryResult };
+
+const PodiumSection = ({ winners }: Props) => {
+  const firstPlace = winners?.find(item => item.position === 1);
+  const secondPlace = winners?.find(item => item.position === 2);
+  const thirdPlace = winners?.find(item => item.position === 3);
+
+  const isMobile = useResponsive("down", "sm");
+
+  const firstPlaceGridItem = (
+    <div key="first" className="col-span-10 sm:col-span-4">
+      {
+        firstPlace?.img &&
+                <PodiumCard
+                  image={firstPlace.img}
+                  podium={1}
+                  title={firstPlace.name ?? ""}
+                />
       }
-    }
-    `);
-    const winners = data.allSanityWinner.edges.map(edge => edge.node);
-    const firstPlace = winners.find(item => item.position === 1);
-    const secondPlace = winners.find(item => item.position === 2);
-    const thirdPlace = winners.find(item => item.position === 3);
-
-    const isMobile = useResponsive("down", "sm");
-
-    const firstPlaceGridItem = (
-        <Grid2 key="first" sm={4} xs={10}>
-            {
-                firstPlace && firstPlace.img?.asset?.gatsbyImageData &&
+    </div>
+  );
+  const secondPlaceGridItem = (
+    <div key="second" className={`col-span-6 sm:col-span-4 ${isMobile ? "mt-0" : "mt-16"}`}>
+      {
+        secondPlace?.img &&
                 <PodiumCard
-                    img={firstPlace.img.asset.gatsbyImageData}
-                    podium={1}
-                    title={firstPlace.name ?? ""}
+                  image={secondPlace.img}
+                  podium={2}
+                  title={secondPlace.name ?? ""}
                 />
-            }
-        </Grid2>
-    );
-    const secondPlaceGridItem = (
-        <Grid2 key="second" mt={isMobile ? 0 : 8} sm={4} xs={6}>
-            {
-                secondPlace && secondPlace.img?.asset?.gatsbyImageData &&
+      }
+    </div>
+  );
+  const thirdPlaceGridItem = (
+    <div key="third" className={`col-span-6 sm:col-span-4 ${isMobile ? "mt-0" : "mt-32"}`}>
+      {
+        thirdPlace?.img &&
                 <PodiumCard
-                    img={secondPlace.img.asset.gatsbyImageData}
-                    podium={2}
-                    title={secondPlace.name ?? ""}
+                  image={thirdPlace.img}
+                  podium={3}
+                  title={thirdPlace.name ?? ""}
                 />
-            }
-        </Grid2>
-    );
-    const thirdPlaceGridItem = (
-        <Grid2 key="third" mt={isMobile ? 0 : 16} sm={4} xs={6}>
-            {
-                thirdPlace && thirdPlace.img?.asset?.gatsbyImageData &&
-                <PodiumCard
-                    img={thirdPlace.img.asset.gatsbyImageData}
-                    podium={3}
-                    title={thirdPlace.name ?? ""}
-                />
-            }
-        </Grid2>
-    );
+      }
+    </div>
+  );
 
-    const orderedGridItems = useMemo(
-        () => (isMobile
-            ? [firstPlaceGridItem, secondPlaceGridItem, thirdPlaceGridItem]
-            : [secondPlaceGridItem, firstPlaceGridItem, thirdPlaceGridItem]),
-        [isMobile]
-    );
+  const orderedGridItems = useMemo(
+    () => (isMobile
+      ? [firstPlaceGridItem, secondPlaceGridItem, thirdPlaceGridItem]
+      : [secondPlaceGridItem, firstPlaceGridItem, thirdPlaceGridItem]),
+    [isMobile, winners]
+  );
 
-    const theme = useTheme();
-    return (
-        <Section bgColor={theme.palette.green}>
-            <Heading color={theme.palette.green} subtitle="Proud to present 2024's" title="Heroic Winners" />
+  return (
+    <Section palette="green">
+      <Heading palette="green" subtitle="Proud to present 2024's" title="Heroic Winners" />
 
-            <Grid2
-                container
-                justifyContent="center"
-                pt={!isMobile ? 4 : 0}
-                spacing={4}
-                sx={{ ...(isMobile && { paddingX: 4 }) }}
-            >
-                {orderedGridItems.map(item => item)}
-            </Grid2>
+      <div
+        className={`grid grid-cols-12 gap-8 justify-items-center ${!isMobile ? "pt-8" : "pt-0"} ${isMobile ? "px-8" : ""}`}
+      >
+        {orderedGridItems.map(item => item)}
+      </div>
 
-            {/* <Stack direction="row" justifyContent="center" mt={isMobile ? 4 : 0}> */}
-            {/*     <Button onClick={() => navigate("/hall-of-fame")} size="large">See our hall of fame</Button> */}
-            {/* </Stack> */}
-
-        </Section>
-    );
+    </Section>
+  );
 };
 
 export default PodiumSection;

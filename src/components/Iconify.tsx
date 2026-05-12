@@ -1,15 +1,28 @@
 import { forwardRef } from "react";
-// eslint-disable-next-line import/no-extraneous-dependencies
-import { Icon, IconifyIcon } from "@iconify/react";
-import { Box, BoxProps } from "@mui/material";
+import type { CSSProperties } from "react";
+import { Icon } from "@iconify/react";
+import type { IconifyIcon } from "@iconify/react";
 
 export type IconifyProps = IconifyIcon | string;
-interface Props extends BoxProps {
-    icon: IconifyProps;
+
+interface Props {
+  icon: IconifyProps;
+  width?: number | string;
+  className?: string;
+  style?: CSSProperties;
+  color?: string;
 }
 
-const Iconify = forwardRef<SVGElement, Props>(({ icon, width = 20, sx, ...other }, ref) => (
-    <Box ref={ref} component={Icon} icon={icon} sx={{ width, height: width, ...sx }} {...other} />
+const Iconify = forwardRef<SVGSVGElement, Props>(({ icon, width = 20, className, style, color }, ref) => (
+  <Icon
+    ref={ref}
+    className={className}
+    color={color}
+    height={width}
+    icon={icon}
+    style={style}
+    width={width}
+  />
 ));
 
 Iconify.displayName = "Iconify";

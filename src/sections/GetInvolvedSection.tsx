@@ -1,64 +1,37 @@
-import { useTheme } from "@mui/material/styles";
-import Grid2 from "@mui/material/Unstable_Grid2";
-import { graphql, useStaticQuery } from "gatsby";
-
+import donateImg from "~/assets/images/donate-img.jpg";
+import helpOutImg from "~/assets/images/help-out-img.jpg";
+import sponsorUsImg from "~/assets/images/sponsor-us-img.jpg";
+import takePartImg from "~/assets/images/take-part-img.jpg";
 import Heading from "~/components/Heading";
 import ImageLink from "~/components/ImageLink";
 import Section from "~/components/Section";
 import useResponsive from "~/hooks/useResponsive";
 
+const resolveSrc = (asset: unknown): string => (asset as { src?: string }).src ?? (asset as unknown as string);
+
 const GetInvolvedSection = () => {
-    const data: Queries.ImagesQuery = useStaticQuery(graphql`
-        query Images {
-            allFile(filter: {sourceInstanceName: {eq: "images"}}) {
-                nodes {
-                    relativePath
-                    childImageSharp {
-                        gatsbyImageData(placeholder: BLURRED)
-                    }
-                }
-            }
-        }
-    `);
+  const isMobile = useResponsive("down", "sm");
 
-    const donateImg = data.allFile.nodes.find(
-        item => item.relativePath === "donate-img.jpg"
-    )?.childImageSharp?.gatsbyImageData;
-    const helpOutImg = data.allFile.nodes.find(
-        item => item.relativePath === "help-out-img.jpg"
-    )?.childImageSharp?.gatsbyImageData;
-    const sponsorUsImg = data.allFile.nodes.find(
-        item => item.relativePath === "sponsor-us-img.jpg"
-    )?.childImageSharp?.gatsbyImageData;
-    const takePartImg = data.allFile.nodes.find(
-        item => item.relativePath === "take-part-img.jpg"
-    )?.childImageSharp?.gatsbyImageData;
+  return (
+    <Section palette="yellow">
+      <Heading palette="yellow" subtitle="It's for a mighty good cause" title="Get Involved" />
 
-    const theme = useTheme();
-    const color = theme.palette.yellow;
-
-    const isMobile = useResponsive("down", "sm");
-
-    return (
-        <Section bgColor={color}>
-            <Heading color={color} subtitle="It's for a mighty good cause" title="Get Involved" />
-
-            <Grid2 container px={isMobile ? 8 : undefined} spacing={3}>
-                <Grid2 md={3} sm={6} xs={12}>
-                    <ImageLink href="/take-part" img={takePartImg} label="Take Part" />
-                </Grid2>
-                <Grid2 md={3} sm={6} xs={12}>
-                    <ImageLink href="/volunteer" img={helpOutImg} label="Help Out" />
-                </Grid2>
-                <Grid2 md={3} sm={6} xs={12}>
-                    <ImageLink href="/donate" img={donateImg} label="Donate" />
-                </Grid2>
-                <Grid2 md={3} sm={6} xs={12}>
-                    <ImageLink href="/sponsors" img={sponsorUsImg} label="Sponsor Us" />
-                </Grid2>
-            </Grid2>
-        </Section>
-    );
+      <div className={`grid grid-cols-12 gap-6 ${isMobile ? "px-16" : ""}`}>
+        <div className="col-span-12 sm:col-span-6 md:col-span-3">
+          <ImageLink href="/take-part" label="Take Part" src={resolveSrc(takePartImg)} />
+        </div>
+        <div className="col-span-12 sm:col-span-6 md:col-span-3">
+          <ImageLink href="/volunteer" label="Help Out" src={resolveSrc(helpOutImg)} />
+        </div>
+        <div className="col-span-12 sm:col-span-6 md:col-span-3">
+          <ImageLink href="/donate" label="Donate" src={resolveSrc(donateImg)} />
+        </div>
+        <div className="col-span-12 sm:col-span-6 md:col-span-3">
+          <ImageLink href="/sponsors" label="Sponsor Us" src={resolveSrc(sponsorUsImg)} />
+        </div>
+      </div>
+    </Section>
+  );
 };
 
 export default GetInvolvedSection;

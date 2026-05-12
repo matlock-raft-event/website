@@ -1,48 +1,24 @@
-import * as React from "react";
-import { Container } from "@mui/material";
-import { useTheme } from "@mui/material/styles";
-import { graphql, useStaticQuery } from "gatsby";
-
 import Block from "~/components/Block";
 import Heading from "~/components/Heading";
 import Section from "~/components/Section";
+import type { AboutQueryResult } from "~/lib/sanity.types";
 
-const AboutSection = () => {
-    const theme = useTheme();
+type Props = { about: AboutQueryResult };
 
-    const data: Queries.AboutQuery = useStaticQuery(graphql`
-      query About {
-        allSanityAbout {
-         edges {
-          node {
-            _rawBio,
-            _rawRnliBio,
-            rnliLink,
-            _rawDasacBio,
-            dasacLink
-          }
-         }
-      }
+const AboutSection = ({ about }: Props) => (
+  <Section palette="cream">
+    <Heading
+      palette="cream"
+      subtitle="It all started in 1961"
+      title="What is The Matlock Raft Event?"
+    />
+    {
+      about?.bio &&
+                <div className="mx-auto w-full max-w-4xl px-4">
+                  <Block value={about.bio as never} />
+                </div>
     }
-    `);
-
-    const about = data.allSanityAbout.edges.map(edge => edge.node)[0];
-
-    return (
-        <Section bgColor={theme.palette.secondary}>
-            <Heading
-                color={theme.palette.secondary}
-                subtitle="It all started in 1961"
-                title="What is The Matlock Raft Event?"
-            />
-            {
-                about._rawBio &&
-                <Container maxWidth="md">
-                    <Block value={about._rawBio as never} />
-                </Container>
-            }
-        </Section>
-    );
-};
+  </Section>
+);
 
 export default AboutSection;

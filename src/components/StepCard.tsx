@@ -1,45 +1,24 @@
-import { ReactNode } from "react";
-import { Box, Stack, SxProps, Typography } from "@mui/material";
-import { useTheme } from "@mui/material/styles";
-
-import { TITLE_FONT_FAMILY } from "~/theme/typography";
+import type { ReactNode } from "react";
 
 type StepCardProps = {
-    icon?: ReactNode;
-    title: ReactNode;
-    content: ReactNode;
-    sx?: SxProps;
+  icon?: ReactNode;
+  title: ReactNode;
+  content: ReactNode;
 };
-const StepCard = ({ icon, title, content, sx }: StepCardProps) => {
-    const theme = useTheme();
-    return (
-        <Stack
-            direction="row"
-            spacing={2}
-            sx={{
-                borderRadius: theme.shape.borderRadius,
-                padding: theme.spacing(2),
-                backgroundColor: theme.palette.secondary.light,
-                boxShadow: theme.shadows[5],
-                width: "100%",
-                ...sx
-            }}
-        >
-            <Box pt={0.5}>
-                {icon}
-            </Box>
-            <Stack spacing={1}>
-                <Typography
-                    color="secondary.contrastText"
-                    fontFamily={TITLE_FONT_FAMILY}
-                    variant="h3"
-                >
-                    {title}
-                </Typography>
-                {content}
-            </Stack>
-        </Stack>
-    );
+const StepCard = ({ icon, title, content }: StepCardProps) => {
+  return (
+    <div className="flex flex-row gap-4 rounded-[2px] p-4 bg-cream-light shadow-[7px_7px_0_0_rgba(0,0,0,0.25)] w-full">
+      <div className="pt-1">
+        {icon}
+      </div>
+      <div className="flex flex-col gap-2">
+        <h3 className="text-secondary-contrast font-display font-bold text-2xl md:text-3xl">
+          {title}
+        </h3>
+        {content}
+      </div>
+    </div>
+  );
 };
 
 export default StepCard;

@@ -1,151 +1,75 @@
-import * as React from "react";
-import { Stack, Typography } from "@mui/material";
-import { styled, useTheme } from "@mui/material/styles";
-import { PaletteColor } from "@mui/material/styles/createPalette";
-import { Link } from "gatsby";
-
-import { TITLE_FONT_FAMILY } from "~/theme/typography";
+import { Button } from "~/components/ui/button";
 
 import FacebookIcon from "./FacebookIcon";
 
-const StyledSection = styled("section")(({ theme }) => ({
-    width: "100%",
-    paddingBottom: theme.spacing(4)
-}));
-
-const StyledRow = styled("div")(({ theme }) => ({
-    display: "flex",
-    justifyContent: "center",
-    padding: 8,
-    gap: 16,
-    alignItems: "center",
-    flexDirection: "column",
-    [theme.breakpoints.up("sm")]: {
-        flexDirection: "row"
-    }
-}));
-
-type FooterProps = {
-    color?: PaletteColor;
-};
-
 const links = [
-    {
-        label: "About",
-        to: "/about"
-    },
-    {
-        label: "Info",
-        to: "/info"
-    },
-    {
-        label: "Sponsors",
-        to: "/sponsors"
-    },
-    {
-        label: "Contact",
-        to: "/contact"
-    },
-    {
-        label: "Gallery",
-        to: "/gallery"
-    }
+  { label: "About", to: "/about" },
+  { label: "Info", to: "/info" },
+  { label: "Sponsors", to: "/sponsors" },
+  { label: "Contact", to: "/contact" },
+  { label: "Gallery", to: "/gallery" }
 ];
+
 const NavLink = ({
-    label,
-    to
-}: { label: string, to: string }) => {
-    const theme = useTheme();
-    return (
-        <Typography
-            key={label}
-            color="secondary.contrastText"
-            component={Link}
-            sx={{
-                transition:
-                    "all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1)",
-                fontFamily: TITLE_FONT_FAMILY,
-                fontWeight: 600,
-                textTransform: "uppercase",
-                textDecorationColor: "transparent",
-                "&:hover": {
-                    transform: "scale(1.05)",
-                    textDecorationColor: theme.palette.secondary.contrastText,
-                    textShadow: "none"
-                }
-            }}
-            to={to}
-            variant="h6"
-        >
-            {label}
-        </Typography>
-    );
-};
+  label,
+  to
+}: { label: string, to: string }) => (
+  <Button
+    className="text-cream-contrast"
+    href={to}
+    variant="link"
+  >
+    {label}
+  </Button>
+);
 
-const Footer = ({ color }: FooterProps) => {
-    const theme = useTheme();
-
-    const bgColor = color?.main ?? theme.palette.secondary.main;
-    const textColor = color?.contrastText ?? theme.palette.secondary.contrastText;
-
-    return (
-        <StyledSection style={{ backgroundColor: bgColor }}>
-            <Stack alignItems="center" spacing={2}>
-                <Stack>
-                    <Typography
-                        sx={{ color: textColor }}
-                        variant="overline"
-                    >
+const Footer = () => (
+  <section className="w-full pb-8 bg-cream">
+    <div className="flex flex-col items-center gap-4">
+      <div className="flex flex-col">
+        <p className="font-bold text-xs uppercase tracking-wider text-cream-contrast">
                         FIND US ELSEWHERE
-                    </Typography>
-                    <StyledRow>
-                        <FacebookIcon color={textColor} href="https://www.facebook.com/matlockraftevent/" />
-                    </StyledRow>
-                </Stack>
+        </p>
+        <div className="flex flex-col sm:flex-row justify-center items-center p-2 gap-4">
+          <FacebookIcon color="var(--color-cream-contrast)" href="https://www.facebook.com/matlockraftevent/" />
+        </div>
+      </div>
 
-                <StyledRow>
-                    {
-                        links.map(link => (
-                            <NavLink
-                                key={link.label}
-                                label={link.label}
-                                to={link.to}
-                            />
-                        ))
-                    }
-                </StyledRow>
-                <Typography
-                    sx={{ color: textColor }}
-                    textAlign="center"
-                    variant="body2"
-                >
+      <div className="flex flex-col sm:flex-row justify-center items-center p-2 gap-4">
+        {
+          links.map(link => (
+            <NavLink
+              key={link.label}
+              label={link.label}
+              to={link.to}
+            />
+          ))
+        }
+      </div>
+      <p className="text-sm leading-relaxed text-center text-cream-contrast">
                     &#169; Copyright
-                    {" "}
-                    {new Date().getFullYear()}
-                    {" "}
+        {" "}
+        {new Date().getFullYear()}
+        {" "}
                     -
-                    {" "}
-                    <strong>Dasac’s Matlock Raft Event</strong>
-                    {" "}
+        {" "}
+        <strong>Dasac’s Matlock Raft Event</strong>
+        {" "}
                     - In the aid of the the
                     Royal National Lifeboats Institute (RNLI)
-                </Typography>
-                <Typography
-                    sx={{ color: textColor }}
-                    textAlign="center"
-                    variant="body2"
-                >
+      </p>
+      <p className="text-sm leading-relaxed text-center text-cream-contrast">
                     Website designed and coded with ♥ by
-                    {" "}
-                    <strong>Ian Ryde</strong>
-                    {" "}
+        {" "}
+        <strong>Ian Ryde</strong>
+        {" "}
                     and
-                    {" "}
-                    <strong>Sam Hepburn</strong>
+        {" "}
+        <strong>Sam Hepburn</strong>
                     .
-                </Typography>
-            </Stack>
-        </StyledSection>
-    );
-};
+      </p>
+    </div>
+  </section>
+);
+
 export default Footer;

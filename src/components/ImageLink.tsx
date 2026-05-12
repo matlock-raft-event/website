@@ -1,67 +1,55 @@
-import { CSSProperties, useState } from "react";
-import { Typography } from "@mui/material";
-import { styled, useTheme } from "@mui/material/styles";
-import { GatsbyImage, IGatsbyImageData } from "gatsby-plugin-image";
+import type { CSSProperties } from "react";
+import { useState } from "react";
 
 import useResponsive from "~/hooks/useResponsive";
-import { TITLE_FONT_FAMILY } from "~/theme/typography";
-
-const StyledLink = styled("a")(({ theme }) => ({
-    aspectRatio: "3 / 2",
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    borderRadius: 2,
-    backgroundColor: "#ffffff",
-    border: "8px solid white",
-    boxShadow: theme.shadows[5],
-    transition: "all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1)"
-}));
 
 interface ImageLinkProps {
-    img: IGatsbyImageData;
-    label: string;
-    href: string;
+  src: string;
+  label: string;
+  href: string;
 }
 
-const ImageLink = ({ img, label, href }: ImageLinkProps) => {
-    const theme = useTheme();
-    const [hover, setHover] = useState(false);
-    const onMouseEnter = () => setHover(true);
-    const onMouseLeave = () => setHover(false);
+const ImageLink = ({ src, label, href }: ImageLinkProps) => {
+  const [hover, setHover] = useState(false);
+  const onMouseEnter = () => setHover(true);
+  const onMouseLeave = () => setHover(false);
 
-    const hoverStyles: CSSProperties | null = {
-        cursor: "pointer",
-        boxShadow: theme.shadows[10],
-        transform: "scale(1.01) rotate(-0.5deg)"
-    };
+  const hoverStyles: CSSProperties | null = {
+    cursor: "pointer",
+    boxShadow: "14px 14px 0px 0px rgba(0, 0, 0, 0.25)",
+    transform: "scale(1.01) rotate(-0.5deg)"
+  };
 
-    const isMobile = useResponsive("down", "sm");
+  const isMobile = useResponsive("down", "sm");
 
-    return (
-        <StyledLink
-            href={href}
-            onMouseEnter={onMouseEnter}
-            onMouseLeave={onMouseLeave}
-            style={{ ...(hover && hoverStyles) }}
-        >
-            <GatsbyImage alt="LLL" image={img} />
-            <Typography
-                color="white"
-                position="absolute"
-                sx={{
-                    fontFamily: TITLE_FONT_FAMILY,
-                    ...(isMobile && {
-                        fontSize: "2rem"
-                    })
-                }}
-                textTransform="uppercase"
-                variant="h3"
-            >
-                {label}
-            </Typography>
-        </StyledLink>
-    );
+  return (
+    <a
+      className="aspect-[3/2] flex justify-center items-center rounded-[2px] bg-white border-[8px] border-white shadow-[7px_7px_0_0_rgba(0,0,0,0.25)] transition-all duration-[600ms] ease-[cubic-bezier(0.165,0.84,0.44,1)] overflow-hidden relative"
+      href={href}
+      onMouseEnter={onMouseEnter}
+      onMouseLeave={onMouseLeave}
+      style={{ ...(hover && hoverStyles) }}
+    >
+      <img
+        alt={label}
+        loading="lazy"
+        src={src}
+        style={{
+          position: "absolute",
+          top: 0,
+          left: 0,
+          width: "100%",
+          height: "100%",
+          objectFit: "cover"
+        }}
+      />
+      <h3
+        className={`text-white font-display font-bold text-2xl md:text-3xl uppercase relative z-[1] ${isMobile ? "text-[2rem]" : ""}`}
+      >
+        {label}
+      </h3>
+    </a>
+  );
 };
 
 export default ImageLink;

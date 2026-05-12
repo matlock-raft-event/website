@@ -1,71 +1,38 @@
-import * as React from "react";
-import { Accordion, AccordionDetails, AccordionSummary, Container, Typography } from "@mui/material";
-import { useTheme } from "@mui/material/styles";
-import { graphql, useStaticQuery } from "gatsby";
-
 import Block from "~/components/Block";
 import Heading from "~/components/Heading";
-import Iconify from "~/components/Iconify";
 import Section from "~/components/Section";
-import { TITLE_FONT_FAMILY } from "~/theme/typography";
+import Accordion from "~/components/ui/accordion/accordion";
+import AccordionContent from "~/components/ui/accordion/accordion-content";
+import AccordionItem from "~/components/ui/accordion/accordion-item";
+import AccordionTrigger from "~/components/ui/accordion/accordion-trigger";
+import type { FaqsQueryResult } from "~/lib/sanity.types";
 
-const FaqsSection = () => {
-    const data: Queries.FaqsQuery = useStaticQuery(graphql`
-      query Faqs {
-        allSanityFaq {
-         edges {
-          node {
-           question,
-           _rawAnswer
-          }
-         }
-      }
-    }
-    `);
+type Props = { faqs: FaqsQueryResult };
 
-    const faqs = data.allSanityFaq.edges.map(edge => edge.node);
-
-    const theme = useTheme();
-
-    return (
-        <Section bgColor={theme.palette.secondary}>
-            <Heading
-                color={theme.palette.secondary}
-                subtitle="You asked, we answered!"
-                title="Frequently Asked Questions"
-            />
-            <Container maxWidth="md">
-                {
-                    faqs.map(faq => (
-                        <Accordion
-                            key={faq.question}
-                            sx={{
-                                bgcolor: "transparent",
-                                boxShadow: "none"
-                            }}
-                        >
-                            <AccordionSummary
-                                aria-controls="panel1-content"
-                                expandIcon={<Iconify color="secondary.contrastText" icon="ph:caret-down" />}
-                                id="panel1-header"
-                            >
-                                <Typography
-                                    color="secondary.contrastText"
-                                    fontFamily={TITLE_FONT_FAMILY}
-                                    variant="h4"
-                                >
-                                    {faq.question}
-                                </Typography>
-                            </AccordionSummary>
-                            <AccordionDetails>
-                                <Block value={faq._rawAnswer as never} />
-                            </AccordionDetails>
-                        </Accordion>
-                    ))
-                }
-            </Container>
-        </Section>
-    );
-};
+const FaqsSection = ({ faqs }: Props) => (
+  <Section palette="cream">
+    <Heading
+      palette="cream"
+      subtitle="You asked, we answered!"
+      title="Frequently Asked Questions"
+    />
+    <div className="mx-auto w-full max-w-4xl px-4">
+      <Accordion>
+        {
+          (faqs ?? []).map(faq => (
+            <AccordionItem key={faq.question} value={faq.question}>
+              <AccordionTrigger className="text-cream-contrast font-display text-xl py-4">
+                {faq.question}
+              </AccordionTrigger>
+              <AccordionContent>
+                {faq.answer ? <Block value={faq.answer as never} /> : null}
+              </AccordionContent>
+            </AccordionItem>
+          ))
+        }
+      </Accordion>
+    </div>
+  </Section>
+);
 
 export default FaqsSection;

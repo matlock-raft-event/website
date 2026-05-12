@@ -1,65 +1,44 @@
-import { Container, Typography } from "@mui/material";
-import { useTheme } from "@mui/material/styles";
-import { graphql, useStaticQuery } from "gatsby";
-
 import Block from "~/components/Block";
 import Heading from "~/components/Heading";
 import Section from "~/components/Section";
+import type { ContactInstructionsQueryResult } from "~/lib/sanity.types";
 
-const ContactUsSection = () => {
-    const theme = useTheme();
+type Props = { contactInstructions: ContactInstructionsQueryResult };
 
-    const data: Queries.ContactInstructionsQuery = useStaticQuery(graphql`
-      query ContactInstructions {
-        allSanityContactInstructions {
-         edges {
-          node {
-            _rawGeneral,
-            _rawPress,
-            _rawSponsors,
-          }
-         }
-      }
-    }
-    `);
+const ContactUsSection = ({ contactInstructions }: Props) => (
+  <Section palette="cream">
+    <Heading palette="cream" subtitle="Need to get in touch?" title="Contact us" />
 
-    const contactInstructions = data.allSanityContactInstructions.edges.map(edge => edge.node)[0];
+    <div className="mx-auto w-full max-w-4xl px-4">
 
-    return (
-        <Section bgColor={theme.palette.secondary}>
-            <Heading color={theme.palette.secondary} subtitle="Need to get in touch?" title="Contact us" />
-
-            <Container maxWidth="md">
-
-                <Typography mb={4} variant="body1">
+      <p className="text-sm sm:text-base lg:text-lg leading-relaxed mb-8">
                     We&apos;re all ears for participants and those eager to join the excitement! Connect with us on our
                     Facebook page, or become a part of our Facebook group where you can share your event snapshots and
                     videos with the community. Got questions or simply want to chat about the event? We&apos;re here to
                     fill you in on all the details. We&apos;ll get back to you as soon as we can!
-                </Typography>
+      </p>
 
-                <Typography variant="subtitle1">General Enquiries</Typography>
-                {
-                    contactInstructions._rawGeneral &&
-                    <Block value={contactInstructions._rawGeneral as never} />
-                }
+      <p className="font-display font-semibold text-base">General Enquiries</p>
+      {
+        contactInstructions?.general &&
+                    <Block value={contactInstructions.general as never} />
+      }
 
-                <Typography variant="subtitle1">Sponsors</Typography>
-                {
-                    contactInstructions._rawSponsors &&
-                    <Block value={contactInstructions._rawSponsors as never} />
-                }
+      <p className="font-display font-semibold text-base">Sponsors</p>
+      {
+        contactInstructions?.sponsors &&
+                    <Block value={contactInstructions.sponsors as never} />
+      }
 
-                <Typography variant="subtitle1">Press</Typography>
-                {
-                    contactInstructions._rawPress &&
-                    <Block value={contactInstructions._rawPress as never} />
-                }
+      <p className="font-display font-semibold text-base">Press</p>
+      {
+        contactInstructions?.press &&
+                    <Block value={contactInstructions.press as never} />
+      }
 
-            </Container>
+    </div>
 
-        </Section>
-    );
-};
+  </Section>
+);
 
 export default ContactUsSection;

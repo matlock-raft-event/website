@@ -1,55 +1,46 @@
-import { Stack, Typography } from "@mui/material";
-import { styled, useTheme } from "@mui/material/styles";
-import { PaletteColor } from "@mui/material/styles/createPalette";
-
 import useResponsive from "~/hooks/useResponsive";
-import { TITLE_FONT_FAMILY } from "~/theme/typography";
 
-const StyledContainer = styled("div")(({ theme }) => ({
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
-    paddingBottom: theme.spacing(3)
-}));
+import type { Palette } from "./Section";
 
-const Bullet = () => (
-    <span>
-        <Typography variant="h6">
-            &#8226;
-        </Typography>
-    </span>
-);
-// TODO: Can we get a better bullet svg?
-
-type HeadingProps = {
-    color?: PaletteColor;
-    subtitle?: string;
-    title: string;
+const PALETTE_TEXT: Record<Palette, string> = {
+  mint: "text-mint-contrast",
+  cream: "text-cream-contrast",
+  red: "text-red-contrast",
+  green: "text-green-contrast",
+  yellow: "text-yellow-contrast",
+  dark: "text-dark-contrast"
 };
 
-const Heading = ({
-    color,
-    subtitle,
-    title
-}: HeadingProps) => {
-    const theme = useTheme();
-    const textColor = color?.contrastText ?? theme.palette.primary.contrastText;
+const Bullet = () => (
+  <span>
+    <h6 className="font-serif font-medium text-sm sm:text-base md:text-lg">
+            &#8226;
+    </h6>
+  </span>
+);
 
-    const isMobile = useResponsive("down", "sm");
+type HeadingProps = {
+  palette?: Palette;
+  subtitle?: string;
+  title: string;
+};
 
-    return (
-        <StyledContainer style={{ color: textColor }}>
-            {
-                subtitle &&
-                <Stack alignItems="center" direction="row" mb={1} spacing={isMobile ? 1 : 2}>
-                    <Bullet />
-                    <Typography textAlign="center" textTransform="uppercase" variant="h6">{subtitle}</Typography>
-                    <Bullet />
-                </Stack>
-            }
-            <Typography fontFamily={TITLE_FONT_FAMILY} textAlign="center" variant="h2">{title}</Typography>
-        </StyledContainer>
-    );
+const Heading = ({ palette = "mint", subtitle, title }: HeadingProps) => {
+  const isMobile = useResponsive("down", "sm");
+
+  return (
+    <div className={`flex flex-col items-center pb-6 ${PALETTE_TEXT[palette]}`}>
+      {
+        subtitle &&
+                <div className={`flex flex-row items-center mb-2 ${isMobile ? "gap-2" : "gap-4"}`}>
+                  <Bullet />
+                  <h6 className="font-serif font-medium text-sm sm:text-base md:text-lg text-center uppercase">{subtitle}</h6>
+                  <Bullet />
+                </div>
+      }
+      <h2 className="font-display font-extrabold text-3xl sm:text-4xl lg:text-5xl leading-tight text-center">{title}</h2>
+    </div>
+  );
 };
 
 export default Heading;

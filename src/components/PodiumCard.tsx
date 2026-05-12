@@ -1,62 +1,47 @@
-import React from "react";
-import { Stack, Typography } from "@mui/material";
-import { styled } from "@mui/material/styles";
-import { GatsbyImage, IGatsbyImageData } from "gatsby-plugin-image";
-
 import PodiumBadge from "~/components/PodiumBadge";
-import { TITLE_FONT_FAMILY } from "~/theme/typography";
-
-const StyledDiv = styled("div")(({ theme }) => ({
-    position: "relative",
-    padding: "4%",
-    paddingBottom: "8%",
-    borderRadius: 2,
-    backgroundColor: "#ffffff",
-    boxShadow: theme.shadows[5],
-    transition: "all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1)",
-    display: "flex"
-}));
+import SanityImage from "~/components/SanityImage";
 
 interface PodiumCardProps {
-    img: IGatsbyImageData;
-    podium: 1 | 2 | 3;
-    title: string;
+  image: unknown;
+  podium: 1 | 2 | 3;
+  title: string;
 }
 
-const PodiumCard = ({ img, podium, title }: PodiumCardProps) => (
-    <StyledDiv>
-        <div
-            style={{
-                position: "absolute",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                width: "100%",
-                marginTop: "-10%",
-                zIndex: 99,
-                left: 0
-            }}
-        >
-            <PodiumBadge height="inherit" podium={podium} width="25%" />
-        </div>
-        <Stack spacing={1}>
-            <GatsbyImage
-                alt=""
-                image={img}
-                style={{
-                    height: "100%",
-                    width: "100%",
-                    aspectRatio: "1 / 1",
-                    borderRadius: 2,
-                    maxHeight: "100%",
-                    maxWidth: "100%"
-                }}
-            />
-            <Typography fontFamily={TITLE_FONT_FAMILY} sx={{ textAlign: "center" }} variant="h4">
-                {title}
-            </Typography>
-        </Stack>
-    </StyledDiv>
+const PodiumCard = ({ image, podium, title }: PodiumCardProps) => (
+  <div className="relative p-[4%] pb-[8%] rounded-[2px] bg-white shadow-[7px_7px_0_0_rgba(0,0,0,0.25)] transition-all duration-[600ms] ease-[cubic-bezier(0.165,0.84,0.44,1)] flex">
+    <div
+      style={{
+        position: "absolute",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        width: "100%",
+        marginTop: "-10%",
+        zIndex: 99,
+        left: 0
+      }}
+    >
+      <PodiumBadge className="h-[inherit] w-1/4" podium={podium} />
+    </div>
+    <div className="flex flex-col gap-2">
+      <SanityImage
+        alt={title}
+        image={image}
+        style={{
+          height: "100%",
+          width: "100%",
+          aspectRatio: "1 / 1",
+          objectFit: "cover",
+          borderRadius: 2,
+          maxHeight: "100%",
+          maxWidth: "100%"
+        }}
+      />
+      <h4 className="font-display font-bold text-xl md:text-2xl text-center">
+        {title}
+      </h4>
+    </div>
+  </div>
 );
 
 export default PodiumCard;
