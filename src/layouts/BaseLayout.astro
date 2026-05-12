@@ -23,7 +23,9 @@ const gaId = import.meta.env.PUBLIC_GA_TRACKING_ID;
         <meta name="description" content={description} />
         <meta name="theme-color" content="#0B9059" />
         <link rel="canonical" href={canonical} />
-        <link rel="icon" type="image/png" href={`${baseUrl}favicon.png`} />
+        <link rel="icon" href={`${baseUrl}favicon.ico`} sizes="any" />
+        <link rel="icon" type="image/svg+xml" href={`${baseUrl}favicon.svg`} />
+        <link rel="apple-touch-icon" href={`${baseUrl}apple-touch-icon.png`} />
         <link rel="manifest" href={`${baseUrl}manifest.webmanifest`} />
 
         <meta property="og:type" content="website" />
