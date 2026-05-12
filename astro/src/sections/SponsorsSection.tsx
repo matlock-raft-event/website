@@ -1,4 +1,4 @@
-import { Container, Typography } from "@mui/material";
+import { Typography } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 import Grid2 from "@mui/material/Unstable_Grid2";
 
@@ -31,7 +31,7 @@ const SponsorsSection = () => {
         title="Our Amazing Sponsors"
       />
       <div className="flex flex-col items-center gap-4">
-        <Container maxWidth="md">
+        <div className="mx-auto w-full max-w-4xl px-4">
           <Typography variant="body1">
                         Every year many local businesses help to keep the raft event going by sponsoring the event. In
                         return for their generosity, each sponsor is advertised on our website, social media channels
@@ -40,7 +40,7 @@ const SponsorsSection = () => {
           <Typography variant="body1">
                         Thank you to all of the businesses that have helped to sponsor past and present events.
           </Typography>
-        </Container>
+        </div>
 
         <Grid2 container justifyContent="center" spacing={3}>
           {

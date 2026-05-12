@@ -1,4 +1,3 @@
-import { Container } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 
 import Block from "~/components/Block";
@@ -30,9 +29,9 @@ const AboutSection = () => {
       />
       {
         about?.bio &&
-                <Container maxWidth="md">
+                <div className="mx-auto w-full max-w-4xl px-4">
                   <Block value={about.bio as never} />
-                </Container>
+                </div>
       }
     </Section>
   );

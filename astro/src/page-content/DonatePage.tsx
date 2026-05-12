@@ -1,4 +1,4 @@
-import { Container, Typography } from "@mui/material";
+import { Typography } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 
 import Footer from "~/components/Footer";
@@ -16,7 +16,7 @@ const Content = () => {
       <InnerHeroSection />
       <Section bgColor={theme.palette.secondary}>
         <Heading color={theme.palette.secondary} subtitle="Help us to raise more than ever" title="Donate" />
-        <Container maxWidth="md">
+        <div className="mx-auto w-full max-w-4xl px-4">
           <div className="flex flex-col items-center gap-4">
             <Typography variant="body1">
                             Every year, our volunteer bucket collectors are positioned along the route ready to collect
@@ -34,7 +34,7 @@ const Content = () => {
                             Donate Online Now
             </Button>
           </div>
-        </Container>
+        </div>
       </Section>
       <Waves bottomColor={theme.palette.secondary.main} topColor={theme.palette.secondary.main} variant={2} />
       <Footer />

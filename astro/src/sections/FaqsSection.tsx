@@ -1,4 +1,4 @@
-import { Accordion, AccordionDetails, AccordionSummary, Container, Typography } from "@mui/material";
+import { Accordion, AccordionDetails, AccordionSummary, Typography } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 
 import Block from "~/components/Block";
@@ -27,7 +27,7 @@ const FaqsSection = () => {
         subtitle="You asked, we answered!"
         title="Frequently Asked Questions"
       />
-      <Container maxWidth="md">
+      <div className="mx-auto w-full max-w-4xl px-4">
         {
           (faqs ?? []).map(faq => (
             <Accordion
@@ -56,7 +56,7 @@ const FaqsSection = () => {
             </Accordion>
           ))
         }
-      </Container>
+      </div>
     </Section>
   );
 };

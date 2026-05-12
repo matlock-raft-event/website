@@ -1,6 +1,6 @@
 import * as React from "react";
 import { useState } from "react";
-import { Box, Container, Drawer, Fab, Typography } from "@mui/material";
+import { Box, Drawer, Fab, Typography } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 
 import FacebookIcon from "~/components/FacebookIcon";
@@ -165,7 +165,7 @@ const Header = () => {
                   height: 60
                 }}
               >
-                <Container>
+                <div className="mx-auto w-full max-w-6xl px-4">
                   <div className="flex flex-row">
                     <div className="flex flex-row items-center flex-[3] justify-around p-4 gap-4 w-full">
                       {
@@ -217,7 +217,7 @@ const Header = () => {
                       </Button>
                     </div>
                   </div>
-                </Container>
+                </div>
 
               </div>
               <Waves

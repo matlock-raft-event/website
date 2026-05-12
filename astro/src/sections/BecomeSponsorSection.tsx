@@ -1,4 +1,4 @@
-import { Container, Typography } from "@mui/material";
+import { Typography } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 
 import Heading from "~/components/Heading";
@@ -11,7 +11,7 @@ const BecomeSponsorSection = () => {
   return (
     <Section bgColor={theme.palette.primary}>
       <Heading subtitle="Want to support the event?" title="Become a Sponsor" />
-      <Container maxWidth="md">
+      <div className="mx-auto w-full max-w-4xl px-4">
         <div className="flex flex-col items-center">
           <Typography>
                         The impact of our event and the funds we raise would not be possible without our fantastic
@@ -25,7 +25,7 @@ const BecomeSponsorSection = () => {
                         Contact Us
           </Button>
         </div>
-      </Container>
+      </div>
     </Section>
   );
 };

@@ -7,7 +7,7 @@ import {
   timelineItemClasses,
   TimelineSeparator
 } from "@mui/lab";
-import { Container, Typography } from "@mui/material";
+import { Typography } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 
 import Heading from "~/components/Heading";
@@ -53,15 +53,15 @@ const TimingsSection = () => {
         title="What happens and when?"
       />
 
-      <Container maxWidth="md">
+      <div className="mx-auto w-full max-w-4xl px-4">
         <Typography mb={4} variant="body1">
                     Once the rafts have set off, the timings always vary based on how fast the river is flowing, if
                     there’s any obstacles along the route etc, so we’d recommend getting there slightly earlier just
                     in case, it’s always worth the wait!
         </Typography>
-      </Container>
+      </div>
 
-      <Container maxWidth="md">
+      <div className="mx-auto w-full max-w-4xl px-4">
         <Timeline
           sx={{
             [`& .${timelineItemClasses.root}:before`]: {
@@ -94,7 +94,7 @@ const TimingsSection = () => {
             ))
           }
         </Timeline>
-      </Container>
+      </div>
     </Section>
   );
 };

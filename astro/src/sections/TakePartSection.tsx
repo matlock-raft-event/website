@@ -1,4 +1,4 @@
-import { Container, Typography } from "@mui/material";
+import { Typography } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 
 import ApplicationFormPdf from "~/assets/documents/Application-Form.pdf";
@@ -31,7 +31,7 @@ const TakePartSection = () => {
   return (
     <Section bgColor={theme.palette.secondary}>
       <Heading color={theme.palette.secondary} subtitle="So you're brave enough?" title="Take Part" />
-      <Container maxWidth="md">
+      <div className="mx-auto w-full max-w-4xl px-4">
         <div className="flex flex-col items-center gap-4">
           <div className="flex flex-col items-center gap-2">
             <Typography variant="body1">
@@ -106,7 +106,7 @@ const TakePartSection = () => {
                         thousands of excited spectators have to offer on a typical Boxing Day. Best of luck!
           </Typography>
         </div>
-      </Container>
+      </div>
     </Section>
   );
 };

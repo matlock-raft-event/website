@@ -1,4 +1,4 @@
-import { Container, Typography } from "@mui/material";
+import { Typography } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 
 import Block from "~/components/Block";
@@ -23,7 +23,7 @@ const ContactUsSection = () => {
     <Section bgColor={theme.palette.secondary}>
       <Heading color={theme.palette.secondary} subtitle="Need to get in touch?" title="Contact us" />
 
-      <Container maxWidth="md">
+      <div className="mx-auto w-full max-w-4xl px-4">
 
         <Typography mb={4} variant="body1">
                     We&apos;re all ears for participants and those eager to join the excitement! Connect with us on our
@@ -50,7 +50,7 @@ const ContactUsSection = () => {
                     <Block value={contactInstructions.press as never} />
         }
 
-      </Container>
+      </div>
 
     </Section>
   );

@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { Container, Typography } from "@mui/material";
+import { Typography } from "@mui/material";
 import { styled, useTheme } from "@mui/material/styles";
 
 import HeaderImg from "~/assets/images/header.jpg";
@@ -158,12 +158,12 @@ const HeroContent = (
         zIndex: 19
       }}
     >
-      <Container
-        maxWidth="lg"
+      <div
+        className="mx-auto w-full max-w-6xl px-4"
         style={{ height: "100%" }}
       >
         <Content />
-      </Container>
+      </div>
     </div>
   );
 };

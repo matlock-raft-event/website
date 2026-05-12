@@ -1,4 +1,4 @@
-import { Container, Typography } from "@mui/material";
+import { Typography } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 
 import Heading from "~/components/Heading";
@@ -30,11 +30,11 @@ const SummarySection = () => {
       />
       <div className="flex flex-col items-center gap-6">
 
-        <Container maxWidth="md">
+        <div className="mx-auto w-full max-w-4xl px-4">
           <Typography textAlign="center" variant="body1">
             {summary?.bio}
           </Typography>
-        </Container>
+        </div>
 
         <div className="flex flex-row justify-center gap-16">
           <div className="flex flex-col items-end flex-1">

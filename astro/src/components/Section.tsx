@@ -1,6 +1,6 @@
 import type { ReactNode } from "react";
 import { useMemo } from "react";
-import { Box, Container } from "@mui/material";
+import { Box } from "@mui/material";
 import type { PaletteColor } from "@mui/material/styles";
 import { useTheme } from "@mui/material/styles";
 
@@ -45,15 +45,15 @@ const Section = ({
         overflow: "hidden"
       }}
     >
-      <Container
-        maxWidth="lg"
+      <div
+        className="mx-auto w-full max-w-6xl px-4"
         style={{
           position: "relative",
           zIndex: 4
         }}
       >
         {children}
-      </Container>
+      </div>
       {
         ShadowComponent !== null &&
                 <>

@@ -1,4 +1,4 @@
-import { Container, Typography } from "@mui/material";
+import { Typography } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 
 import Footer from "~/components/Footer";
@@ -15,7 +15,7 @@ const Content = () => {
       <InnerHeroSection />
       <Section bgColor={theme.palette.secondary}>
         <Heading color={theme.palette.secondary} subtitle="How to help out" title="Volunteer" />
-        <Container maxWidth="md">
+        <div className="mx-auto w-full max-w-4xl px-4">
           <Typography variant="subtitle1">
                         Safety Marshalls
           </Typography>
@@ -86,7 +86,7 @@ const Content = () => {
             {" "}
                         for more information.
           </Typography>
-        </Container>
+        </div>
       </Section>
       <Waves bottomColor={theme.palette.secondary.main} topColor={theme.palette.secondary.main} variant={2} />
       <Footer />

@@ -1,4 +1,3 @@
-import { Container } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 
 import Block from "~/components/Block";
@@ -29,9 +28,9 @@ const RnliSection = () => {
       <div className="flex flex-col items-center gap-4">
         {
           about?.rnliBio &&
-                    <Container maxWidth="md">
+                    <div className="mx-auto w-full max-w-4xl px-4">
                       <Block value={about.rnliBio as never} />
-                    </Container>
+                    </div>
         }
         {
           about?.rnliLink &&

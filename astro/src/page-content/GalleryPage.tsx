@@ -1,7 +1,7 @@
 import type { MouseEvent } from "react";
 import { useMemo, useRef, useState } from "react";
 import { Masonry } from "@mui/lab";
-import { Container, ImageListItem, ToggleButton, ToggleButtonGroup, Typography } from "@mui/material";
+import { ImageListItem, ToggleButton, ToggleButtonGroup, Typography } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 import Lightbox from "yet-another-react-lightbox";
 import Captions from "yet-another-react-lightbox/plugins/captions";
@@ -94,12 +94,12 @@ const Content = () => {
           <Heading color={theme.palette.secondary} subtitle="It’s everything it looks" title="Gallery" />
 
           <div className="flex flex-col items-center gap-2">
-            <Container maxWidth="md">
+            <div className="mx-auto w-full max-w-4xl px-4">
               <Typography variant="body1">
                                 Do you have photos we can feature in our gallery? Direct message them to us on Facebook
                                 or post them in our Facebook group and your photos could be featured right here!
               </Typography>
-            </Container>
+            </div>
             <div>
               <ToggleButtonGroup
                 aria-label="year"
