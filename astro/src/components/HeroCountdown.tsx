@@ -1,4 +1,3 @@
-import * as React from "react";
 import { Fragment } from "react";
 
 import { useCountdownDate } from "~/hooks/useCountdownDate";

@@ -39,7 +39,6 @@ const Content = () => (
         >
           <iframe
             allowFullScreen
-            frameBorder="0"
             id="strawpoll_iframe_kjn18NeWjyQ"
             src="https://strawpoll.com/embed/kjn18NeWjyQ"
             style={{
@@ -47,7 +46,8 @@ const Content = () => (
               visibility: "visible",
               display: "block",
               width: "100%",
-              flexGrow: 1
+              flexGrow: 1,
+              border: 0
             }}
             title="StrawPoll Embed"
           >
