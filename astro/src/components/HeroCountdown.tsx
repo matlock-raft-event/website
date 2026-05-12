@@ -1,6 +1,5 @@
 import * as React from "react";
 import { Fragment } from "react";
-import { Box } from "@mui/material";
 
 import { useCountdownDate } from "~/hooks/useCountdownDate";
 import useResponsive from "~/hooks/useResponsive";
@@ -16,18 +15,14 @@ const TimeBlock = (
     value
   }: TimeBlockProps) => (
   <div>
-    <Box sx={{ color: "white" }}>
+    <div className="text-white">
       {" "}
       {value}
       {" "}
-    </Box>
-    <Box sx={{
-      color: "white",
-      typography: "body1"
-    }}
-    >
+    </div>
+    <div className="text-white text-base">
       {label}
-    </Box>
+    </div>
   </div>
 );
 
@@ -48,28 +43,20 @@ const HeroCountdown = () => {
   ];
 
   return (
-    <Box
-      className={`flex flex-row ${isMobile ? "justify-center" : "justify-start"}`}
-      sx={{ typography: "h2" }}
+    <div
+      className={`flex flex-row text-3xl sm:text-4xl md:text-5xl font-extrabold leading-tight ${isMobile ? "justify-center" : "justify-start"}`}
     >
       {items.map((item, i) => (
         <Fragment key={item.label}>
           {i > 0 && (
-            <Box sx={{
-              color: "white",
-              mx: {
-                xs: 1,
-                sm: 2.5
-              }
-            }}
-            >
+            <div className="text-white mx-2 sm:mx-5">
                             :
-            </Box>
+            </div>
           )}
           <TimeBlock label={item.label} value={item.value} />
         </Fragment>
       ))}
-    </Box>
+    </div>
   );
 };
 

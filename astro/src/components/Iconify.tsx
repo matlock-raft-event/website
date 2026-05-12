@@ -1,16 +1,28 @@
 import { forwardRef } from "react";
-import type { IconifyIcon } from "@iconify/react";
+import type { CSSProperties } from "react";
 import { Icon } from "@iconify/react";
-import type { BoxProps } from "@mui/material";
-import { Box } from "@mui/material";
+import type { IconifyIcon } from "@iconify/react";
 
 export type IconifyProps = IconifyIcon | string;
-interface Props extends BoxProps {
+
+interface Props {
   icon: IconifyProps;
+  width?: number | string;
+  className?: string;
+  style?: CSSProperties;
+  color?: string;
 }
 
-const Iconify = forwardRef<SVGElement, Props>(({ icon, width = 20, sx, ...other }, ref) => (
-  <Box ref={ref} component={Icon} icon={icon} sx={{ width, height: width, ...sx }} {...other} />
+const Iconify = forwardRef<SVGElement, Props>(({ icon, width = 20, className, style, color }, ref) => (
+  <Icon
+    ref={ref}
+    className={className}
+    color={color}
+    height={width}
+    icon={icon}
+    style={style}
+    width={width}
+  />
 ));
 
 Iconify.displayName = "Iconify";

@@ -60,7 +60,6 @@ const TakePartSection = () => {
                       {item.description}
                     </Typography>
                   }
-                  sx={{ backgroundColor: theme.palette.secondary.light }}
                   title={item.key}
                 />
               ))

@@ -1,6 +1,5 @@
 import { memo, useMemo } from "react";
-import type { BoxProps } from "@mui/material";
-import { Box } from "@mui/material";
+import type { CSSProperties } from "react";
 
 const FIRST = (
   <svg
@@ -203,13 +202,16 @@ const THIRD = (
   </svg>
 );
 
-interface PodiumBadgeProps extends BoxProps {
+type PodiumBadgeProps = {
   podium: 1 | 2 | 3;
-}
+  className?: string;
+  style?: CSSProperties;
+};
 
 const PodiumBadge = ({
   podium,
-  ...rest
+  className,
+  style
 }: PodiumBadgeProps) => {
   const badges = [FIRST, SECOND, THIRD];
   const badge = useMemo(
@@ -218,9 +220,9 @@ const PodiumBadge = ({
   );
 
   return (
-    <Box {...rest} sx={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
+    <div className={`flex items-center justify-center ${className ?? ""}`} style={style}>
       {badge}
-    </Box>
+    </div>
   );
 };
 

@@ -1,7 +1,5 @@
 import type { ReactNode } from "react";
-import type { SxProps } from "@mui/material";
-import { Box, Typography } from "@mui/material";
-import { useTheme } from "@mui/material/styles";
+import { Typography } from "@mui/material";
 
 import { TITLE_FONT_FAMILY } from "~/theme/typography";
 
@@ -9,25 +7,13 @@ type StepCardProps = {
   icon?: ReactNode;
   title: ReactNode;
   content: ReactNode;
-  sx?: SxProps;
 };
-const StepCard = ({ icon, title, content, sx }: StepCardProps) => {
-  const theme = useTheme();
+const StepCard = ({ icon, title, content }: StepCardProps) => {
   return (
-    <Box
-      sx={{
-        borderRadius: theme.shape.borderRadius,
-        padding: theme.spacing(2),
-        backgroundColor: theme.palette.secondary.light,
-        boxShadow: theme.shadows[5],
-        width: "100%",
-        ...sx
-      }}
-      className="flex flex-row gap-4"
-    >
-      <Box pt={0.5}>
+    <div className="flex flex-row gap-4 rounded-[2px] p-4 bg-cream-light shadow-[7px_7px_0_0_rgba(0,0,0,0.25)] w-full">
+      <div className="pt-1">
         {icon}
-      </Box>
+      </div>
       <div className="flex flex-col gap-2">
         <Typography
           color="secondary.contrastText"
@@ -38,7 +24,7 @@ const StepCard = ({ icon, title, content, sx }: StepCardProps) => {
         </Typography>
         {content}
       </div>
-    </Box>
+    </div>
   );
 };
 

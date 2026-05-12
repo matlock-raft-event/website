@@ -1,12 +1,16 @@
-import type { BoxProps } from "@mui/material";
-import { Box } from "@mui/material";
+import type { CSSProperties } from "react";
 
 import LogoSvg from "../assets/images/logo.svg";
 
-const Logo = (props: BoxProps) => (
-  <Box {...props}>
-    <img alt="Event Logo" src={LogoSvg.src ?? LogoSvg} />
-  </Box>
+type LogoProps = {
+  className?: string;
+  style?: CSSProperties;
+};
+
+const Logo = ({ className, style }: LogoProps) => (
+  <div className={className} style={style}>
+    <img alt="Event Logo" src={(LogoSvg as { src?: string }).src ?? (LogoSvg as unknown as string)} />
+  </div>
 );
 
 export default Logo;

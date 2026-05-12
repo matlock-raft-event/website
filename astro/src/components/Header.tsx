@@ -1,6 +1,6 @@
 import * as React from "react";
 import { useState } from "react";
-import { Box, Drawer, Fab, Typography } from "@mui/material";
+import { Drawer, Fab, Typography } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 
 import FacebookIcon from "~/components/FacebookIcon";
@@ -63,26 +63,16 @@ const Header = () => {
           ? (
             <>
               <div className="flex flex-row justify-between p-4">
-                <Box component="a" href="/">
-                  <Logo
-                    sx={{
-                      position: "absolute",
-                      top: theme.spacing(1),
-                      left: theme.spacing(1),
-                      zIndex: 21,
-                      maxWidth: 200,
-                      width: "20%",
-                      marginTop: theme.spacing(0.5)
-                    }}
-                  />
-                </Box>
+                <a href="/">
+                  <Logo className="absolute top-2 left-2 z-[21] max-w-[200px] w-1/5 mt-1" />
+                </a>
 
-                <Box>
+                <div>
                   {/* @ts-ignore */}
                   <Fab aria-label="add" color="green" onClick={toggleDrawer}>
                     <Iconify icon="ph:list" />
                   </Fab>
-                </Box>
+                </div>
               </div>
               <Drawer
                 anchor="top"
@@ -179,28 +169,12 @@ const Header = () => {
                           ))
                       }
                     </div>
-                    <Box
-                      component="a"
-                      flex={1}
+                    <a
+                      className="flex-1 relative z-[16]"
                       href="/"
-                      sx={{
-                        position: "relative",
-                        zIndex: 16
-                      }}
                     >
-                      <Logo
-                        sx={{
-                          position: "absolute",
-                          top: 0,
-                          right: "50%",
-                          transform: "translate(50%, -0%)",
-                          zIndex: 21,
-                          maxWidth: 260,
-                          width: "100%",
-                          marginTop: theme.spacing(0.5)
-                        }}
-                      />
-                    </Box>
+                      <Logo className="absolute top-0 right-1/2 translate-x-1/2 z-[21] max-w-[260px] w-full mt-1" />
+                    </a>
                     <div className="flex flex-row items-center flex-[3] justify-around p-4 gap-4 w-full">
                       {
                         links.slice(3, 5)

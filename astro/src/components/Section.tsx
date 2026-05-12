@@ -1,6 +1,5 @@
 import type { ReactNode } from "react";
 import { useMemo } from "react";
-import { Box } from "@mui/material";
 import type { PaletteColor } from "@mui/material/styles";
 import { useTheme } from "@mui/material/styles";
 
@@ -36,14 +35,9 @@ const Section = ({
   );
 
   return (
-    <Box
-      sx={{
-        backgroundColor: bgColor?.main ?? theme.palette.primary.main,
-        paddingTop: "2em",
-        paddingBottom: "3em",
-        position: "relative",
-        overflow: "hidden"
-      }}
+    <div
+      className="relative overflow-hidden pt-[2em] pb-[3em]"
+      style={{ backgroundColor: bgColor?.main ?? theme.palette.primary.main }}
     >
       <div
         className="mx-auto w-full max-w-6xl px-4"
@@ -99,7 +93,7 @@ const Section = ({
                   />
                 </>
       }
-    </Box>
+    </div>
   );
 };
 

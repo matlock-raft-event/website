@@ -1,6 +1,5 @@
 /* eslint-disable max-len */
 
-import { Box } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 
 import Map from "~/assets/images/event-map.svg";
@@ -12,15 +11,7 @@ import "~/assets/event-route.css";
 const EventRouteSection = () => {
   const theme = useTheme();
   return (
-    <Box
-      sx={{
-        backgroundColor: theme.palette.green.main,
-        paddingTop: "2em",
-        paddingBottom: "3em",
-        position: "relative",
-        overflow: "hidden"
-      }}
-    >
+    <div className="relative overflow-hidden bg-green pt-[2em] pb-[3em]">
       <Heading
         color={theme.palette.green}
         subtitle="Where we're going, we don't need roads..."
@@ -39,7 +30,7 @@ const EventRouteSection = () => {
         </Button>
       </div>
 
-    </Box>
+    </div>
   );
 };
 
