@@ -1,0 +1,15 @@
+---
+import BaseLayout from "~/layouts/BaseLayout.astro";
+import CookiesPage from "~/page-content/cookies-page";
+import { sanityClient } from "~/lib/sanity";
+import { cookiesInfoQuery } from "~/lib/queries";
+import type { CookiesInfoQueryResult } from "~/lib/sanity.types";
+
+const cookiesInfo = await sanityClient.fetch<CookiesInfoQueryResult>(cookiesInfoQuery);
+---
+<BaseLayout
+    description="Learn how we use cookies on our website to enhance your browsing experience, analyze site traffic, and personalize content. Your privacy is important to us."
+    title="Cookies Policy - Matlock Raft Event"
+>
+    <CookiesPage client:load cookiesInfo={cookiesInfo} />
+</BaseLayout>

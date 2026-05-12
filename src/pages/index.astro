@@ -1,0 +1,33 @@
+---
+import BaseLayout from "~/layouts/BaseLayout.astro";
+import IndexPage from "~/page-content/index-page";
+import { sanityClient } from "~/lib/sanity";
+import {
+    heroQuery,
+    summaryQuery,
+    winnersQuery,
+    updatesQuery,
+} from "~/lib/queries";
+import type {
+    HeroQueryResult,
+    SummaryQueryResult,
+    WinnersQueryResult,
+    UpdatesQueryResult,
+} from "~/lib/sanity.types";
+
+const [hero, summary, winners, updates] = await Promise.all([
+    sanityClient.fetch<HeroQueryResult>(heroQuery),
+    sanityClient.fetch<SummaryQueryResult>(summaryQuery),
+    sanityClient.fetch<WinnersQueryResult>(winnersQuery),
+    sanityClient.fetch<UpdatesQueryResult>(updatesQuery),
+]);
+---
+<BaseLayout title="The Matlock Raft Event">
+    <IndexPage
+        client:load
+        hero={hero}
+        summary={summary}
+        winners={winners}
+        updates={updates}
+    />
+</BaseLayout>

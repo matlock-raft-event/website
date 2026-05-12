@@ -1,0 +1,15 @@
+---
+import BaseLayout from "~/layouts/BaseLayout.astro";
+import ContactPage from "~/page-content/contact-page";
+import { sanityClient } from "~/lib/sanity";
+import { contactInstructionsQuery } from "~/lib/queries";
+import type { ContactInstructionsQueryResult } from "~/lib/sanity.types";
+
+const contactInstructions = await sanityClient.fetch<ContactInstructionsQueryResult>(contactInstructionsQuery);
+---
+<BaseLayout
+    description="Have questions, feedback, or inquiries? Feel free to contact us. We're here to assist you and provide the information you need."
+    title="Contact Us - Matlock Raft Event"
+>
+    <ContactPage client:load contactInstructions={contactInstructions} />
+</BaseLayout>

@@ -1,0 +1,24 @@
+---
+import BaseLayout from "~/layouts/BaseLayout.astro";
+import { sanityClient } from "~/lib/sanity";
+import { sponsorsForPathsQuery } from "~/lib/queries";
+import type { SponsorsForPathsQueryResult } from "~/lib/sanity.types";
+import SingleSponsorPage from "~/page-content/single-sponsor-page";
+
+type SponsorDoc = SponsorsForPathsQueryResult[number];
+
+export async function getStaticPaths() {
+    const sponsors = await sanityClient.fetch<SponsorsForPathsQueryResult>(sponsorsForPathsQuery);
+
+    return sponsors.map((sponsor) => ({
+        params: { slug: sponsor.slug },
+        props: { sponsor },
+    }));
+}
+
+const { sponsor } = Astro.props as { sponsor: SponsorDoc };
+const title = `${sponsor.name ?? "Sponsor"} - Matlock Raft Event`;
+---
+<BaseLayout description="A single sponsor of the event." title={title}>
+    <SingleSponsorPage client:load sponsor={sponsor} />
+</BaseLayout>
