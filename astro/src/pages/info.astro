@@ -1,0 +1,10 @@
+---
+import BaseLayout from "~/layouts/BaseLayout.astro";
+import InfoPage from "~/page-content/InfoPage";
+---
+<BaseLayout
+    description="Your Guide to The Matlock Raft Event. Discover all the important details about the event."
+    title="Event Information - Matlock Raft Event"
+>
+    <InfoPage client:only="react" />
+</BaseLayout>

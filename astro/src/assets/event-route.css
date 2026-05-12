@@ -1,0 +1,56 @@
+.cls-1, .cls-2 {
+    fill: none;
+}
+
+.cls-1, .cls-3, .cls-4, .cls-5, .cls-6, .cls-7, .cls-8, .cls-9 {
+    stroke-width: 0;
+}
+
+.cls-10 {
+    opacity: .1;
+}
+
+.cls-11, .cls-12, .cls-13, .cls-14, .cls-15, .cls-2 {
+    stroke: #2c2d2c;
+    stroke-miterlimit: 10;
+}
+
+.cls-12 {
+    stroke-width: 1.5px;
+}
+
+.cls-13 {
+    fill: #faf6c8;
+}
+
+.cls-13, .cls-14, .cls-2 {
+    stroke-width: 8px;
+}
+
+.cls-14 {
+    fill: #f7f5c9;
+}
+
+.cls-15, .cls-9 {
+    fill: #fff;
+}
+
+.cls-4 {
+    fill: #2c2d2c;
+}
+
+.cls-5 {
+    fill: #87c8b1;
+}
+
+.cls-6 {
+    fill: #0b9059;
+}
+
+.cls-7 {
+    fill: #20150b;
+}
+
+.cls-8 {
+    fill: #dc242f;
+}

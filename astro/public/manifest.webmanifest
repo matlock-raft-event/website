@@ -1,0 +1,17 @@
+{
+    "name": "The Matlock Raft Event",
+    "short_name": "Raft Event",
+    "description": "Raft Event",
+    "start_url": "/",
+    "scope": "/",
+    "display": "minimal-ui",
+    "background_color": "#f3f3e5",
+    "theme_color": "#0B9059",
+    "icons": [
+        {
+            "src": "/favicon.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ]
+}

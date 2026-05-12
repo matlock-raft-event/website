@@ -1,0 +1,10 @@
+---
+import BaseLayout from "~/layouts/BaseLayout.astro";
+import UpdatesPage from "~/page-content/UpdatesPage";
+---
+<BaseLayout
+    description="Get the latest updates and news about The Matlock Raft Event. Stay informed about schedules, special announcements, and more."
+    title="Event Updates - Matlock Raft Event"
+>
+    <UpdatesPage client:only="react" />
+</BaseLayout>

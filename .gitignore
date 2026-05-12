@@ -1,7 +1,7 @@
 node_modules/
 .cache/
 .idea/*
-public
+/public/
 src/gatsby-types.d.ts
 .env.*
 

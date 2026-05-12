@@ -1,0 +1,36 @@
+---
+import BaseLayout from "~/layouts/BaseLayout.astro";
+import { sanityClient } from "~/lib/sanity";
+import SingleUpdatePage from "~/page-content/SingleUpdatePage";
+
+type UpdateDoc = {
+    title?: string;
+    slug?: string;
+    date?: string;
+    img?: unknown;
+    content?: unknown;
+};
+
+export async function getStaticPaths() {
+    const updates = await sanityClient.fetch<UpdateDoc[]>(
+        `*[_type == "update" && defined(slug)]{
+            title,
+            slug,
+            date,
+            img,
+            content
+        }`,
+    );
+
+    return updates.map((update) => ({
+        params: { slug: update.slug },
+        props: { update },
+    }));
+}
+
+const { update } = Astro.props as { update: UpdateDoc };
+const title = `${update.title ?? "Update"} - Matlock Raft Event`;
+---
+<BaseLayout description="A single update about the event." title={title}>
+    <SingleUpdatePage client:only="react" update={update} />
+</BaseLayout>

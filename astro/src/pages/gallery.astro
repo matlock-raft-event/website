@@ -1,0 +1,10 @@
+---
+import BaseLayout from "~/layouts/BaseLayout.astro";
+import GalleryPage from "~/page-content/GalleryPage";
+---
+<BaseLayout
+    description="Browse through the memorable moments captured at our past events. See the excitement, fun, and joy from the event."
+    title="Gallery - Matlock Raft Event"
+>
+    <GalleryPage client:only="react" />
+</BaseLayout>
