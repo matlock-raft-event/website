@@ -40,5 +40,8 @@ export default {
             type: 'text',
             title: 'Testimonial'
         }
-    ]
+    ],
+    preview: {
+        select: { title: "name", media: "logo" }
+    }
 }

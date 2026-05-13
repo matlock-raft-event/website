@@ -19,5 +19,13 @@ export default {
             type: 'string',
             title: 'Author'
         },
-    ]
+    ],
+    preview: {
+        select: { author: "author", year: "year", media: "img" },
+        prepare: ({ author, year, media }: any) => ({
+            title: author ? `Photo by ${author}` : "Untitled photo",
+            subtitle: year ? `${year}` : undefined,
+            media
+        })
+    }
 }

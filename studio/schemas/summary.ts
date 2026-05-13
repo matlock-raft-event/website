@@ -26,5 +26,8 @@ export default {
             type: 'string',
             title: 'Money Raised'
         }
-    ]
+    ],
+    preview: {
+        prepare: () => ({ title: "Summary" })
+    }
 }

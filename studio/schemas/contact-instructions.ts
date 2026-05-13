@@ -1,4 +1,3 @@
-// schemas/summary.ts
 export default {
     name: "contactInstructions",
     type: "document",
@@ -25,5 +24,8 @@ export default {
             title: "Sponsors Instructions",
             validation: (Rule: any) => Rule.required()
         },
-    ]
+    ],
+    preview: {
+        prepare: () => ({ title: "Contact Instructions" })
+    }
 };

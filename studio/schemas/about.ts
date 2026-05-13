@@ -37,5 +37,8 @@ export default {
             title: "DASAC Link",
             validation: (Rule: any) => Rule.required()
         },
-    ]
+    ],
+    preview: {
+        prepare: () => ({ title: "About" })
+    }
 };

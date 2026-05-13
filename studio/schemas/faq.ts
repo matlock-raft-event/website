@@ -15,5 +15,8 @@ export default {
             title: "Answer",
             of: [{ type: "block" }]
         }
-    ]
+    ],
+    preview: {
+        select: { title: "question" }
+    }
 };

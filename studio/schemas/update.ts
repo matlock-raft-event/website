@@ -33,5 +33,8 @@ export default {
             type: 'date',
             title: "Date"
         }
-    ]
+    ],
+    preview: {
+        select: { title: "title", subtitle: "date", media: "img" }
+    }
 };

@@ -29,5 +29,8 @@ export default {
             type: 'file',
             title: 'Video'
         },
-    ]
+    ],
+    preview: {
+        select: { title: "title", subtitle: "subtitle" }
+    }
 }

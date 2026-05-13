@@ -11,5 +11,8 @@ export default {
             title: "Content",
             validation: (Rule: any) => Rule.required()
         }
-    ]
+    ],
+    preview: {
+        prepare: () => ({ title: "Cookies Information" })
+    }
 };
