@@ -8,8 +8,6 @@
 
 @import "@fontsource-variable/albert-sans";
 
-@import "@fontsource-variable/outfit";
-
 @import "@fontsource/dela-gothic-one";
 
 @import "@fontsource-variable/rokkitt";
@@ -63,7 +61,6 @@
     --font-serif: "Rokkitt Variable", serif;
     --font-display: "Dela Gothic One", serif;
     --font-avenir: "avenir", sans-serif;
-    --font-outfit: "Outfit Variable", sans-serif;
 
     --breakpoint-sm: 600px;
     --breakpoint-md: 960px;
@@ -96,7 +93,7 @@ body {
 
 :root {
     --background: oklch(1 0 0);
-    --foreground: oklch(0.153 0.006 107.1);
+    --foreground: var(--color-dark);
     --card: oklch(1 0 0);
     --card-foreground: oklch(0.153 0.006 107.1);
     --popover: oklch(1 0 0);
@@ -214,4 +211,9 @@ body {
   html {
     @apply font-sans;
     }
+}
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
 }

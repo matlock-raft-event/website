@@ -14,7 +14,17 @@ const Block = <B extends TypedObject = PortableTextBlock>({ value, components, .
       h4: ({ children }: any) => <h4 className="my-2 font-bold text-xl md:text-2xl">{children}</h4>,
       h5: ({ children }: any) => <h5 className="my-2 font-bold text-lg md:text-xl">{children}</h5>,
       h6: ({ children }: any) => <p className="my-2 font-display font-semibold text-base">{children}</p>,
-      normal: ({ children }: any) => <p className="mb-2 text-sm sm:text-base lg:text-lg leading-relaxed">{children}</p>
+      normal: ({ children }: any) => <p className="mb-2 text-sm sm:text-base leading-relaxed">{children}</p>
+    },
+
+    list: {
+      bullet: ({ children }: any) => <ul className="my-2 ml-6 list-disc text-sm sm:text-base lg:text-lg leading-relaxed">{children}</ul>,
+      number: ({ children }: any) => <ol className="my-2 ml-6 list-decimal text-sm sm:text-base lg:text-lg leading-relaxed">{children}</ol>
+    },
+
+    listItem: {
+      bullet: ({ children }: any) => <li className="mb-1 text-sm sm:text-base">{children}</li>,
+      number: ({ children }: any) => <li className="mb-1 text-sm sm:text-base">{children}</li>
     },
 
     marks: {

@@ -47,7 +47,7 @@ const Section = ({ palette = "mint", children }: SectionProps) => {
 
   return (
     <div className={`relative overflow-hidden pt-[2em] pb-[3em] ${PALETTE_BG[palette]}`}>
-      <div className="mx-auto w-full max-w-6xl px-4 relative z-[4]">
+      <div className="mx-auto w-full container px-4 relative z-[4]">
         {children}
       </div>
       {ShadowComponent && (

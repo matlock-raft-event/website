@@ -3,6 +3,7 @@ import PageShell from "~/components/page-shell";
 import Waves from "~/components/waves";
 import GetInvolvedSection from "~/sections/get-involved-section";
 import HeroSection from "~/sections/hero-section";
+import MarqueeSection from "~/sections/marquee-section";
 import PodiumSection from "~/sections/podium-section";
 import SummarySection from "~/sections/summary-section";
 import UpdatesSection from "~/sections/updates-section";
@@ -23,6 +24,7 @@ type Props = {
 const Content = ({ hero, summary, winners, updates }: Props) => (
   <main>
     <HeroSection hero={hero} />
+    <MarqueeSection />
     <SummarySection summary={summary} />
     <Waves
       bottomColor="var(--color-green)"

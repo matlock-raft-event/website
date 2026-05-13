@@ -8,48 +8,51 @@ import Waves from "~/components/waves";
 import type { VolunteerPageQueryResult } from "~/lib/sanity.types";
 import InnerHeroSection from "~/sections/inner-hero-section";
 
-type Role = NonNullable<NonNullable<VolunteerPageQueryResult>["roles"]>[number];
-
 type Props = { volunteerPage: VolunteerPageQueryResult };
-
-const VolunteerRole = ({ role }: { role: Role }) => (
-  <div className="flex flex-col gap-4 not-last:pb-12 not-last:border-b not-last:border-cream-dark">
-    {role.title && (
-      <h3 className="font-display font-bold text-2xl md:text-3xl">
-        {role.title}
-      </h3>
-    )}
-    {role.image && (
-      <SanityImage
-        alt={role.title ?? undefined}
-        image={role.image}
-        style={{
-          width: "100%",
-          height: "auto",
-          maxHeight: 360,
-          objectFit: "cover",
-          display: "block"
-        }}
-      />
-    )}
-    {role.body && <Block value={role.body as never} />}
-    {role.contactInstructions && (
-      <div className="mt-2">
-        <Block value={role.contactInstructions as never} />
-      </div>
-    )}
-  </div>
-);
 
 const Content = ({ volunteerPage }: Props) => (
   <main>
     <InnerHeroSection headerOnly />
     <Section palette="cream">
       <Heading palette="cream" subtitle="How to help out" title="Volunteer" />
-      <div className="mx-auto w-full max-w-4xl px-4 flex flex-col gap-12">
-        {volunteerPage?.intro && <Block value={volunteerPage.intro as never} />}
+      <div className="mx-auto w-full px-4 flex flex-col gap-12">
+        <div>
+          {volunteerPage?.intro && <Block value={volunteerPage.intro as never} />}
+        </div>
         {volunteerPage?.roles?.map((role, idx) => (
-          <VolunteerRole key={role.title ?? idx} role={role} />
+          <div
+            key={role.title ?? idx}
+            className={`flex flex-col gap-6 md:flex-row md:items-center md:gap-10 ${idx % 2 === 1 ? "md:flex-row-reverse" : ""}`}
+          >
+            <div className="flex flex-col md:flex-1">
+              {role.title && (
+                <h3 className="font-display text-3xl md:text-4xl mb-4">
+                  {role.title}
+                </h3>
+              )}
+              {role.body && <Block value={role.body as never} />}
+              {role.contactInstructions && (
+                <div className="mt-2">
+                  <Block value={role.contactInstructions as never} />
+                </div>
+              )}
+            </div>
+            {role.image && (
+              <div className="md:flex-1">
+                <SanityImage
+                  alt={role.title ?? undefined}
+                  image={role.image}
+                  style={{
+                    width: "100%",
+                    height: "auto",
+                    maxHeight: 360,
+                    objectFit: "cover",
+                    display: "block"
+                  }}
+                />
+              </div>
+            )}
+          </div>
         ))}
       </div>
     </Section>
