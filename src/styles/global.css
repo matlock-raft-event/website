@@ -6,11 +6,11 @@
 
 @import "shadcn/tailwind.css";
 
-@import "@fontsource-variable/inter";
+@import "@fontsource-variable/albert-sans";
 
 @import "@fontsource-variable/outfit";
 
-@import "@fontsource-variable/league-spartan";
+@import "@fontsource/dela-gothic-one";
 
 @import "@fontsource-variable/rokkitt";
 
@@ -59,11 +59,10 @@
     --color-secondary-dark: var(--color-cream-dark);
     --color-secondary-contrast: var(--color-cream-contrast);
 
-    --font-sans: "Inter Variable", sans-serif;
+    --font-sans: "Albert Sans Variable", sans-serif;
     --font-serif: "Rokkitt Variable", serif;
-    --font-display: "League Spartan Variable", serif;
+    --font-display: "Dela Gothic One", serif;
     --font-avenir: "avenir", sans-serif;
-    --font-inter: "Inter Variable", sans-serif;
     --font-outfit: "Outfit Variable", sans-serif;
 
     --breakpoint-sm: 600px;
