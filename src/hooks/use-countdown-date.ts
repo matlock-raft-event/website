@@ -50,6 +50,7 @@ export function useCountdownDate(date: Date): ReturnDateType {
   };
 
   useEffect(() => {
+    setNewTime();
     const interval = setInterval(() => setNewTime(), 1000);
     return () => clearInterval(interval);
   }, []);
