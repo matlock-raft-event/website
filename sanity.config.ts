@@ -10,6 +10,7 @@ const singletonTypes = new Set([
   "cookiesInfo",
   "contactInstructions",
   "summary",
+  "volunteerPage",
 ]);
 
 export default defineConfig({
@@ -37,6 +38,14 @@ export default defineConfig({
               .id("about")
               .child(S.document().schemaType("about").documentId("about")),
             S.listItem()
+              .title("Volunteer Page")
+              .id("volunteerPage")
+              .child(
+                S.document()
+                  .schemaType("volunteerPage")
+                  .documentId("volunteerPage")
+              ),
+            S.listItem()
               .title("Contact Instructions")
               .id("contactInstructions")
               .child(
@@ -53,7 +62,7 @@ export default defineConfig({
                   .documentId("cookiesInfo")
               ),
             ...schemaTypes
-              .filter((s) => !singletonTypes.has(s.name))
+              .filter((s) => s.type === "document" && !singletonTypes.has(s.name))
               .map((s) =>
                 S.documentTypeListItem(s.name).title(s.title)
               ),

@@ -7,10 +7,19 @@ const resolveSrc = (asset: unknown): string => (asset as { src?: string }).src ?
 
 interface InnerHeroSectionProps {
   wavesColor?: string;
+  headerOnly?: boolean;
 }
 
-const InnerHeroSection = ({ wavesColor }: InnerHeroSectionProps) => {
+const InnerHeroSection = ({ wavesColor, headerOnly = false }: InnerHeroSectionProps) => {
   const isMobile = useResponsive("down", "sm");
+
+  if (headerOnly) {
+    return (
+      <div style={{ position: "relative" }}>
+        <Header />
+      </div>
+    );
+  }
 
   return (
     <div style={{ position: "relative" }}>

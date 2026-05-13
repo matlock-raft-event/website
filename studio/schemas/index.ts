@@ -1,4 +1,3 @@
-// schemas/index.ts
 import about from "./about";
 import cookiesInfo from "./cookies-info";
 import contactInstructions from "./contact-instructions";
@@ -8,9 +7,12 @@ import hero from "./hero";
 import sponsor from "./sponsor";
 import summary from "./summary";
 import update from "./update";
+import volunteerPage from "./volunteer-page";
+import volunteerRole from "./volunteer-role";
 import winner from "./winner";
 
 export const schemaTypes = [
+    // Document types
     about,
     contactInstructions,
     cookiesInfo,
@@ -20,5 +22,8 @@ export const schemaTypes = [
     sponsor,
     summary,
     update,
-    winner
+    volunteerPage,
+    winner,
+    // Object types
+    volunteerRole
 ];

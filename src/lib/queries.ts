@@ -47,3 +47,15 @@ export const galleryQuery = defineQuery(
 export const cookiesInfoQuery = defineQuery(
   `*[_type == "cookiesInfo"][0]{ content }`
 );
+
+export const volunteerPageQuery = defineQuery(
+  `*[_type == "volunteerPage"][0]{
+    intro,
+    roles[]{
+      title,
+      image,
+      body,
+      contactInstructions
+    }
+  }`
+);

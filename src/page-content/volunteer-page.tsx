@@ -1,86 +1,56 @@
+import Block from "~/components/block";
 import Footer from "~/components/footer";
 import Heading from "~/components/heading";
 import PageShell from "~/components/page-shell";
+import SanityImage from "~/components/sanity-image";
 import Section from "~/components/section";
 import Waves from "~/components/waves";
+import type { VolunteerPageQueryResult } from "~/lib/sanity.types";
 import InnerHeroSection from "~/sections/inner-hero-section";
 
-const Content = () => (
+type Role = NonNullable<NonNullable<VolunteerPageQueryResult>["roles"]>[number];
+
+type Props = { volunteerPage: VolunteerPageQueryResult };
+
+const VolunteerRole = ({ role }: { role: Role }) => (
+  <div className="flex flex-col gap-4 not-last:pb-12 not-last:border-b not-last:border-cream-dark">
+    {role.title && (
+      <h3 className="font-display font-bold text-2xl md:text-3xl">
+        {role.title}
+      </h3>
+    )}
+    {role.image && (
+      <SanityImage
+        alt={role.title ?? undefined}
+        image={role.image}
+        style={{
+          width: "100%",
+          height: "auto",
+          maxHeight: 360,
+          objectFit: "cover",
+          display: "block"
+        }}
+      />
+    )}
+    {role.body && <Block value={role.body as never} />}
+    {role.contactInstructions && (
+      <div className="mt-2">
+        <Block value={role.contactInstructions as never} />
+      </div>
+    )}
+  </div>
+);
+
+const Content = ({ volunteerPage }: Props) => (
   <main>
-    <InnerHeroSection />
+    <InnerHeroSection headerOnly />
     <Section palette="cream">
       <Heading palette="cream" subtitle="How to help out" title="Volunteer" />
-      <div className="mx-auto w-full max-w-4xl px-4">
-        <p className="font-display font-semibold text-base">
-                        Safety Marshalls
-        </p>
-        <p className="text-sm sm:text-base lg:text-lg leading-relaxed">
-                        The Matlock Raft Event is a fun event for all the family on Boxing Day. However, the negative
-                        effects on the environment that this level of spectatorship and the active involvement of the
-                        spectators has must be seriously considered.
-        </p>
-        <p className="text-sm sm:text-base lg:text-lg leading-relaxed">
-                        Spectators have often been known to playfully throw flour and eggs at raft participants in the
-                        past.
-                        While this appears to be great fun, it&apos;s important to note that plastic bags can be harmful
-                        to
-                        the watercourse and eggs pose risks to our participants. Both the environment agency and council
-                        are
-                        closely monitoring the situation, and we&apos;re taking steps to ensure safety and environmental
-                        responsibility.
-        </p>
-        <p className="text-sm sm:text-base lg:text-lg leading-relaxed">
-                        To keep the event thriving, we&apos;re expanding our team of Marshalls to enhance safety and
-                        enjoyment.
-        </p>
-        <p className="text-sm sm:text-base lg:text-lg leading-relaxed">
-                        As a safety marshall, you will be responsible to:
-        </p>
-        <ul>
-          <li>
-                            Monitor spectators and participants to ensure adherence to safety guidelines and
-                            environmental regulations.
-          </li>
-          <li>
-                            Direct spectators along the route where required.
-          </li>
-        </ul>
-        <p className="text-sm sm:text-base lg:text-lg leading-relaxed">
-                        Join us in ensuring a fantastic experience for everyone at our event. You&apos;ll
-                        receive £35 to cover your expenses.
-        </p>
-        <p className="text-sm sm:text-base lg:text-lg leading-relaxed">
-                        Contact Terry via
-          {" "}
-          <a href="mailto:a@a.com">email</a>
-          {" "}
-                        for more information.
-        </p>
-
-        <br />
-
-        <p className="font-display font-semibold text-base">
-                        Donation Collectors
-        </p>
-        <p className="text-sm sm:text-base lg:text-lg leading-relaxed">
-                        We’ve already raised over £250,000 for the RNLI. Can you spare us a day to help us collect the
-                        donations from the spectators, families and groups of friends?
-        </p>
-        <p className="text-sm sm:text-base lg:text-lg leading-relaxed">
-                        As a donation collector, you will be responsible to:
-        </p>
-        <ul>
-          <li>
-                            Be a friendly face, collecting donations from spectators along the route.
-          </li>
-        </ul>
-        <p className="text-sm sm:text-base lg:text-lg leading-relaxed">
-                        Contact Terry via
-          {" "}
-          <a href="mailto:a@a.com">email</a>
-          {" "}
-                        for more information.
-        </p>
+      <div className="mx-auto w-full max-w-4xl px-4 flex flex-col gap-12">
+        {volunteerPage?.intro && <Block value={volunteerPage.intro as never} />}
+        {volunteerPage?.roles?.map((role, idx) => (
+          <VolunteerRole key={role.title ?? idx} role={role} />
+        ))}
       </div>
     </Section>
     <Waves bottomColor="var(--color-cream)" topColor="var(--color-cream)" variant={2} />
@@ -88,9 +58,9 @@ const Content = () => (
   </main>
 );
 
-const VolunteerPage = () => (
+const VolunteerPage = (props: Props) => (
   <PageShell>
-    <Content />
+    <Content {...props} />
   </PageShell>
 );
 
