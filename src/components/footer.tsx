@@ -39,22 +39,34 @@ const legalLinks = [
   { label: "Cookies Policy", to: "/cookies" }
 ];
 
-/* Bunting strung across the top of the footer frame */
+/* Bunting strung across the top of the footer frame.
+   Built as a seamlessly repeating 260x44 tile (the rope is one full sine-like
+   period, so tiles join without a seam) rendered at fixed size via
+   background-repeat — flags never stretch or squash, at any viewport width.
+   Data-URI backgrounds can't read CSS variables, so the fills mirror the
+   palette tokens: rope cream #f6f3e2, flags raft #d23a34 / sun #fbba47 /
+   river #1d6a72. */
+const buntingTile = encodeURIComponent(
+  `<svg xmlns="http://www.w3.org/2000/svg" width="260" height="44" viewBox="0 0 260 44">`
+  + `<path d="M0 12 Q 65 30 130 12 T 260 12" fill="none" stroke="#f6f3e2" stroke-width="2.5" opacity=".55"/>`
+  // flags hang from points on the rope curve (y = 12 + 36t(1-t) at t = .25/.75)
+  + `<path d="M23.5 17.9 L42.5 19.9 L36.5 36.8 Z" fill="#d23a34"/>`
+  + `<path d="M88.5 19.9 L107.5 17.9 L101.5 36.8 Z" fill="#fbba47"/>`
+  + `<path d="M153.5 17.9 L172.5 19.9 L166.5 36.8 Z" fill="#1d6a72"/>`
+  + `<path d="M218.5 19.9 L237.5 17.9 L231.5 36.8 Z" fill="#fbba47"/>`
+  + `</svg>`
+);
+
 const Bunting = () => (
-  <svg aria-hidden="true" className="block w-full" preserveAspectRatio="none" viewBox="0 0 1440 46">
-    <path d="M0 8 Q 360 30 720 14 T 1440 12" fill="none" opacity=".5" stroke="var(--color-cream)" strokeWidth="3" />
-    <g>
-      <path d="M80 14 l9 20 11 -17 Z" fill="var(--color-raft)" />
-      <path d="M230 22 l9 20 11 -17 Z" fill="var(--color-sun)" />
-      <path d="M380 26 l9 20 11 -17 Z" fill="var(--color-river)" />
-      <path d="M530 24 l9 20 11 -17 Z" fill="var(--color-raft)" />
-      <path d="M680 18 l9 20 11 -17 Z" fill="var(--color-sun)" />
-      <path d="M830 16 l9 20 11 -17 Z" fill="var(--color-river-light)" />
-      <path d="M980 18 l9 20 11 -17 Z" fill="var(--color-raft)" />
-      <path d="M1130 14 l9 20 11 -17 Z" fill="var(--color-sun)" />
-      <path d="M1280 12 l9 20 11 -17 Z" fill="var(--color-river)" />
-    </g>
-  </svg>
+  <div
+    aria-hidden="true"
+    className="h-11 w-full"
+    style={{
+      backgroundImage: `url("data:image/svg+xml,${buntingTile}")`,
+      backgroundRepeat: "repeat-x",
+      backgroundSize: "260px 44px"
+    }}
+  />
 );
 
 const Footer = () => (
