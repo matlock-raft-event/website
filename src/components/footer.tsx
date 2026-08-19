@@ -48,12 +48,15 @@ const legalLinks = [
    river #1d6a72. */
 const buntingTile = encodeURIComponent(
   `<svg xmlns="http://www.w3.org/2000/svg" width="260" height="44" viewBox="0 0 260 44">`
-  + `<path d="M0 12 Q 65 30 130 12 T 260 12" fill="none" stroke="#f6f3e2" stroke-width="2.5" opacity=".55"/>`
-  // flags hang from points on the rope curve (y = 12 + 36t(1-t) at t = .25/.75)
-  + `<path d="M23.5 17.9 L42.5 19.9 L36.5 36.8 Z" fill="#d23a34"/>`
-  + `<path d="M88.5 19.9 L107.5 17.9 L101.5 36.8 Z" fill="#fbba47"/>`
-  + `<path d="M153.5 17.9 L172.5 19.9 L166.5 36.8 Z" fill="#1d6a72"/>`
-  + `<path d="M218.5 19.9 L237.5 17.9 L231.5 36.8 Z" fill="#fbba47"/>`
+  // two downward scallops per tile (real bunting sags between its nails);
+  // both arcs start and end at y=10, so tiles join seamlessly
+  + `<path d="M0 10 Q 65 26 130 10 Q 195 26 260 10" fill="none" stroke="#f6f3e2" stroke-width="2.5" opacity=".55"/>`
+  // flags hang at t=1/3 and t=2/3 of each scallop: y = 10 + 32t(1-t) = 17.1,
+  // top edges tilted to follow the rope's slope at those points
+  + `<path d="M34.3 16.4 L52.3 17.8 L46 34.5 Z" fill="#d23a34"/>`
+  + `<path d="M77.7 17.8 L95.7 16.4 L89 34.5 Z" fill="#fbba47"/>`
+  + `<path d="M164.3 16.4 L182.3 17.8 L176 34.5 Z" fill="#1d6a72"/>`
+  + `<path d="M207.7 17.8 L225.7 16.4 L219 34.5 Z" fill="#fbba47"/>`
   + `</svg>`
 );
 
