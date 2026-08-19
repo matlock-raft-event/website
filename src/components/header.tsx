@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import FacebookIcon from "~/components/facebook-icon";
 import Iconify from "~/components/iconify";
@@ -10,7 +10,11 @@ import DrawerTitle from "~/components/ui/drawer/drawer-title";
 import Waves from "~/components/waves";
 import { ListIcon } from "@phosphor-icons/react";
 
-const links = [
+/* Split nav around the centred hanging badge — the tall logo is the
+   crowning centrepiece rather than a corner overflow. Once the page
+   scrolls, the badge shrinks to a small lip below the bar so it never
+   sits over content. */
+const leftLinks = [
   {
     label: "Take Part",
     to: "/take-part"
@@ -22,7 +26,10 @@ const links = [
   {
     label: "Sponsors",
     to: "/sponsors"
-  },
+  }
+];
+
+const rightLinks = [
   {
     label: "Gallery",
     to: "/gallery"
@@ -33,46 +40,64 @@ const links = [
   }
 ];
 
+const allLinks = [...leftLinks, ...rightLinks];
+
+const NavLink = ({ label, to }: { label: string; to: string }) => (
+  <Button color="cream" href={to} variant="link">
+    {label}
+  </Button>
+);
+
 const Header = () => {
   const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 90);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   return (
-    <header className="relative z-20">
-      <div className="bg-pine">
-        <div className="mx-auto h-16 container px-4 flex flex-row items-center justify-between w-full">
-          <a className="shrink-0 self-start" href="/">
-            <Logo className="w-32 mt-1" />
-          </a>
-
-          <nav aria-label="Primary" className="hidden sm:flex flex-row items-center gap-4">
-            {
-              links.map(link => (
-                <Button
-                  color="cream"
-                  key={link.label}
-                  href={link.to}
-                  variant="link"
-                >
-                  {link.label}
-                </Button>
-              ))
-            }
-            <Button href="/donate">
-              Donate
-            </Button>
+    <header className="sticky top-0 z-20">
+      <div className="bg-pine border-b-[3px] border-pine-dark">
+        <div className="mx-auto h-14 container px-4 grid grid-cols-[1fr_auto_1fr] items-center">
+          <nav aria-label="Primary left" className="hidden sm:flex flex-row items-center justify-between pr-8">
+            {leftLinks.map(link => <NavLink key={link.to} {...link} />)}
           </nav>
-          <div className="sm:hidden flex flex-row items-center">
-            <Button
-              aria-label="open menu"
-              color="cream"
-              onClick={() => setOpen(true)}
-              size="icon-lg"
-              variant="solid"
+          <div className="sm:hidden" />
+
+          <div className="relative w-24 sm:w-32 self-stretch">
+            <a
+              className={`absolute left-1/2 -translate-x-1/2 transition-[width,top] duration-300 [filter:drop-shadow(0_5px_0_rgba(8,64,44,0.35))] ${
+                scrolled ? "top-[3px] w-[68px]" : "top-1.5 w-24 sm:w-32"
+              }`}
+              href="/"
             >
-              <ListIcon weight="bold" />
-            </Button>
+              <Logo className="w-full" />
+            </a>
           </div>
 
+          <div className="flex flex-row items-center justify-between pl-8">
+            <nav aria-label="Primary right" className="hidden sm:contents">
+              {rightLinks.map(link => <NavLink key={link.to} {...link} />)}
+              <Button href="/donate" size="sm">
+                Donate
+              </Button>
+            </nav>
+            <div className="sm:hidden ml-auto">
+              <Button
+                aria-label="open menu"
+                color="cream"
+                onClick={() => setOpen(true)}
+                size="icon-sm"
+                variant="solid"
+              >
+                <ListIcon weight="bold" />
+              </Button>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -96,7 +121,7 @@ const Header = () => {
 
             <nav aria-label="Primary" className="flex flex-col gap-6 py-8 px-6">
               {
-                links.map(link => (
+                allLinks.map(link => (
                   <Button
                     key={link.label}
                     className="text-secondary text-4xl justify-start px-0 h-auto py-3 no-underline hover:no-underline"
