@@ -52,7 +52,7 @@ const Content = ({ cardImages = [] }: Props) => (
               }
               <div className="absolute inset-0 bg-[linear-gradient(to_top,rgba(0,0,0,0.85),rgba(0,0,0,0.2)_55%,transparent)]" />
               <div className="absolute inset-x-0 bottom-0 flex flex-col gap-1 p-5 text-white">
-                <h3 className="font-display font-extrabold text-2xl md:text-3xl leading-tight">
+                <h3 className="font-display text-2xl md:text-3xl leading-tight">
                   {card.title}
                 </h3>
                 <span className="inline-flex items-center gap-1.5 font-serif font-bold uppercase tracking-wide text-sm transition-all group-hover:gap-2.5">

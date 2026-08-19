@@ -37,7 +37,7 @@ const PodiumCard = ({ image, podium, title }: PodiumCardProps) => (
           maxWidth: "100%"
         }}
       />
-      <h3 className="font-display font-bold text-xl md:text-2xl text-center">
+      <h3 className="font-display text-xl md:text-2xl text-center">
         {title}
       </h3>
     </div>

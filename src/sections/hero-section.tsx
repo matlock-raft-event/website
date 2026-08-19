@@ -59,7 +59,7 @@ const HeroSection = ({ hero, imgSrc, imgSrcset, eventDate }: Props) => {
               <p className="font-sans font-bold text-lg md:text-xl text-sun">
                 Boxing Day raft racing, in aid of the RNLI
               </p>
-              <h1 className="font-display font-extrabold text-3xl sm:text-4xl md:text-5xl lg:text-6xl leading-tight text-secondary">
+              <h1 className="font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl leading-tight text-secondary">
                 {renderLines(title)}
               </h1>
               <ul className="flex flex-row flex-wrap gap-x-5 gap-y-2 justify-center md:justify-start text-secondary">

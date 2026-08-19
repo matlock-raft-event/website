@@ -8,7 +8,7 @@ import Waves from "~/components/waves";
 import InnerHeroSection from "~/sections/inner-hero-section";
 
 const Subheading = ({ children }: { children: string }) => (
-  <h3 className="font-display font-bold text-xl md:text-2xl mt-8 first:mt-0">
+  <h3 className="font-display text-xl md:text-2xl mt-8 first:mt-0">
     {children}
   </h3>
 );

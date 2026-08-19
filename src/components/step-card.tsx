@@ -12,7 +12,7 @@ const StepCard = ({ icon, title, content }: StepCardProps) => {
         {icon}
       </div>
       <div className="flex flex-col gap-2">
-        <h3 className="text-secondary-contrast font-display font-bold text-2xl md:text-3xl">
+        <h3 className="text-secondary-contrast font-display text-2xl md:text-3xl">
           {title}
         </h3>
         {content}

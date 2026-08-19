@@ -29,7 +29,7 @@ importers:
       '@fontsource-variable/rokkitt':
         specifier: ^5.3.0
         version: 5.3.0
-      '@fontsource/dela-gothic-one':
+      '@fontsource/anton':
         specifier: ^5.3.0
         version: 5.3.0
       '@iconify/react':
@@ -1601,8 +1601,8 @@ packages:
   '@fontsource-variable/rokkitt@5.3.0':
     resolution: {integrity: sha512-2IFboxeeIE9va/Jm5kYfMhKjPsm4VYxamP8rvFnY4pn04vn8zG0MQAqCCDhxKihwGLWXXpBv8OC3xCxaw2wSjg==}
 
-  '@fontsource/dela-gothic-one@5.3.0':
-    resolution: {integrity: sha512-4A26Qs7TqYFWegJfYHx7KKWy01YybW/e7uhFDM8A8e1neVPm721laLnh0en60wtKihfNdCbJt0VVcEMHC4pHjw==}
+  '@fontsource/anton@5.3.0':
+    resolution: {integrity: sha512-OR1D5n124n2XRs66SbX7IjcOSptljEJE8FcDNnlni2y1/M6KpTx7cU2PIWzTSsBj4WFkHPw24On8qw3qkQZuTw==}
 
   '@hono/node-server@2.1.1':
     resolution: {integrity: sha512-ELuehkj5VCBdgEw9zs+ivkKwyzzUCSQuE96YmiPvn1ECBoZCczbFXJLeEGMTYjphP6gydh4pHMqEYPVMYUVgQg==}
@@ -9610,7 +9610,7 @@ snapshots:
 
   '@fontsource-variable/rokkitt@5.3.0': {}
 
-  '@fontsource/dela-gothic-one@5.3.0': {}
+  '@fontsource/anton@5.3.0': {}
 
   '@hono/node-server@2.1.1(hono@4.13.8)':
     dependencies:

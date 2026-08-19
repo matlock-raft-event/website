@@ -44,7 +44,7 @@ const ImageLink = ({ src, label, href }: ImageLinkProps) => {
         }}
       />
       <h3
-        className={`text-white font-display font-bold text-2xl md:text-3xl uppercase relative z-[1] ${isMobile ? "text-[2rem]" : ""}`}
+        className={`text-white font-display text-2xl md:text-3xl uppercase relative z-[1] ${isMobile ? "text-[2rem]" : ""}`}
       >
         {label}
       </h3>

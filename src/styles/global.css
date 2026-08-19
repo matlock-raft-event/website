@@ -8,7 +8,7 @@
 
 @import "@fontsource-variable/albert-sans";
 
-@import "@fontsource/dela-gothic-one";
+@import "@fontsource/anton";
 
 @import "@fontsource-variable/rokkitt";
 
@@ -95,7 +95,7 @@
 
     --font-sans: "Albert Sans Variable", sans-serif;
     --font-serif: "Rokkitt Variable", serif;
-    --font-display: "Dela Gothic One", serif;
+    --font-display: "Anton", "Arial Narrow", sans-serif;
     --font-avenir: "avenir", sans-serif;
 
     --breakpoint-sm: 600px;
