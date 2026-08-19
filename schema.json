@@ -1478,6 +1478,13 @@
         },
         "optional": true
       },
+      "titleAccent": {
+        "type": "objectAttribute",
+        "value": {
+          "type": "string"
+        },
+        "optional": true
+      },
       "subtitle": {
         "type": "objectAttribute",
         "value": {
@@ -1493,6 +1500,20 @@
         "optional": true
       },
       "buttonLink": {
+        "type": "objectAttribute",
+        "value": {
+          "type": "string"
+        },
+        "optional": true
+      },
+      "secondaryButtonText": {
+        "type": "objectAttribute",
+        "value": {
+          "type": "string"
+        },
+        "optional": true
+      },
+      "secondaryButtonLink": {
         "type": "objectAttribute",
         "value": {
           "type": "string"

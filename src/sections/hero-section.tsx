@@ -1,5 +1,5 @@
 import { Fragment } from "react";
-import { CalendarBlankIcon, ClockIcon, EyeIcon, MapPinAreaIcon, UsersThreeIcon } from "@phosphor-icons/react";
+import { CalendarBlankIcon, ClockIcon, EyeIcon, MapPinAreaIcon } from "@phosphor-icons/react";
 
 import HeaderImg from "~/assets/images/header.jpg";
 import HeroCountdown from "~/components/hero-countdown";
@@ -31,12 +31,15 @@ const renderLines = (s: string) =>
 const headerImgMeta = HeaderImg as unknown as { width?: number; height?: number };
 
 const HeroSection = ({ hero, imgSrc, imgSrcset, eventDate }: Props) => {
-  const title = hero?.title ?? "Ready To Brave The Cold Derwent Waters?";
+  const title = hero?.title ?? "Ready to brave";
+  const titleAccent = hero?.titleAccent;
   const buttonLink = hero?.buttonLink ?? "/take-part";
-  const buttonText = hero?.buttonText ?? "Get involved";
+  const buttonText = hero?.buttonText ?? "Enter a raft";
+  const secondaryButtonLink = hero?.secondaryButtonLink;
+  const secondaryButtonText = hero?.secondaryButtonText;
 
   return (
-    <div className="relative flex flex-col min-h-screen">
+    <div className="relative flex flex-col min-h-[min(100svh,880px)]">
       <div className="relative flex flex-col flex-1">
         <div className="relative md:absolute md:inset-0">
           <img
@@ -50,46 +53,55 @@ const HeroSection = ({ hero, imgSrc, imgSrcset, eventDate }: Props) => {
             srcSet={imgSrcset}
             width={headerImgMeta.width}
           />
-          <div className="absolute inset-0 bg-[linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.2),rgba(53,58,60,1))] md:bg-[linear-gradient(to_right,rgba(0,0,0,0.8),rgba(0,0,0,0.35)_45%,transparent_75%)]" />
+          {/* Pine-tinted vertical wash — light over the photo's middle, deep at
+              the foot so the seam into the marquee reads naturally */}
+          <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(5,43,30,0.55),rgba(5,43,30,0.25)_35%,rgba(5,43,30,0.82))]" />
         </div>
 
         <div className="bg-ink flex-1 md:bg-transparent md:flex-none md:absolute md:inset-0 md:z-10 flex items-center">
           <div className="mx-auto w-full container px-4">
-            <div className="flex flex-col gap-4 py-4 text-center md:text-left md:w-[61.8vw] md:py-0">
-              <p className="font-sans font-bold text-lg md:text-xl text-sun">
-                Boxing Day raft racing, in aid of the RNLI
-              </p>
-              <h1 className="font-display uppercase text-3xl sm:text-4xl md:text-5xl lg:text-6xl leading-tight text-secondary">
+            <div className="flex flex-col items-center gap-5 py-8 text-center md:py-0">
+              <h1 className="font-display uppercase text-4xl sm:text-5xl md:text-6xl lg:text-7xl leading-[0.97] text-cream [text-shadow:0_5px_0_rgba(5,43,30,0.45)]">
                 {renderLines(title)}
+                {
+                  titleAccent &&
+                    <span className="block text-sun">
+                      {renderLines(titleAccent)}
+                    </span>
+                }
               </h1>
-              <ul className="flex flex-row flex-wrap gap-x-5 gap-y-2 justify-center md:justify-start text-secondary">
-                <li className="inline-flex items-center gap-1.5 text-sm font-semibold">
-                  <MapPinAreaIcon className="text-sun shrink-0" weight="bold" />
+              <ul className="flex flex-row flex-wrap gap-x-6 gap-y-2 justify-center font-label text-xs font-extrabold uppercase tracking-[0.1em] text-cream [text-shadow:0_2px_0_rgba(5,43,30,0.55)]">
+                <li className="inline-flex items-center gap-1.5">
+                  <MapPinAreaIcon className="text-sun shrink-0" size={15} weight="bold" />
                   Matlock, Derbyshire
                 </li>
-                <li className="inline-flex items-center gap-1.5 text-sm font-semibold">
-                  <CalendarBlankIcon className="text-sun shrink-0" weight="bold" />
+                <li className="inline-flex items-center gap-1.5">
+                  <CalendarBlankIcon className="text-sun shrink-0" size={15} weight="bold" />
                   Boxing Day, 26 Dec
                 </li>
-                <li className="inline-flex items-center gap-1.5 text-sm font-semibold">
-                  <ClockIcon className="text-sun shrink-0" weight="bold" />
+                <li className="inline-flex items-center gap-1.5">
+                  <ClockIcon className="text-sun shrink-0" size={15} weight="bold" />
                   11am start
                 </li>
-                <li className="inline-flex items-center gap-1.5 text-sm font-semibold">
-                  <EyeIcon className="text-sun shrink-0" weight="bold" />
+                <li className="inline-flex items-center gap-1.5">
+                  <EyeIcon className="text-sun shrink-0" size={15} weight="bold" />
                   Free to watch
                 </li>
-                <li className="inline-flex items-center gap-1.5 text-sm font-semibold">
-                  <UsersThreeIcon className="text-sun shrink-0" weight="bold" />
-                  Family friendly
-                </li>
               </ul>
-              <div className="flex flex-row items-center gap-4 justify-center md:justify-start">
+              <div className="flex flex-row flex-wrap items-center gap-4 justify-center">
                 <Button href={buttonLink} size="lg">
                   {buttonText}
                 </Button>
+                {
+                  secondaryButtonText && secondaryButtonLink &&
+                    <Button color="cream" href={secondaryButtonLink} size="lg">
+                      {secondaryButtonText}
+                    </Button>
+                }
               </div>
-              <HeroCountdown date={eventDate} />
+              <div className="mt-3">
+                <HeroCountdown date={eventDate} />
+              </div>
             </div>
           </div>
         </div>
