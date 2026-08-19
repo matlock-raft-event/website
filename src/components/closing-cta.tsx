@@ -1,8 +1,7 @@
+import type { CtaLink } from "~/components/cta-pair";
+import CtaPair from "~/components/cta-pair";
 import Reveal from "~/components/reveal";
-import { Button } from "~/components/ui/button";
 import Waves from "~/components/waves";
-
-type CtaLink = { label: string, href: string };
 
 type ClosingCtaProps = {
   title: string;
@@ -52,17 +51,7 @@ const ClosingCta = ({
                 {text}
               </p>
           }
-          <div className="mt-2 flex flex-row flex-wrap justify-center gap-4">
-            <Button href={primary.href} size="lg">
-              {primary.label}
-            </Button>
-            {
-              secondary &&
-                <Button color="sun" href={secondary.href} size="lg">
-                  {secondary.label}
-                </Button>
-            }
-          </div>
+          <CtaPair className="mt-2" primary={primary} secondary={secondary} secondaryColor="sun" />
         </Reveal>
       </div>
     </div>

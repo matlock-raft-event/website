@@ -1,8 +1,8 @@
 import { Fragment } from "react";
 
 import HeaderImg from "~/assets/images/header.jpg";
+import CtaPair from "~/components/cta-pair";
 import HeroCountdown from "~/components/hero-countdown";
-import { Button } from "~/components/ui/button";
 import type { HeroQueryResult } from "~/lib/sanity.types";
 import { resolveAssetSrc } from "~/lib/assets";
 import { EVENT_FACTS } from "~/lib/event-facts";
@@ -78,17 +78,14 @@ const HeroSection = ({ hero, imgSrc, imgSrcset, eventDate }: Props) => {
                   ))
                 }
               </ul>
-              <div className="flex flex-row flex-wrap items-center gap-4 justify-center">
-                <Button href={buttonLink} size="lg">
-                  {buttonText}
-                </Button>
-                {
-                  secondaryButtonText && secondaryButtonLink &&
-                    <Button color="cream" href={secondaryButtonLink} size="lg">
-                      {secondaryButtonText}
-                    </Button>
+              <CtaPair
+                primary={{ label: buttonText, href: buttonLink }}
+                secondary={
+                  secondaryButtonText && secondaryButtonLink
+                    ? { label: secondaryButtonText, href: secondaryButtonLink }
+                    : undefined
                 }
-              </div>
+              />
               <div className="mt-3">
                 <HeroCountdown date={eventDate} />
               </div>
