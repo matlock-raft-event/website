@@ -22,7 +22,7 @@ const SponsorsSection = ({ sponsors }: Props) => (
         to all of the businesses that have sponsored past and present events.
       </p>
 
-      <Reveal className="grid grid-cols-2 items-center justify-items-center gap-x-8 gap-y-10 sm:grid-cols-3 md:grid-cols-5">
+      <Reveal className="grid grid-cols-2 items-center justify-items-center sm:grid-cols-3 md:grid-cols-5">
         {
           (sponsors ?? []).map(sponsor => (
             <a
