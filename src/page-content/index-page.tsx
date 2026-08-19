@@ -7,6 +7,7 @@ import HeroSection from "~/sections/hero-section";
 import MarqueeSection from "~/sections/marquee-section";
 import PodiumSection from "~/sections/podium-section";
 import RaceSection from "~/sections/race-section";
+import RiverbankSection from "~/sections/riverbank-section";
 import SummarySection from "~/sections/summary-section";
 import UpdatesSection from "~/sections/updates-section";
 import type {
@@ -66,6 +67,7 @@ const Content = ({ hero, summary, winners, updates, heroImageSrc, heroImageSrcse
     />
     <UpdatesSection preview updates={updates} />
     <Waves bottomColor="var(--color-pine-dark)" style={{ marginTop: -1 }} variant={2} />
+    <RiverbankSection />
     <Footer />
   </main>
 );

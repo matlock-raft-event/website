@@ -1,4 +1,8 @@
 import FacebookIcon from "./facebook-icon";
+import Logo from "./logo";
+import rnliBadge from "~/assets/images/rnlifundraise.png";
+
+const rnliSrc = (rnliBadge as { src?: string }).src ?? (rnliBadge as unknown as string);
 
 const columns = [
   {
@@ -24,12 +28,7 @@ const columns = [
     links: [
       { label: "About", to: "/about" },
       { label: "Latest updates", to: "/updates" },
-      { label: "Gallery", to: "/gallery" }
-    ]
-  },
-  {
-    title: "Get in touch",
-    links: [
+      { label: "Gallery", to: "/gallery" },
       { label: "Contact us", to: "/contact" }
     ]
   }
@@ -40,17 +39,47 @@ const legalLinks = [
   { label: "Cookies Policy", to: "/cookies" }
 ];
 
+/* Bunting strung across the top of the footer frame */
+const Bunting = () => (
+  <svg aria-hidden="true" className="block w-full" preserveAspectRatio="none" viewBox="0 0 1440 46">
+    <path d="M0 8 Q 360 30 720 14 T 1440 12" fill="none" opacity=".5" stroke="var(--color-cream)" strokeWidth="3" />
+    <g>
+      <path d="M80 14 l9 20 11 -17 Z" fill="var(--color-raft)" />
+      <path d="M230 22 l9 20 11 -17 Z" fill="var(--color-sun)" />
+      <path d="M380 26 l9 20 11 -17 Z" fill="var(--color-river)" />
+      <path d="M530 24 l9 20 11 -17 Z" fill="var(--color-raft)" />
+      <path d="M680 18 l9 20 11 -17 Z" fill="var(--color-sun)" />
+      <path d="M830 16 l9 20 11 -17 Z" fill="var(--color-river-light)" />
+      <path d="M980 18 l9 20 11 -17 Z" fill="var(--color-raft)" />
+      <path d="M1130 14 l9 20 11 -17 Z" fill="var(--color-sun)" />
+      <path d="M1280 12 l9 20 11 -17 Z" fill="var(--color-river)" />
+    </g>
+  </svg>
+);
+
 const Footer = () => (
-  <footer className="w-full pt-12 pb-8 bg-pine-dark text-cream">
-    <div className="mx-auto w-full container px-4 flex flex-col items-center gap-10">
-      <div className="grid w-full max-w-4xl grid-cols-2 gap-8 md:grid-cols-4">
+  <footer className="w-full pb-8 bg-pine-dark text-cream">
+    <Bunting />
+    <div className="mx-auto w-full container px-4 flex flex-col gap-10 pt-8">
+      <div className="mx-auto grid w-full max-w-5xl grid-cols-2 gap-x-8 gap-y-10 md:grid-cols-[1.4fr_1fr_1fr_1fr]">
+        <div className="col-span-2 md:col-span-1 flex flex-col items-start gap-4">
+          <a aria-label="The Matlock Raft Event — home" href="/">
+            <Logo className="w-28" />
+          </a>
+          <p className="text-sm leading-relaxed text-cream/75 max-w-[30ch]">
+            Dasac&apos;s Matlock Raft Event &mdash; in aid of the Royal National
+            Lifeboat Institution.
+          </p>
+          <img alt="RNLI fundraising badge" className="w-24" loading="lazy" src={rnliSrc} />
+          <FacebookIcon color="var(--color-cream)" href="https://www.facebook.com/matlockraftevent/" />
+        </div>
         {
           columns.map(column => (
             <nav key={column.title} aria-label={column.title} className="flex flex-col gap-3">
-              <p className="font-display uppercase text-base text-sun">
+              <p className="font-label text-xs font-extrabold uppercase tracking-[0.14em] text-sun">
                 {column.title}
               </p>
-              <ul className="flex flex-col gap-2">
+              <ul className="flex flex-col gap-2.5">
                 {
                   column.links.map(link => (
                     <li key={link.to}>
@@ -69,42 +98,37 @@ const Footer = () => (
         }
       </div>
 
-      <div className="flex flex-col items-center gap-2">
-        <p className="font-bold text-xs uppercase tracking-wider">
-          Find us elsewhere
-        </p>
-        <FacebookIcon color="var(--color-cream)" href="https://www.facebook.com/matlockraftevent/" />
-      </div>
-
-      <div className="flex flex-col items-center gap-3 border-t border-cream/20 pt-6 w-full max-w-4xl">
-        <nav aria-label="Legal" className="flex flex-row flex-wrap justify-center items-center gap-x-6 gap-y-1">
-          {
-            legalLinks.map(link => (
-              <a key={link.to} className="text-sm text-cream/85 hover:text-sun hover:underline" href={link.to}>
-                {link.label}
-              </a>
-            ))
-          }
-        </nav>
-        <p className="text-sm leading-relaxed text-center">
-          &#169; Copyright
+      <div className="mx-auto flex w-full max-w-5xl flex-col gap-3 border-t border-cream/20 pt-6">
+        <div className="flex flex-row flex-wrap items-center justify-between gap-x-6 gap-y-2">
+          <p className="text-sm text-cream/75">
+            &#169; Copyright
+            {" "}
+            {new Date().getFullYear()}
+            {" "}
+            &mdash;
+            {" "}
+            <strong className="text-cream">Dasac&apos;s Matlock Raft Event</strong>
+            {" "}
+            &mdash; In aid of the RNLI
+          </p>
+          <nav aria-label="Legal" className="flex flex-row flex-wrap items-center gap-x-6 gap-y-1">
+            {
+              legalLinks.map(link => (
+                <a key={link.to} className="text-sm text-cream/85 hover:text-sun hover:underline" href={link.to}>
+                  {link.label}
+                </a>
+              ))
+            }
+          </nav>
+        </div>
+        <p className="text-sm leading-relaxed text-cream/75">
+          Website designed and coded with &#9829; by
           {" "}
-          {new Date().getFullYear()}
-          {" "}
-          -
-          {" "}
-          <strong>Dasac’s Matlock Raft Event</strong>
-          {" "}
-          - In aid of the Royal National Lifeboat Institution (RNLI)
-        </p>
-        <p className="text-sm leading-relaxed text-center">
-          Website designed and coded with ♥ by
-          {" "}
-          <strong>Ian Ryde</strong>
+          <strong className="text-cream">Ian Ryde</strong>
           {" "}
           and
           {" "}
-          <strong>Sam Hepburn</strong>
+          <strong className="text-cream">Sam Hepburn</strong>
           .
         </p>
       </div>
