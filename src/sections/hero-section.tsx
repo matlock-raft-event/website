@@ -1,13 +1,11 @@
 import { Fragment } from "react";
-import { CalendarBlankIcon, ClockIcon, EyeIcon, MapPinAreaIcon } from "@phosphor-icons/react";
 
 import HeaderImg from "~/assets/images/header.jpg";
 import HeroCountdown from "~/components/hero-countdown";
 import { Button } from "~/components/ui/button";
 import type { HeroQueryResult } from "~/lib/sanity.types";
-
-const resolveSrc = (asset: unknown): string =>
-  (asset as { src?: string }).src ?? (asset as unknown as string);
+import { resolveAssetSrc } from "~/lib/assets";
+import { EVENT_FACTS } from "~/lib/event-facts";
 
 type Props = {
   hero: HeroQueryResult;
@@ -49,7 +47,7 @@ const HeroSection = ({ hero, imgSrc, imgSrcset, eventDate }: Props) => {
             fetchPriority="high"
             height={headerImgMeta.height}
             sizes="100vw"
-            src={imgSrc ?? resolveSrc(HeaderImg)}
+            src={imgSrc ?? resolveAssetSrc(HeaderImg)}
             srcSet={imgSrcset}
             width={headerImgMeta.width}
           />
@@ -70,23 +68,15 @@ const HeroSection = ({ hero, imgSrc, imgSrcset, eventDate }: Props) => {
                     </span>
                 }
               </h1>
-              <ul className="flex flex-row flex-wrap gap-x-6 gap-y-2 justify-center font-label text-xs font-extrabold uppercase tracking-[0.1em] text-cream [text-shadow:0_2px_0_rgba(5,43,30,0.55)]">
-                <li className="inline-flex items-center gap-1.5">
-                  <MapPinAreaIcon className="text-sun shrink-0" size={15} weight="bold" />
-                  Matlock, Derbyshire
-                </li>
-                <li className="inline-flex items-center gap-1.5">
-                  <CalendarBlankIcon className="text-sun shrink-0" size={15} weight="bold" />
-                  Boxing Day, 26 Dec
-                </li>
-                <li className="inline-flex items-center gap-1.5">
-                  <ClockIcon className="text-sun shrink-0" size={15} weight="bold" />
-                  11am start
-                </li>
-                <li className="inline-flex items-center gap-1.5">
-                  <EyeIcon className="text-sun shrink-0" size={15} weight="bold" />
-                  Free to watch
-                </li>
+              <ul className="flex flex-row flex-wrap gap-x-6 gap-y-2 justify-center label-caps-row text-xs text-cream [text-shadow:0_2px_0_rgba(5,43,30,0.55)]">
+                {
+                  EVENT_FACTS.slice(0, 4).map(({ icon: Icon, label }) => (
+                    <li key={label} className="inline-flex items-center gap-1.5">
+                      <Icon className="text-sun shrink-0" size={15} weight="bold" />
+                      {label}
+                    </li>
+                  ))
+                }
               </ul>
               <div className="flex flex-row flex-wrap items-center gap-4 justify-center">
                 <Button href={buttonLink} size="lg">

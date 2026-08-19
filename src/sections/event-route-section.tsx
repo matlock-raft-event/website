@@ -6,6 +6,7 @@ import { Button } from "~/components/ui/button";
 
 import "~/assets/event-route.css";
 import Section from "~/components/section.tsx";
+import { resolveAssetSrc } from "~/lib/assets";
 
 const EventRouteSection = () => (
     <Section palette="cream">
@@ -19,7 +20,7 @@ const EventRouteSection = () => (
                 <img
                     className="rounded-lg"
                     alt="Event route map"
-                    src={(Map as { src?: string }).src ?? (Map as unknown as string)}
+                    src={resolveAssetSrc(Map)}
                     style={{ width: "100%" }}
                 />
             </div>

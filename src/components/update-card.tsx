@@ -1,7 +1,8 @@
 import logoSvg from "~/assets/images/logo.svg";
 import SanityImage from "~/components/sanity-image";
+import { resolveAssetSrc } from "~/lib/assets";
 
-const fallbackLogo = (logoSvg as { src?: string }).src ?? (logoSvg as unknown as string);
+const fallbackLogo = resolveAssetSrc(logoSvg);
 
 type UpdateCardProps = {
   title: string;
@@ -27,7 +28,7 @@ const UpdateCard = ({ title, description, date, href, image }: UpdateCardProps) 
 
   return (
     <a
-      className="group/card flex h-full flex-col overflow-hidden rounded-[10px] border-[3px] border-cream-dark bg-paper shadow-[5px_5px_0_0_rgba(8,64,44,0.12)] transition-[transform,box-shadow] duration-300 ease-[cubic-bezier(0.165,0.84,0.44,1)] hover:-translate-y-1 hover:shadow-[8px_8px_0_0_rgba(8,64,44,0.14)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink"
+      className="group/card flex h-full flex-col overflow-hidden rounded-[10px] border-[3px] border-cream-dark bg-paper shadow-card-soft transition-[transform,box-shadow] duration-300 ease-[cubic-bezier(0.165,0.84,0.44,1)] hover:-translate-y-1 hover:shadow-card-soft-raised focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink"
       href={href}
     >
       <div className="relative aspect-[3/2] overflow-hidden rounded-[2px] bg-cream">

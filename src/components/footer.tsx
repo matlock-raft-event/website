@@ -1,8 +1,9 @@
 import FacebookIcon from "./facebook-icon";
 import Logo from "./logo";
 import rnliBadge from "~/assets/images/rnlifundraise.png";
+import { resolveAssetSrc } from "~/lib/assets";
 
-const rnliSrc = (rnliBadge as { src?: string }).src ?? (rnliBadge as unknown as string);
+const rnliSrc = resolveAssetSrc(rnliBadge);
 
 const columns = [
   {
@@ -57,7 +58,7 @@ const Footer = () => (
         {
           columns.map(column => (
             <nav key={column.title} aria-label={column.title} className="flex flex-col gap-3">
-              <p className="font-label text-xs font-extrabold uppercase tracking-[0.14em] text-sun">
+              <p className="label-caps text-xs text-sun">
                 {column.title}
               </p>
               <ul className="flex flex-col gap-2.5">

@@ -37,7 +37,7 @@ const Heading = ({ palette = "river", subtitle, title, titleAccent, align = "cen
       <div className={`flex flex-col items-start pb-6 text-left ${PALETTE_TEXT[palette]} ${className}`}>
         {
           subtitle &&
-            <p className={`mb-3 font-label text-xs font-extrabold uppercase tracking-[0.2em] ${EYEBROW_TEXT[palette]}`}>
+            <p className={`mb-3 label-caps text-xs ${EYEBROW_TEXT[palette]}`}>
               {subtitle}
             </p>
         }
@@ -50,7 +50,7 @@ const Heading = ({ palette = "river", subtitle, title, titleAccent, align = "cen
     <div className={`flex flex-col items-center pb-6 ${PALETTE_TEXT[palette]} ${className}`}>
       {
         subtitle &&
-            <p className={`mb-3 font-label text-xs font-extrabold uppercase tracking-[0.2em] text-center ${EYEBROW_TEXT[palette]}`}>
+            <p className={`mb-3 label-caps text-xs text-center ${EYEBROW_TEXT[palette]}`}>
               {subtitle}
             </p>
       }

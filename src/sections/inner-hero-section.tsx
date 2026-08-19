@@ -1,8 +1,7 @@
 import HeaderImg from "~/assets/images/header.jpg";
 import Waves from "~/components/waves";
 import useResponsive from "~/hooks/use-responsive";
-
-const resolveSrc = (asset: unknown): string => (asset as { src?: string }).src ?? (asset as unknown as string);
+import { resolveAssetSrc } from "~/lib/assets";
 
 interface InnerHeroSectionProps {
   wavesColor?: string;
@@ -27,7 +26,7 @@ const InnerHeroSection = ({ wavesColor, headerOnly = false, title }: InnerHeroSe
               <>
                 <img
                   alt="Cover Image"
-                  src={resolveSrc(HeaderImg)}
+                  src={resolveAssetSrc(HeaderImg)}
                   style={{
                     width: "100%",
                     height: "auto",
@@ -43,7 +42,7 @@ const InnerHeroSection = ({ wavesColor, headerOnly = false, title }: InnerHeroSe
               <>
                 <img
                   alt="Cover Image"
-                  src={resolveSrc(HeaderImg)}
+                  src={resolveAssetSrc(HeaderImg)}
                   style={{
                     width: "100%",
                     height: "auto",

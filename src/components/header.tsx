@@ -44,7 +44,7 @@ const allLinks = [...leftLinks, ...rightLinks];
 
 const NavLink = ({ label, to }: { label: string; to: string }) => (
   <a
-    className="font-label text-xs font-extrabold uppercase tracking-[0.12em] text-cream transition-colors duration-150 hover:text-sun focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-sun"
+    className="label-caps-row text-xs text-cream transition-colors duration-150 hover:text-sun focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-sun"
     href={to}
   >
     {label}

@@ -7,7 +7,7 @@ const RiverbankSection = () => (
   <div className="bg-pine-dark text-cream">
     <div className="mx-auto w-full container px-4 py-20 sm:py-24 text-center">
       <Reveal className="flex flex-col items-center gap-5">
-        <p className="font-label text-xs font-extrabold uppercase tracking-[0.2em] text-sun">
+        <p className="label-caps text-xs text-sun">
           Boxing Day &middot; 11am &middot; Free to watch
         </p>
         <h2 className="font-display uppercase text-4xl sm:text-5xl lg:text-6xl leading-[0.97]">

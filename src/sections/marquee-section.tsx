@@ -1,7 +1,5 @@
 import RnliFundraiseImg from "~/assets/images/rnlifundraise.png";
-
-const resolveSrc = (asset: unknown): string =>
-  (asset as { src?: string }).src ?? (asset as unknown as string);
+import { resolveAssetSrc } from "~/lib/assets";
 
 const ITEMS_PER_GROUP = 6;
 
@@ -15,7 +13,7 @@ const MarqueeGroup = ({ ariaHidden = false }: { ariaHidden?: boolean }) => (
             <span className="text-cream font-display uppercase py-2 text-lg tracking-wide whitespace-nowrap">
               Fundraising for the RNLI since 1961
             </span>
-            <img alt="" className="h-12 py-1 w-auto shrink-0" src={resolveSrc(RnliFundraiseImg)} />
+            <img alt="" className="h-12 py-1 w-auto shrink-0" src={resolveAssetSrc(RnliFundraiseImg)} />
           </div>
         ))
     }

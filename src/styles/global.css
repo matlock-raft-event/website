@@ -10,6 +10,24 @@
 
 @custom-variant dark (&:is(.dark *));
 
+/* The label voice: extrabold caps in the body face. label-caps is the wide-
+   tracked eyebrow/caption treatment; label-caps-row is the tighter variant
+   for horizontal fact rows and nav links. Font size stays explicit at the
+   usage site (text-xs unless noted). */
+@utility label-caps {
+    font-family: var(--font-label);
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+}
+
+@utility label-caps-row {
+    font-family: var(--font-label);
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
 @theme {
     /* Matlock Raft Event design language — palette (v1) ------------------
        Three section surfaces (cream, river, pine) + one frame colour
@@ -92,6 +110,15 @@
     --font-sans: "Albert Sans Variable", sans-serif;
     --font-label: "Albert Sans Variable", sans-serif;
     --font-display: "Anton", "Arial Narrow", sans-serif;
+
+    /* The hard-offset shadow language — pine-tinted, never blurred-black.
+       card = stat tiles, card-hard = polaroids, card-soft(+raised) = info
+       cards at rest/hover, card-heavy = paper cards sitting on photos. */
+    --shadow-card: 5px 5px 0 0 rgba(8, 64, 44, 0.2);
+    --shadow-card-hard: 8px 8px 0 0 rgba(8, 64, 44, 0.28);
+    --shadow-card-soft: 5px 5px 0 0 rgba(8, 64, 44, 0.12);
+    --shadow-card-soft-raised: 8px 8px 0 0 rgba(8, 64, 44, 0.14);
+    --shadow-card-heavy: 5px 5px 0 0 rgba(8, 64, 44, 0.4);
 
     --breakpoint-sm: 600px;
     --breakpoint-md: 960px;

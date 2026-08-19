@@ -17,13 +17,13 @@ type TimeBlockProps = {
 
 const TimeBlock = ({ label, tilt, value }: TimeBlockProps) => (
   <div
-    className="min-w-[72px] sm:min-w-[84px] rounded-[5px] bg-paper px-2.5 pt-2.5 pb-2 text-center shadow-[5px_5px_0_0_rgba(8,64,44,0.4)]"
+    className="min-w-[72px] sm:min-w-[84px] rounded-[5px] bg-paper px-2.5 pt-2.5 pb-2 text-center shadow-card-heavy"
     style={{ transform: `rotate(${tilt}deg)` }}
   >
     <div className="font-display uppercase text-3xl sm:text-4xl leading-none text-ink tabular-nums">
       {value}
     </div>
-    <div className="mt-1 font-label text-[0.6rem] font-extrabold uppercase tracking-[0.18em] text-raft">
+    <div className="mt-1 label-caps text-[0.6rem] text-raft">
       {label}
     </div>
   </div>
@@ -63,7 +63,7 @@ const HeroCountdown = ({ date }: HeroCountdownProps) => {
           </Fragment>
         ))}
       </div>
-      <p className="font-label text-xs font-extrabold uppercase tracking-[0.2em] text-sun [text-shadow:0_2px_0_rgba(8,64,44,0.5)]">
+      <p className="label-caps text-xs text-sun [text-shadow:0_2px_0_rgba(8,64,44,0.5)]">
         Until the rafts launch
       </p>
     </div>

@@ -9,8 +9,7 @@ import Waves from "~/components/waves";
 import useResponsive from "~/hooks/use-responsive";
 import type { UpdatesForPathsQueryResult } from "~/lib/sanity.types";
 import InnerHeroSection from "~/sections/inner-hero-section";
-
-const resolveSrc = (asset: unknown): string => (asset as { src?: string }).src ?? (asset as unknown as string);
+import { resolveAssetSrc } from "~/lib/assets";
 
 type SingleUpdatePageProps = {
   update: UpdatesForPathsQueryResult[number];
@@ -61,7 +60,7 @@ const Content = ({ update }: SingleUpdatePageProps) => {
                   : (
                     <img
                       alt={title}
-                      src={resolveSrc(donateImg)}
+                      src={resolveAssetSrc(donateImg)}
                       style={{
                         width: "100%",
                         height: "auto",
