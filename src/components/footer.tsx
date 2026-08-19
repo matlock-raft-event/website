@@ -53,47 +53,10 @@ const legalLinks = [
 const Footer = ({ waveTopColor = "var(--color-cream)", sponsorStrip: showStrip = true }: FooterProps) => (
   <>
     {
-      showStrip
-        ? (
-          <>
-            <Waves bottomColor="#fff" topColor={waveTopColor} variant={2} />
-            {/* White (not cream) so mix-blend-multiply erases the white
-                backgrounds baked into most sponsor logos completely. */}
-            <div className="bg-white">
-              <div className="mx-auto flex w-full max-w-5xl flex-col items-center gap-5 px-4 py-8">
-                <p className="label-caps text-xs text-ink/60">
-                  Supported by
-                </p>
-                <div className="flex flex-row flex-wrap items-center justify-center">
-                  {
-                    sponsorStrip.map(sponsor => (
-                      <a
-                        key={sponsor.name}
-                        aria-label={sponsor.name ?? undefined}
-                        className="flex h-10 items-center justify-center transition-transform duration-300 ease-out hover:-translate-y-0.5 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-pine sm:h-12"
-                        href={sponsor.slug ? `/sponsors/${sponsor.slug}` : undefined}
-                      >
-                        <SanityImage
-                          alt={sponsor.name ?? undefined}
-                          className="mix-blend-multiply"
-                          image={sponsor.logo}
-                          width={240}
-                          style={{
-                            maxHeight: "100%",
-                            maxWidth: "100%",
-                            objectFit: "contain"
-                          }}
-                        />
-                      </a>
-                    ))
-                  }
-                </div>
-              </div>
-            </div>
-            <Waves bottomColor="var(--color-pine-dark)" topColor="#fff" variant={3} />
-          </>
-        )
-        : <Waves bottomColor="var(--color-pine-dark)" topColor={waveTopColor} variant={3} />
+      /* Pages ending in a pine-dark closing flow straight into the footer;
+         everyone else gets the seam wave. */
+      waveTopColor !== "var(--color-pine-dark)" &&
+        <Waves bottomColor="var(--color-pine-dark)" topColor={waveTopColor} variant={3} />
     }
     <footer className="w-full pt-12 pb-8 bg-pine-dark text-cream">
     <div className="mx-auto w-full container px-4 flex flex-col gap-10">
@@ -133,6 +96,42 @@ const Footer = ({ waveTopColor = "var(--color-cream)", sponsorStrip: showStrip =
           ))
         }
       </div>
+
+      {
+        showStrip &&
+          <div className="mx-auto flex w-full max-w-5xl flex-col items-center gap-4 border-t border-cream/20 pt-6">
+            <p className="label-caps text-xs text-sun">
+              Supported by
+            </p>
+            {/* Paper chips keep small-business logos legible on the dark
+                footer; mix-blend-multiply folds their white backgrounds
+                into the chip. */}
+            <div className="flex flex-row flex-wrap items-center justify-center gap-2">
+              {
+                sponsorStrip.map(sponsor => (
+                  <a
+                    key={sponsor.name}
+                    aria-label={sponsor.name ?? undefined}
+                    className="flex h-11 items-center justify-center rounded-[4px] bg-paper px-3 py-1.5 transition-transform duration-300 ease-out hover:-translate-y-0.5 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sun"
+                    href={sponsor.slug ? `/sponsors/${sponsor.slug}` : undefined}
+                  >
+                    <SanityImage
+                      alt={sponsor.name ?? undefined}
+                      className="mix-blend-multiply"
+                      image={sponsor.logo}
+                      width={240}
+                      style={{
+                        maxHeight: "100%",
+                        maxWidth: "100%",
+                        objectFit: "contain"
+                      }}
+                    />
+                  </a>
+                ))
+              }
+            </div>
+          </div>
+      }
 
       <div className="mx-auto flex w-full max-w-5xl flex-col gap-3 border-t border-cream/20 pt-6">
         <div className="flex flex-row flex-wrap items-center justify-between gap-x-6 gap-y-2">
