@@ -1,0 +1,35 @@
+import type { Meta, StoryObj } from "@storybook/react-vite";
+
+import Heading from "~/components/heading";
+
+const meta = {
+  title: "Components/Heading",
+  component: Heading,
+  args: {
+    palette: "cream",
+    subtitle: "Proud to present 2024's",
+    title: "Heroic Winners"
+  },
+  argTypes: {
+    palette: { control: "select", options: ["cream", "pine", "river", "sun", "raft", "ink"] }
+  }
+} satisfies Meta<typeof Heading>;
+
+export default meta;
+type Story = StoryObj<typeof meta>;
+
+export const OnCream: Story = {};
+
+export const OnPine: Story = {
+  args: { palette: "pine" },
+  globals: { backgrounds: { value: "pine" } }
+};
+
+export const OnRiver: Story = {
+  args: { palette: "river", subtitle: "Keep ahead of the tide", title: "Latest Updates" },
+  globals: { backgrounds: { value: "river" } }
+};
+
+export const TitleOnly: Story = {
+  args: { subtitle: undefined }
+};

@@ -1,0 +1,74 @@
+import { Meta } from "@storybook/addon-docs/blocks";
+
+export const Swatch = ({ name, hex, fg = "#ffffff", note }) => (
+  <div style={{ border: "2px solid #e7e2c9", borderRadius: 10, overflow: "hidden", background: "#fffdf4" }}>
+    <div style={{ background: hex, color: fg, height: 72, display: "flex", alignItems: "flex-end", padding: "8px 12px", fontFamily: "monospace", fontSize: 12, fontWeight: 700 }}>
+      {hex}
+    </div>
+    <div style={{ padding: "8px 12px 10px" }}>
+      <strong style={{ display: "block", fontSize: 14 }}>{name}</strong>
+      <span style={{ fontSize: 12, color: "#6a736e" }}>{note}</span>
+    </div>
+  </div>
+);
+
+export const Grid = ({ children }) => (
+  <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(170px, 1fr))", gap: 14, margin: "16px 0 28px" }}>
+    {children}
+  </div>
+);
+
+<Meta title="Design Language/Colours" />
+
+# Colours
+
+Five inks from the logo plus river teal. Three section surfaces, one frame colour,
+two accents that never paint a section. Every family is `base / light / dark / contrast`,
+where `contrast` is the text colour that passes WCAG AA on the base.
+
+## Surfaces & frame
+
+<Grid>
+  <Swatch name="cream" hex="#f6f3e2" fg="#26302c" note="surface — the paper ground" />
+  <Swatch name="river" hex="#1d6a72" note="surface — water sections" />
+  <Swatch name="pine" hex="#0d5c3f" note="surface — header & green sections" />
+  <Swatch name="pine-dark" hex="#08402c" note="frame — footer, closing, borders" />
+  <Swatch name="paper" hex="#fffdf4" fg="#26302c" note="cards & countdown cells" />
+  <Swatch name="ink" hex="#26302c" note="text on light surfaces" />
+</Grid>
+
+## Accents
+
+<Grid>
+  <Swatch name="sun" hex="#fbba47" fg="#4b2f00" note="ribbons, highlights, donate" />
+  <Swatch name="raft" hex="#d23a34" note="actions only" />
+</Grid>
+
+### Usage rules
+
+- Sections may only be **cream, river or pine**; the page frame is **pine-dark**.
+- **Sun** never fills a section — marquee ribbon, highlighted words, icons, donate button.
+- **Raft red** means "you can act here": primary buttons, eyebrow labels, dates. Never decoration.
+- Hovers, borders and button undersides use the family's own `-dark` shade — no new hues.
+- Text on river/pine is cream or white; text on cream/paper is ink.
+
+## Status colours
+
+For messaging, form states, banners and badges — deliberately separate from the brand
+accents so "red button" never collides with "error text". Bases pass AA as text on
+cream/paper and take white text as backgrounds; each has a pale `-light` wash.
+
+<Grid>
+  <Swatch name="success" hex="#17714a" note="confirmations, paid, entry accepted" />
+  <Swatch name="warning" hex="#8a6800" note="caution, weather notices" />
+  <Swatch name="error" hex="#c9372c" note="failures, validation (shadcn destructive)" />
+  <Swatch name="info" hex="#0c66e4" note="neutral notices, tips" />
+  <Swatch name="discovery" hex="#6e5dc6" note="new features, first-run hints" />
+</Grid>
+
+## Tailwind usage
+
+All families are `@theme` tokens, so the full utility set exists for each:
+`bg-pine`, `text-river-contrast`, `border-sun-dark`, `bg-success-light`,
+`text-error`, and so on. Component palettes (`Section`, `Heading`, `Button`)
+take the family name as a prop.

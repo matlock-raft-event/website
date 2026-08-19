@@ -1,0 +1,54 @@
+import { Meta } from "@storybook/addon-docs/blocks";
+
+<Meta title="Design Language/Overview" />
+
+# Derwent design language
+
+The rules behind the Matlock Raft Event site: what it's allowed to look like, and why.
+If a choice isn't covered here, the principles decide. The logo is fixed and everything
+else exists to frame it.
+
+## Principles
+
+1. **Village fête, not startup** — every element should feel at home on a riverside
+   noticeboard on Boxing Day. If it would look right in a SaaS pitch deck, it's wrong here.
+2. **The river runs through it** — water is the connective tissue: wave dividers, the river
+   surface, the panorama. Sections don't just stack, they flow downstream.
+3. **The logo is the mascot** — the badge supplies the whimsy. Typography, colour and layout
+   stay confident and simple so the badge (and the photos) can be the characters.
+4. **Say it once, clearly** — each fact lives in exactly one place per screen. Copy is
+   truthful, warm and plain-spoken; invented claims are not on-brand.
+5. **Things are physical** — buttons press, cards tilt like pinned photos, the badge hangs.
+   Depth comes from hard offset shadows, never glows.
+6. **Loud in one place** — one big moment per screen. Everything around it stays quiet so
+   the loud thing lands.
+
+## Typography
+
+Two faces, no exceptions:
+
+- **Display** — headlines, big numbers, card titles. Always uppercase, tight leading.
+- **Everything else** — Albert Sans. Body is regular/medium sentence case at a 62–74ch
+  measure; labels are ExtraBold caps with +0.12 to +0.2em tracking. That single label
+  treatment covers buttons, nav links, eyebrows, chips, table headers and form labels.
+
+## Motion
+
+Interactions 130–250ms ease; reveals 700ms rise-and-fade, once; ambient loops (waves,
+marquee, raft bob) are slow and transform-only. Everything respects `prefers-reduced-motion`.
+
+## Voice
+
+Warm, concrete, a bit daft, always true. Labels in caps, sentences in sentence case,
+one exclamation mark per page maximum.
+
+## Decision log
+
+| # | Decision | Outcome |
+|---|----------|---------|
+| 001 | Button & label face | Albert Sans ExtraBold caps — strict two-font system |
+| 002 | Display face | Poster-weight condensed display; the logo is the only whimsical actor |
+| 003 | Surfaces | Cut to cream / river / pine + pine-dark frame; sun demoted to ribbon accent; mint retired |
+| 004 | Hero facts | Icon row + countdown caption; pill chips and prose subline rejected |
+| 005 | Header badge | Hangs full-size at page top, shrinks to a small lip on scroll |
+| 006 | Status colours | Five families (success/warning/error/info/discovery), separate from brand accents |
