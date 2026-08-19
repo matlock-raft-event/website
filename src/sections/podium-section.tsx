@@ -1,5 +1,6 @@
 import Heading from "~/components/heading";
 import PodiumGrid from "~/components/podium-grid";
+import Reveal from "~/components/reveal";
 import Section from "~/components/section";
 import { Button } from "~/components/ui/button";
 import type { WinnersQueryResult } from "~/lib/sanity.types";
@@ -24,7 +25,9 @@ const PodiumSection = ({ winners }: Props) => {
         title="Heroic Winners"
       />
 
-      <PodiumGrid winners={latestWinners} />
+      <Reveal>
+        <PodiumGrid winners={latestWinners} />
+      </Reveal>
 
       <div className="flex justify-center pt-12">
         <Button color="cream" href="/hall-of-fame" size="lg">

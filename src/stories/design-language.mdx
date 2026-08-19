@@ -34,8 +34,9 @@ Two faces, no exceptions:
 
 ## Motion
 
-Interactions 130–250ms ease; reveals 700ms rise-and-fade, once; ambient loops (waves,
-marquee, raft bob) are slow and transform-only. Everything respects `prefers-reduced-motion`.
+Interactions 130–250ms ease; reveals (the `Reveal` component) are a single 700ms
+rise-and-fade on first view. Wave seams are **static by choice** — ambient motion is
+limited to the marquee. Everything respects `prefers-reduced-motion`.
 
 ## Voice
 
@@ -52,3 +53,5 @@ one exclamation mark per page maximum.
 | 004 | Hero facts | Icon row + countdown caption; pill chips and prose subline rejected |
 | 005 | Header badge | Hangs full-size at page top, shrinks to a small lip on scroll |
 | 006 | Status colours | Five families (success/warning/error/info/discovery), separate from brand accents |
+| 007 | Wave seams | Reuse the existing four static wave SVGs; seam takes the incoming section&apos;s colour, adjacent seams vary the curve, no animation |
+| 008 | Display case | Anton display type is always uppercase, sitewide |

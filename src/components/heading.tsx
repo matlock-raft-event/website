@@ -29,7 +29,7 @@ const Heading = ({ palette = "river", subtitle, title }: HeadingProps) => {
                   <Bullet />
                 </div>
       }
-      <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl leading-tight text-center">{title}</h2>
+      <h2 className="font-display uppercase text-3xl sm:text-4xl lg:text-5xl leading-tight text-center">{title}</h2>
     </div>
   );
 };

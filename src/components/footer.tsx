@@ -47,7 +47,7 @@ const Footer = () => (
         {
           columns.map(column => (
             <nav key={column.title} aria-label={column.title} className="flex flex-col gap-3">
-              <p className="font-display text-base text-sun">
+              <p className="font-display uppercase text-base text-sun">
                 {column.title}
               </p>
               <ul className="flex flex-col gap-2">

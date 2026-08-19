@@ -59,28 +59,28 @@ const HeroSection = ({ hero, imgSrc, imgSrcset, eventDate }: Props) => {
               <p className="font-sans font-bold text-lg md:text-xl text-sun">
                 Boxing Day raft racing, in aid of the RNLI
               </p>
-              <h1 className="font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl leading-tight text-secondary">
+              <h1 className="font-display uppercase text-3xl sm:text-4xl md:text-5xl lg:text-6xl leading-tight text-secondary">
                 {renderLines(title)}
               </h1>
               <ul className="flex flex-row flex-wrap gap-x-5 gap-y-2 justify-center md:justify-start text-secondary">
                 <li className="inline-flex items-center gap-1.5 text-sm font-semibold">
-                  <MapPinAreaIcon className="text-sun shrink-0" weight="fill" />
+                  <MapPinAreaIcon className="text-sun shrink-0" weight="bold" />
                   Matlock, Derbyshire
                 </li>
                 <li className="inline-flex items-center gap-1.5 text-sm font-semibold">
-                  <CalendarBlankIcon className="text-sun shrink-0" weight="fill" />
+                  <CalendarBlankIcon className="text-sun shrink-0" weight="bold" />
                   Boxing Day, 26 Dec
                 </li>
                 <li className="inline-flex items-center gap-1.5 text-sm font-semibold">
-                  <ClockIcon className="text-sun shrink-0" weight="fill" />
+                  <ClockIcon className="text-sun shrink-0" weight="bold" />
                   11am start
                 </li>
                 <li className="inline-flex items-center gap-1.5 text-sm font-semibold">
-                  <EyeIcon className="text-sun shrink-0" weight="fill" />
+                  <EyeIcon className="text-sun shrink-0" weight="bold" />
                   Free to watch
                 </li>
                 <li className="inline-flex items-center gap-1.5 text-sm font-semibold">
-                  <UsersThreeIcon className="text-sun shrink-0" weight="fill" />
+                  <UsersThreeIcon className="text-sun shrink-0" weight="bold" />
                   Family friendly
                 </li>
               </ul>

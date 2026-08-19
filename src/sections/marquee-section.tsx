@@ -12,7 +12,7 @@ const MarqueeGroup = ({ ariaHidden = false }: { ariaHidden?: boolean }) => (
         .map((_, i) => (
           // eslint-disable-next-line react/no-array-index-key
           <div key={i} className="flex items-center gap-8 px-4 shrink-0">
-            <span className="text-cream font-display py-2 text-lg uppercase tracking-wide whitespace-nowrap">
+            <span className="text-cream font-display uppercase py-2 text-lg tracking-wide whitespace-nowrap">
               Fundraising for the RNLI since 1961
             </span>
             <img alt="" className="h-12 py-1 w-auto shrink-0" src={resolveSrc(RnliFundraiseImg)} />

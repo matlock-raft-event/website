@@ -1,4 +1,5 @@
 import Heading from "~/components/heading";
+import Reveal from "~/components/reveal";
 import Section from "~/components/section";
 import StatTile from "~/components/stat-tile";
 import { Button } from "~/components/ui/button";
@@ -13,7 +14,7 @@ const SummarySection = ({ summary }: Props) => (
       subtitle="Hello daring adventurer"
       title="Boxing Day fun for all the family!"
     />
-    <div className="flex flex-col items-center gap-6">
+    <Reveal className="flex flex-col items-center gap-6">
 
       <div className="mx-auto w-full max-w-4xl px-4">
         <p className="text-sm sm:text-base lg:text-lg leading-relaxed text-center">
@@ -29,7 +30,7 @@ const SummarySection = ({ summary }: Props) => (
 
       <Button href="/info">Event details</Button>
 
-    </div>
+    </Reveal>
   </Section>
 );
 

@@ -18,19 +18,19 @@ const ContactUsSection = ({ contactInstructions }: Props) => (
                     fill you in on all the details. We&apos;ll get back to you as soon as we can!
       </p>
 
-      <p className="font-display text-base">General Enquiries</p>
+      <p className="font-display uppercase text-base">General Enquiries</p>
       {
         contactInstructions?.general &&
                     <Block value={contactInstructions.general as never} />
       }
 
-      <p className="font-display text-base">Sponsors</p>
+      <p className="font-display uppercase text-base">Sponsors</p>
       {
         contactInstructions?.sponsors &&
                     <Block value={contactInstructions.sponsors as never} />
       }
 
-      <p className="font-display text-base">Press</p>
+      <p className="font-display uppercase text-base">Press</p>
       {
         contactInstructions?.press &&
                     <Block value={contactInstructions.press as never} />

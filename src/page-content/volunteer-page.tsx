@@ -25,7 +25,7 @@ const Content = ({ volunteerPage }: Props) => (
           >
             <div className="flex flex-col md:flex-1">
               {role.title && (
-                <h3 className="font-display text-3xl md:text-4xl mb-4">
+                <h3 className="font-display uppercase text-3xl md:text-4xl mb-4">
                   {role.title}
                 </h3>
               )}

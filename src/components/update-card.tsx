@@ -59,7 +59,7 @@ const UpdateCard = ({ title, description, date, href, image }: UpdateCardProps) 
               {formattedDate}
             </p>
         }
-        <h3 className="font-display text-lg md:text-xl leading-tight line-clamp-2 text-ink">
+        <h3 className="font-display uppercase text-lg md:text-xl leading-tight line-clamp-2 text-ink">
           {title}
         </h3>
         {

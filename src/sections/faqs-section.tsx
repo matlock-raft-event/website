@@ -85,7 +85,7 @@ const FaqsSection = ({ faqs }: Props) => {
           {
             filtered.map(faq => (
               <AccordionItem key={faq.question} value={faq.question ?? ""}>
-                <AccordionTrigger className="text-cream-contrast font-display text-xl py-4">
+                <AccordionTrigger className="text-cream-contrast font-display uppercase text-xl py-4">
                   {faq.question}
                 </AccordionTrigger>
                 <AccordionContent>

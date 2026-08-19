@@ -43,7 +43,7 @@ const TakePartSection = () => (
           </p>
         </div>
         <div className="flex flex-col items-center gap-4">
-          <p className="font-display text-base">
+          <p className="font-display uppercase text-base">
                             To take part in the raft event, you need to complete the following steps:
           </p>
           {

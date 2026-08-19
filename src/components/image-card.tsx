@@ -101,7 +101,7 @@ const ImageCard = (
           <div className="flex flex-col px-6 py-4">
             {
               title &&
-                            <h3 className="font-display text-xl md:text-2xl">
+                            <h3 className="font-display uppercase text-xl md:text-2xl">
                               {title}
                             </h3>
             }
