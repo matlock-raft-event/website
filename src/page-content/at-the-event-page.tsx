@@ -26,7 +26,7 @@ const Content = () => (
     <InnerHeroSection title="At the event" wavesColor="var(--color-cream)" />
     <BackLink href="/info" label="Event information" />
     <Section palette="cream">
-      <Heading palette="cream" subtitle="Know before you go" title="At The Event" />
+      <Heading align="left" className="mx-auto max-w-4xl px-4" palette="cream" subtitle="Know before you go" title="At The Event" />
       <div className="mx-auto w-full max-w-4xl px-4">
         <Para>
           Thousands of people line the banks of the Derwent on Boxing Day to cheer the rafts on.

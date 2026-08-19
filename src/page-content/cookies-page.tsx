@@ -13,7 +13,7 @@ const Content = ({ cookiesInfo }: Props) => (
   <main id="main" tabIndex={-1}>
     <InnerHeroSection title="Cookies policy" />
     <Section palette="cream">
-      <Heading palette="cream" title="Cookies Policy" />
+      <Heading align="left" className="mx-auto max-w-4xl px-4" palette="cream" subtitle="How this site uses cookies" title="Cookies Policy" />
       {cookiesInfo?.content ? <Block value={cookiesInfo.content as never} /> : null}
     </Section>
     <Waves bottomColor="var(--color-pine-dark)" topColor="var(--color-cream)" />

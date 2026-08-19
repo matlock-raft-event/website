@@ -9,6 +9,8 @@ type Props = { about: AboutQueryResult };
 const RnliSection = ({ about }: Props) => (
   <Section palette="river">
     <Heading
+      align="left"
+      className="mx-auto max-w-4xl px-4"
       palette="river"
       subtitle="Saving lives at sea with your support"
       title="RNLI"

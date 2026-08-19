@@ -13,7 +13,7 @@ const Content = ({ volunteerPage }: Props) => (
   <main id="main" tabIndex={-1}>
     <h1 className="sr-only">Volunteer</h1>
     <Section palette="cream">
-      <Heading palette="cream" subtitle="How to help out" title="Volunteer" />
+      <Heading align="left" className="mx-auto px-4" palette="cream" subtitle="How to help out" title="Volunteer" />
       <div className="mx-auto w-full px-4 flex flex-col gap-12">
         <div>
           {volunteerPage?.intro && <Block value={volunteerPage.intro as never} />}

@@ -23,7 +23,7 @@ const Content = () => (
   <main id="main" tabIndex={-1}>
     <InnerHeroSection title="Privacy policy" />
     <Section palette="cream">
-      <Heading palette="cream" subtitle="Your data and your rights" title="Privacy Policy" />
+      <Heading align="left" className="mx-auto max-w-4xl px-4" palette="cream" subtitle="Your data and your rights" title="Privacy Policy" />
       <div className="mx-auto w-full max-w-4xl px-4">
         <Para>
           This privacy policy explains how Dasac&apos;s Matlock Raft Event (&quot;we&quot;,

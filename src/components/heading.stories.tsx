@@ -33,3 +33,20 @@ export const OnRiver: Story = {
 export const TitleOnly: Story = {
   args: { subtitle: undefined }
 };
+
+export const LeftAligned: Story = {
+  args: { align: "left", subtitle: "Travel & parking", title: "Getting Here" },
+  parameters: {
+    docs: {
+      description: {
+        story: "Decision 009: centred introduces a stage (card grids, podiums, CTAs); "
+          + "left-aligned with an eyebrow introduces reading (running prose)."
+      }
+    }
+  }
+};
+
+export const LeftOnDark: Story = {
+  args: { align: "left", palette: "river", subtitle: "The race", title: "Three miles. One weir." },
+  globals: { backgrounds: { value: "river" } }
+};

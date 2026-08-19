@@ -8,6 +8,8 @@ type Props = { about: AboutQueryResult };
 const AboutSection = ({ about }: Props) => (
   <Section palette="cream">
     <Heading
+      align="left"
+      className="mx-auto max-w-4xl px-4"
       palette="cream"
       subtitle="It all started in 1961"
       title="What is The Matlock Raft Event?"
