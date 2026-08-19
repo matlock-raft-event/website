@@ -13,12 +13,6 @@ const EYEBROW_TEXT: Record<Palette, string> = {
   pine: "text-sun"
 };
 
-const Bullet = () => (
-  <span aria-hidden="true" className="font-label font-medium text-sm sm:text-base md:text-lg">
-    &#8226;
-  </span>
-);
-
 type HeadingProps = {
   palette?: Palette;
   subtitle?: string;
@@ -56,11 +50,9 @@ const Heading = ({ palette = "river", subtitle, title, titleAccent, align = "cen
     <div className={`flex flex-col items-center pb-6 ${PALETTE_TEXT[palette]} ${className}`}>
       {
         subtitle &&
-                <div className="flex flex-row items-center mb-2 gap-2 sm:gap-4">
-                  <Bullet />
-                  <p className="font-label font-medium text-sm sm:text-base md:text-lg text-center uppercase">{subtitle}</p>
-                  <Bullet />
-                </div>
+            <p className={`mb-3 font-label text-xs font-extrabold uppercase tracking-[0.2em] text-center ${EYEBROW_TEXT[palette]}`}>
+              {subtitle}
+            </p>
       }
       <h2 className="font-display uppercase text-3xl sm:text-4xl lg:text-5xl leading-tight text-center">{titleContent}</h2>
     </div>
