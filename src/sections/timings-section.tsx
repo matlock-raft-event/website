@@ -55,7 +55,7 @@ const TimingsSection = () => (
               <span className="absolute -left-5 flex h-10 w-10 items-center justify-center rounded-full bg-raft shadow-[2px_2px_0_0_rgba(0,0,0,0.25)]">
                 <Iconify color="var(--color-raft-contrast)" icon="ph:clock" width={20} />
               </span>
-              <span className="block font-serif font-medium text-sm sm:text-base md:text-lg">
+              <span className="block font-label font-medium text-sm sm:text-base md:text-lg">
                 {item.time}
               </span>
               <p className="text-sm sm:text-base lg:text-lg leading-relaxed">{item.description}</p>

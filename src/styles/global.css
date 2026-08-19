@@ -10,8 +10,6 @@
 
 @import "@fontsource/anton";
 
-@import "@fontsource-variable/rokkitt";
-
 @custom-variant dark (&:is(.dark *));
 
 @theme {
@@ -94,7 +92,7 @@
     --color-secondary-contrast: var(--color-cream-contrast);
 
     --font-sans: "Albert Sans Variable", sans-serif;
-    --font-serif: "Rokkitt Variable", serif;
+    --font-label: "Albert Sans Variable", sans-serif;
     --font-display: "Anton", "Arial Narrow", sans-serif;
     --font-avenir: "avenir", sans-serif;
 

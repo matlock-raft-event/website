@@ -55,7 +55,7 @@ const Content = ({ cardImages = [] }: Props) => (
                 <h3 className="font-display text-2xl md:text-3xl leading-tight">
                   {card.title}
                 </h3>
-                <span className="inline-flex items-center gap-1.5 font-serif font-bold uppercase tracking-wide text-sm transition-all group-hover:gap-2.5">
+                <span className="inline-flex items-center gap-1.5 font-label font-bold uppercase tracking-wide text-sm transition-all group-hover:gap-2.5">
                   {card.description}
                   <span aria-hidden="true">→</span>
                 </span>

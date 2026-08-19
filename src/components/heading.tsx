@@ -10,7 +10,7 @@ const PALETTE_TEXT: Record<Palette, string> = {
 };
 
 const Bullet = () => (
-  <span aria-hidden="true" className="font-serif font-medium text-sm sm:text-base md:text-lg">
+  <span aria-hidden="true" className="font-label font-medium text-sm sm:text-base md:text-lg">
     &#8226;
   </span>
 );
@@ -28,7 +28,7 @@ const Heading = ({ palette = "river", subtitle, title }: HeadingProps) => {
         subtitle &&
                 <div className="flex flex-row items-center mb-2 gap-2 sm:gap-4">
                   <Bullet />
-                  <p className="font-serif font-medium text-sm sm:text-base md:text-lg text-center uppercase">{subtitle}</p>
+                  <p className="font-label font-medium text-sm sm:text-base md:text-lg text-center uppercase">{subtitle}</p>
                   <Bullet />
                 </div>
       }

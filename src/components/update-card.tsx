@@ -55,7 +55,7 @@ const UpdateCard = ({ title, description, date, href, image }: UpdateCardProps) 
       <div className="flex flex-1 flex-col gap-2 p-5">
         {
           formattedDate &&
-            <p className="font-serif text-xs uppercase tracking-wider text-ink-light">
+            <p className="font-label text-xs uppercase tracking-wider text-ink-light">
               {formattedDate}
             </p>
         }
@@ -68,7 +68,7 @@ const UpdateCard = ({ title, description, date, href, image }: UpdateCardProps) 
               {description}
             </p>
         }
-        <span className="mt-auto inline-flex items-center gap-1.5 pt-3 font-serif font-bold uppercase tracking-wide text-sm text-raft transition-all group-hover/card:gap-2.5">
+        <span className="mt-auto inline-flex items-center gap-1.5 pt-3 font-label font-bold uppercase tracking-wide text-sm text-raft transition-all group-hover/card:gap-2.5">
           Read more
           <span aria-hidden="true">→</span>
         </span>

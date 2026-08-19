@@ -21,7 +21,7 @@ const Content = ({ sponsor }: SingleSponsorPageProps) => {
 
       <Section palette="cream">
         <a
-          className="inline-flex items-center gap-1 font-serif font-medium text-raft hover:underline"
+          className="inline-flex items-center gap-1 font-label font-medium text-raft hover:underline"
           href="/sponsors"
         >
           <span aria-hidden="true">←</span>
@@ -37,21 +37,21 @@ const Content = ({ sponsor }: SingleSponsorPageProps) => {
               {
                 sponsor.description &&
                                 <div>
-                                  <h6 className="font-serif font-medium text-sm sm:text-base md:text-lg">What we do</h6>
+                                  <h6 className="font-label font-medium text-sm sm:text-base md:text-lg">What we do</h6>
                                   <p className="text-sm sm:text-base lg:text-lg leading-relaxed">{sponsor.description}</p>
                                 </div>
               }
               {
                 sponsor.address &&
                                 <div>
-                                  <h6 className="font-serif font-medium text-sm sm:text-base md:text-lg">Where to find us</h6>
+                                  <h6 className="font-label font-medium text-sm sm:text-base md:text-lg">Where to find us</h6>
                                   <p className="text-sm sm:text-base lg:text-lg leading-relaxed">{sponsor.address}</p>
                                 </div>
               }
               {
                 sponsor.url &&
                                 <div>
-                                  <h6 className="font-serif font-medium text-sm sm:text-base md:text-lg">Our website</h6>
+                                  <h6 className="font-label font-medium text-sm sm:text-base md:text-lg">Our website</h6>
                                   <a
                                     className="text-raft text-base hover:underline"
                                     href={sponsor.url}
@@ -65,7 +65,7 @@ const Content = ({ sponsor }: SingleSponsorPageProps) => {
               {
                 sponsor.testimonial &&
                                 <div>
-                                  <h6 className="font-serif font-medium text-sm sm:text-base md:text-lg">Why we sponsored The Matlock Raft Event</h6>
+                                  <h6 className="font-label font-medium text-sm sm:text-base md:text-lg">Why we sponsored The Matlock Raft Event</h6>
                                   <p className="text-sm sm:text-base lg:text-lg leading-relaxed">{sponsor.testimonial}</p>
                                 </div>
               }

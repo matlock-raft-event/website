@@ -67,7 +67,7 @@ const Content = ({ galleryImages }: Props) => {
               </p>
             </div>
             <div className="flex flex-col items-center gap-1">
-              <p className="font-serif font-medium text-sm uppercase tracking-wider text-cream-contrast">
+              <p className="font-label font-medium text-sm uppercase tracking-wider text-cream-contrast">
                 Browse by year
               </p>
               <ToggleGroup
