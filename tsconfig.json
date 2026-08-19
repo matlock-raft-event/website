@@ -19,6 +19,7 @@
     "./worker-configuration.d.ts"
   ],
   "exclude": [
-    "dist"
+    "dist",
+    "storybook-static"
   ]
 }

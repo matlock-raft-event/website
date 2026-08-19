@@ -13,7 +13,9 @@
     "sanity:schema": "sanity schema extract --path ./schema.json",
     "sanity:typegen": "pnpm sanity:schema && sanity typegen generate",
     "generate-types": "wrangler types",
-    "deploy": "pnpm run build && wrangler deploy"
+    "deploy": "pnpm run build && wrangler deploy",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build"
   },
   "dependencies": {
     "@astrojs/cloudflare": "^14.3.2",
@@ -50,13 +52,17 @@
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.10",
+    "@storybook/addon-docs": "^10.6.0",
+    "@storybook/react-vite": "^10.6.0",
     "@types/react": "^19.3.0",
     "@types/react-dom": "^19.3.0",
     "groq": "^5.31.2",
     "sanity": "^5.31.2",
     "shadcn": "^4.21.0",
     "sharp": "^0.35.4",
+    "storybook": "^10.6.0",
     "typescript": "^5.9.3",
+    "vite": "^8.3.0",
     "wrangler": "^4.136.2"
   },
   "packageManager": "pnpm@9.0.0",
