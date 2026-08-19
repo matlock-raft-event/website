@@ -10,7 +10,7 @@ const buttonVariants = cva(
   {
     variants: {
       variant: {
-        solid: "shadow-[0_5px_0_0_var(--btn-under),0_8px_14px_rgba(8,64,44,0.18)] hover:-translate-y-0.5 hover:brightness-105 hover:shadow-[0_7px_0_0_var(--btn-under),0_11px_16px_rgba(8,64,44,0.2)] active:translate-y-[3px] active:shadow-[0_1px_0_0_var(--btn-under)]",
+        solid: "shadow-[0_3px_0_0_var(--btn-under),0_5px_8px_rgba(8,64,44,0.12)] hover:-translate-y-0.5 hover:brightness-105 hover:shadow-[0_4px_0_0_var(--btn-under),0_7px_10px_rgba(8,64,44,0.14)] active:translate-y-[2px] active:shadow-[0_1px_0_0_var(--btn-under)]",
         outline: "bg-transparent active:translate-y-px",
         ghost: "bg-transparent border-transparent active:translate-y-px",
         link: "bg-transparent border-transparent underline-offset-4 hover:underline"

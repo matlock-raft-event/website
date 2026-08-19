@@ -42,9 +42,11 @@ const rightLinks = [
 
 const allLinks = [...leftLinks, ...rightLinks];
 
+/* Plain anchors, but in the button's exact type voice so the header reads
+   as one system: label face, text-sm, extrabold, tracking-wider. */
 const NavLink = ({ label, to }: { label: string; to: string }) => (
   <a
-    className="label-caps-row text-xs text-cream transition-colors duration-150 hover:text-sun focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-sun"
+    className="font-label text-sm font-extrabold uppercase tracking-wider text-cream transition-colors duration-150 hover:text-sun focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-sun"
     href={to}
   >
     {label}
