@@ -15,7 +15,39 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme {
-    /* Literal palette ---------------------------------------------------- */
+    /* Derwent palette (design language v1) -------------------------------
+       Three section surfaces (cream, river, pine) + one frame colour
+       (pine-dark). Sun is a ribbon accent, raft red means "you can act
+       here". Each family: base / light / dark / contrast, where contrast
+       is the text colour that passes WCAG AA on the base. */
+    --color-pine: #0d5c3f;
+    --color-pine-light: #3f8a68;
+    --color-pine-dark: #08402c;
+    --color-pine-contrast: #ffffff;
+
+    --color-river: #1d6a72;
+    --color-river-light: #2c8a7f;
+    --color-river-dark: #14505a;
+    --color-river-contrast: #f6f3e2;
+
+    --color-sun: #fbba47;
+    --color-sun-light: #fcc86c;
+    --color-sun-dark: #d9971c;
+    --color-sun-contrast: #4b2f00;
+
+    --color-raft: #d23a34;
+    --color-raft-light: #e0605a;
+    --color-raft-dark: #a92722;
+    --color-raft-contrast: #ffffff;
+
+    --color-ink: #26302c;
+    --color-ink-light: #4c5551;
+    --color-ink-dark: #1a211e;
+    --color-ink-contrast: #ffffff;
+
+    --color-paper: #fffdf4;
+
+    /* Legacy palette (migrated off below) -------------------------------- */
     --color-mint: #bbf1df;
     --color-mint-light: #c9f4e5;
     --color-mint-dark: #96c1b2;
