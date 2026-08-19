@@ -73,7 +73,9 @@ const Header = () => {
           </nav>
           <div className="md:hidden" />
 
-          <div className="relative w-24 md:w-32 self-stretch">
+          {/* Slot is wider than the badge so the logo keeps clear air on both
+              sides; the grid centres the slot, so the gaps stay symmetrical */}
+          <div className="relative w-28 md:w-44 self-stretch">
             <a
               className={`absolute left-1/2 -translate-x-1/2 transition-[width,top] duration-300 [filter:drop-shadow(0_5px_0_rgba(8,64,44,0.35))] ${
                 scrolled ? "top-[3px] w-[68px]" : "top-1.5 w-24 md:w-32"
