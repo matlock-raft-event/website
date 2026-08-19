@@ -6,7 +6,6 @@ import Footer from "~/components/footer";
 import Heading from "~/components/heading";
 import PageShell from "~/components/page-shell";
 import Section from "~/components/section";
-import Waves from "~/components/waves";
 import InnerHeroSection from "~/sections/inner-hero-section";
 
 const Subheading = ({ children }: { children: string }) => (
@@ -88,7 +87,6 @@ const Content = () => (
       text="Coming along? You can also be part of the event by entering a raft or supporting the RNLI."
       title="See you on Boxing Day"
     />
-    <Waves bottomColor="var(--color-pine-dark)" topColor="var(--color-cream)" variant={2} />
     <Footer />
   </main>
 );

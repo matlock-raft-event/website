@@ -11,7 +11,6 @@ import ImageCard from "~/components/image-card";
 import PageShell from "~/components/page-shell";
 import Section from "~/components/section";
 import { ToggleGroup, ToggleGroupItem } from "~/components/ui/toggle";
-import Waves from "~/components/waves";
 import { urlFor } from "~/lib/sanity";
 import type { GalleryQueryResult } from "~/lib/sanity.types";
 import InnerHeroSection from "~/sections/inner-hero-section";
@@ -120,7 +119,6 @@ const Content = ({ galleryImages }: Props) => {
           text="Fancy seeing yourself here next year? There's more than one way to get involved."
           title="Want to be in next year's photos?"
         />
-        <Waves bottomColor="var(--color-pine-dark)" topColor="var(--color-cream)" variant={2} />
         <Footer />
       </main>
 

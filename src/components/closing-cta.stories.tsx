@@ -22,3 +22,13 @@ export const Default: Story = {};
 export const PrimaryOnly: Story = {
   args: { secondary: undefined }
 };
+
+export const WithAccent: Story = {
+  args: {
+    title: "See you on",
+    titleAccent: "the riverbank",
+    text: "Do it once and we promise you'll be hooked.",
+    primary: { label: "Enter a raft", href: "/take-part" },
+    secondary: { label: "Donate to the RNLI", href: "/donate" }
+  }
+};

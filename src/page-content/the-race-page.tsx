@@ -15,12 +15,12 @@ const Content = () => (
     <Waves bottomColor="var(--color-pine)" topColor="var(--color-cream)" variant={3} />
     <TimingsSection />
     <ClosingCta
+      waveTopColor="var(--color-pine)"
       primary={{ label: "Take part", href: "/take-part" }}
       secondary={{ label: "Plan your visit", href: "/info/getting-here" }}
       text="Now you know the route and timings, get ready for Boxing Day."
       title="Ready to get involved?"
     />
-    <Waves bottomColor="var(--color-pine-dark)" topColor="var(--color-cream)" variant={3} />
     <Footer />
   </main>
 );

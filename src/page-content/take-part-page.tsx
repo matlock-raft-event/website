@@ -1,7 +1,6 @@
 import ClosingCta from "~/components/closing-cta";
 import Footer from "~/components/footer";
 import PageShell from "~/components/page-shell";
-import Waves from "~/components/waves";
 import InnerHeroSection from "~/sections/inner-hero-section";
 import TakePartSection from "~/sections/take-part-section";
 
@@ -15,7 +14,6 @@ const Content = () => (
       text="Not ready to brave the water this year? You can still be part of the day by volunteering or donating to the RNLI."
       title="Not entering a raft?"
     />
-    <Waves bottomColor="var(--color-pine-dark)" topColor="var(--color-cream)" variant={2} />
     <Footer />
   </main>
 );

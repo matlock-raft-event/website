@@ -4,7 +4,6 @@ import Heading from "~/components/heading";
 import PageShell from "~/components/page-shell";
 import Section from "~/components/section";
 import { Button } from "~/components/ui/button";
-import Waves from "~/components/waves";
 import InnerHeroSection from "~/sections/inner-hero-section";
 
 const Content = () => (
@@ -38,7 +37,6 @@ const Content = () => (
       text="Donating is just one way to help. You could enter a raft, volunteer on the day, or sponsor the event."
       title="Fancy doing even more?"
     />
-    <Waves bottomColor="var(--color-pine-dark)" topColor="var(--color-cream)" variant={2} />
     <Footer />
   </main>
 );

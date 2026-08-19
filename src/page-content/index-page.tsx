@@ -1,13 +1,13 @@
 import Footer from "~/components/footer";
 import PageShell from "~/components/page-shell";
 import Waves from "~/components/waves";
+import ClosingCta from "~/components/closing-cta";
 import ComingToWatchSection from "~/sections/coming-to-watch-section";
 import GetInvolvedSection from "~/sections/get-involved-section";
 import HeroSection from "~/sections/hero-section";
 import MarqueeSection from "~/sections/marquee-section";
 import PodiumSection from "~/sections/podium-section";
 import RaceSection from "~/sections/race-section";
-import RiverbankSection from "~/sections/riverbank-section";
 import SummarySection from "~/sections/summary-section";
 import UpdatesSection from "~/sections/updates-section";
 import type {
@@ -66,8 +66,14 @@ const Content = ({ hero, summary, winners, updates, heroImageSrc, heroImageSrcse
       variant={1}
     />
     <UpdatesSection preview updates={updates} />
-    <Waves bottomColor="var(--color-pine-dark)" style={{ marginTop: -1 }} variant={2} />
-    <RiverbankSection />
+    <ClosingCta
+      primary={{ label: "Enter a raft", href: "/take-part" }}
+      secondary={{ label: "Donate to the RNLI", href: "/donate" }}
+      text="Do it once and we promise you'll be hooked. Build a raft, bring the family, and help Matlock raise a fortune for the lifeboats."
+      title="See you on"
+      titleAccent="the riverbank"
+      waveTopColor="var(--color-river)"
+    />
     <Footer />
   </main>
 );

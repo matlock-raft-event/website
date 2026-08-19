@@ -3,7 +3,6 @@ import Footer from "~/components/footer";
 import Heading from "~/components/heading";
 import PageShell from "~/components/page-shell";
 import Section from "~/components/section";
-import Waves from "~/components/waves";
 import InnerHeroSection from "~/sections/inner-hero-section";
 
 type Props = { cardImages?: string[] };
@@ -71,7 +70,6 @@ const Content = ({ cardImages = [] }: Props) => (
       text="Got the info you need? Be part of Matlock's favourite Boxing Day tradition."
       title="Ready to get involved?"
     />
-    <Waves bottomColor="var(--color-pine-dark)" topColor="var(--color-cream)" variant={2} />
     <Footer />
   </main>
 );

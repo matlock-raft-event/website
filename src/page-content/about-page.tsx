@@ -15,14 +15,13 @@ const Content = ({ about }: Props) => (
     <AboutSection about={about} />
     <Waves bottomColor="var(--color-river)" topColor="var(--color-cream)" variant={2} />
     <RnliSection about={about} />
-    <Waves bottomColor="var(--color-cream)" topColor="var(--color-river)" variant={4} />
     <ClosingCta
+      waveTopColor="var(--color-river)"
       primary={{ label: "Take part", href: "/take-part" }}
       secondary={{ label: "Donate", href: "/donate" }}
       text="Be part of Matlock's favourite Boxing Day tradition and help us raise more than ever for the RNLI."
       title="Join us this Boxing Day"
     />
-    <Waves bottomColor="var(--color-pine-dark)" style={{ marginTop: -1 }} topColor="var(--color-cream)" variant={3} />
     <Footer />
   </main>
 );
