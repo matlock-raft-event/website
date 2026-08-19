@@ -84,14 +84,7 @@ const Content = ({ winners }: Props) => {
           );
         })
       }
-
-      <Waves
-        bottomColor="var(--color-pine-dark)"
-        style={{ marginTop: -1 }}
-        topColor={`var(--color-${years.length === 0 ? "cream" : lastPalette})`}
-        variant={2}
-      />
-      <Footer />
+      <Footer waveTopColor={`var(--color-${years.length === 0 ? "cream" : lastPalette})`} />
     </main>
   );
 };

@@ -70,7 +70,7 @@ const Content = ({ cardImages = [] }: Props) => (
       text="Got the info you need? Be part of Matlock's favourite Boxing Day tradition."
       title="Ready to get involved?"
     />
-    <Footer />
+    <Footer waveTopColor="var(--color-pine-dark)" />
   </main>
 );
 

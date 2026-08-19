@@ -22,7 +22,7 @@ const Content = ({ about }: Props) => (
       text="Be part of Matlock's favourite Boxing Day tradition and help us raise more than ever for the RNLI."
       title="Join us this Boxing Day"
     />
-    <Footer />
+    <Footer waveTopColor="var(--color-pine-dark)" />
   </main>
 );
 

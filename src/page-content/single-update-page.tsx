@@ -5,7 +5,6 @@ import Heading from "~/components/heading";
 import PageShell from "~/components/page-shell";
 import SanityImage from "~/components/sanity-image";
 import Section from "~/components/section";
-import Waves from "~/components/waves";
 import useResponsive from "~/hooks/use-responsive";
 import type { UpdatesForPathsQueryResult } from "~/lib/sanity.types";
 import InnerHeroSection from "~/sections/inner-hero-section";
@@ -79,8 +78,6 @@ const Content = ({ update }: SingleUpdatePageProps) => {
         </div>
 
       </Section>
-
-      <Waves bottomColor="var(--color-pine-dark)" topColor="var(--color-cream)" variant={2} />
 
       <Footer />
     </main>

@@ -74,7 +74,7 @@ const Content = ({ hero, summary, winners, updates, heroImageSrc, heroImageSrcse
       titleAccent="the riverbank"
       waveTopColor="var(--color-river)"
     />
-    <Footer />
+    <Footer waveTopColor="var(--color-pine-dark)" />
   </main>
 );
 

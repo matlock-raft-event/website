@@ -14,7 +14,7 @@ const Content = () => (
       text="Not ready to brave the water this year? You can still be part of the day by volunteering or donating to the RNLI."
       title="Not entering a raft?"
     />
-    <Footer />
+    <Footer waveTopColor="var(--color-pine-dark)" />
   </main>
 );
 

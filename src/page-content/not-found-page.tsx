@@ -3,7 +3,6 @@ import Heading from "~/components/heading";
 import PageShell from "~/components/page-shell";
 import Section from "~/components/section";
 import { Button } from "~/components/ui/button";
-import Waves from "~/components/waves";
 
 const recoveryLinks = [
   { label: "Take part", to: "/take-part" },
@@ -57,7 +56,6 @@ const Content = () => {
           }
         </div>
       </Section>
-      <Waves bottomColor="var(--color-pine-dark)" style={{ marginTop: -1 }} topColor="var(--color-cream)" variant={2} />
       <Footer />
     </main>
   );

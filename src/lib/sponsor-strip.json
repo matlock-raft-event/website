@@ -1,0 +1,112 @@
+[
+  {
+    "logo": {
+      "_type": "image",
+      "asset": {
+        "_ref": "image-cd071ef59a0171cc0c7ff42dcb349436d65a38bf-969x567-jpg",
+        "_type": "reference"
+      }
+    },
+    "name": "Darwin Forest",
+    "slug": "darwin"
+  },
+  {
+    "logo": {
+      "_type": "image",
+      "asset": {
+        "_ref": "image-fa160bc5edb18f60dc715356a60749fa051b1701-356x100-jpg",
+        "_type": "reference"
+      }
+    },
+    "name": "H.A. Briddon",
+    "slug": "ha-briddon"
+  },
+  {
+    "logo": {
+      "_type": "image",
+      "asset": {
+        "_ref": "image-4b2512673f30008f21202e1bb30191bfd095ff31-852x673-jpg",
+        "_type": "reference"
+      }
+    },
+    "name": "Heights of Abraham",
+    "slug": "heights"
+  },
+  {
+    "logo": {
+      "_type": "image",
+      "asset": {
+        "_ref": "image-22a1fb1c46af7bcc9979e75a02672c460c74f831-2362x975-png",
+        "_type": "reference"
+      }
+    },
+    "name": "Longcliffe",
+    "slug": "longcliffe"
+  },
+  {
+    "logo": {
+      "_type": "image",
+      "asset": {
+        "_ref": "image-a0aee7c8851d33b7d0da4b2b38945b60b19312ca-829x828-jpg",
+        "_type": "reference"
+      }
+    },
+    "name": "Matlock Bath Parish Council",
+    "slug": "matlock-bath-parish-council"
+  },
+  {
+    "logo": {
+      "_type": "image",
+      "asset": {
+        "_ref": "image-2140be6643cdea04606ddab31c9fc882ed9e0119-541x195-png",
+        "_type": "reference"
+      }
+    },
+    "name": "Peak Rail",
+    "slug": "peak-rail"
+  },
+  {
+    "logo": {
+      "_type": "image",
+      "asset": {
+        "_ref": "image-7cc2fb2f20631c31c5984aca29fd6ff7c632f416-312x80-svg",
+        "_type": "reference"
+      }
+    },
+    "name": "Ron Brooks",
+    "slug": "ron-brooks"
+  },
+  {
+    "logo": {
+      "_type": "image",
+      "asset": {
+        "_ref": "image-bfcb59c44a8029a7eec0a4c5e2fe760d68d8533c-520x640-png",
+        "_type": "reference"
+      }
+    },
+    "name": "The Fishpond",
+    "slug": "fishpond"
+  },
+  {
+    "logo": {
+      "_type": "image",
+      "asset": {
+        "_ref": "image-6caa98be60cc7359043165ef491aeaf01453788e-985x1013-jpg",
+        "_type": "reference"
+      }
+    },
+    "name": "The Garden Room",
+    "slug": "garden-room"
+  },
+  {
+    "logo": {
+      "_type": "image",
+      "asset": {
+        "_ref": "image-b55a96970a682eb4c3add81bf82042b197dbbfd0-601x221-png",
+        "_type": "reference"
+      }
+    },
+    "name": "Universal Group",
+    "slug": "universal-group"
+  }
+]

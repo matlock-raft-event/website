@@ -4,7 +4,6 @@ import Heading from "~/components/heading";
 import PageShell from "~/components/page-shell";
 import SanityImage from "~/components/sanity-image";
 import Section from "~/components/section";
-import Waves from "~/components/waves";
 import type { VolunteerPageQueryResult } from "~/lib/sanity.types";
 
 type Props = { volunteerPage: VolunteerPageQueryResult };
@@ -55,7 +54,6 @@ const Content = ({ volunteerPage }: Props) => (
         ))}
       </div>
     </Section>
-    <Waves bottomColor="var(--color-pine-dark)" topColor="var(--color-cream)" variant={2} />
     <Footer />
   </main>
 );

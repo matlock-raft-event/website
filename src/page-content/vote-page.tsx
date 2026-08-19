@@ -2,7 +2,6 @@ import Footer from "~/components/footer";
 import Heading from "~/components/heading";
 import PageShell from "~/components/page-shell";
 import Section from "~/components/section";
-import Waves from "~/components/waves";
 import InnerHeroSection from "~/sections/inner-hero-section";
 
 const Content = () => (
@@ -58,7 +57,6 @@ const Content = () => (
       </div>
 
     </Section>
-    <Waves bottomColor="var(--color-pine-dark)" topColor="var(--color-cream)" />
     <Footer />
   </main>
 );

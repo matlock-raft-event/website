@@ -119,7 +119,7 @@ const Content = ({ galleryImages }: Props) => {
           text="Fancy seeing yourself here next year? There's more than one way to get involved."
           title="Want to be in next year's photos?"
         />
-        <Footer />
+        <Footer waveTopColor="var(--color-pine-dark)" />
       </main>
 
       <Lightbox

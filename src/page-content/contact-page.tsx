@@ -1,6 +1,5 @@
 import Footer from "~/components/footer";
 import PageShell from "~/components/page-shell";
-import Waves from "~/components/waves";
 import ContactUsSection from "~/sections/contact-us-section";
 import InnerHeroSection from "~/sections/inner-hero-section";
 import type { ContactInstructionsQueryResult } from "~/lib/sanity.types";
@@ -11,7 +10,6 @@ const Content = ({ contactInstructions }: Props) => (
   <main id="main" tabIndex={-1}>
     <InnerHeroSection title="Contact us" />
     <ContactUsSection contactInstructions={contactInstructions} />
-    <Waves bottomColor="var(--color-pine-dark)" topColor="var(--color-cream)" variant={2} />
     <Footer />
   </main>
 );

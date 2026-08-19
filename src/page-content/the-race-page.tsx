@@ -21,7 +21,7 @@ const Content = () => (
       text="Now you know the route and timings, get ready for Boxing Day."
       title="Ready to get involved?"
     />
-    <Footer />
+    <Footer waveTopColor="var(--color-pine-dark)" />
   </main>
 );
 

@@ -4,7 +4,6 @@ import PageShell from "~/components/page-shell";
 import Section from "~/components/section";
 import SponsorItem from "~/components/sponsor-item";
 import { Button } from "~/components/ui/button";
-import Waves from "~/components/waves";
 import type { SponsorsForPathsQueryResult } from "~/lib/sanity.types";
 import InnerHeroSection from "~/sections/inner-hero-section";
 
@@ -76,8 +75,6 @@ const Content = ({ sponsor }: SingleSponsorPageProps) => {
           <Button href="/sponsors">View all sponsors</Button>
         </div>
       </Section>
-
-      <Waves bottomColor="var(--color-pine-dark)" topColor="var(--color-cream)" variant={2} />
 
       <Footer />
     </main>
