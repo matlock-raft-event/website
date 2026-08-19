@@ -1,13 +1,18 @@
 import { cva } from "class-variance-authority";
 
+/* The design-language button: a chunky pill that presses like a real thing.
+   Solid buttons carry a hard underside shadow (--btn-under, the colour's own
+   dark shade) that compresses on press. Colour says what it does: raft acts,
+   sun donates, cream navigates on dark surfaces. Outline exists for filter
+   chips; ghost/link for nav-like actions. */
 const buttonVariants = cva(
-  "group/button inline-flex shrink-0 font-label leading-0! items-center justify-center uppercase rounded-none border border-transparent bg-clip-padding text-sm font-extrabold tracking-wider whitespace-nowrap transition-all outline-none select-none focus-visible:border-ring focus-visible:ring-1 focus-visible:ring-ring/50 active:not-aria-[haspopup]:translate-y-px disabled:pointer-events-none disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-1 aria-invalid:ring-destructive/20 dark:aria-invalid:border-destructive/50 dark:aria-invalid:ring-destructive/40 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
+  "group/button inline-flex shrink-0 font-label leading-0! items-center justify-center uppercase rounded-full border border-transparent bg-clip-padding text-sm font-extrabold tracking-wider whitespace-nowrap transition-[transform,box-shadow,filter,background-color,color] duration-150 ease-out outline-none select-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sun disabled:pointer-events-none disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-1 aria-invalid:ring-destructive/20 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
   {
     variants: {
       variant: {
-        solid: "shadow-[2px_2px_0_0_rgba(0,0,0,0.25)]",
-        outline: "bg-transparent",
-        ghost: "bg-transparent border-transparent",
+        solid: "shadow-[0_5px_0_0_var(--btn-under),0_8px_14px_rgba(8,64,44,0.18)] hover:-translate-y-0.5 hover:brightness-105 hover:shadow-[0_7px_0_0_var(--btn-under),0_11px_16px_rgba(8,64,44,0.2)] active:translate-y-[3px] active:shadow-[0_1px_0_0_var(--btn-under)]",
+        outline: "bg-transparent active:translate-y-px",
+        ghost: "bg-transparent border-transparent active:translate-y-px",
         link: "bg-transparent border-transparent underline-offset-4 hover:underline"
       },
       color: {
@@ -19,47 +24,47 @@ const buttonVariants = cva(
         ink: ""
       },
       size: {
-        default: "h-9 gap-1.5 px-4 has-data-[icon=inline-end]:pr-2 has-data-[icon=inline-start]:pl-2",
-        xs: "h-6 gap-1 rounded-none px-2 text-sm has-data-[icon=inline-end]:pr-1.5 has-data-[icon=inline-start]:pl-1.5 [&_svg:not([class*='size-'])]:size-3",
-        sm: "h-8 gap-1 rounded-none px-2.5 has-data-[icon=inline-end]:pr-1.5 has-data-[icon=inline-start]:pl-1.5 [&_svg:not([class*='size-'])]:size-3.5",
-        lg: "h-11 gap-1.5 px-5 has-data-[icon=inline-end]:pr-2 has-data-[icon=inline-start]:pl-2",
-        icon: "size-9",
-        "icon-xs": "size-6 rounded-none [&_svg:not([class*='size-'])]:size-3",
-        "icon-sm": "size-8 rounded-none",
-        "icon-lg": "size-10"
+        default: "h-11 gap-1.5 px-7 has-data-[icon=inline-end]:pr-4 has-data-[icon=inline-start]:pl-4",
+        xs: "h-7 gap-1 px-3 text-xs has-data-[icon=inline-end]:pr-2 has-data-[icon=inline-start]:pl-2 [&_svg:not([class*='size-'])]:size-3",
+        sm: "h-9 gap-1 px-4 has-data-[icon=inline-end]:pr-2.5 has-data-[icon=inline-start]:pl-2.5 [&_svg:not([class*='size-'])]:size-3.5",
+        lg: "h-12 gap-1.5 px-8 has-data-[icon=inline-end]:pr-5 has-data-[icon=inline-start]:pl-5",
+        icon: "size-11",
+        "icon-xs": "size-7 [&_svg:not([class*='size-'])]:size-3",
+        "icon-sm": "size-9",
+        "icon-lg": "size-12"
       }
     },
     compoundVariants: [
-      // Solid
+      // Solid — bg + contrast text + the colour's own dark shade underneath
       {
         variant: "solid",
         color: "raft",
-        class: "bg-raft text-raft-contrast hover:bg-raft-dark"
+        class: "bg-raft text-raft-contrast [--btn-under:var(--color-raft-dark)]"
       },
       {
         variant: "solid",
         color: "pine",
-        class: "bg-pine text-pine-contrast hover:bg-pine-dark"
+        class: "bg-pine text-pine-contrast [--btn-under:var(--color-pine-dark)]"
       },
       {
         variant: "solid",
         color: "sun",
-        class: "bg-sun text-sun-contrast hover:bg-sun-dark"
+        class: "bg-sun text-sun-contrast [--btn-under:var(--color-sun-dark)] focus-visible:outline-ink"
       },
       {
         variant: "solid",
         color: "river",
-        class: "bg-river text-river-contrast hover:bg-river-dark"
+        class: "bg-river text-river-contrast [--btn-under:var(--color-river-dark)]"
       },
       {
         variant: "solid",
         color: "cream",
-        class: "bg-cream text-cream-contrast hover:bg-cream-dark"
+        class: "bg-cream text-cream-contrast [--btn-under:#c9c3a5]"
       },
       {
         variant: "solid",
         color: "ink",
-        class: "bg-ink text-ink-contrast hover:bg-ink-dark"
+        class: "bg-ink text-ink-contrast [--btn-under:var(--color-ink-dark)]"
       },
 
       // Outline
