@@ -21,45 +21,63 @@ const Content = ({ winners }: Props) => {
   const winnersForYear = (year: number) => (winners ?? [])
     .filter(w => w.year === year);
 
+  const lastPalette = years.length % 2 === 1 ? "pine" : "cream";
+
   return (
     <main id="main" tabIndex={-1}>
-      <InnerHeroSection title="Hall of fame" wavesColor="var(--color-cream)" />
-      <Section palette="cream">
-        <Heading
-          palette="cream"
-          subtitle="Our champions through the years"
-          title="Hall of Fame"
-        />
+      <InnerHeroSection
+        title="Hall of fame"
+        wavesColor={years.length === 0 ? "var(--color-cream)" : "var(--color-pine)"}
+      />
 
-        {
-          years.length === 0 && (
+      {
+        years.length === 0 && (
+          <Section palette="cream">
+            <Heading
+              palette="cream"
+              subtitle="Our champions through the years"
+              title="Hall of Fame"
+            />
             <p className="mx-auto w-full max-w-4xl px-4 text-center text-sm sm:text-base lg:text-lg leading-relaxed">
               Our champions through the years will appear here soon.
             </p>
-          )
-        }
-      </Section>
+          </Section>
+        )
+      }
 
       {
         years.map((year, index) => {
-          // Year sections alternate green/cream; the intro section above is cream.
+          // Year sections alternate pine/cream. The page heading lives inside
+          // the first section so title and content always share a surface;
+          // each year gets a compact marker above its podium.
           const palette = index % 2 === 0 ? "pine" : "cream";
           const prevPalette = index % 2 === 1 ? "pine" : "cream";
 
           return (
             <div key={year}>
-              <Waves
-                bottomColor={`var(--color-${palette})`}
-                style={{ marginTop: -1 }}
-                topColor={`var(--color-${prevPalette})`}
-                variant={((index % 4) + 1) as 1 | 2 | 3 | 4}
-              />
+              {
+                index > 0 && (
+                  <Waves
+                    bottomColor={`var(--color-${palette})`}
+                    style={{ marginTop: -1 }}
+                    topColor={`var(--color-${prevPalette})`}
+                    variant={((index % 4) + 1) as 1 | 2 | 3 | 4}
+                  />
+                )
+              }
               <Section palette={palette}>
-                <Heading
-                  palette={palette}
-                  subtitle="The champions of"
-                  title={`${year}`}
-                />
+                {
+                  index === 0 && (
+                    <Heading
+                      palette={palette}
+                      subtitle="Our champions through the years"
+                      title="Hall of Fame"
+                    />
+                  )
+                }
+                <h3 className={`font-display uppercase text-2xl sm:text-3xl text-center ${palette === "pine" ? "text-sun" : "text-ink"}`}>
+                  {year}
+                </h3>
                 <PodiumGrid tiltSeed={index} winners={winnersForYear(year)} />
               </Section>
             </div>
@@ -70,11 +88,7 @@ const Content = ({ winners }: Props) => {
       <Waves
         bottomColor="var(--color-pine-dark)"
         style={{ marginTop: -1 }}
-        topColor={
-          years.length % 2 === 1
-            ? "var(--color-pine)"
-            : "var(--color-cream)"
-        }
+        topColor={`var(--color-${years.length === 0 ? "cream" : lastPalette})`}
         variant={2}
       />
       <Footer />
