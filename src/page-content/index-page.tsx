@@ -6,6 +6,7 @@ import GetInvolvedSection from "~/sections/get-involved-section";
 import HeroSection from "~/sections/hero-section";
 import MarqueeSection from "~/sections/marquee-section";
 import PodiumSection from "~/sections/podium-section";
+import RaceSection from "~/sections/race-section";
 import SummarySection from "~/sections/summary-section";
 import UpdatesSection from "~/sections/updates-section";
 import type {
@@ -31,10 +32,17 @@ const Content = ({ hero, summary, winners, updates, heroImageSrc, heroImageSrcse
     <MarqueeSection />
     <SummarySection summary={summary} />
     <Waves
-      bottomColor="var(--color-pine)"
+      bottomColor="var(--color-river)"
       style={{ marginTop: -1 }}
       topColor="var(--color-cream)"
       variant={2}
+    />
+    <RaceSection summary={summary} />
+    <Waves
+      bottomColor="var(--color-pine)"
+      style={{ marginTop: -1 }}
+      topColor="var(--color-river)"
+      variant={4}
     />
     <PodiumSection winners={winners} />
     <Waves
