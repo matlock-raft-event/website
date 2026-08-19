@@ -11,7 +11,7 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme {
-    /* Derwent palette (design language v1) -------------------------------
+    /* Matlock Raft Event design language — palette (v1) ------------------
        Three section surfaces (cream, river, pine) + one frame colour
        (pine-dark). Sun is a ribbon accent, raft red means "you can act
        here". Each family: base / light / dark / contrast, where contrast
