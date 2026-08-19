@@ -16,6 +16,8 @@ export default {
             name: "img",
             type: "image",
             title: "Image",
+            description: "Set the hotspot on the raft — the podium card crops to a square around it.",
+            options: { hotspot: true },
             validation: (Rule: any) => Rule.required()
         },
         {

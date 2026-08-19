@@ -26,7 +26,9 @@ const PodiumCard = ({ image, podium, title }: PodiumCardProps) => (
     <div className="flex w-full flex-col gap-2">
       <SanityImage
         alt={title}
+        height={800}
         image={image}
+        width={800}
         style={{
           height: "100%",
           width: "100%",
