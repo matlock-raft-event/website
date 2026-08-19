@@ -112,17 +112,21 @@ const Footer = ({ waveTopColor = "var(--color-cream)", sponsorStrip: showStrip =
                   <a
                     key={sponsor.name}
                     aria-label={sponsor.name ?? undefined}
-                    className="flex h-11 items-center justify-center rounded-[4px] bg-paper px-3 py-1.5 transition-transform duration-300 ease-out hover:-translate-y-0.5 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sun"
+                    className="flex h-14 items-center justify-center rounded-[4px] bg-paper px-4 py-2 transition-transform duration-300 ease-out hover:-translate-y-0.5 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sun"
                     href={sponsor.slug ? `/sponsors/${sponsor.slug}` : undefined}
                   >
+                    {/* Explicit height, width from aspect ratio: dimensionless
+                        SVG logos (viewBox only) collapse to zero width under
+                        max-* constraints in a shrink-to-fit chip. */}
                     <SanityImage
                       alt={sponsor.name ?? undefined}
                       className="mix-blend-multiply"
                       image={sponsor.logo}
-                      width={240}
+                      width={320}
                       style={{
-                        maxHeight: "100%",
-                        maxWidth: "100%",
+                        height: "100%",
+                        width: "auto",
+                        maxWidth: "12rem",
                         objectFit: "contain"
                       }}
                     />
