@@ -7,6 +7,16 @@ type WavesProps = DivProps & {
   topColor?: string;
   variant?: 1 | 2 | 3 | 4;
 };
+
+/**
+ * The seam between two sections. Design-language rules:
+ * - Sections never meet in a straight line — every seam is a wave.
+ * - `bottomColor` is the INCOMING section's colour (the wave belongs to the
+ *   section below); `topColor` matches the section above.
+ * - Vary `variant` so no two adjacent seams on a page use the same curve.
+ * - Waves are static by choice — no drift animation.
+ * - The final seam on every page flows into the pine-dark footer frame.
+ */
 const Waves = ({
   variant = 1,
   topColor = "var(--color-river)",

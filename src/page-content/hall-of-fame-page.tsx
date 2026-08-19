@@ -68,7 +68,7 @@ const Content = ({ winners }: Props) => {
       }
 
       <Waves
-        bottomColor="var(--color-cream)"
+        bottomColor="var(--color-pine-dark)"
         style={{ marginTop: -1 }}
         topColor={
           years.length % 2 === 1

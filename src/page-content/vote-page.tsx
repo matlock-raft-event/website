@@ -58,7 +58,7 @@ const Content = () => (
       </div>
 
     </Section>
-    <Waves bottomColor="var(--color-cream)" topColor="var(--color-cream)" />
+    <Waves bottomColor="var(--color-pine-dark)" topColor="var(--color-cream)" />
     <Footer />
   </main>
 );

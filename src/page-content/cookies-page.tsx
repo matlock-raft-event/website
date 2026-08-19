@@ -16,7 +16,7 @@ const Content = ({ cookiesInfo }: Props) => (
       <Heading palette="cream" title="Cookies Policy" />
       {cookiesInfo?.content ? <Block value={cookiesInfo.content as never} /> : null}
     </Section>
-    <Waves bottomColor="var(--color-cream)" topColor="var(--color-cream)" />
+    <Waves bottomColor="var(--color-pine-dark)" topColor="var(--color-cream)" />
     <Footer />
   </main>
 );

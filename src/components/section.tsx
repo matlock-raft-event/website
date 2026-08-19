@@ -4,7 +4,9 @@ import Cloud from "~/components/shadows/cloud";
 import Tree from "~/components/shadows/tree";
 import Water from "~/components/shadows/water";
 
-export type Palette = "river" | "cream" | "raft" | "pine" | "sun" | "ink";
+/* The only allowed section surfaces — sun and raft are accents, ink is text.
+   The page frame (header, closing, footer) is pine-dark, set directly. */
+export type Palette = "cream" | "river" | "pine";
 
 interface SectionProps {
   palette?: Palette;
@@ -14,28 +16,19 @@ interface SectionProps {
 const PALETTE_BG: Record<Palette, string> = {
   river: "bg-river",
   cream: "bg-cream",
-  raft: "bg-raft",
-  pine: "bg-pine",
-  sun: "bg-sun",
-  ink: "bg-ink"
+  pine: "bg-pine"
 };
 
 const PALETTE_SHADOW_COLOR: Record<Palette, string> = {
   river: "var(--color-river-dark)",
   cream: "var(--color-cream-dark)",
-  raft: "var(--color-raft-dark)",
-  pine: "var(--color-pine-dark)",
-  sun: "var(--color-sun-dark)",
-  ink: "var(--color-ink-dark)"
+  pine: "var(--color-pine-dark)"
 };
 
 const SHADOW_BY_PALETTE: Record<Palette, "tree" | "cloud" | "water" | null> = {
   pine: "tree",
-  sun: "cloud",
   cream: "cloud",
-  river: "water",
-  raft: null,
-  ink: null
+  river: "water"
 };
 
 const SHADOWS = { tree: Tree, cloud: Cloud, water: Water };

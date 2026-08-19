@@ -71,7 +71,7 @@ const Content = ({ cardImages = [] }: Props) => (
       text="Got the info you need? Be part of Matlock's favourite Boxing Day tradition."
       title="Ready to get involved?"
     />
-    <Waves bottomColor="var(--color-cream)" topColor="var(--color-cream)" variant={2} />
+    <Waves bottomColor="var(--color-pine-dark)" topColor="var(--color-cream)" variant={2} />
     <Footer />
   </main>
 );

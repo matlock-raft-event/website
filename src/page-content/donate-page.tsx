@@ -38,7 +38,7 @@ const Content = () => (
       text="Donating is just one way to help. You could enter a raft, volunteer on the day, or sponsor the event."
       title="Fancy doing even more?"
     />
-    <Waves bottomColor="var(--color-cream)" topColor="var(--color-cream)" variant={2} />
+    <Waves bottomColor="var(--color-pine-dark)" topColor="var(--color-cream)" variant={2} />
     <Footer />
   </main>
 );

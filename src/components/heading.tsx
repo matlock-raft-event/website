@@ -3,10 +3,7 @@ import type { Palette } from "./section";
 const PALETTE_TEXT: Record<Palette, string> = {
   river: "text-river-contrast",
   cream: "text-cream-contrast",
-  raft: "text-raft-contrast",
-  pine: "text-pine-contrast",
-  sun: "text-sun-contrast",
-  ink: "text-ink-contrast"
+  pine: "text-pine-contrast"
 };
 
 const Bullet = () => (

@@ -14,7 +14,7 @@ const Content = ({ sponsors }: Props) => (
     <SponsorsSection sponsors={sponsors} />
     <Waves bottomColor="var(--color-river)" topColor="var(--color-cream)" variant={2} />
     <BecomeSponsorSection />
-    <Waves bottomColor="var(--color-cream)" topColor="var(--color-river)" variant={3} />
+    <Waves bottomColor="var(--color-pine-dark)" topColor="var(--color-river)" variant={3} />
     <Footer />
   </main>
 );

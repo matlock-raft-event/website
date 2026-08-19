@@ -11,7 +11,7 @@ const meta = {
     title: "Heroic Winners"
   },
   argTypes: {
-    palette: { control: "select", options: ["cream", "pine", "river", "sun", "raft", "ink"] }
+    palette: { control: "select", options: ["cream", "pine", "river"] }
   }
 } satisfies Meta<typeof Heading>;
 

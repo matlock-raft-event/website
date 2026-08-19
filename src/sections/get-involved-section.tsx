@@ -10,8 +10,8 @@ const resolveSrc = (asset: unknown): string => (asset as { src?: string }).src ?
 
 const GetInvolvedSection = () => {
   return (
-    <Section palette="sun">
-      <Heading palette="sun" subtitle="It's for a mighty good cause" title="Get Involved" />
+    <Section palette="river">
+      <Heading palette="river" subtitle="It's for a mighty good cause" title="Get Involved" />
 
       {/* Slight outward tilts per the design language; cards straighten on hover */}
       <div className="grid grid-cols-12 gap-6 px-16 sm:px-0">

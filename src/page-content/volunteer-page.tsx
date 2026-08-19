@@ -55,7 +55,7 @@ const Content = ({ volunteerPage }: Props) => (
         ))}
       </div>
     </Section>
-    <Waves bottomColor="var(--color-cream)" topColor="var(--color-cream)" variant={2} />
+    <Waves bottomColor="var(--color-pine-dark)" topColor="var(--color-cream)" variant={2} />
     <Footer />
   </main>
 );

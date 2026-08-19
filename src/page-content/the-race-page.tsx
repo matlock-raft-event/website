@@ -20,7 +20,7 @@ const Content = () => (
       text="Now you know the route and timings, get ready for Boxing Day."
       title="Ready to get involved?"
     />
-    <Waves bottomColor="var(--color-cream)" topColor="var(--color-cream)" variant={3} />
+    <Waves bottomColor="var(--color-pine-dark)" topColor="var(--color-cream)" variant={3} />
     <Footer />
   </main>
 );

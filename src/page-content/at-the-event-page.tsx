@@ -88,7 +88,7 @@ const Content = () => (
       text="Coming along? You can also be part of the event by entering a raft or supporting the RNLI."
       title="See you on Boxing Day"
     />
-    <Waves bottomColor="var(--color-cream)" topColor="var(--color-cream)" variant={2} />
+    <Waves bottomColor="var(--color-pine-dark)" topColor="var(--color-cream)" variant={2} />
     <Footer />
   </main>
 );

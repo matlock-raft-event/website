@@ -18,7 +18,7 @@ const meta = {
     }
   },
   argTypes: {
-    palette: { control: "select", options: ["cream", "river", "pine", "sun", "raft", "ink"] }
+    palette: { control: "select", options: ["cream", "river", "pine"] }
   }
 } satisfies Meta<typeof Section>;
 

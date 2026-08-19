@@ -11,7 +11,7 @@ const Content = ({ contactInstructions }: Props) => (
   <main id="main" tabIndex={-1}>
     <InnerHeroSection title="Contact us" />
     <ContactUsSection contactInstructions={contactInstructions} />
-    <Waves bottomColor="var(--color-cream)" topColor="var(--color-cream)" variant={2} />
+    <Waves bottomColor="var(--color-pine-dark)" topColor="var(--color-cream)" variant={2} />
     <Footer />
   </main>
 );

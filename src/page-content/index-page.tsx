@@ -38,7 +38,7 @@ const Content = ({ hero, summary, winners, updates, heroImageSrc, heroImageSrcse
     />
     <PodiumSection winners={winners} />
     <Waves
-      bottomColor="var(--color-sun)"
+      bottomColor="var(--color-river)"
       style={{ marginTop: -1 }}
       topColor="var(--color-pine)"
       variant={3}
@@ -46,7 +46,7 @@ const Content = ({ hero, summary, winners, updates, heroImageSrc, heroImageSrcse
     <GetInvolvedSection />
     <Waves
       bottomColor="var(--color-cream)"
-      topColor="var(--color-sun)"
+      topColor="var(--color-river)"
       variant={4}
     />
     <ComingToWatchSection />
@@ -54,10 +54,10 @@ const Content = ({ hero, summary, winners, updates, heroImageSrc, heroImageSrcse
       bottomColor="var(--color-river)"
       style={{ marginTop: -1 }}
       topColor="var(--color-cream)"
-      variant={2}
+      variant={1}
     />
     <UpdatesSection preview updates={updates} />
-    <Waves bottomColor="var(--color-cream)" style={{ marginTop: -1 }} />
+    <Waves bottomColor="var(--color-pine-dark)" style={{ marginTop: -1 }} variant={2} />
     <Footer />
   </main>
 );

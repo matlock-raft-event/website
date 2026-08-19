@@ -13,7 +13,7 @@ const Content = ({ faqs }: Props) => (
     <InnerHeroSection title="Frequently asked questions" wavesColor="var(--color-cream)" />
     <BackLink href="/info" label="Event information" />
     <FaqsSection faqs={faqs} />
-    <Waves bottomColor="var(--color-cream)" topColor="var(--color-cream)" variant={3} />
+    <Waves bottomColor="var(--color-pine-dark)" topColor="var(--color-cream)" variant={3} />
     <Footer />
   </main>
 );
