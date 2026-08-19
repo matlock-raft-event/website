@@ -25,9 +25,9 @@ const UpdatesSection = ({ preview = false, updates }: UpdatesSectionProps) => {
   );
 
   return (
-    <Section palette={preview ? "mint" : "cream"}>
+    <Section palette={preview ? "river" : "cream"}>
       <Heading
-        palette={preview ? "mint" : "cream"}
+        palette={preview ? "river" : "cream"}
         subtitle="Keep ahead of the tide"
         title="Latest Updates"
       />

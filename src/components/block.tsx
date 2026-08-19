@@ -32,14 +32,14 @@ const Block = <B extends TypedObject = PortableTextBlock>({ value, components, .
         const { slug = {} } = val;
         const href = `/${slug.current}`;
         return (
-          <a className="text-red underline hover:text-red-dark" href={href}>{children}</a>
+          <a className="text-raft underline hover:text-raft-dark" href={href}>{children}</a>
         );
       },
       link: ({ value: val, children }: any) => {
         const { blank, href } = val;
         return blank
-          ? <a className="text-red underline hover:text-red-dark" href={href} rel="noopener noreferrer" target="_blank">{children}</a>
-          : <a className="text-red underline hover:text-red-dark" href={href}>{children}</a>;
+          ? <a className="text-raft underline hover:text-raft-dark" href={href} rel="noopener noreferrer" target="_blank">{children}</a>
+          : <a className="text-raft underline hover:text-raft-dark" href={href}>{children}</a>;
       },
       ...components?.marks
     }

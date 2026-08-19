@@ -52,7 +52,7 @@ const Content = () => (
         <Para>
           Details of any cookies used by this website are set out in our
           {" "}
-          <a className="text-red hover:underline" href="/cookies">Cookies Policy</a>
+          <a className="text-raft hover:underline" href="/cookies">Cookies Policy</a>
           .
         </Para>
 
@@ -71,7 +71,7 @@ const Content = () => (
           information we hold about you, to have it corrected or deleted, and to object to how we
           use it. To make a request, please get in touch via our
           {" "}
-          <a className="text-red hover:underline" href="/contact">contact page</a>
+          <a className="text-raft hover:underline" href="/contact">contact page</a>
           .
         </Para>
 

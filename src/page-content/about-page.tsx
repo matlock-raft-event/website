@@ -13,9 +13,9 @@ const Content = ({ about }: Props) => (
   <main id="main" tabIndex={-1}>
     <InnerHeroSection title="About The Matlock Raft Event" />
     <AboutSection about={about} />
-    <Waves bottomColor="var(--color-mint)" topColor="var(--color-cream)" variant={2} />
+    <Waves bottomColor="var(--color-river)" topColor="var(--color-cream)" variant={2} />
     <RnliSection about={about} />
-    <Waves bottomColor="var(--color-cream)" topColor="var(--color-mint)" variant={4} />
+    <Waves bottomColor="var(--color-cream)" topColor="var(--color-river)" variant={4} />
     <ClosingCta
       primary={{ label: "Take part", href: "/take-part" }}
       secondary={{ label: "Donate", href: "/donate" }}

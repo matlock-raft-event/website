@@ -3,7 +3,7 @@ import Section from "~/components/section";
 import { Button } from "~/components/ui/button";
 
 const BecomeSponsorSection = () => (
-  <Section palette="mint">
+  <Section palette="river">
     <Heading subtitle="Want to support the event?" title="Become a Sponsor" />
     <div className="mx-auto w-full max-w-4xl px-4">
       <div className="flex flex-col items-center">

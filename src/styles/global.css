@@ -47,44 +47,16 @@
 
     --color-paper: #fffdf4;
 
-    /* Legacy palette (migrated off below) -------------------------------- */
-    --color-mint: #bbf1df;
-    --color-mint-light: #c9f4e5;
-    --color-mint-dark: #96c1b2;
-    --color-mint-contrast: #1c5053;
-
-    --color-cream: #f3f3e5;
-    --color-cream-light: #f6f6ec;
-    --color-cream-dark: #dbdbce;
-    --color-cream-contrast: #353a3c;
-
-    --color-red: #cb2a33;
-    --color-red-light: #d5555c;
-    --color-red-dark: #a22229;
-    --color-red-contrast: #ffffff;
-
-    /* Green is tuned so white text passes WCAG AA (4.5:1) on bg-green and
-       bg-green-dark, and cream text passes on both (#0a7d4e vs cream = 4.63:1). */
-    --color-green: #0a7d4e;
-    --color-green-light: #59ad87;
-    --color-green-dark: #086e44;
-    --color-green-contrast: #ffffff;
-
-    --color-yellow: #fbba47;
-    --color-yellow-light: #fcc86c;
-    --color-yellow-dark: #c99539;
-    --color-yellow-contrast: #4b2f00;
-
-    --color-dark: #353a3c;
-    --color-dark-light: #5d6163;
-    --color-dark-dark: #2a2e30;
-    --color-dark-contrast: #ffffff;
+    --color-cream: #f6f3e2;
+    --color-cream-light: #faf8ee;
+    --color-cream-dark: #e7e2c9;
+    --color-cream-contrast: var(--color-ink);
 
     /* Semantic aliases — for shadcn / brand conventions ------------------ */
-    --color-primary: var(--color-red);
-    --color-primary-light: var(--color-red-light);
-    --color-primary-dark: var(--color-red-dark);
-    --color-primary-contrast: var(--color-red-contrast);
+    --color-primary: var(--color-raft);
+    --color-primary-light: var(--color-raft-light);
+    --color-primary-dark: var(--color-raft-dark);
+    --color-primary-contrast: var(--color-raft-contrast);
 
     --color-secondary: var(--color-cream);
     --color-secondary-light: var(--color-cream-light);
@@ -116,7 +88,7 @@
 }
 
 body {
-    background-color: #f3f3e5;
+    background-color: #f6f3e2;
     -webkit-font-smoothing: subpixel-antialiased;
     -webkit-text-stroke: 1px transparent;
 }
@@ -127,7 +99,7 @@ body {
 
 :root {
     --background: oklch(1 0 0);
-    --foreground: var(--color-dark);
+    --foreground: var(--color-ink);
     --card: oklch(1 0 0);
     --card-foreground: oklch(0.153 0.006 107.1);
     --popover: oklch(1 0 0);

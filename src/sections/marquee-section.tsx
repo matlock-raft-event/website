@@ -23,7 +23,7 @@ const MarqueeGroup = ({ ariaHidden = false }: { ariaHidden?: boolean }) => (
 );
 
 const MarqueeSection = () => (
-  <div className="bg-green overflow-hidden">
+  <div className="bg-pine overflow-hidden">
     <div className="flex animate-[marquee_30s_linear_infinite] motion-reduce:animate-none">
       <MarqueeGroup />
       <MarqueeGroup ariaHidden />

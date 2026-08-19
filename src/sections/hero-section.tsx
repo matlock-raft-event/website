@@ -53,10 +53,10 @@ const HeroSection = ({ hero, imgSrc, imgSrcset, eventDate }: Props) => {
           <div className="absolute inset-0 bg-[linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.2),rgba(53,58,60,1))] md:bg-[linear-gradient(to_right,rgba(0,0,0,0.8),rgba(0,0,0,0.35)_45%,transparent_75%)]" />
         </div>
 
-        <div className="bg-dark flex-1 md:bg-transparent md:flex-none md:absolute md:inset-0 md:z-10 flex items-center">
+        <div className="bg-ink flex-1 md:bg-transparent md:flex-none md:absolute md:inset-0 md:z-10 flex items-center">
           <div className="mx-auto w-full container px-4">
             <div className="flex flex-col gap-4 py-4 text-center md:text-left md:w-[61.8vw] md:py-0">
-              <p className="font-sans font-bold text-lg md:text-xl text-yellow">
+              <p className="font-sans font-bold text-lg md:text-xl text-sun">
                 Boxing Day raft racing, in aid of the RNLI
               </p>
               <h1 className="font-display font-extrabold text-3xl sm:text-4xl md:text-5xl lg:text-6xl leading-tight text-secondary">
@@ -64,23 +64,23 @@ const HeroSection = ({ hero, imgSrc, imgSrcset, eventDate }: Props) => {
               </h1>
               <ul className="flex flex-row flex-wrap gap-x-5 gap-y-2 justify-center md:justify-start text-secondary">
                 <li className="inline-flex items-center gap-1.5 text-sm font-semibold">
-                  <MapPinAreaIcon className="text-yellow shrink-0" weight="fill" />
+                  <MapPinAreaIcon className="text-sun shrink-0" weight="fill" />
                   Matlock, Derbyshire
                 </li>
                 <li className="inline-flex items-center gap-1.5 text-sm font-semibold">
-                  <CalendarBlankIcon className="text-yellow shrink-0" weight="fill" />
+                  <CalendarBlankIcon className="text-sun shrink-0" weight="fill" />
                   Boxing Day, 26 Dec
                 </li>
                 <li className="inline-flex items-center gap-1.5 text-sm font-semibold">
-                  <ClockIcon className="text-yellow shrink-0" weight="fill" />
+                  <ClockIcon className="text-sun shrink-0" weight="fill" />
                   11am start
                 </li>
                 <li className="inline-flex items-center gap-1.5 text-sm font-semibold">
-                  <EyeIcon className="text-yellow shrink-0" weight="fill" />
+                  <EyeIcon className="text-sun shrink-0" weight="fill" />
                   Free to watch
                 </li>
                 <li className="inline-flex items-center gap-1.5 text-sm font-semibold">
-                  <UsersThreeIcon className="text-yellow shrink-0" weight="fill" />
+                  <UsersThreeIcon className="text-sun shrink-0" weight="fill" />
                   Family friendly
                 </li>
               </ul>

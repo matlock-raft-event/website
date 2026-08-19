@@ -7,9 +7,9 @@ import type { AboutQueryResult } from "~/lib/sanity.types";
 type Props = { about: AboutQueryResult };
 
 const RnliSection = ({ about }: Props) => (
-  <Section palette="mint">
+  <Section palette="river">
     <Heading
-      palette="mint"
+      palette="river"
       subtitle="Saving lives at sea with your support"
       title="RNLI"
     />

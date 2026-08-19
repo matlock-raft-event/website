@@ -61,7 +61,7 @@ const InnerHeroSection = ({ wavesColor, headerOnly = false, title }: InnerHeroSe
 
       {
         isMobile &&
-                <Waves topColor="var(--color-dark)" variant={3} />
+                <Waves topColor="var(--color-ink)" variant={3} />
       }
     </div>
   );

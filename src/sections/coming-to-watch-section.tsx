@@ -39,7 +39,7 @@ const ComingToWatchSection = () => (
             const Icon = fact.icon;
             return (
               <li key={fact.label} className="inline-flex items-center gap-1.5 text-sm font-semibold">
-                <Icon className="text-green shrink-0" weight="fill" />
+                <Icon className="text-pine shrink-0" weight="fill" />
                 {fact.label}
               </li>
             );

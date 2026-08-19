@@ -38,7 +38,7 @@ const Header = () => {
 
   return (
     <header className="relative z-20">
-      <div className="bg-green">
+      <div className="bg-pine">
         <div className="mx-auto h-16 container px-4 flex flex-row items-center justify-between w-full">
           <a className="shrink-0 self-start" href="/">
             <Logo className="w-32 mt-1" />
@@ -78,13 +78,13 @@ const Header = () => {
 
       <Drawer direction="top" onOpenChange={setOpen} open={open}>
         <DrawerContent
-          className="bg-green border-0 data-[vaul-drawer-direction=top]:h-screen data-[vaul-drawer-direction=top]:max-h-screen data-[vaul-drawer-direction=top]:mb-0 data-[vaul-drawer-direction=top]:rounded-none">
+          className="bg-pine border-0 data-[vaul-drawer-direction=top]:h-screen data-[vaul-drawer-direction=top]:max-h-screen data-[vaul-drawer-direction=top]:mb-0 data-[vaul-drawer-direction=top]:rounded-none">
           <DrawerTitle className="sr-only">Mobile navigation</DrawerTitle>
 
           <Button
             aria-label="close menu"
             className="absolute top-4 right-4"
-            color="green"
+            color="pine"
             onClick={() => setOpen(false)}
             size="icon-lg"
             variant="solid"
@@ -119,11 +119,11 @@ const Header = () => {
 
             <div>
               <Waves
-                bottomColor="var(--color-green-dark)"
+                bottomColor="var(--color-pine-dark)"
                 style={{ marginBottom: -1 }}
-                topColor="var(--color-green)"
+                topColor="var(--color-pine)"
               />
-              <div className="flex flex-col p-6 bg-green-dark">
+              <div className="flex flex-col p-6 bg-pine-dark">
                 <h5 className="text-secondary font-bold text-lg md:text-xl">
                   Find us on Facebook:
                 </h5>

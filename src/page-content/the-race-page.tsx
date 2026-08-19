@@ -12,7 +12,7 @@ const Content = () => (
     <InnerHeroSection title="The race" wavesColor="var(--color-cream)" />
     <BackLink href="/info" label="Event information" />
     <EventRouteSection />
-    <Waves bottomColor="var(--color-green)" topColor="var(--color-cream)" variant={3} />
+    <Waves bottomColor="var(--color-pine)" topColor="var(--color-cream)" variant={3} />
     <TimingsSection />
     <ClosingCta
       primary={{ label: "Take part", href: "/take-part" }}

@@ -21,7 +21,7 @@ const Content = ({ sponsor }: SingleSponsorPageProps) => {
 
       <Section palette="cream">
         <a
-          className="inline-flex items-center gap-1 font-serif font-medium text-red hover:underline"
+          className="inline-flex items-center gap-1 font-serif font-medium text-raft hover:underline"
           href="/sponsors"
         >
           <span aria-hidden="true">←</span>
@@ -53,7 +53,7 @@ const Content = ({ sponsor }: SingleSponsorPageProps) => {
                                 <div>
                                   <h6 className="font-serif font-medium text-sm sm:text-base md:text-lg">Our website</h6>
                                   <a
-                                    className="text-red text-base hover:underline"
+                                    className="text-raft text-base hover:underline"
                                     href={sponsor.url}
                                     rel="noopener"
                                     target="_blank"

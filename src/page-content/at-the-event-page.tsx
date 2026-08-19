@@ -39,7 +39,7 @@ const Content = () => (
           in Matlock, the riverside through Matlock Bath, and Masson Weir, where the rafts tackle the
           white water. The finish and prize-giving are at Cromford Meadows. Check the
           {" "}
-          <a className="text-red hover:underline" href="/info/the-race">route and timings</a>
+          <a className="text-raft hover:underline" href="/info/the-race">route and timings</a>
           {" "}
           to plan where to stand.
         </Para>
@@ -76,7 +76,7 @@ const Content = () => (
           The event goes ahead in most weather, but in rare cases (such as dangerous river levels) it
           may be cancelled on safety grounds. We&apos;ll always post the latest on our
           {" "}
-          <a className="text-red hover:underline" href="/updates">updates page</a>
+          <a className="text-raft hover:underline" href="/updates">updates page</a>
           {" "}
           and our Facebook page, so check before you set off.
         </Para>

@@ -17,11 +17,11 @@ type InfoCard = {
 };
 
 const CARDS: InfoCard[] = [
-  { title: "The race", description: "Route & timings", href: "/info/the-race", bg: "bg-green" },
-  { title: "Getting here", description: "Travel & parking", href: "/info/getting-here", bg: "bg-yellow" },
-  { title: "At the event", description: "Where to watch & facilities", href: "/info/at-the-event", bg: "bg-mint" },
-  { title: "FAQs", description: "Your questions, answered", href: "/info/faqs", bg: "bg-red" },
-  { title: "Our story", description: "The history of the event & the RNLI", href: "/about", bg: "bg-dark", wide: true }
+  { title: "The race", description: "Route & timings", href: "/info/the-race", bg: "bg-pine" },
+  { title: "Getting here", description: "Travel & parking", href: "/info/getting-here", bg: "bg-sun" },
+  { title: "At the event", description: "Where to watch & facilities", href: "/info/at-the-event", bg: "bg-river" },
+  { title: "FAQs", description: "Your questions, answered", href: "/info/faqs", bg: "bg-raft" },
+  { title: "Our story", description: "The history of the event & the RNLI", href: "/about", bg: "bg-ink", wide: true }
 ];
 
 const Content = ({ cardImages = [] }: Props) => (
@@ -38,7 +38,7 @@ const Content = ({ cardImages = [] }: Props) => (
           CARDS.map((card, i) => (
             <a
               key={card.href}
-              className={`group relative block overflow-hidden rounded-[2px] border-[6px] border-white shadow-[7px_7px_0_0_rgba(0,0,0,0.25)] transition-all duration-300 ease-[cubic-bezier(0.165,0.84,0.44,1)] hover:-translate-y-1 hover:shadow-[11px_11px_0_0_rgba(0,0,0,0.25)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-dark ${card.bg} ${card.wide ? "aspect-[16/9] sm:col-span-2 sm:aspect-[16/6]" : "aspect-[4/3]"}`}
+              className={`group relative block overflow-hidden rounded-[2px] border-[6px] border-white shadow-[7px_7px_0_0_rgba(0,0,0,0.25)] transition-all duration-300 ease-[cubic-bezier(0.165,0.84,0.44,1)] hover:-translate-y-1 hover:shadow-[11px_11px_0_0_rgba(0,0,0,0.25)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink ${card.bg} ${card.wide ? "aspect-[16/9] sm:col-span-2 sm:aspect-[16/6]" : "aspect-[4/3]"}`}
               href={card.href}
             >
               {

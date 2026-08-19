@@ -31,27 +31,27 @@ const Content = ({ hero, summary, winners, updates, heroImageSrc, heroImageSrcse
     <MarqueeSection />
     <SummarySection summary={summary} />
     <Waves
-      bottomColor="var(--color-green)"
+      bottomColor="var(--color-pine)"
       style={{ marginTop: -1 }}
       topColor="var(--color-cream)"
       variant={2}
     />
     <PodiumSection winners={winners} />
     <Waves
-      bottomColor="var(--color-yellow)"
+      bottomColor="var(--color-sun)"
       style={{ marginTop: -1 }}
-      topColor="var(--color-green)"
+      topColor="var(--color-pine)"
       variant={3}
     />
     <GetInvolvedSection />
     <Waves
       bottomColor="var(--color-cream)"
-      topColor="var(--color-yellow)"
+      topColor="var(--color-sun)"
       variant={4}
     />
     <ComingToWatchSection />
     <Waves
-      bottomColor="var(--color-mint)"
+      bottomColor="var(--color-river)"
       style={{ marginTop: -1 }}
       topColor="var(--color-cream)"
       variant={2}

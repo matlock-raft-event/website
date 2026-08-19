@@ -52,7 +52,7 @@ const ImageCard = (
 
   return (
     <Wrapper
-      className={`relative rounded-[2px] transition-all duration-[600ms] ease-[cubic-bezier(0.165,0.84,0.44,1)] block focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-dark ${isLink ? "" : "w-full appearance-none border-0 bg-transparent p-0 text-left"}`}
+      className={`relative rounded-[2px] transition-all duration-[600ms] ease-[cubic-bezier(0.165,0.84,0.44,1)] block focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink ${isLink ? "" : "w-full appearance-none border-0 bg-transparent p-0 text-left"}`}
       href={isLink ? href : undefined}
       onClick={isLink ? undefined : onClick}
       onMouseEnter={onMouseEnter}

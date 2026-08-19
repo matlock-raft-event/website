@@ -151,7 +151,7 @@ const Content = ({ galleryImages }: Props) => {
             "--yarl__color_backdrop": "rgba(0, 0, 0, .9)",
             "--yarl__thumbnails_thumbnail_height": "40px",
             "--yarl__thumbnails_thumbnail_width": "60px",
-            "--yarl__thumbnails_thumbnail_active_border_color": "var(--color-yellow)"
+            "--yarl__thumbnails_thumbnail_active_border_color": "var(--color-sun)"
           }
         }}
         thumbnails={{ ref: thumbnailsRef as never }}

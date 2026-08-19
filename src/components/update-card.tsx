@@ -27,7 +27,7 @@ const UpdateCard = ({ title, description, date, href, image }: UpdateCardProps) 
 
   return (
     <a
-      className="group/card flex h-full flex-col overflow-hidden rounded-[2px] border-[6px] border-white bg-white shadow-[7px_7px_0_0_rgba(0,0,0,0.25)] transition-all duration-300 ease-[cubic-bezier(0.165,0.84,0.44,1)] hover:-translate-y-1 hover:shadow-[11px_11px_0_0_rgba(0,0,0,0.25)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-dark"
+      className="group/card flex h-full flex-col overflow-hidden rounded-[2px] border-[6px] border-white bg-white shadow-[7px_7px_0_0_rgba(0,0,0,0.25)] transition-all duration-300 ease-[cubic-bezier(0.165,0.84,0.44,1)] hover:-translate-y-1 hover:shadow-[11px_11px_0_0_rgba(0,0,0,0.25)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink"
       href={href}
     >
       <div className="relative aspect-[3/2] overflow-hidden rounded-[2px] bg-cream">
@@ -55,20 +55,20 @@ const UpdateCard = ({ title, description, date, href, image }: UpdateCardProps) 
       <div className="flex flex-1 flex-col gap-2 p-5">
         {
           formattedDate &&
-            <p className="font-serif text-xs uppercase tracking-wider text-dark-light">
+            <p className="font-serif text-xs uppercase tracking-wider text-ink-light">
               {formattedDate}
             </p>
         }
-        <h3 className="font-display text-lg md:text-xl leading-tight line-clamp-2 text-dark">
+        <h3 className="font-display text-lg md:text-xl leading-tight line-clamp-2 text-ink">
           {title}
         </h3>
         {
           description &&
-            <p className="line-clamp-3 text-sm leading-relaxed text-dark-light">
+            <p className="line-clamp-3 text-sm leading-relaxed text-ink-light">
               {description}
             </p>
         }
-        <span className="mt-auto inline-flex items-center gap-1.5 pt-3 font-serif font-bold uppercase tracking-wide text-sm text-red transition-all group-hover/card:gap-2.5">
+        <span className="mt-auto inline-flex items-center gap-1.5 pt-3 font-serif font-bold uppercase tracking-wide text-sm text-raft transition-all group-hover/card:gap-2.5">
           Read more
           <span aria-hidden="true">→</span>
         </span>

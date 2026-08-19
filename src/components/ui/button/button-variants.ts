@@ -11,12 +11,12 @@ const buttonVariants = cva(
         link: "bg-transparent border-transparent underline-offset-4 hover:underline"
       },
       color: {
-        red: "",
-        green: "",
-        yellow: "",
-        mint: "",
+        raft: "",
+        pine: "",
+        sun: "",
+        river: "",
         cream: "",
-        dark: ""
+        ink: ""
       },
       size: {
         default: "h-9 gap-1.5 px-4 has-data-[icon=inline-end]:pr-2 has-data-[icon=inline-start]:pl-2",
@@ -33,23 +33,23 @@ const buttonVariants = cva(
       // Solid
       {
         variant: "solid",
-        color: "red",
-        class: "bg-red text-red-contrast hover:bg-red-dark"
+        color: "raft",
+        class: "bg-raft text-raft-contrast hover:bg-raft-dark"
       },
       {
         variant: "solid",
-        color: "green",
-        class: "bg-green text-green-contrast hover:bg-green-dark"
+        color: "pine",
+        class: "bg-pine text-pine-contrast hover:bg-pine-dark"
       },
       {
         variant: "solid",
-        color: "yellow",
-        class: "bg-yellow text-yellow-contrast hover:bg-yellow-dark"
+        color: "sun",
+        class: "bg-sun text-sun-contrast hover:bg-sun-dark"
       },
       {
         variant: "solid",
-        color: "mint",
-        class: "bg-mint text-mint-contrast hover:bg-mint-dark"
+        color: "river",
+        class: "bg-river text-river-contrast hover:bg-river-dark"
       },
       {
         variant: "solid",
@@ -58,30 +58,30 @@ const buttonVariants = cva(
       },
       {
         variant: "solid",
-        color: "dark",
-        class: "bg-dark text-dark-contrast hover:bg-dark-dark"
+        color: "ink",
+        class: "bg-ink text-ink-contrast hover:bg-ink-dark"
       },
 
       // Outline
       {
         variant: "outline",
-        color: "red",
-        class: "border-red text-red hover:bg-red hover:text-red-contrast"
+        color: "raft",
+        class: "border-raft text-raft hover:bg-raft hover:text-raft-contrast"
       },
       {
         variant: "outline",
-        color: "green",
-        class: "border-green text-green hover:bg-green hover:text-green-contrast"
+        color: "pine",
+        class: "border-pine text-pine hover:bg-pine hover:text-pine-contrast"
       },
       {
         variant: "outline",
-        color: "yellow",
-        class: "border-yellow text-yellow-contrast hover:bg-yellow hover:text-yellow-contrast"
+        color: "sun",
+        class: "border-sun text-sun-contrast hover:bg-sun hover:text-sun-contrast"
       },
       {
         variant: "outline",
-        color: "mint",
-        class: "border-mint text-mint-contrast hover:bg-mint"
+        color: "river",
+        class: "border-river text-river-contrast hover:bg-river"
       },
       {
         variant: "outline",
@@ -90,30 +90,30 @@ const buttonVariants = cva(
       },
       {
         variant: "outline",
-        color: "dark",
-        class: "border-dark text-dark hover:bg-dark hover:text-dark-contrast"
+        color: "ink",
+        class: "border-ink text-ink hover:bg-ink hover:text-ink-contrast"
       },
 
       // Ghost
       {
         variant: "ghost",
-        color: "red",
-        class: "text-red hover:bg-red/10"
+        color: "raft",
+        class: "text-raft hover:bg-raft/10"
       },
       {
         variant: "ghost",
-        color: "green",
-        class: "text-green hover:bg-green/10"
+        color: "pine",
+        class: "text-pine hover:bg-pine/10"
       },
       {
         variant: "ghost",
-        color: "yellow",
-        class: "text-yellow-contrast hover:bg-yellow/20"
+        color: "sun",
+        class: "text-sun-contrast hover:bg-sun/20"
       },
       {
         variant: "ghost",
-        color: "mint",
-        class: "text-mint-contrast hover:bg-mint/30"
+        color: "river",
+        class: "text-river-contrast hover:bg-river/30"
       },
       {
         variant: "ghost",
@@ -122,30 +122,30 @@ const buttonVariants = cva(
       },
       {
         variant: "ghost",
-        color: "dark",
-        class: "text-dark hover:bg-dark/10"
+        color: "ink",
+        class: "text-ink hover:bg-ink/10"
       },
 
       // Link
       {
         variant: "link",
-        color: "red",
-        class: "text-red"
+        color: "raft",
+        class: "text-raft"
       },
       {
         variant: "link",
-        color: "green",
-        class: "text-green"
+        color: "pine",
+        class: "text-pine"
       },
       {
         variant: "link",
-        color: "yellow",
-        class: "text-yellow"
+        color: "sun",
+        class: "text-sun"
       },
       {
         variant: "link",
-        color: "mint",
-        class: "text-mint"
+        color: "river",
+        class: "text-river"
       },
       {
         variant: "link",
@@ -154,13 +154,13 @@ const buttonVariants = cva(
       },
       {
         variant: "link",
-        color: "dark",
-        class: "text-dark"
+        color: "ink",
+        class: "text-ink"
       }
     ],
     defaultVariants: {
       variant: "solid",
-      color: "red",
+      color: "raft",
       size: "default"
     }
   }

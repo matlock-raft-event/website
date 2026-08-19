@@ -1,12 +1,12 @@
 import type { Palette } from "./section";
 
 const PALETTE_TEXT: Record<Palette, string> = {
-  mint: "text-mint-contrast",
+  river: "text-river-contrast",
   cream: "text-cream-contrast",
-  red: "text-red-contrast",
-  green: "text-green-contrast",
-  yellow: "text-yellow-contrast",
-  dark: "text-dark-contrast"
+  raft: "text-raft-contrast",
+  pine: "text-pine-contrast",
+  sun: "text-sun-contrast",
+  ink: "text-ink-contrast"
 };
 
 const Bullet = () => (
@@ -21,7 +21,7 @@ type HeadingProps = {
   title: string;
 };
 
-const Heading = ({ palette = "mint", subtitle, title }: HeadingProps) => {
+const Heading = ({ palette = "river", subtitle, title }: HeadingProps) => {
   return (
     <div className={`flex flex-col items-center pb-6 ${PALETTE_TEXT[palette]}`}>
       {

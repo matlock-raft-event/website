@@ -32,14 +32,14 @@ const Content = () => {
           <div className="flex flex-row flex-wrap justify-center gap-4">
             {
               recoveryLinks.map(link => (
-                <Button color="red" href={link.to} key={link.to} size="lg">
+                <Button color="raft" href={link.to} key={link.to} size="lg">
                   {link.label}
                 </Button>
               ))
             }
           </div>
 
-          <Button color="dark" href="/" variant="link">
+          <Button color="ink" href="/" variant="link">
             ← Back to the homepage
           </Button>
 

@@ -57,7 +57,7 @@ const FaqsSection = ({ faqs }: Props) => {
             >
               <Button
                 aria-pressed={active === "all"}
-                color="red"
+                color="raft"
                 onClick={() => setActive("all")}
                 size="sm"
                 variant={active === "all" ? "solid" : "outline"}
@@ -68,7 +68,7 @@ const FaqsSection = ({ faqs }: Props) => {
                 available.map(audience => (
                   <Button
                     aria-pressed={active === audience}
-                    color="red"
+                    color="raft"
                     key={audience}
                     onClick={() => setActive(audience)}
                     size="sm"

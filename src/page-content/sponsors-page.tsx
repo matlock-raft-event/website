@@ -12,9 +12,9 @@ const Content = ({ sponsors }: Props) => (
   <main id="main" tabIndex={-1}>
     <InnerHeroSection title="Our sponsors" />
     <SponsorsSection sponsors={sponsors} />
-    <Waves bottomColor="var(--color-mint)" topColor="var(--color-cream)" variant={2} />
+    <Waves bottomColor="var(--color-river)" topColor="var(--color-cream)" variant={2} />
     <BecomeSponsorSection />
-    <Waves bottomColor="var(--color-cream)" topColor="var(--color-mint)" variant={3} />
+    <Waves bottomColor="var(--color-cream)" topColor="var(--color-river)" variant={3} />
     <Footer />
   </main>
 );

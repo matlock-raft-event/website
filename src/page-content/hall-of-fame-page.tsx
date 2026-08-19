@@ -43,8 +43,8 @@ const Content = ({ winners }: Props) => {
       {
         years.map((year, index) => {
           // Year sections alternate green/cream; the intro section above is cream.
-          const palette = index % 2 === 0 ? "green" : "cream";
-          const prevPalette = index % 2 === 1 ? "green" : "cream";
+          const palette = index % 2 === 0 ? "pine" : "cream";
+          const prevPalette = index % 2 === 1 ? "pine" : "cream";
 
           return (
             <div key={year}>
@@ -72,7 +72,7 @@ const Content = ({ winners }: Props) => {
         style={{ marginTop: -1 }}
         topColor={
           years.length % 2 === 1
-            ? "var(--color-green)"
+            ? "var(--color-pine)"
             : "var(--color-cream)"
         }
         variant={2}

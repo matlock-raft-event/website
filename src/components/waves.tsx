@@ -9,7 +9,7 @@ type WavesProps = DivProps & {
 };
 const Waves = ({
   variant = 1,
-  topColor = "var(--color-mint)",
+  topColor = "var(--color-river)",
   bottomColor = "var(--color-cream)",
   ...other
 }: WavesProps) => {

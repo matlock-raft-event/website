@@ -48,12 +48,12 @@ const TimingsSection = () => (
     </div>
 
     <div className="mx-auto w-full max-w-4xl px-4">
-      <ol className="relative border-l-2 border-red ml-6">
+      <ol className="relative border-l-2 border-raft ml-6">
         {
           TIMINGS.map(item => (
             <li key={item.time} className="mb-8 ml-8 last:mb-0">
-              <span className="absolute -left-5 flex h-10 w-10 items-center justify-center rounded-full bg-red shadow-[2px_2px_0_0_rgba(0,0,0,0.25)]">
-                <Iconify color="var(--color-red-contrast)" icon="ph:clock" width={20} />
+              <span className="absolute -left-5 flex h-10 w-10 items-center justify-center rounded-full bg-raft shadow-[2px_2px_0_0_rgba(0,0,0,0.25)]">
+                <Iconify color="var(--color-raft-contrast)" icon="ph:clock" width={20} />
               </span>
               <span className="block font-serif font-medium text-sm sm:text-base md:text-lg">
                 {item.time}

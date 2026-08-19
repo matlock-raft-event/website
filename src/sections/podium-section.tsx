@@ -17,9 +17,9 @@ const PodiumSection = ({ winners }: Props) => {
   const latestWinners = (winners ?? []).filter(winner => winner.year === latestYear);
 
   return (
-    <Section palette="green">
+    <Section palette="pine">
       <Heading
-        palette="green"
+        palette="pine"
         subtitle={latestYear ? `Proud to present ${latestYear}'s` : "Proud to present our"}
         title="Heroic Winners"
       />

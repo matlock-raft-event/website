@@ -30,7 +30,7 @@ const Content = ({ update }: SingleUpdatePageProps) => {
 
       <Section palette="cream">
         <a
-          className="inline-flex items-center gap-1 font-serif font-medium text-red hover:underline"
+          className="inline-flex items-center gap-1 font-serif font-medium text-raft hover:underline"
           href="/updates"
         >
           <span aria-hidden="true">←</span>
