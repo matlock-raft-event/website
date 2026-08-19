@@ -1,3 +1,4 @@
+import Heading from "~/components/heading";
 import Reveal from "~/components/reveal";
 import Section from "~/components/section";
 import StatTile from "~/components/stat-tile";
@@ -13,16 +14,16 @@ type Props = { summary: SummaryQueryResult };
 const RaceSection = ({ summary }: Props) => (
   <Section palette="river">
     <div className="mx-auto grid w-full max-w-5xl items-center gap-10 md:grid-cols-[1.1fr_0.9fr] md:gap-14 px-4">
-      <Reveal className="text-center md:text-left">
-        <p className="font-label text-xs font-extrabold uppercase tracking-[0.2em] text-sun">
-          The race
-        </p>
-        <h2 className="mt-3 font-display uppercase text-3xl sm:text-4xl lg:text-5xl leading-[0.97] text-white">
-          Three miles. One weir.
-          {" "}
-          <span className="text-sun">No engines.</span>
-        </h2>
-        <p className="mt-5 max-w-prose text-sm sm:text-base lg:text-lg leading-relaxed text-cream mx-auto md:mx-0">
+      <Reveal className="text-left">
+        <Heading
+          align="left"
+          className="!pb-0"
+          palette="river"
+          subtitle="The race"
+          title="Three miles. One weir."
+          titleAccent="No engines."
+        />
+        <p className="mt-5 max-w-prose text-sm sm:text-base lg:text-lg leading-relaxed text-cream">
           The course runs roughly three miles from Matlock to the finish at
           Cromford Meadows. The water is cold, in places deep and turbulent,
           and the weir descents total around 30 metres of rapid white water.

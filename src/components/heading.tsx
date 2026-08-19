@@ -23,13 +23,21 @@ type HeadingProps = {
   palette?: Palette;
   subtitle?: string;
   title: string;
+  /** Optional trailing words rendered in sun — "Three miles. One weir. [No engines.]" */
+  titleAccent?: string;
   /** Centred introduces a stage (card grids, podiums, CTAs); left introduces
       reading (any section whose body is running prose). */
   align?: "center" | "left";
   className?: string;
 };
 
-const Heading = ({ palette = "river", subtitle, title, align = "center", className = "" }: HeadingProps) => {
+const Heading = ({ palette = "river", subtitle, title, titleAccent, align = "center", className = "" }: HeadingProps) => {
+  const titleContent = (
+    <>
+      {title}
+      {titleAccent && <>{" "}<span className="text-sun">{titleAccent}</span></>}
+    </>
+  );
   if (align === "left") {
     return (
       <div className={`flex flex-col items-start pb-6 text-left ${PALETTE_TEXT[palette]} ${className}`}>
@@ -39,7 +47,7 @@ const Heading = ({ palette = "river", subtitle, title, align = "center", classNa
               {subtitle}
             </p>
         }
-        <h2 className="font-display uppercase text-3xl sm:text-4xl lg:text-5xl leading-tight">{title}</h2>
+        <h2 className="font-display uppercase text-3xl sm:text-4xl lg:text-5xl leading-tight">{titleContent}</h2>
       </div>
     );
   }
@@ -54,7 +62,7 @@ const Heading = ({ palette = "river", subtitle, title, align = "center", classNa
                   <Bullet />
                 </div>
       }
-      <h2 className="font-display uppercase text-3xl sm:text-4xl lg:text-5xl leading-tight text-center">{title}</h2>
+      <h2 className="font-display uppercase text-3xl sm:text-4xl lg:text-5xl leading-tight text-center">{titleContent}</h2>
     </div>
   );
 };
