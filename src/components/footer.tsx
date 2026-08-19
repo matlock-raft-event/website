@@ -39,37 +39,26 @@ const legalLinks = [
   { label: "Cookies Policy", to: "/cookies" }
 ];
 
-/* Bunting strung across the top of the footer frame.
-   Built as a seamlessly repeating 260x44 tile (the rope is one full sine-like
-   period, so tiles join without a seam) rendered at fixed size via
-   background-repeat — flags never stretch or squash, at any viewport width.
-   Data-URI backgrounds can't read CSS variables, so the fills mirror the
-   palette tokens: rope cream #f6f3e2, flags raft #d23a34 / sun #fbba47 /
-   river #1d6a72. */
-const buntingTile = encodeURIComponent(
-  `<svg xmlns="http://www.w3.org/2000/svg" width="260" height="44" viewBox="0 0 260 44">`
-  // two downward scallops per tile (real bunting sags between its nails);
-  // both arcs start and end at y=10, so tiles join seamlessly
-  + `<path d="M0 10 Q 65 26 130 10 Q 195 26 260 10" fill="none" stroke="#f6f3e2" stroke-width="2.5" opacity=".55"/>`
-  // flags hang at t=1/3 and t=2/3 of each scallop: y = 10 + 32t(1-t) = 17.1,
-  // top edges tilted to follow the rope's slope at those points
-  + `<path d="M34.3 16.4 L52.3 17.8 L46 34.5 Z" fill="#d23a34"/>`
-  + `<path d="M77.7 17.8 L95.7 16.4 L89 34.5 Z" fill="#fbba47"/>`
-  + `<path d="M164.3 16.4 L182.3 17.8 L176 34.5 Z" fill="#1d6a72"/>`
-  + `<path d="M207.7 17.8 L225.7 16.4 L219 34.5 Z" fill="#fbba47"/>`
-  + `</svg>`
-);
-
+/* Bunting strung across the top of the footer frame: one long gentle S-curve
+   (M0 8 Q 360 30 720 14 T 1440 12) with nine varied flags. Flag tops are
+   computed on the curve itself — first arc y = 8 + 44t - 38t², reflected arc
+   y = 14 - 32t + 30t² — so every pennant hangs from the rope, with
+   alternating tilts for a hand-strung feel. Scales proportionally. */
 const Bunting = () => (
-  <div
-    aria-hidden="true"
-    className="h-11 w-full"
-    style={{
-      backgroundImage: `url("data:image/svg+xml,${buntingTile}")`,
-      backgroundRepeat: "repeat-x",
-      backgroundSize: "260px 44px"
-    }}
-  />
+  <svg aria-hidden="true" className="block w-full h-auto" viewBox="0 0 1440 46">
+    <path d="M0 8 Q 360 30 720 14 T 1440 12" fill="none" opacity=".55" stroke="var(--color-cream)" strokeWidth="3" />
+    <g>
+      <path d="M70 11.2 L90 13.6 L83 31.4 Z" fill="var(--color-raft)" />
+      <path d="M220 19.4 L240 17 L233 37.2 Z" fill="var(--color-sun)" />
+      <path d="M370 19.4 L390 21.8 L383 39.6 Z" fill="var(--color-river)" />
+      <path d="M520 21 L540 18.6 L533 38.8 Z" fill="var(--color-raft)" />
+      <path d="M670 14.5 L690 16.9 L683 34.7 Z" fill="var(--color-sun)" />
+      <path d="M820 11 L840 8.6 L833 28.8 Z" fill="var(--color-river-light)" />
+      <path d="M970 5.2 L990 7.6 L983 25.4 Z" fill="var(--color-raft)" />
+      <path d="M1120 6.7 L1140 4.3 L1133 24.5 Z" fill="var(--color-sun)" />
+      <path d="M1270 6.1 L1290 8.5 L1283 26.3 Z" fill="var(--color-river)" />
+    </g>
+  </svg>
 );
 
 const Footer = () => (
