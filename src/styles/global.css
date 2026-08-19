@@ -52,6 +52,36 @@
     --color-cream-dark: #e7e2c9;
     --color-cream-contrast: var(--color-ink);
 
+    /* Status colours ------------------------------------------------------
+       For messaging, form states, banners and badges — separate from the
+       brand accents so "red button" never collides with "error text".
+       Base passes WCAG AA as text on cream and paper, and takes white
+       text when used as a background. light = pale wash for banners. */
+    --color-success: #17714a;
+    --color-success-light: #dcefe4;
+    --color-success-dark: #0f5636;
+    --color-success-contrast: #ffffff;
+
+    --color-warning: #8a6800;
+    --color-warning-light: #f7eccb;
+    --color-warning-dark: #6b5000;
+    --color-warning-contrast: #ffffff;
+
+    --color-error: #c9372c;
+    --color-error-light: #f9e3e0;
+    --color-error-dark: #a52a21;
+    --color-error-contrast: #ffffff;
+
+    --color-info: #0c66e4;
+    --color-info-light: #e0ebfb;
+    --color-info-dark: #0952b8;
+    --color-info-contrast: #ffffff;
+
+    --color-discovery: #6e5dc6;
+    --color-discovery-light: #eae6f8;
+    --color-discovery-dark: #5545a8;
+    --color-discovery-contrast: #ffffff;
+
     /* Semantic aliases — for shadcn / brand conventions ------------------ */
     --color-primary: var(--color-raft);
     --color-primary-light: var(--color-raft-light);
@@ -112,7 +142,7 @@ body {
     --muted-foreground: oklch(0.58 0.031 107.3);
     --accent: oklch(0.527 0.154 150.069);
     --accent-foreground: oklch(0.982 0.018 155.826);
-    --destructive: oklch(0.577 0.245 27.325);
+    --destructive: var(--color-error);
     --border: oklch(0.93 0.007 106.5);
     --input: oklch(0.93 0.007 106.5);
     --ring: oklch(0.737 0.021 106.9);
