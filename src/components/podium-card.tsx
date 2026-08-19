@@ -8,7 +8,7 @@ interface PodiumCardProps {
 }
 
 const PodiumCard = ({ image, podium, title }: PodiumCardProps) => (
-  <div className="relative p-[4%] pb-[8%] rounded-[2px] bg-white shadow-[7px_7px_0_0_rgba(0,0,0,0.25)] transition-all duration-[600ms] ease-[cubic-bezier(0.165,0.84,0.44,1)] flex">
+  <div className="relative p-[4%] pb-[8%] rounded-[4px] bg-paper shadow-[8px_8px_0_0_rgba(8,64,44,0.28)] transition-[transform,box-shadow] duration-[600ms] ease-[cubic-bezier(0.165,0.84,0.44,1)] flex">
     <div
       style={{
         position: "absolute",
