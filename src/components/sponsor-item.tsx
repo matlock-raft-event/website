@@ -1,6 +1,3 @@
-import type { CSSProperties } from "react";
-import { useState } from "react";
-
 import SanityImage from "~/components/sanity-image";
 
 type SponsorItemProps = {
@@ -11,48 +8,35 @@ type SponsorItemProps = {
   readOnly?: boolean;
 };
 
+/* Stays white rather than paper: sponsor logos often carry their own white
+   background, which would show as a mismatched box on any other surface. */
 const SponsorItem = ({
   image,
   altText,
   href,
   onClick,
   readOnly = false
-}: SponsorItemProps) => {
-  const [hover, setHover] = useState(false);
-  const onMouseEnter = () => setHover(true);
-  const onMouseLeave = () => setHover(false);
-
-  const hoverStyles: CSSProperties | null = readOnly
-    ? null
-    : ({
-      cursor: "pointer",
-      boxShadow: "14px 14px 0px 0px rgba(0, 0, 0, 0.25)",
-      transform: "scale(1.01) rotate(-0.5deg)"
-    });
-
-  return (
-    <a
-      className="aspect-square flex justify-center items-center p-[5%] rounded-[2px] bg-white shadow-[7px_7px_0_0_rgba(0,0,0,0.25)] transition-all duration-[600ms] ease-[cubic-bezier(0.165,0.84,0.44,1)]"
-      href={href}
-      onClick={onClick}
-      onKeyDown={onClick}
-      onMouseEnter={onMouseEnter}
-      onMouseLeave={onMouseLeave}
+}: SponsorItemProps) => (
+  <a
+    className={`flex aspect-square w-full items-center justify-center rounded-[4px] bg-white p-[10%] shadow-card-soft transition-[transform,box-shadow] duration-300 ease-out ${
+      readOnly
+        ? ""
+        : "cursor-pointer hover:-translate-y-1 hover:shadow-card-soft-raised focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-pine"
+    }`}
+    href={href}
+    onClick={onClick}
+  >
+    <SanityImage
+      alt={altText}
+      image={image}
+      width={400}
       style={{
-        ...(hover && hoverStyles)
+        maxHeight: "100%",
+        maxWidth: "100%",
+        objectFit: "contain"
       }}
-    >
-      <SanityImage
-        alt={altText}
-        image={image}
-        style={{
-          maxHeight: "100%",
-          maxWidth: "100%",
-          objectFit: "contain"
-        }}
-      />
-    </a>
-  );
-};
+    />
+  </a>
+);
 
 export default SponsorItem;
