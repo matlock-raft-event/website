@@ -10,6 +10,8 @@ type UpdateCardProps = {
   date?: string;
   href: string;
   image?: unknown;
+  /** Degrees of tilt; keep within the design language's ±2.4° range. */
+  tilt?: number;
 };
 
 const formatDate = (date?: string): string | undefined => {
@@ -23,15 +25,20 @@ const formatDate = (date?: string): string | undefined => {
   });
 };
 
-const UpdateCard = ({ title, description, date, href, image }: UpdateCardProps) => {
+/* A photo card, so it wears the photo radius and a hard shadow like the podium
+   cards rather than the 10px panel radius of the stat tiles. The tilt is the
+   design language's pinned-photo rule; Tailwind's translate utilities compile
+   to the `translate` property, so the hover lift composes with this rotate. */
+const UpdateCard = ({ title, description, date, href, image, tilt = 0 }: UpdateCardProps) => {
   const formattedDate = formatDate(date);
 
   return (
     <a
-      className="group/card flex h-full flex-col overflow-hidden rounded-[10px] border-[3px] border-cream-dark bg-paper shadow-card-soft transition-[transform,box-shadow] duration-300 ease-[cubic-bezier(0.165,0.84,0.44,1)] hover:-translate-y-1 hover:shadow-card-soft-raised focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink"
+      className="group/card flex h-full flex-col overflow-hidden rounded-[4px] bg-paper shadow-card transition-[transform,box-shadow] duration-300 ease-[cubic-bezier(0.165,0.84,0.44,1)] hover:-translate-y-1 hover:shadow-card-hard focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink"
       href={href}
+      style={tilt ? { transform: `rotate(${tilt}deg)` } : undefined}
     >
-      <div className="relative aspect-[3/2] overflow-hidden rounded-[2px] bg-cream">
+      <div className="relative aspect-[3/2] overflow-hidden bg-cream">
         {
           image
             ? (

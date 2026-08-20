@@ -12,6 +12,9 @@ interface UpdatesSectionProps {
   updates: UpdatesQueryResult;
 }
 
+/* Cycled down the grid so no two neighbours lean the same way. */
+const TILTS = [-1.2, 0.9, -0.7, 1.1, -1, 0.6];
+
 const UpdatesSection = ({ preview = false, updates }: UpdatesSectionProps) => {
   const sortedUpdates = useMemo(
     () => {
@@ -36,13 +39,14 @@ const UpdatesSection = ({ preview = false, updates }: UpdatesSectionProps) => {
       />
       <div className="grid grid-cols-12 gap-6 sm:gap-8 items-stretch">
         {
-          sortedUpdates.map(update => (
+          sortedUpdates.map((update, index) => (
             <div key={update.slug ?? update.title} className="col-span-12 sm:col-span-6 lg:col-span-4">
               <UpdateCard
                 date={update.date ?? undefined}
                 description={update.content ? toPlainText(update.content as never) : undefined}
                 href={update.slug ? `/updates/${update.slug}` : "/updates"}
                 image={update.img}
+                tilt={TILTS[index % TILTS.length]}
                 title={update.title ?? ""}
               />
             </div>
