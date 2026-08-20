@@ -28,7 +28,7 @@ const UpdatesSection = ({ preview = false, updates }: UpdatesSectionProps) => {
   );
 
   /* Always cream: the homepage preview is the one light landing between the
-     green "Coming to watch?" and the pine-dark closing, and the update cards
+     green "Come and watch" section and the pine-dark closing, and the update cards
      are designed for a light ground. */
   return (
     <Section palette="cream">

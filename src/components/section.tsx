@@ -10,6 +10,10 @@ export type Palette = "cream" | "river" | "pine";
 
 interface SectionProps {
   palette?: Palette;
+  /** Set when nothing overlaps the top edge. The default top padding is short
+      because a wave usually sits over it; without one the content reads as
+      pinned to the top, so this matches the top space to the bottom. */
+  openTop?: boolean;
   children?: ReactNode;
 }
 
@@ -33,13 +37,13 @@ const SHADOW_BY_PALETTE: Record<Palette, "tree" | "cloud" | "water" | null> = {
 
 const SHADOWS = { tree: Tree, cloud: Cloud, water: Water };
 
-const Section = ({ palette = "river", children }: SectionProps) => {
+const Section = ({ palette = "river", openTop = false, children }: SectionProps) => {
   const shadowKey = SHADOW_BY_PALETTE[palette];
   const ShadowComponent = shadowKey ? SHADOWS[shadowKey] : null;
   const shadowColor = PALETTE_SHADOW_COLOR[palette];
 
   return (
-    <div className={`relative overflow-hidden pt-[2em] pb-[3em] ${PALETTE_BG[palette]}`}>
+    <div className={`relative overflow-hidden ${openTop ? "pt-12" : "pt-8"} pb-12 ${PALETTE_BG[palette]}`}>
       <div className="mx-auto w-full container px-4 relative z-[4]">
         {children}
       </div>

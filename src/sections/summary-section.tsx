@@ -5,8 +5,9 @@ import type { SummaryQueryResult } from "~/lib/sanity.types";
 
 type Props = { summary: SummaryQueryResult };
 
+/* openTop: the marquee sits directly above, with no wave over the top edge. */
 const SummarySection = ({ summary }: Props) => (
-  <Section palette="cream">
+  <Section openTop palette="cream">
     <Heading
       palette="cream"
       subtitle="Hello daring adventurer"
