@@ -13,6 +13,14 @@ const EYEBROW_TEXT: Record<Palette, string> = {
   pine: "text-sun"
 };
 
+/* Accent follows the eyebrow: sun is only legible on the dark surfaces
+   (on cream it sits at ~1.5:1), so light surfaces accent in raft. */
+const ACCENT_TEXT: Record<Palette, string> = {
+  cream: "text-raft",
+  river: "text-sun",
+  pine: "text-sun"
+};
+
 type HeadingProps = {
   palette?: Palette;
   subtitle?: string;
@@ -29,7 +37,7 @@ const Heading = ({ palette = "river", subtitle, title, titleAccent, align = "cen
   const titleContent = (
     <>
       {title}
-      {titleAccent && <>{" "}<span className="text-sun">{titleAccent}</span></>}
+      {titleAccent && <>{" "}<span className={ACCENT_TEXT[palette]}>{titleAccent}</span></>}
     </>
   );
   if (align === "left") {

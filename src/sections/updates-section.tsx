@@ -24,10 +24,13 @@ const UpdatesSection = ({ preview = false, updates }: UpdatesSectionProps) => {
     [updates, preview]
   );
 
+  /* Always cream: the homepage preview is the one light landing between the
+     green "Coming to watch?" and the pine-dark closing, and the update cards
+     are designed for a light ground. */
   return (
-    <Section palette={preview ? "river" : "cream"}>
+    <Section palette="cream">
       <Heading
-        palette={preview ? "river" : "cream"}
+        palette="cream"
         subtitle="Keep ahead of the tide"
         title="Latest Updates"
       />

@@ -54,15 +54,15 @@ const Content = ({ hero, summary, winners, updates, heroImageSrc, heroImageSrcse
     />
     <GetInvolvedSection />
     <Waves
-      bottomColor="var(--color-cream)"
+      bottomColor="var(--color-pine)"
       topColor="var(--color-river)"
       variant={4}
     />
     <ComingToWatchSection />
     <Waves
-      bottomColor="var(--color-river)"
+      bottomColor="var(--color-cream)"
       style={{ marginTop: -1 }}
-      topColor="var(--color-cream)"
+      topColor="var(--color-pine)"
       variant={1}
     />
     <UpdatesSection preview updates={updates} />
@@ -72,7 +72,7 @@ const Content = ({ hero, summary, winners, updates, heroImageSrc, heroImageSrcse
       text="Do it once and we promise you'll be hooked. Build a raft, bring the family, and help Matlock raise a fortune for the lifeboats."
       title="See you on"
       titleAccent="the riverbank"
-      waveTopColor="var(--color-river)"
+      waveTopColor="var(--color-cream)"
     />
     <Footer waveTopColor="var(--color-pine-dark)" />
   </main>
