@@ -26,15 +26,18 @@ const formatDate = (date?: string): string | undefined => {
 };
 
 /* A photo card, so it wears the photo radius and a hard shadow like the podium
-   cards rather than the 10px panel radius of the stat tiles. The tilt is the
-   design language's pinned-photo rule; Tailwind's translate utilities compile
-   to the `translate` property, so the hover lift composes with this rotate. */
+   cards rather than the 10px panel radius of the stat tiles. Unlike those, it
+   sits on cream: paper against cream is a ~9/255 step and the offset shadow
+   only falls bottom-right, so without a border the top and left edges vanish.
+   The tilt is the design language's pinned-photo rule; Tailwind's translate
+   utilities compile to the `translate` property, so the hover lift composes
+   with this rotate. */
 const UpdateCard = ({ title, description, date, href, image, tilt = 0 }: UpdateCardProps) => {
   const formattedDate = formatDate(date);
 
   return (
     <a
-      className="group/card flex h-full flex-col overflow-hidden rounded-[4px] bg-paper shadow-card transition-[transform,box-shadow] duration-300 ease-[cubic-bezier(0.165,0.84,0.44,1)] hover:-translate-y-1 hover:shadow-card-hard focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink"
+      className="group/card flex h-full flex-col overflow-hidden rounded-[4px] border-[3px] border-cream-dark bg-paper shadow-card transition-[transform,box-shadow] duration-300 ease-[cubic-bezier(0.165,0.84,0.44,1)] hover:-translate-y-1 hover:shadow-card-hard focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink"
       href={href}
       style={tilt ? { transform: `rotate(${tilt}deg)` } : undefined}
     >
