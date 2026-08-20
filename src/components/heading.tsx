@@ -6,17 +6,12 @@ const PALETTE_TEXT: Record<Palette, string> = {
   pine: "text-pine-contrast"
 };
 
-/* Eyebrow colour for the left-aligned variant: raft on light, sun on dark. */
-const EYEBROW_TEXT: Record<Palette, string> = {
-  cream: "text-raft",
-  river: "text-sun",
-  pine: "text-sun"
-};
-
-/* Accent follows the eyebrow: sun is only legible on the dark surfaces
-   (on cream it sits at ~1.5:1), so light surfaces accent in raft. */
+/* The surface's highlight colour, shared by the eyebrow and the title accent:
+   sun on the dark surfaces, pine on cream. Sun on cream would sit at ~1.5:1,
+   and raft red reads as an alarm against so much warm cream; pine is the
+   family green and clears 7:1. */
 const ACCENT_TEXT: Record<Palette, string> = {
-  cream: "text-raft",
+  cream: "text-pine",
   river: "text-sun",
   pine: "text-sun"
 };
@@ -45,7 +40,7 @@ const Heading = ({ palette = "river", subtitle, title, titleAccent, align = "cen
       <div className={`flex flex-col items-start pb-6 text-left ${PALETTE_TEXT[palette]} ${className}`}>
         {
           subtitle &&
-            <p className={`mb-3 label-caps text-xs ${EYEBROW_TEXT[palette]}`}>
+            <p className={`mb-3 label-caps text-xs ${ACCENT_TEXT[palette]}`}>
               {subtitle}
             </p>
         }
@@ -58,7 +53,7 @@ const Heading = ({ palette = "river", subtitle, title, titleAccent, align = "cen
     <div className={`flex flex-col items-center pb-6 ${PALETTE_TEXT[palette]} ${className}`}>
       {
         subtitle &&
-            <p className={`mb-3 label-caps text-xs text-center ${EYEBROW_TEXT[palette]}`}>
+            <p className={`mb-3 label-caps text-xs text-center ${ACCENT_TEXT[palette]}`}>
               {subtitle}
             </p>
       }
