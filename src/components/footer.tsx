@@ -103,21 +103,21 @@ const Footer = ({ waveTopColor = "var(--color-cream)", sponsorStrip: showStrip =
             <p className="label-caps text-xs text-sun">
               Supported by
             </p>
-            {/* Paper chips keep small-business logos legible on the dark
-                footer; mix-blend-multiply folds their white backgrounds
-                into the chip. */}
-            <div className="flex flex-row flex-wrap items-center justify-center gap-2">
+            {/* One white card holding every logo: the light backing the
+                small-business logos need, without per-logo chips.
+                mix-blend-multiply folds their white backgrounds in. */}
+            <div className="flex flex-row flex-wrap items-center justify-center gap-x-7 gap-y-4 rounded-[10px] bg-white px-7 py-5">
               {
                 sponsorStrip.map(sponsor => (
                   <a
                     key={sponsor.name}
                     aria-label={sponsor.name ?? undefined}
-                    className="flex h-14 items-center justify-center rounded-[4px] bg-paper px-4 py-2 transition-transform duration-300 ease-out hover:-translate-y-0.5 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sun"
+                    className="flex h-10 items-center justify-center transition-transform duration-300 ease-out hover:-translate-y-0.5 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-pine"
                     href={sponsor.slug ? `/sponsors/${sponsor.slug}` : undefined}
                   >
                     {/* Explicit height, width from aspect ratio: dimensionless
                         SVG logos (viewBox only) collapse to zero width under
-                        max-* constraints in a shrink-to-fit chip. */}
+                        max-* constraints in a shrink-to-fit link. */}
                     <SanityImage
                       alt={sponsor.name ?? undefined}
                       className="mix-blend-multiply"
