@@ -29,7 +29,11 @@ const Content = ({ sponsor }: SingleSponsorPageProps) => {
         <Heading palette="cream" subtitle="Sponsor" title={title} />
         <div className="grid grid-cols-12 gap-10">
           <div className="col-span-12 sm:col-span-4">
-            <SponsorItem altText={sponsor.name ?? undefined} image={sponsor.logo} readOnly />
+            <SponsorItem
+              altText={sponsor.name ?? undefined}
+              image={sponsor.logoTrimmed ?? sponsor.logo}
+              readOnly
+            />
           </div>
           <div className="col-span-12 sm:col-span-8">
             <div className="flex flex-col gap-4">

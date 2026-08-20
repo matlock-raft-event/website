@@ -31,7 +31,10 @@ const SponsorsSection = ({ sponsors }: Props) => (
       <Reveal className="grid grid-cols-2 items-center justify-items-center sm:grid-cols-3 md:grid-cols-5">
         {
           (sponsors ?? []).map(sponsor => {
-            const scale = opticalScale(sponsor.logo, CELL_W, CELL_H);
+            /* Falls back to the original for a sponsor added since
+               `pnpm trim-logos` last ran. */
+            const logo = sponsor.logoTrimmed ?? sponsor.logo;
+            const scale = opticalScale(logo, CELL_W, CELL_H);
 
             return (
               <a
@@ -42,7 +45,7 @@ const SponsorsSection = ({ sponsors }: Props) => (
                 <SanityImage
                   alt={sponsor.name ?? undefined}
                   className="mix-blend-multiply"
-                  image={sponsor.logo}
+                  image={logo}
                   width={400}
                   style={{
                     height: `${scale * 100}%`,

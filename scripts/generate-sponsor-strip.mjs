@@ -5,7 +5,10 @@ import { createClient } from "@sanity/client";
 /* Build-time codegen for the footer's site-wide sponsor strip. The footer is
    part of every page's client island, so it can't fetch Sanity itself; this
    snapshots the sponsors into a module the footer imports. Runs as part of
-   `pnpm build`; the output is committed so `pnpm dev` works without it. */
+   `pnpm build`; the output is committed so `pnpm dev` works without it.
+
+   Prefers each sponsor's cropped logo, falling back to the original for a
+   sponsor added since `pnpm trim-logos` last ran. */
 const client = createClient({
     projectId: "6m6e8mul",
     dataset: "production",
@@ -13,7 +16,9 @@ const client = createClient({
     useCdn: true
 });
 
-const sponsors = await client.fetch(`*[_type == "sponsor"]{ name, slug, logo } | order(lower(name) asc)`);
+const sponsors = await client.fetch(
+    `*[_type == "sponsor"]{ name, slug, "logo": coalesce(logoTrimmed, logo) } | order(lower(name) asc)`
+);
 
 writeFileSync(
     new URL("../src/lib/sponsor-strip.json", import.meta.url),

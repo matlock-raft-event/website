@@ -74,8 +74,10 @@ const Footer = ({ waveTopColor = "var(--color-cream)", sponsorStrip: showStrip =
             Dasac&apos;s Matlock Raft Event &mdash; in aid of the Royal National
             Lifeboat Institution.
           </p>
-          <img alt="RNLI fundraising badge" className="w-24" loading="lazy" src={rnliSrc} />
-          <FacebookIcon color="var(--color-cream)" href="https://www.facebook.com/matlockraftevent/" />
+          <div className="flex flex-row items-center gap-4">
+            <img alt="RNLI fundraising badge" className="w-24" loading="lazy" src={rnliSrc} />
+            <FacebookIcon color="var(--color-cream)" href="https://www.facebook.com/matlockraftevent/" />
+          </div>
         </div>
         {
           columns.map(column => (

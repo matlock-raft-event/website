@@ -10,6 +10,7 @@
     "preview": "pnpm run build && wrangler dev",
     "astro": "astro",
     "typecheck": "astro check",
+    "trim-logos": "cd studio && npx sanity exec ../scripts/trim-logos.ts --with-user-token && cd .. && node scripts/generate-sponsor-strip.mjs",
     "sanity:schema": "sanity schema extract --path ./schema.json",
     "sanity:typegen": "pnpm sanity:schema && sanity typegen generate",
     "generate-types": "wrangler types",
