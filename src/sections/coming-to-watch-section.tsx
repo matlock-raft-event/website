@@ -22,7 +22,7 @@ const ComingToWatchSection = () => (
             palette="pine"
             subtitle="Where, when and how"
             title="Come and watch."
-            titleAccent="Make a day of it."
+            titleAccent="Cheer them home."
           />
           <p className="text-sm sm:text-base lg:text-lg leading-relaxed text-pine-contrast">
             Pick a spot on the riverbank, or follow the rafts the whole way from Matlock down to
