@@ -4,9 +4,14 @@ import rnliBadge from "~/assets/images/rnlifundraise.png";
 import SanityImage from "~/components/sanity-image";
 import Waves from "~/components/waves";
 import { resolveAssetSrc } from "~/lib/assets";
+import { opticalScale } from "~/lib/optical-scale";
 import sponsorStrip from "~/lib/sponsor-strip.json";
 
 const rnliSrc = resolveAssetSrc(rnliBadge);
+
+/* Must match the cell classes on each logo link below (w-32 h-16). */
+const CELL_W = 128;
+const CELL_H = 64;
 
 type FooterProps = {
   /** Colour of the section sitting above the footer's seam wave. */
@@ -108,30 +113,33 @@ const Footer = ({ waveTopColor = "var(--color-cream)", sponsorStrip: showStrip =
                 mix-blend-multiply folds their white backgrounds in. */}
             <div className="flex flex-row flex-wrap items-center justify-center gap-x-7 gap-y-4 rounded-[10px] bg-white px-7 py-5">
               {
-                sponsorStrip.map(sponsor => (
-                  <a
-                    key={sponsor.name}
-                    aria-label={sponsor.name ?? undefined}
-                    className="flex h-10 items-center justify-center transition-transform duration-300 ease-out hover:-translate-y-0.5 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-pine"
-                    href={sponsor.slug ? `/sponsors/${sponsor.slug}` : undefined}
-                  >
-                    {/* Explicit height, width from aspect ratio: dimensionless
-                        SVG logos (viewBox only) collapse to zero width under
-                        max-* constraints in a shrink-to-fit link. */}
-                    <SanityImage
-                      alt={sponsor.name ?? undefined}
-                      className="mix-blend-multiply"
-                      image={sponsor.logo}
-                      width={320}
-                      style={{
-                        height: "100%",
-                        width: "auto",
-                        maxWidth: "12rem",
-                        objectFit: "contain"
-                      }}
-                    />
-                  </a>
-                ))
+                sponsorStrip.map(sponsor => {
+                  const scale = opticalScale(sponsor.logo, CELL_W, CELL_H);
+
+                  return (
+                    <a
+                      key={sponsor.name}
+                      aria-label={sponsor.name ?? undefined}
+                      className="flex h-16 w-32 items-center justify-center transition-transform duration-300 ease-out hover:-translate-y-0.5 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-pine"
+                      href={sponsor.slug ? `/sponsors/${sponsor.slug}` : undefined}
+                    >
+                      {/* Identical cells give the wall its rhythm; the optical
+                          scale then evens out how much ink each logo actually
+                          puts on the card. */}
+                      <SanityImage
+                        alt={sponsor.name ?? undefined}
+                        className="mix-blend-multiply"
+                        image={sponsor.logo}
+                        width={320}
+                        style={{
+                          height: `${scale * 100}%`,
+                          width: `${scale * 100}%`,
+                          objectFit: "contain"
+                        }}
+                      />
+                    </a>
+                  );
+                })
               }
             </div>
           </div>
