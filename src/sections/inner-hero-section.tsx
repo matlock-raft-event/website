@@ -1,67 +1,52 @@
-import HeaderImg from "~/assets/images/header.jpg";
 import Waves from "~/components/waves";
-import useResponsive from "~/hooks/use-responsive";
-import { resolveAssetSrc } from "~/lib/assets";
 
 interface InnerHeroSectionProps {
+  /** Colour of the section below, i.e. the wave's incoming colour. */
   wavesColor?: string;
+  /** For pages that provide their own hero: keep the h1 for structure only. */
   headerOnly?: boolean;
   title?: string;
+  /** Trailing words rendered in sun, as on the section headings. */
+  titleAccent?: string;
+  /** Small caps line above the title — the eyebrow the section below used to carry. */
+  eyebrow?: string;
 }
 
-const InnerHeroSection = ({ wavesColor, headerOnly = false, title }: InnerHeroSectionProps) => {
-  const isMobile = useResponsive("down", "sm");
+/* The page masthead: a pine-dark block carrying the title, flowing into the
+   section below on a wave.
 
+   The top padding is not decorative — the header's badge hangs 98px below the
+   bar on desktop (60px on mobile) and is centred, so a centred title has to
+   start below it. */
+const InnerHeroSection = ({
+  wavesColor,
+  headerOnly = false,
+  title,
+  titleAccent,
+  eyebrow
+}: InnerHeroSectionProps) => {
   if (headerOnly) {
     return title ? <h1 className="sr-only">{title}</h1> : null;
   }
 
   return (
-    <div style={{ position: "relative" }}>
-      {title && <h1 className="sr-only">{title}</h1>}
-      <div style={{ position: "relative" }}>
+    <div className="bg-pine-dark">
+      <div className="mx-auto w-full container px-4 pt-20 pb-8 md:pt-32 md:pb-10">
         {
-          isMobile
-            ? (
-              <>
-                <img
-                  alt="Cover Image"
-                  src={resolveAssetSrc(HeaderImg)}
-                  style={{
-                    width: "100%",
-                    height: "auto",
-                    aspectRatio: "24 / 9",
-                    objectFit: "cover",
-                    display: "block"
-                  }}
-                />
-                <div className="w-full h-[calc(100%+2px)] absolute top-0 left-0 bg-[linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.2),rgba(53,58,60,1))] z-10" />
-              </>
-            )
-            : (
-              <>
-                <img
-                  alt="Cover Image"
-                  src={resolveAssetSrc(HeaderImg)}
-                  style={{
-                    width: "100%",
-                    height: "auto",
-                    aspectRatio: "32 / 9",
-                    objectFit: "cover",
-                    display: "block"
-                  }}
-                />
-                <div className="w-full h-full absolute top-0 left-0 bg-black opacity-30 z-10" />
-                <Waves className="absolute w-full left-0 bottom-0 z-[11] -mb-px" bottomColor={wavesColor} topColor="unset" variant={3} />
-              </>
-            )
+          eyebrow &&
+            <p className="mb-3 label-caps text-xs text-center text-sun">
+              {eyebrow}
+            </p>
+        }
+        {
+          title &&
+            <h1 className="font-display uppercase text-4xl sm:text-5xl lg:text-6xl leading-[0.97] text-cream text-center text-balance">
+              {title}
+              {titleAccent && <>{" "}<span className="text-sun">{titleAccent}</span></>}
+            </h1>
         }
       </div>
-
-      {
-        isMobile &&
-                <Waves topColor="var(--color-ink)" variant={3} />
-      }
+      <Waves bottomColor={wavesColor} topColor="var(--color-pine-dark)" variant={3} />
     </div>
   );
 };

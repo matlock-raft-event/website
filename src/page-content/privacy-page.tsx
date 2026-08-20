@@ -1,7 +1,6 @@
 import type { ReactNode } from "react";
 
 import Footer from "~/components/footer";
-import Heading from "~/components/heading";
 import PageShell from "~/components/page-shell";
 import Section from "~/components/section";
 import InnerHeroSection from "~/sections/inner-hero-section";
@@ -20,9 +19,8 @@ const Para = ({ children }: { children: ReactNode }) => (
 
 const Content = () => (
   <main id="main" tabIndex={-1}>
-    <InnerHeroSection title="Privacy policy" />
+    <InnerHeroSection eyebrow="Your data and your rights" title="Privacy policy" />
     <Section palette="cream">
-      <Heading align="left" className="mx-auto max-w-4xl px-4" palette="cream" subtitle="Your data and your rights" title="Privacy Policy" />
       <div className="mx-auto w-full max-w-4xl px-4">
         <Para>
           This privacy policy explains how Dasac&apos;s Matlock Raft Event (&quot;we&quot;,

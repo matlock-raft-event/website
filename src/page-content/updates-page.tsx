@@ -8,7 +8,7 @@ type Props = { updates: UpdatesQueryResult };
 
 const Content = ({ updates }: Props) => (
   <main id="main" tabIndex={-1}>
-    <InnerHeroSection title="Latest updates" />
+    <InnerHeroSection eyebrow="Keep ahead of the tide" title="Latest updates" />
     <UpdatesSection updates={updates} />
     <Footer />
   </main>

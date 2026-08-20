@@ -1,7 +1,6 @@
 import ApplicationFormPdf from "~/assets/documents/Application-Form.pdf";
 import SafetyPdf from "~/assets/documents/Pre-Event-Safety.pdf";
 import RulesPdf from "~/assets/documents/Raft-Event-Rules.pdf";
-import Heading from "~/components/heading";
 import Section from "~/components/section";
 import StepCard from "~/components/step-card";
 import { Button } from "~/components/ui/button";
@@ -25,7 +24,6 @@ const STEPS = [
 
 const TakePartSection = () => (
   <Section palette="cream">
-    <Heading align="left" className="mx-auto max-w-4xl px-4" palette="cream" subtitle="So you're brave enough?" title="Take Part" />
     <div className="mx-auto w-full max-w-4xl px-4">
       <div className="flex flex-col items-center gap-4">
         <div className="flex flex-col items-center gap-2">

@@ -1,5 +1,4 @@
 import Block from "~/components/block";
-import Heading from "~/components/heading";
 import Section from "~/components/section";
 import type { ContactInstructionsQueryResult } from "~/lib/sanity.types";
 
@@ -7,7 +6,6 @@ type Props = { contactInstructions: ContactInstructionsQueryResult };
 
 const ContactUsSection = ({ contactInstructions }: Props) => (
   <Section palette="cream">
-    <Heading palette="cream" subtitle="Need to get in touch?" title="Contact us" />
 
     <div className="mx-auto w-full max-w-4xl px-4">
 

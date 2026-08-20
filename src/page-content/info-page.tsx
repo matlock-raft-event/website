@@ -1,6 +1,5 @@
 import ClosingCta from "~/components/closing-cta";
 import Footer from "~/components/footer";
-import Heading from "~/components/heading";
 import PageShell from "~/components/page-shell";
 import Section from "~/components/section";
 import InnerHeroSection from "~/sections/inner-hero-section";
@@ -25,13 +24,8 @@ const CARDS: InfoCard[] = [
 
 const Content = ({ cardImages = [] }: Props) => (
   <main id="main" tabIndex={-1}>
-    <InnerHeroSection title="Event information" wavesColor="var(--color-cream)" />
+    <InnerHeroSection eyebrow="Everything you need to know" title="Event information" wavesColor="var(--color-cream)" />
     <Section palette="cream">
-      <Heading
-        palette="cream"
-        subtitle="Everything you need to know"
-        title="Event Information"
-      />
       <div className="mx-auto grid w-full max-w-4xl grid-cols-1 gap-6 px-4 sm:grid-cols-2">
         {
           CARDS.map((card, i) => (

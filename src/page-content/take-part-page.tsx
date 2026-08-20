@@ -6,7 +6,7 @@ import TakePartSection from "~/sections/take-part-section";
 
 const Content = () => (
   <main id="main" tabIndex={-1}>
-    <InnerHeroSection title="Take part" />
+    <InnerHeroSection eyebrow="So you&apos;re brave enough?" title="Take part" />
     <TakePartSection />
     <ClosingCta
       primary={{ label: "Volunteer with us", href: "/volunteer" }}

@@ -1,7 +1,6 @@
 import { useMemo } from "react";
 
 import Footer from "~/components/footer";
-import Heading from "~/components/heading";
 import PageShell from "~/components/page-shell";
 import PodiumGrid from "~/components/podium-grid";
 import Section from "~/components/section";
@@ -25,7 +24,7 @@ const Content = ({ winners }: Props) => {
 
   return (
     <main id="main" tabIndex={-1}>
-      <InnerHeroSection
+      <InnerHeroSection eyebrow="Our champions through the years"
         title="Hall of fame"
         wavesColor={years.length === 0 ? "var(--color-cream)" : "var(--color-pine)"}
       />
@@ -33,11 +32,6 @@ const Content = ({ winners }: Props) => {
       {
         years.length === 0 && (
           <Section palette="cream">
-            <Heading
-              palette="cream"
-              subtitle="Our champions through the years"
-              title="Hall of Fame"
-            />
             <p className="mx-auto w-full max-w-4xl px-4 text-center text-sm sm:text-base lg:text-lg leading-relaxed">
               Our champions through the years will appear here soon.
             </p>
@@ -66,15 +60,6 @@ const Content = ({ winners }: Props) => {
                 )
               }
               <Section palette={palette}>
-                {
-                  index === 0 && (
-                    <Heading
-                      palette={palette}
-                      subtitle="Our champions through the years"
-                      title="Hall of Fame"
-                    />
-                  )
-                }
                 <h3 className={`font-display uppercase text-2xl sm:text-3xl text-center ${palette === "pine" ? "text-sun" : "text-ink"}`}>
                   {year}
                 </h3>

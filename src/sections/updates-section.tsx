@@ -32,11 +32,16 @@ const UpdatesSection = ({ preview = false, updates }: UpdatesSectionProps) => {
      are designed for a light ground. */
   return (
     <Section palette="cream">
-      <Heading
-        palette="cream"
-        subtitle="Keep ahead of the tide"
-        title="Latest Updates"
-      />
+      {
+        /* Only the homepage preview needs an introduction; on /updates the page
+           masthead already says it. */
+        preview &&
+          <Heading
+            palette="cream"
+            subtitle="Keep ahead of the tide"
+            title="Latest Updates"
+          />
+      }
       <div className="grid grid-cols-12 gap-6 sm:gap-8 items-stretch">
         {
           sortedUpdates.map((update, index) => (

@@ -1,18 +1,12 @@
 import Footer from "~/components/footer";
-import Heading from "~/components/heading";
 import PageShell from "~/components/page-shell";
 import Section from "~/components/section";
 import InnerHeroSection from "~/sections/inner-hero-section";
 
 const Content = () => (
   <main id="main" tabIndex={-1}>
-    <InnerHeroSection title="Vote for your boat" />
+    <InnerHeroSection eyebrow="It&apos;s time to choose your favourite" title="Vote for your boat" />
     <Section palette="cream">
-      <Heading
-        palette="cream"
-        subtitle="It's time to choose your favourite"
-        title="Vote For Your Boat"
-      />
       <div className="flex flex-col items-center gap-4">
         <p className="text-sm sm:text-base lg:text-lg leading-relaxed">
                         Okay, maybe it&apos;s generous of us to call them boats... But for the first time in

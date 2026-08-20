@@ -8,7 +8,7 @@ type Props = { contactInstructions: ContactInstructionsQueryResult };
 
 const Content = ({ contactInstructions }: Props) => (
   <main id="main" tabIndex={-1}>
-    <InnerHeroSection title="Contact us" />
+    <InnerHeroSection eyebrow="Need to get in touch?" title="Contact us" />
     <ContactUsSection contactInstructions={contactInstructions} />
     <Footer />
   </main>
