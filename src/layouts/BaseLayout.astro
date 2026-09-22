@@ -1,5 +1,7 @@
 ---
 import "~/styles/global.css";
+import albertSansUrl from "@fontsource-variable/albert-sans/files/albert-sans-latin-wght-normal.woff2?url";
+import antonUrl from "@fontsource/anton/files/anton-latin-400-normal.woff2?url";
 import Header from "~/components/header";
 
 type Props = {
@@ -46,6 +48,12 @@ const organizationJsonLd = {
         <link rel="icon" type="image/svg+xml" href={`${baseUrl}favicon.svg`} />
         <link rel="apple-touch-icon" href={`${baseUrl}apple-touch-icon.png`} />
         <link rel="manifest" href={`${baseUrl}manifest.webmanifest`} />
+
+        <!-- Fetch both faces alongside the HTML so the first paint already uses
+             them, instead of painting in the fallback and swapping. The ?url
+             imports resolve to the same hashed files global.css references. -->
+        <link rel="preload" href={antonUrl} as="font" type="font/woff2" crossorigin />
+        <link rel="preload" href={albertSansUrl} as="font" type="font/woff2" crossorigin />
 
         <meta property="og:type" content="website" />
         <meta property="og:title" content={title} />
