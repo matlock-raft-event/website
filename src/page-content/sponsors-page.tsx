@@ -12,7 +12,7 @@ type Props = { sponsors: SponsorsQueryResult };
    closes with the thank-you logo wall sitting right above the footer. */
 const Content = ({ sponsors }: Props) => (
   <main id="main" tabIndex={-1}>
-    <PageHeader background="wallpaper" color="pine-dark" title="Our sponsors" wavesColor="var(--color-river)" />
+    <PageHeader background="wallpaper" color="pine-dark" eyebrow="The backers of Boxing Day" title="Our sponsors" wavesColor="var(--color-river)" />
     <WhySponsorSection />
     <Waves bottomColor="var(--color-cream)" topColor="var(--color-river)" variant={2} />
     <SponsorsSection sponsors={sponsors} />

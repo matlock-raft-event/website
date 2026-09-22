@@ -12,9 +12,10 @@ type Props = { sponsors: SponsorsQueryResult };
 const CELL_W = 176;
 const CELL_H = 80;
 
-/* The thank-you wall: bare logos on cream, no cards. mix-blend-multiply
-   folds each logo's white background into the cream so they sit directly
-   on the surface. */
+/* The thank-you wall: every logo on one white card, the same card as the
+   footer's "Supported by" strip. It gives the small-business logos the
+   light backing they need without per-logo chips, and mix-blend-multiply
+   folds each logo's own white background into it. */
 const SponsorsSection = ({ sponsors }: Props) => (
   <Section palette="cream">
     <Heading
@@ -28,7 +29,7 @@ const SponsorsSection = ({ sponsors }: Props) => (
         to all of the businesses that have sponsored past and present events.
       </p>
 
-      <Reveal className="grid grid-cols-2 items-center justify-items-center sm:grid-cols-3 md:grid-cols-5">
+      <Reveal className="grid grid-cols-2 items-center justify-items-center rounded-[10px] bg-white px-5 py-5 sm:grid-cols-3 sm:px-7 md:grid-cols-5">
         {
           (sponsors ?? []).map(sponsor => {
             /* Falls back to the original for a sponsor added since
