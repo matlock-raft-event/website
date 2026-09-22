@@ -258,6 +258,12 @@ body {
     }
 }
 
+/* In-page jumps (the skip link, FAQ anchors) land below the sticky header
+   bar instead of underneath it. */
+[id] {
+  scroll-margin-top: 5rem;
+}
+
 @keyframes marquee {
   from { transform: translateX(0); }
   to { transform: translateX(-50%); }

@@ -13,11 +13,8 @@ interface InnerHeroSectionProps {
 }
 
 /* The page masthead: a pine-dark block carrying the title, flowing into the
-   section below on a wave.
-
-   The top padding is not decorative — the header's badge hangs 98px below the
-   bar on desktop (60px on mobile) and is centred, so a centred title has to
-   start below it. */
+   section below on a wave. Nothing hangs from the header any more, so the top
+   padding is ordinary breathing room below the bar. */
 const InnerHeroSection = ({
   wavesColor,
   headerOnly = false,
@@ -31,7 +28,7 @@ const InnerHeroSection = ({
 
   return (
     <div className="bg-pine-dark">
-      <div className="mx-auto w-full container px-4 pt-20 pb-8 md:pt-32 md:pb-10">
+      <div className="mx-auto w-full container px-4 pt-10 pb-8 md:pt-12 md:pb-10">
         {
           eyebrow &&
             <p className="mb-3 label-caps text-xs text-center text-sun">
