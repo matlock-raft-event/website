@@ -1,7 +1,6 @@
 import { useMemo, useState } from "react";
 
 import Block from "~/components/block";
-import Heading from "~/components/heading";
 import Section from "~/components/section";
 import Accordion from "~/components/ui/accordion/accordion";
 import AccordionContent from "~/components/ui/accordion/accordion-content";
@@ -43,12 +42,6 @@ const FaqsSection = ({ faqs }: Props) => {
   return (
     <Section palette="cream">
       <div className="mx-auto w-full max-w-5xl px-4">
-        <Heading
-          align="left"
-          palette="cream"
-          subtitle="You asked, we answered!"
-          title="Frequently Asked Questions"
-        />
         {
           available.length > 1 && (
             <div
