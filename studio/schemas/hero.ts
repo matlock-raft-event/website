@@ -19,12 +19,6 @@ export default {
             description: "The yellow lines of the headline, shown after the white title lines. Press Enter to control line breaks."
         },
         {
-            name: 'subtitle',
-            type: 'string',
-            title: 'Subtitle',
-            description: "The small line above the headline, shown in capitals."
-        },
-        {
             name: 'buttonText',
             type: 'string',
             title: 'Button Text',
@@ -56,6 +50,6 @@ export default {
         },
     ],
     preview: {
-        select: { title: "title", subtitle: "subtitle" }
+        select: { title: "title", subtitle: "titleAccent" }
     }
 }

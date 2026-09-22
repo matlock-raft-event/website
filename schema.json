@@ -1539,13 +1539,6 @@
         },
         "optional": true
       },
-      "subtitle": {
-        "type": "objectAttribute",
-        "value": {
-          "type": "string"
-        },
-        "optional": true
-      },
       "buttonText": {
         "type": "objectAttribute",
         "value": {

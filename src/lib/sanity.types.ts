@@ -230,7 +230,6 @@ export type Hero = {
   _rev: string;
   title?: string;
   titleAccent?: string;
-  subtitle?: string;
   buttonText?: string;
   buttonLink?: string;
   secondaryButtonText?: string;
@@ -595,11 +594,10 @@ export type AllSanitySchemaTypes =
 
 // Source: src/lib/queries.ts
 // Variable: heroQuery
-// Query: *[_type == "hero" && _id == "hero"][0]{ title, titleAccent, subtitle, buttonLink, buttonText, secondaryButtonLink, secondaryButtonText }
+// Query: *[_type == "hero" && _id == "hero"][0]{ title, titleAccent, buttonLink, buttonText, secondaryButtonLink, secondaryButtonText }
 export type HeroQueryResult = {
   title: string | null;
   titleAccent: string | null;
-  subtitle: string | null;
   buttonLink: string | null;
   buttonText: string | null;
   secondaryButtonLink: string | null;
@@ -1032,7 +1030,7 @@ export type VolunteerPageQueryResult = {
 import "@sanity/client";
 declare module "@sanity/client" {
   interface SanityQueries {
-    '*[_type == "hero" && _id == "hero"][0]{ title, titleAccent, subtitle, buttonLink, buttonText, secondaryButtonLink, secondaryButtonText }': HeroQueryResult;
+    '*[_type == "hero" && _id == "hero"][0]{ title, titleAccent, buttonLink, buttonText, secondaryButtonLink, secondaryButtonText }': HeroQueryResult;
     '*[_type == "event"][0]{ year, date, meetingPoint, arrivalTime, entryFee, distance, weirDescent, beneficiary, status }': EventQueryResult;
     '*[_type == "summary"][0]{ _id, yearsActive, bio, eventCount, moneyRaised }': SummaryQueryResult;
     '*[_type == "winner"]{ name, year, position, img }': WinnersQueryResult;
