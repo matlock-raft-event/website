@@ -7,19 +7,15 @@ type Props = { about: AboutQueryResult };
 
 const AboutSection = ({ about }: Props) => (
   <Section palette="cream">
-    <Heading
-      align="left"
-      className="mx-auto max-w-4xl px-4"
-      palette="cream"
-      subtitle="It all started in 1961"
-      title="What is The Matlock Raft Event?"
-    />
-    {
-      about?.bio &&
-                <div className="mx-auto w-full max-w-4xl px-4">
-                  <Block value={about.bio as never} />
-                </div>
-    }
+    <div className="mx-auto w-full max-w-5xl px-4">
+      <Heading
+        align="left"
+        palette="cream"
+        subtitle="It all started in 1961"
+        title="What is The Matlock Raft Event?"
+      />
+      {about?.bio && <Block value={about.bio as never} />}
+    </div>
   </Section>
 );
 

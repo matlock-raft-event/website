@@ -58,7 +58,7 @@ const Content = ({ galleryImages }: Props) => {
           {/* Same max-w-5xl width as the site's other grid and image sections */}
           <div className="mx-auto w-full max-w-5xl px-4">
             <div className="flex flex-col items-center gap-2">
-              <div className="mx-auto w-full max-w-4xl px-4">
+              <div className="self-start">
                 <p className="text-sm sm:text-base lg:text-lg leading-relaxed">
                                   Do you have photos we can feature in our gallery? Direct message them to us on Facebook
                                   or post them in our Facebook group and your photos could be featured right here!

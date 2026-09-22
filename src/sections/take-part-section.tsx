@@ -24,7 +24,7 @@ const STEPS = [
 
 const TakePartSection = () => (
   <Section palette="cream">
-    <div className="mx-auto w-full max-w-4xl px-4">
+    <div className="mx-auto w-full max-w-5xl px-4">
       <div className="flex flex-col items-center gap-4">
         <div className="flex flex-col items-center gap-2">
           <p className="text-sm sm:text-base lg:text-lg leading-relaxed">

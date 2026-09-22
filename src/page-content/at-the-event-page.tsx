@@ -22,7 +22,7 @@ const Content = () => (
   <main id="main" tabIndex={-1}>
     <PageHeader backLink={{ href: "/info", label: "Event information" }} eyebrow="Know before you go" title="At the event" />
     <Section palette="cream">
-      <div className="mx-auto w-full max-w-4xl px-4">
+      <div className="mx-auto w-full max-w-5xl px-4">
         <Para>
           Thousands of people line the banks of the Derwent on Boxing Day to cheer the rafts on.
           Here&apos;s what to know to make the most of the day.

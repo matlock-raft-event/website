@@ -7,7 +7,7 @@ type Props = { contactInstructions: ContactInstructionsQueryResult };
 const ContactUsSection = ({ contactInstructions }: Props) => (
   <Section palette="cream">
 
-    <div className="mx-auto w-full max-w-4xl px-4">
+    <div className="mx-auto w-full max-w-5xl px-4">
 
       <p className="text-sm sm:text-base lg:text-lg leading-relaxed mb-8">
                     We&apos;re all ears for participants and those eager to join the excitement! Connect with us on our

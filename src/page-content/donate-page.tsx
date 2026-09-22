@@ -9,7 +9,7 @@ const Content = () => (
   <main id="main" tabIndex={-1}>
     <PageHeader color="raft" eyebrow="Help us to raise more than ever" title="Donate" />
     <Section palette="cream">
-      <div className="mx-auto w-full max-w-4xl px-4">
+      <div className="mx-auto w-full max-w-5xl px-4">
         <div className="flex flex-col items-center gap-4">
           <p className="text-sm sm:text-base lg:text-lg leading-relaxed">
                             Every year, our volunteer bucket collectors are positioned along the route ready to collect

@@ -42,17 +42,18 @@ const FaqsSection = ({ faqs }: Props) => {
 
   return (
     <Section palette="cream">
-      <Heading
-        palette="cream"
-        subtitle="You asked, we answered!"
-        title="Frequently Asked Questions"
-      />
-      <div className="mx-auto w-full max-w-4xl px-4">
+      <div className="mx-auto w-full max-w-5xl px-4">
+        <Heading
+          align="left"
+          palette="cream"
+          subtitle="You asked, we answered!"
+          title="Frequently Asked Questions"
+        />
         {
           available.length > 1 && (
             <div
               aria-label="Filter questions by audience"
-              className="flex flex-row flex-wrap justify-center gap-2 pb-6"
+              className="flex flex-row flex-wrap gap-2 pb-6"
               role="group"
             >
               <Button

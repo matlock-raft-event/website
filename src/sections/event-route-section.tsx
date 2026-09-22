@@ -16,7 +16,7 @@ const EventRouteSection = () => (
             title="Event Route"
         />
         <div className="flex flex-col items-center gap-8">
-            <div className="mx-auto w-full max-w-4xl px-4">
+            <div className="mx-auto w-full max-w-5xl px-4">
                 <img
                     className="rounded-lg"
                     alt="Event route map"

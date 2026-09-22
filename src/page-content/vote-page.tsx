@@ -7,8 +7,7 @@ const Content = () => (
   <main id="main" tabIndex={-1}>
     <PageHeader background="stripes" color="sun" eyebrow="It&apos;s time to choose your favourite" title="Vote for your boat" />
     <Section palette="cream">
-      {/* Same max-w-4xl reading width as the site's other text pages */}
-      <div className="mx-auto w-full max-w-4xl px-4">
+      <div className="mx-auto w-full max-w-5xl px-4">
         <div className="flex flex-col items-center gap-4">
           <p className="text-sm sm:text-base lg:text-lg leading-relaxed">
                           Okay, maybe it&apos;s generous of us to call them boats... But for the first time in

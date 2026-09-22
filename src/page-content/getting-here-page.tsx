@@ -21,7 +21,7 @@ const Content = () => (
   <main id="main" tabIndex={-1}>
     <PageHeader backLink={{ href: "/info", label: "Event information" }} eyebrow="Travel & parking" title="Getting here" />
     <Section palette="cream">
-      <div className="mx-auto w-full max-w-4xl px-4">
+      <div className="mx-auto w-full max-w-5xl px-4">
         <Para>
           The event runs down the River Derwent from Matlock, through Matlock Bath, to the finish at
           Cromford Meadows. You can watch from anywhere along the way, so it&apos;s worth deciding

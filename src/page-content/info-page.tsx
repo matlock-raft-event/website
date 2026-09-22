@@ -26,7 +26,7 @@ const Content = ({ cardImages = [] }: Props) => (
   <main id="main" tabIndex={-1}>
     <PageHeader eyebrow="Everything you need to know" title="Event information" />
     <Section palette="cream">
-      <div className="mx-auto grid w-full max-w-4xl grid-cols-1 gap-6 px-4 sm:grid-cols-2">
+      <div className="mx-auto grid w-full max-w-5xl grid-cols-1 gap-6 px-4 sm:grid-cols-2">
         {
           CARDS.map((card, i) => (
             <a

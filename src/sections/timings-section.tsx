@@ -33,21 +33,18 @@ const TIMINGS = [
 
 const TimingsSection = () => (
   <Section palette="cream">
-    <Heading
-      palette="cream"
-      subtitle="What time is it?"
-      title="What happens and when?"
-    />
-
-    <div className="mx-auto w-full max-w-4xl px-4">
+    <div className="mx-auto w-full max-w-5xl px-4">
+      <Heading
+        align="left"
+        palette="cream"
+        subtitle="What time is it?"
+        title="What happens and when?"
+      />
       <p className="text-sm sm:text-base lg:text-lg leading-relaxed mb-8">
                     Once the rafts have set off, the timings always vary based on how fast the river is flowing, if
                     there’s any obstacles along the route etc, so we’d recommend getting there slightly earlier just
                     in case, it’s always worth the wait!
       </p>
-    </div>
-
-    <div className="mx-auto w-full max-w-4xl px-4">
       <ol className="relative border-l-2 border-raft ml-6">
         {
           TIMINGS.map(item => (
