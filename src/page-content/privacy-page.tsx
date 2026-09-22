@@ -1,9 +1,9 @@
 import type { ReactNode } from "react";
 
 import Footer from "~/components/footer";
+import { PageHeader } from "~/components/page-header";
 import PageShell from "~/components/page-shell";
 import Section from "~/components/section";
-import InnerHeroSection from "~/sections/inner-hero-section";
 
 const Subheading = ({ children }: { children: string }) => (
   <h3 className="font-display uppercase text-xl md:text-2xl mt-8 first:mt-0">
@@ -19,7 +19,7 @@ const Para = ({ children }: { children: ReactNode }) => (
 
 const Content = () => (
   <main id="main" tabIndex={-1}>
-    <InnerHeroSection eyebrow="Your data and your rights" title="Privacy policy" />
+    <PageHeader color="pine-dark" contentWidth="text" eyebrow="Your data and your rights" eyebrowStyle="plain" title="Privacy policy" />
     <Section palette="cream">
       <div className="mx-auto w-full max-w-4xl px-4">
         <Para>

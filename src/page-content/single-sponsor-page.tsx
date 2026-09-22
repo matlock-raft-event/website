@@ -1,11 +1,10 @@
 import Footer from "~/components/footer";
-import Heading from "~/components/heading";
+import { PageHeader } from "~/components/page-header";
 import PageShell from "~/components/page-shell";
 import Section from "~/components/section";
 import SponsorItem from "~/components/sponsor-item";
 import { Button } from "~/components/ui/button";
 import type { SponsorsForPathsQueryResult } from "~/lib/sanity.types";
-import InnerHeroSection from "~/sections/inner-hero-section";
 
 type SingleSponsorPageProps = {
   sponsor: SponsorsForPathsQueryResult[number];
@@ -16,7 +15,7 @@ const Content = ({ sponsor }: SingleSponsorPageProps) => {
 
   return (
     <main id="main" tabIndex={-1}>
-      <InnerHeroSection title={title} />
+      <PageHeader background="wallpaper" color="pine-dark" eyebrow="Sponsor" title={title} />
 
       <Section palette="cream">
         {/* Same max-w-5xl width as the site's other grid and image sections */}
@@ -28,7 +27,6 @@ const Content = ({ sponsor }: SingleSponsorPageProps) => {
             <span aria-hidden="true">←</span>
             Back to all sponsors
           </a>
-          <Heading palette="cream" subtitle="Sponsor" title={title} />
           <div className="grid grid-cols-12 gap-10">
             <div className="col-span-12 sm:col-span-4">
               <SponsorItem

@@ -1,12 +1,12 @@
 import { useMemo } from "react";
 
 import Footer from "~/components/footer";
+import { PageHeader } from "~/components/page-header";
 import PageShell from "~/components/page-shell";
 import PodiumGrid from "~/components/podium-grid";
 import Section from "~/components/section";
 import Waves from "~/components/waves";
 import type { WinnersQueryResult } from "~/lib/sanity.types";
-import InnerHeroSection from "~/sections/inner-hero-section";
 
 type Props = { winners: WinnersQueryResult };
 
@@ -24,7 +24,11 @@ const Content = ({ winners }: Props) => {
 
   return (
     <main id="main" tabIndex={-1}>
-      <InnerHeroSection eyebrow="Our champions through the years"
+      <PageHeader
+        background="wallpaper"
+        color="raft"
+        eyebrow="Our champions through the years"
+        eyebrowStyle="ribbon"
         title="Hall of fame"
         wavesColor={years.length === 0 ? "var(--color-cream)" : "var(--color-pine)"}
       />

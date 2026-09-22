@@ -1,13 +1,13 @@
 import ClosingCta from "~/components/closing-cta";
 import Footer from "~/components/footer";
+import { PageHeader } from "~/components/page-header";
 import PageShell from "~/components/page-shell";
 import Section from "~/components/section";
 import { Button } from "~/components/ui/button";
-import InnerHeroSection from "~/sections/inner-hero-section";
 
 const Content = () => (
   <main id="main" tabIndex={-1}>
-    <InnerHeroSection eyebrow="Help us to raise more than ever" title="Donate" />
+    <PageHeader color="raft" contentWidth="text" eyebrow="Help us to raise more than ever" title="Donate" />
     <Section palette="cream">
       <div className="mx-auto w-full max-w-4xl px-4">
         <div className="flex flex-col items-center gap-4">

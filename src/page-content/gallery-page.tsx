@@ -6,14 +6,13 @@ import Zoom from "yet-another-react-lightbox/plugins/zoom";
 
 import ClosingCta from "~/components/closing-cta";
 import Footer from "~/components/footer";
-import Heading from "~/components/heading";
 import ImageCard from "~/components/image-card";
+import { PageHeader } from "~/components/page-header";
 import PageShell from "~/components/page-shell";
 import Section from "~/components/section";
 import { ToggleGroup, ToggleGroupItem } from "~/components/ui/toggle";
 import { urlFor } from "~/lib/sanity";
 import type { GalleryQueryResult } from "~/lib/sanity.types";
-import InnerHeroSection from "~/sections/inner-hero-section";
 
 type Props = { galleryImages: GalleryQueryResult };
 
@@ -54,12 +53,10 @@ const Content = ({ galleryImages }: Props) => {
   return (
     <>
       <main id="main" tabIndex={-1}>
-        <InnerHeroSection title="Gallery" />
+        <PageHeader background="stripes" eyebrow="It’s everything it looks" title="Gallery" />
         <Section palette="cream">
           {/* Same max-w-5xl width as the site's other grid and image sections */}
           <div className="mx-auto w-full max-w-5xl px-4">
-            <Heading palette="cream" subtitle="It’s everything it looks" title="Gallery" />
-
             <div className="flex flex-col items-center gap-2">
               <div className="mx-auto w-full max-w-4xl px-4">
                 <p className="text-sm sm:text-base lg:text-lg leading-relaxed">

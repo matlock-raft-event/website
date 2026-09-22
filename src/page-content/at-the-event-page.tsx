@@ -3,9 +3,9 @@ import type { ReactNode } from "react";
 import BackLink from "~/components/back-link";
 import ClosingCta from "~/components/closing-cta";
 import Footer from "~/components/footer";
+import { PageHeader } from "~/components/page-header";
 import PageShell from "~/components/page-shell";
 import Section from "~/components/section";
-import InnerHeroSection from "~/sections/inner-hero-section";
 
 const Subheading = ({ children }: { children: string }) => (
   <h3 className="font-display uppercase text-xl md:text-2xl mt-10 first:mt-0">
@@ -21,7 +21,7 @@ const Para = ({ children }: { children: ReactNode }) => (
 
 const Content = () => (
   <main id="main" tabIndex={-1}>
-    <InnerHeroSection eyebrow="Know before you go" title="At the event" wavesColor="var(--color-cream)" />
+    <PageHeader contentWidth="text" eyebrow="Know before you go" title="At the event" />
     <BackLink href="/info" label="Event information" />
     <Section palette="cream">
       <div className="mx-auto w-full max-w-4xl px-4">

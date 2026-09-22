@@ -1,15 +1,15 @@
 import BackLink from "~/components/back-link";
 import ClosingCta from "~/components/closing-cta";
 import Footer from "~/components/footer";
+import { PageHeader } from "~/components/page-header";
 import PageShell from "~/components/page-shell";
 import Waves from "~/components/waves";
 import EventRouteSection from "~/sections/event-route-section";
-import InnerHeroSection from "~/sections/inner-hero-section";
 import TimingsSection from "~/sections/timings-section";
 
 const Content = () => (
   <main id="main" tabIndex={-1}>
-    <InnerHeroSection title="The race" wavesColor="var(--color-cream)" />
+    <PageHeader contentWidth="text" title="The race" />
     <BackLink href="/info" label="Event information" />
     <EventRouteSection />
     <Waves bottomColor="var(--color-pine)" topColor="var(--color-cream)" variant={3} />

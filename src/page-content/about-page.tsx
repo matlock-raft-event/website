@@ -1,9 +1,9 @@
 import ClosingCta from "~/components/closing-cta";
 import Footer from "~/components/footer";
+import { PageHeader } from "~/components/page-header";
 import PageShell from "~/components/page-shell";
 import Waves from "~/components/waves";
 import AboutSection from "~/sections/about-section";
-import InnerHeroSection from "~/sections/inner-hero-section";
 import RnliSection from "~/sections/rnli-section";
 import type { AboutQueryResult } from "~/lib/sanity.types";
 
@@ -11,7 +11,7 @@ type Props = { about: AboutQueryResult };
 
 const Content = ({ about }: Props) => (
   <main id="main" tabIndex={-1}>
-    <InnerHeroSection title="About The Matlock Raft Event" />
+    <PageHeader background="wallpaper" color="pine" contentWidth="text" title="About The Matlock Raft Event" />
     <AboutSection about={about} />
     <Waves bottomColor="var(--color-river)" topColor="var(--color-cream)" variant={2} />
     <RnliSection about={about} />

@@ -1,11 +1,11 @@
 import Footer from "~/components/footer";
+import { PageHeader } from "~/components/page-header";
 import PageShell from "~/components/page-shell";
 import Section from "~/components/section";
-import InnerHeroSection from "~/sections/inner-hero-section";
 
 const Content = () => (
   <main id="main" tabIndex={-1}>
-    <InnerHeroSection eyebrow="It&apos;s time to choose your favourite" title="Vote for your boat" />
+    <PageHeader background="stripes" color="sun" contentWidth="text" eyebrow="It&apos;s time to choose your favourite" title="Vote for your boat" />
     <Section palette="cream">
       {/* Same max-w-4xl reading width as the site's other text pages */}
       <div className="mx-auto w-full max-w-4xl px-4">

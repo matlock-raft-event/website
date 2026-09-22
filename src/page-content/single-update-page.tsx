@@ -1,13 +1,12 @@
 import donateImg from "~/assets/images/donate-img.jpg";
 import Block from "~/components/block";
 import Footer from "~/components/footer";
-import Heading from "~/components/heading";
+import { PageHeader } from "~/components/page-header";
 import PageShell from "~/components/page-shell";
 import SanityImage from "~/components/sanity-image";
 import Section from "~/components/section";
 import useResponsive from "~/hooks/use-responsive";
 import type { UpdatesForPathsQueryResult } from "~/lib/sanity.types";
-import InnerHeroSection from "~/sections/inner-hero-section";
 import { resolveAssetSrc } from "~/lib/assets";
 
 type SingleUpdatePageProps = {
@@ -24,7 +23,7 @@ const Content = ({ update }: SingleUpdatePageProps) => {
 
   return (
     <main id="main" tabIndex={-1}>
-      <InnerHeroSection title={title} />
+      <PageHeader color="pine" eyebrow={createdOn} eyebrowStyle="plain" title={title} />
 
       <Section palette="cream">
         {/* Same max-w-5xl width as the site's other grid and image sections */}
@@ -36,7 +35,6 @@ const Content = ({ update }: SingleUpdatePageProps) => {
             <span aria-hidden="true">←</span>
             Back to all updates
           </a>
-          <Heading palette="cream" subtitle={createdOn} title={title} />
           <div
             className={`grid grid-cols-12 gap-8 justify-items-center ${!isMobile ? "pt-8" : "pt-0"} ${isMobile ? "px-8" : ""}`}
           >

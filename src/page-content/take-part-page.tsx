@@ -1,12 +1,12 @@
 import ClosingCta from "~/components/closing-cta";
 import Footer from "~/components/footer";
+import { PageHeader } from "~/components/page-header";
 import PageShell from "~/components/page-shell";
-import InnerHeroSection from "~/sections/inner-hero-section";
 import TakePartSection from "~/sections/take-part-section";
 
 const Content = () => (
   <main id="main" tabIndex={-1}>
-    <InnerHeroSection eyebrow="So you&apos;re brave enough?" title="Take part" />
+    <PageHeader background="stripes" color="sun" eyebrow="So you&apos;re brave enough?" title="Take part" />
     <TakePartSection />
     <ClosingCta
       primary={{ label: "Volunteer with us", href: "/volunteer" }}
