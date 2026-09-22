@@ -13,14 +13,12 @@ const meta = {
     eyebrow: "So you're brave enough?",
     color: "river",
     background: "dots",
-    eyebrowStyle: "sticker",
-    contentWidth: "wide"
+    eyebrowStyle: "sticker"
   },
   argTypes: {
     color: { control: "select", options: COLORS },
     background: { control: "inline-radio", options: ["dots", "stripes", "wallpaper"] },
-    eyebrowStyle: { control: "inline-radio", options: ["sticker", "ribbon", "plain"] },
-    contentWidth: { control: "inline-radio", options: ["wide", "text"] }
+    eyebrowStyle: { control: "inline-radio", options: ["sticker", "ribbon", "plain"] }
   },
   parameters: {
     layout: "fullscreen",
@@ -49,12 +47,19 @@ export const Wallpaper: Story = {
   args: { color: "pine-dark", background: "wallpaper", eyebrowStyle: "ribbon" }
 };
 
+export const WithBackLink: Story = {
+  args: {
+    title: "Getting here",
+    eyebrow: "Travel & parking",
+    backLink: { href: "/info", label: "Event information" }
+  }
+};
+
 export const LongTitle: Story = {
   args: {
     title: "Thanks to the Environment Agency",
     eyebrow: "16 December 2024",
-    color: "pine",
-    contentWidth: "text"
+    color: "pine"
   }
 };
 
@@ -63,8 +68,7 @@ export const Plain: Story = {
     title: "Remembering Ian Ryde",
     eyebrow: "1 October 2024",
     color: "pine-dark",
-    eyebrowStyle: "plain",
-    contentWidth: "text"
+    eyebrowStyle: "plain"
   }
 };
 

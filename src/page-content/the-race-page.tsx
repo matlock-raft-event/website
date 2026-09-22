@@ -1,4 +1,3 @@
-import BackLink from "~/components/back-link";
 import ClosingCta from "~/components/closing-cta";
 import Footer from "~/components/footer";
 import { PageHeader } from "~/components/page-header";
@@ -9,8 +8,7 @@ import TimingsSection from "~/sections/timings-section";
 
 const Content = () => (
   <main id="main" tabIndex={-1}>
-    <PageHeader contentWidth="text" title="The race" />
-    <BackLink href="/info" label="Event information" />
+    <PageHeader backLink={{ href: "/info", label: "Event information" }} title="The race" />
     <EventRouteSection />
     <Waves bottomColor="var(--color-pine)" topColor="var(--color-cream)" variant={3} />
     <TimingsSection />

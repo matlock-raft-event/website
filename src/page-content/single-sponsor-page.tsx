@@ -15,18 +15,11 @@ const Content = ({ sponsor }: SingleSponsorPageProps) => {
 
   return (
     <main id="main" tabIndex={-1}>
-      <PageHeader background="wallpaper" color="pine-dark" eyebrow="Sponsor" title={title} />
+      <PageHeader background="wallpaper" backLink={{ href: "/sponsors", label: "Our sponsors" }} color="pine-dark" eyebrow="Sponsor" title={title} />
 
       <Section palette="cream">
         {/* Same max-w-5xl width as the site's other grid and image sections */}
         <div className="mx-auto w-full max-w-5xl px-4">
-          <a
-            className="inline-flex items-center gap-1 font-label font-medium text-raft hover:underline"
-            href="/sponsors"
-          >
-            <span aria-hidden="true">←</span>
-            Back to all sponsors
-          </a>
           <div className="grid grid-cols-12 gap-10">
             <div className="col-span-12 sm:col-span-4">
               <SponsorItem

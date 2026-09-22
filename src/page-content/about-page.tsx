@@ -11,7 +11,7 @@ type Props = { about: AboutQueryResult };
 
 const Content = ({ about }: Props) => (
   <main id="main" tabIndex={-1}>
-    <PageHeader background="wallpaper" color="pine" contentWidth="text" title="About The Matlock Raft Event" />
+    <PageHeader background="wallpaper" color="pine" title="About The Matlock Raft Event" />
     <AboutSection about={about} />
     <Waves bottomColor="var(--color-river)" topColor="var(--color-cream)" variant={2} />
     <RnliSection about={about} />

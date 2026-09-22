@@ -1,4 +1,3 @@
-import BackLink from "~/components/back-link";
 import Footer from "~/components/footer";
 import { PageHeader } from "~/components/page-header";
 import PageShell from "~/components/page-shell";
@@ -9,8 +8,7 @@ type Props = { faqs: FaqsQueryResult };
 
 const Content = ({ faqs }: Props) => (
   <main id="main" tabIndex={-1}>
-    <PageHeader contentWidth="text" title="Frequently asked questions" />
-    <BackLink href="/info" label="Event information" />
+    <PageHeader backLink={{ href: "/info", label: "Event information" }} title="Frequently asked questions" />
     <FaqsSection faqs={faqs} />
     <Footer />
   </main>

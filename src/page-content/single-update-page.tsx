@@ -20,18 +20,11 @@ const Content = ({ update }: SingleUpdatePageProps) => {
 
   return (
     <main id="main" tabIndex={-1}>
-      <PageHeader color="pine" eyebrow={createdOn} eyebrowStyle="plain" title={title} />
+      <PageHeader backLink={{ href: "/updates", label: "Latest updates" }} color="pine" eyebrow={createdOn} eyebrowStyle="plain" title={title} />
 
       <Section palette="cream">
         {/* Same max-w-5xl width as the site's other grid and image sections */}
         <div className="mx-auto w-full max-w-5xl px-4">
-          <a
-            className="inline-flex items-center gap-1 font-label font-medium text-raft hover:underline"
-            href="/updates"
-          >
-            <span aria-hidden="true">←</span>
-            Back to all updates
-          </a>
           {/* Phones stack the text above the photo card; from sm the card sits
               beside the text. Pure CSS, so the server and client render the
               same markup. */}

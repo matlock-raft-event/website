@@ -1,7 +1,6 @@
-import type { ReactNode } from "react";
-
 import Waves from "~/components/waves";
 
+import PageHeaderBackLink, { type PageHeaderBackLinkProps } from "./page-header-back-link";
 import PageHeaderBackground, { type PageHeaderPattern } from "./page-header-background";
 import PageHeaderEyebrow, { type PageHeaderEyebrowStyle } from "./page-header-eyebrow";
 import { type PageHeaderColor, surfaceFor } from "./page-header-surfaces";
@@ -16,18 +15,10 @@ export type PageHeaderProps = {
   background?: PageHeaderPattern;
   /** Plain is for pages that shouldn't be playful: tributes, legal pages. */
   eyebrowStyle?: PageHeaderEyebrowStyle;
-  /** Line the title up with the content below: "wide" for grids and
-      image-led pages, "text" for running prose (decision 012). */
-  contentWidth?: "wide" | "text";
   /** Colour of the section below, which the wave flows into. */
   wavesColor?: string;
-  /** Anything that belongs under the title, e.g. a back link. */
-  children?: ReactNode;
-};
-
-const CONTENT_WIDTH = {
-  wide: "max-w-5xl",
-  text: "max-w-4xl"
+  /** The way back to the parent page, shown under the title. */
+  backLink?: PageHeaderBackLinkProps;
 };
 
 /* The inner-page masthead: a printed, patterned ground with a huge title in
@@ -39,9 +30,8 @@ const PageHeader = ({
   color = "river",
   background = "dots",
   eyebrowStyle = "sticker",
-  contentWidth = "wide",
   wavesColor = "var(--color-cream)",
-  children
+  backLink
 }: PageHeaderProps) => {
   const surface = surfaceFor(color);
 
@@ -51,10 +41,12 @@ const PageHeader = ({
       style={surface.style}
     >
       <PageHeaderBackground pattern={background} />
-      <div className={`mx-auto flex w-full flex-col gap-3 px-4 md:gap-4 ${CONTENT_WIDTH[contentWidth]}`}>
+      {/* One width on every page (the wider of decision 012's two), so the
+          title sits in the same place as you move between pages. */}
+      <div className="mx-auto flex w-full max-w-5xl flex-col gap-3 px-4 md:gap-4">
         {eyebrow && <PageHeaderEyebrow eyebrowStyle={eyebrowStyle}>{eyebrow}</PageHeaderEyebrow>}
         <PageHeaderTitle>{title}</PageHeaderTitle>
-        {children}
+        {backLink && <PageHeaderBackLink {...backLink} color={surface.backLinkColor} />}
       </div>
       <Waves bottomColor={wavesColor} className="absolute inset-x-0 bottom-0" topColor="transparent" variant={3} />
     </header>

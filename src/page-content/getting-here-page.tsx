@@ -1,6 +1,5 @@
 import type { ReactNode } from "react";
 
-import BackLink from "~/components/back-link";
 import Footer from "~/components/footer";
 import { PageHeader } from "~/components/page-header";
 import PageShell from "~/components/page-shell";
@@ -20,8 +19,7 @@ const Para = ({ children }: { children: ReactNode }) => (
 
 const Content = () => (
   <main id="main" tabIndex={-1}>
-    <PageHeader contentWidth="text" eyebrow="Travel & parking" title="Getting here" />
-    <BackLink href="/info" label="Event information" />
+    <PageHeader backLink={{ href: "/info", label: "Event information" }} eyebrow="Travel & parking" title="Getting here" />
     <Section palette="cream">
       <div className="mx-auto w-full max-w-4xl px-4">
         <Para>

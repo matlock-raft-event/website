@@ -24,7 +24,7 @@ const CARDS: InfoCard[] = [
 
 const Content = ({ cardImages = [] }: Props) => (
   <main id="main" tabIndex={-1}>
-    <PageHeader contentWidth="text" eyebrow="Everything you need to know" title="Event information" />
+    <PageHeader eyebrow="Everything you need to know" title="Event information" />
     <Section palette="cream">
       <div className="mx-auto grid w-full max-w-4xl grid-cols-1 gap-6 px-4 sm:grid-cols-2">
         {

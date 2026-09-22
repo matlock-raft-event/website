@@ -1,6 +1,5 @@
 import type { ReactNode } from "react";
 
-import BackLink from "~/components/back-link";
 import ClosingCta from "~/components/closing-cta";
 import Footer from "~/components/footer";
 import { PageHeader } from "~/components/page-header";
@@ -21,8 +20,7 @@ const Para = ({ children }: { children: ReactNode }) => (
 
 const Content = () => (
   <main id="main" tabIndex={-1}>
-    <PageHeader contentWidth="text" eyebrow="Know before you go" title="At the event" />
-    <BackLink href="/info" label="Event information" />
+    <PageHeader backLink={{ href: "/info", label: "Event information" }} eyebrow="Know before you go" title="At the event" />
     <Section palette="cream">
       <div className="mx-auto w-full max-w-4xl px-4">
         <Para>

@@ -7,7 +7,7 @@ import { Button } from "~/components/ui/button";
 
 const Content = () => (
   <main id="main" tabIndex={-1}>
-    <PageHeader color="raft" contentWidth="text" eyebrow="Help us to raise more than ever" title="Donate" />
+    <PageHeader color="raft" eyebrow="Help us to raise more than ever" title="Donate" />
     <Section palette="cream">
       <div className="mx-auto w-full max-w-4xl px-4">
         <div className="flex flex-col items-center gap-4">

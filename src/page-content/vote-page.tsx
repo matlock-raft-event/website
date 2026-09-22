@@ -5,7 +5,7 @@ import Section from "~/components/section";
 
 const Content = () => (
   <main id="main" tabIndex={-1}>
-    <PageHeader background="stripes" color="sun" contentWidth="text" eyebrow="It&apos;s time to choose your favourite" title="Vote for your boat" />
+    <PageHeader background="stripes" color="sun" eyebrow="It&apos;s time to choose your favourite" title="Vote for your boat" />
     <Section palette="cream">
       {/* Same max-w-4xl reading width as the site's other text pages */}
       <div className="mx-auto w-full max-w-4xl px-4">

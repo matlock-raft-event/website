@@ -19,7 +19,7 @@ const Para = ({ children }: { children: ReactNode }) => (
 
 const Content = () => (
   <main id="main" tabIndex={-1}>
-    <PageHeader color="pine-dark" contentWidth="text" eyebrow="Your data and your rights" eyebrowStyle="plain" title="Privacy policy" />
+    <PageHeader color="pine-dark" eyebrow="Your data and your rights" eyebrowStyle="plain" title="Privacy policy" />
     <Section palette="cream">
       <div className="mx-auto w-full max-w-4xl px-4">
         <Para>

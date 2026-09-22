@@ -1,4 +1,7 @@
 import type { CSSProperties } from "react";
+import type { VariantProps } from "class-variance-authority";
+
+import type { buttonVariants } from "~/components/ui/button";
 
 export type PageHeaderColor = "river" | "pine" | "pine-dark" | "raft" | "sun";
 
@@ -17,10 +20,14 @@ type SurfaceVars = {
   "--header-ribbon-ink": string;
 };
 
+type ButtonColor = NonNullable<VariantProps<typeof buttonVariants>["color"]>;
+
 type Surface = {
   /** Ground and title colour. */
   className: string;
   vars: SurfaceVars;
+  /** The back link's colour: cream on dark grounds, pine on sun. */
+  backLinkColor: ButtonColor;
 };
 
 /** A hard drop in a darkened shade of the ground. */
@@ -42,7 +49,8 @@ const SURFACES: Record<PageHeaderColor, Surface> = {
       "--header-sticker-ink": "var(--color-sun-contrast)",
       "--header-ribbon": "var(--color-raft)",
       "--header-ribbon-ink": "var(--color-raft-contrast)"
-    }
+    },
+    backLinkColor: "cream"
   },
   pine: {
     className: "bg-pine text-cream",
@@ -55,7 +63,8 @@ const SURFACES: Record<PageHeaderColor, Surface> = {
       "--header-sticker-ink": "var(--color-sun-contrast)",
       "--header-ribbon": "var(--color-raft)",
       "--header-ribbon-ink": "var(--color-raft-contrast)"
-    }
+    },
+    backLinkColor: "cream"
   },
   "pine-dark": {
     className: "bg-pine-dark text-cream",
@@ -68,7 +77,8 @@ const SURFACES: Record<PageHeaderColor, Surface> = {
       "--header-sticker-ink": "var(--color-sun-contrast)",
       "--header-ribbon": "var(--color-raft)",
       "--header-ribbon-ink": "var(--color-raft-contrast)"
-    }
+    },
+    backLinkColor: "cream"
   },
   raft: {
     className: "bg-raft text-paper",
@@ -81,7 +91,8 @@ const SURFACES: Record<PageHeaderColor, Surface> = {
       "--header-sticker-ink": "var(--color-sun-contrast)",
       "--header-ribbon": "var(--color-pine-dark)",
       "--header-ribbon-ink": "var(--color-cream)"
-    }
+    },
+    backLinkColor: "cream"
   },
   // The one light ground: a dark title with a paper offset, like a two-colour print.
   sun: {
@@ -95,11 +106,12 @@ const SURFACES: Record<PageHeaderColor, Surface> = {
       "--header-sticker-ink": "var(--color-raft-contrast)",
       "--header-ribbon": "var(--color-pine-dark)",
       "--header-ribbon-ink": "var(--color-cream)"
-    }
+    },
+    backLinkColor: "pine"
   }
 };
 
 export const surfaceFor = (color: PageHeaderColor) => {
-  const { className, vars } = SURFACES[color];
-  return { className, style: vars as CSSProperties };
+  const { className, vars, backLinkColor } = SURFACES[color];
+  return { className, style: vars as CSSProperties, backLinkColor };
 };
