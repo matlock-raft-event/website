@@ -5,7 +5,6 @@ import { PageHeader } from "~/components/page-header";
 import PageShell from "~/components/page-shell";
 import SanityImage from "~/components/sanity-image";
 import Section from "~/components/section";
-import useResponsive from "~/hooks/use-responsive";
 import type { UpdatesForPathsQueryResult } from "~/lib/sanity.types";
 import { resolveAssetSrc } from "~/lib/assets";
 
@@ -18,8 +17,6 @@ const Content = ({ update }: SingleUpdatePageProps) => {
   const { content } = update;
   const createdOn = update.date ? new Date(update.date).toDateString() : undefined;
   const image = update.img;
-
-  const isMobile = useResponsive("down", "sm");
 
   return (
     <main id="main" tabIndex={-1}>
@@ -35,10 +32,11 @@ const Content = ({ update }: SingleUpdatePageProps) => {
             <span aria-hidden="true">←</span>
             Back to all updates
           </a>
-          <div
-            className={`grid grid-cols-12 gap-8 justify-items-center ${!isMobile ? "pt-8" : "pt-0"} ${isMobile ? "px-8" : ""}`}
-          >
-            <div className="col-span-9 sm:col-span-5 order-2 sm:order-1">
+          {/* Phones stack the text above the photo card; from sm the card sits
+              beside the text. Pure CSS, so the server and client render the
+              same markup. */}
+          <div className="grid grid-cols-1 gap-8 sm:grid-cols-12 sm:pt-8">
+            <div className="order-2 w-3/4 justify-self-center sm:order-1 sm:col-span-5 sm:w-full">
               <div className="bg-white p-[1%] pb-[2%] shadow-[7px_7px_0_0_rgba(0,0,0,0.25)]">
                 {
                   image
@@ -70,8 +68,8 @@ const Content = ({ update }: SingleUpdatePageProps) => {
                 }
               </div>
             </div>
-            <div className="col-span-12 sm:col-span-7 order-1 sm:order-2">
-              <div className="mt-8">
+            <div className="order-1 min-w-0 sm:order-2 sm:col-span-7">
+              <div className="sm:mt-8">
                 {content ? <Block value={content as never} /> : null}
               </div>
             </div>
