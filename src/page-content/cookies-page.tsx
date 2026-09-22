@@ -11,7 +11,10 @@ const Content = ({ cookiesInfo }: Props) => (
   <main id="main" tabIndex={-1}>
     <InnerHeroSection eyebrow="How this site uses cookies" title="Cookies policy" />
     <Section palette="cream">
-      {cookiesInfo?.content ? <Block value={cookiesInfo.content as never} /> : null}
+      {/* Same max-w-4xl reading width as the site's other text pages */}
+      <div className="mx-auto w-full max-w-4xl px-4">
+        {cookiesInfo?.content ? <Block value={cookiesInfo.content as never} /> : null}
+      </div>
     </Section>
     <Footer />
   </main>

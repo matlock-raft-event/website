@@ -32,38 +32,41 @@ const UpdatesSection = ({ preview = false, updates }: UpdatesSectionProps) => {
      are designed for a light ground. */
   return (
     <Section palette="cream">
-      {
-        /* Only the homepage preview needs an introduction; on /updates the page
-           masthead already says it. */
-        preview &&
-          <Heading
-            palette="cream"
-            subtitle="Keep ahead of the tide"
-            title="Latest Updates"
-          />
-      }
-      <div className="grid grid-cols-12 gap-6 sm:gap-8 items-stretch">
+      {/* Same max-w-5xl width as the site's other grid and image sections */}
+      <div className="mx-auto w-full max-w-5xl px-4">
         {
-          sortedUpdates.map((update, index) => (
-            <div key={update.slug ?? update.title} className="col-span-12 sm:col-span-6 lg:col-span-4">
-              <UpdateCard
-                date={update.date ?? undefined}
-                description={update.content ? toPlainText(update.content as never) : undefined}
-                href={update.slug ? `/updates/${update.slug}` : "/updates"}
-                image={update.img}
-                tilt={TILTS[index % TILTS.length]}
-                title={update.title ?? ""}
-              />
-            </div>
-          ))
+          /* Only the homepage preview needs an introduction; on /updates the page
+             masthead already says it. */
+          preview &&
+            <Heading
+              palette="cream"
+              subtitle="Keep ahead of the tide"
+              title="Latest Updates"
+            />
+        }
+        <div className="grid grid-cols-12 gap-6 sm:gap-8 items-stretch">
+          {
+            sortedUpdates.map((update, index) => (
+              <div key={update.slug ?? update.title} className="col-span-12 sm:col-span-6 lg:col-span-4">
+                <UpdateCard
+                  date={update.date ?? undefined}
+                  description={update.content ? toPlainText(update.content as never) : undefined}
+                  href={update.slug ? `/updates/${update.slug}` : "/updates"}
+                  image={update.img}
+                  tilt={TILTS[index % TILTS.length]}
+                  title={update.title ?? ""}
+                />
+              </div>
+            ))
+          }
+        </div>
+        {
+          preview &&
+                  <div className="flex flex-row justify-center mt-8">
+                    <Button href="/updates">View all updates</Button>
+                  </div>
         }
       </div>
-      {
-        preview &&
-                <div className="flex flex-row justify-center mt-8">
-                  <Button href="/updates">View all updates</Button>
-                </div>
-      }
     </Section>
   );
 };

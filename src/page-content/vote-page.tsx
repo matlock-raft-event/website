@@ -7,49 +7,51 @@ const Content = () => (
   <main id="main" tabIndex={-1}>
     <InnerHeroSection eyebrow="It&apos;s time to choose your favourite" title="Vote for your boat" />
     <Section palette="cream">
-      <div className="flex flex-col items-center gap-4">
-        <p className="text-sm sm:text-base lg:text-lg leading-relaxed">
-                        Okay, maybe it&apos;s generous of us to call them boats... But for the first time in
-                        2023,
-          {" "}
-          <strong>YOU</strong>
-          {" "}
-                        can vote for your winner of The Matlock Raft Event! This is your
-                        opportunity to be part of the action and help us to crown this years triumphant raft. Every vote
-                        counts!
-        </p>
-        <br />
-        <div
-          className="strawpoll-embed"
-          id="strawpoll_kjn18NeWjyQ"
-          style={{
-            height: "100vh",
-            width: "100%",
-            margin: "0 auto",
-            display: "flex",
-            flexDirection: "column"
-          }}
-        >
-          <iframe
-            allowFullScreen
-            id="strawpoll_iframe_kjn18NeWjyQ"
-            src="https://strawpoll.com/embed/kjn18NeWjyQ"
+      {/* Same max-w-4xl reading width as the site's other text pages */}
+      <div className="mx-auto w-full max-w-4xl px-4">
+        <div className="flex flex-col items-center gap-4">
+          <p className="text-sm sm:text-base lg:text-lg leading-relaxed">
+                          Okay, maybe it&apos;s generous of us to call them boats... But for the first time in
+                          2023,
+            {" "}
+            <strong>YOU</strong>
+            {" "}
+                          can vote for your winner of The Matlock Raft Event! This is your
+                          opportunity to be part of the action and help us to crown this years triumphant raft. Every vote
+                          counts!
+          </p>
+          <br />
+          <div
+            className="strawpoll-embed"
+            id="strawpoll_kjn18NeWjyQ"
             style={{
-              position: "static",
-              visibility: "visible",
-              display: "block",
+              height: "100vh",
               width: "100%",
-              flexGrow: 1,
-              border: 0
+              margin: "0 auto",
+              display: "flex",
+              flexDirection: "column"
             }}
-            title="StrawPoll Embed"
           >
-                            Loading...
-          </iframe>
-          <script async src="https://cdn.strawpoll.com/dist/widgets.js" />
+            <iframe
+              allowFullScreen
+              id="strawpoll_iframe_kjn18NeWjyQ"
+              src="https://strawpoll.com/embed/kjn18NeWjyQ"
+              style={{
+                position: "static",
+                visibility: "visible",
+                display: "block",
+                width: "100%",
+                flexGrow: 1,
+                border: 0
+              }}
+              title="StrawPoll Embed"
+            >
+                              Loading...
+            </iframe>
+            <script async src="https://cdn.strawpoll.com/dist/widgets.js" />
+          </div>
         </div>
       </div>
-
     </Section>
     <Footer />
   </main>

@@ -19,20 +19,23 @@ const PodiumSection = ({ winners }: Props) => {
 
   return (
     <Section palette="pine">
-      <Heading
-        palette="pine"
-        subtitle={latestYear ? `Proud to present ${latestYear}'s` : "Proud to present our"}
-        title="Heroic Winners"
-      />
+      {/* Same max-w-5xl width as the site's other grid and image sections */}
+      <div className="mx-auto w-full max-w-5xl px-4">
+        <Heading
+          palette="pine"
+          subtitle={latestYear ? `Proud to present ${latestYear}'s` : "Proud to present our"}
+          title="Heroic Winners"
+        />
 
-      <Reveal>
-        <PodiumGrid winners={latestWinners} />
-      </Reveal>
+        <Reveal>
+          <PodiumGrid winners={latestWinners} />
+        </Reveal>
 
-      <div className="flex justify-center pt-12">
-        <Button color="cream" href="/hall-of-fame" size="lg">
-          See our hall of fame
-        </Button>
+        <div className="flex justify-center pt-12">
+          <Button color="cream" href="/hall-of-fame" size="lg">
+            See our hall of fame
+          </Button>
+        </div>
       </div>
     </Section>
   );

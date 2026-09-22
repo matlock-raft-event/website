@@ -56,62 +56,64 @@ const Content = ({ galleryImages }: Props) => {
       <main id="main" tabIndex={-1}>
         <InnerHeroSection title="Gallery" />
         <Section palette="cream">
-          <Heading palette="cream" subtitle="It’s everything it looks" title="Gallery" />
+          {/* Same max-w-5xl width as the site's other grid and image sections */}
+          <div className="mx-auto w-full max-w-5xl px-4">
+            <Heading palette="cream" subtitle="It’s everything it looks" title="Gallery" />
 
-          <div className="flex flex-col items-center gap-2">
-            <div className="mx-auto w-full max-w-4xl px-4">
-              <p className="text-sm sm:text-base lg:text-lg leading-relaxed">
-                                Do you have photos we can feature in our gallery? Direct message them to us on Facebook
-                                or post them in our Facebook group and your photos could be featured right here!
-              </p>
-            </div>
-            <div className="flex flex-col items-center gap-1">
-              <p className="font-label font-medium text-sm uppercase tracking-wider text-cream-contrast">
-                Browse by year
-              </p>
-              <ToggleGroup
-                aria-label="Filter gallery by year"
-                onValueChange={(values: string[]) => {
-                  if (values[0]) setYearFilter(values[0]);
-                }}
-                value={activeYear ? [activeYear] : []}
-              >
+            <div className="flex flex-col items-center gap-2">
+              <div className="mx-auto w-full max-w-4xl px-4">
+                <p className="text-sm sm:text-base lg:text-lg leading-relaxed">
+                                  Do you have photos we can feature in our gallery? Direct message them to us on Facebook
+                                  or post them in our Facebook group and your photos could be featured right here!
+                </p>
+              </div>
+              <div className="flex flex-col items-center gap-1">
+                <p className="font-label font-medium text-sm uppercase tracking-wider text-cream-contrast">
+                  Browse by year
+                </p>
+                <ToggleGroup
+                  aria-label="Filter gallery by year"
+                  onValueChange={(values: string[]) => {
+                    if (values[0]) setYearFilter(values[0]);
+                  }}
+                  value={activeYear ? [activeYear] : []}
+                >
+                  {
+                    yearFilters.map(value => (
+                      <ToggleGroupItem
+                        key={value}
+                        aria-label={value}
+                        className="uppercase border-0"
+                        value={value}
+                      >
+                        {value}
+                      </ToggleGroupItem>
+                    ))
+                  }
+                </ToggleGroup>
+              </div>
+
+              <div className="columns-2 sm:columns-4 gap-4">
                 {
-                  yearFilters.map(value => (
-                    <ToggleGroupItem
-                      key={value}
-                      aria-label={value}
-                      className="uppercase border-0"
-                      value={value}
-                    >
-                      {value}
-                    </ToggleGroupItem>
+                  filteredGalleryData.map((image, imageIndex) => (
+                    image.img
+                      ? (
+                        <div key={image._id} className="mb-4 break-inside-avoid">
+                          <ImageCard
+                            alt={`Matlock Raft Event${image.year ? ` ${image.year}` : ""}${image.author ? `, photo by ${image.author}` : ""}`}
+                            hideBorders
+                            image={image.img}
+                            onClick={() => setIndex(imageIndex)}
+                          />
+                        </div>
+                      )
+                      : null
                   ))
                 }
-              </ToggleGroup>
-            </div>
+              </div>
 
-            <div className="columns-2 sm:columns-4 gap-4">
-              {
-                filteredGalleryData.map((image, imageIndex) => (
-                  image.img
-                    ? (
-                      <div key={image._id} className="mb-4 break-inside-avoid">
-                        <ImageCard
-                          alt={`Matlock Raft Event${image.year ? ` ${image.year}` : ""}${image.author ? `, photo by ${image.author}` : ""}`}
-                          hideBorders
-                          image={image.img}
-                          onClick={() => setIndex(imageIndex)}
-                        />
-                      </div>
-                    )
-                    : null
-                ))
-              }
             </div>
-
           </div>
-
         </Section>
         <ClosingCta
           primary={{ label: "Take part", href: "/take-part" }}

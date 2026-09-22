@@ -27,56 +27,58 @@ const Content = ({ update }: SingleUpdatePageProps) => {
       <InnerHeroSection title={title} />
 
       <Section palette="cream">
-        <a
-          className="inline-flex items-center gap-1 font-label font-medium text-raft hover:underline"
-          href="/updates"
-        >
-          <span aria-hidden="true">←</span>
-          Back to all updates
-        </a>
-        <Heading palette="cream" subtitle={createdOn} title={title} />
-        <div
-          className={`grid grid-cols-12 gap-8 justify-items-center ${!isMobile ? "pt-8" : "pt-0"} ${isMobile ? "px-8" : ""}`}
-        >
-          <div className="col-span-9 sm:col-span-5 order-2 sm:order-1">
-            <div className="bg-white p-[1%] pb-[2%] shadow-[7px_7px_0_0_rgba(0,0,0,0.25)]">
-              {
-                image
-                  ? (
-                    <SanityImage
-                      alt={title}
-                      image={image}
-                      style={{
-                        width: "100%",
-                        height: "auto",
-                        objectFit: "cover",
-                        objectPosition: "center",
-                        borderRadius: 2,
-                        display: "block"
-                      }}
-                    />
-                  )
-                  : (
-                    <img
-                      alt={title}
-                      src={resolveAssetSrc(donateImg)}
-                      style={{
-                        width: "100%",
-                        height: "auto",
-                        display: "block"
-                      }}
-                    />
-                  )
-              }
+        {/* Same max-w-5xl width as the site's other grid and image sections */}
+        <div className="mx-auto w-full max-w-5xl px-4">
+          <a
+            className="inline-flex items-center gap-1 font-label font-medium text-raft hover:underline"
+            href="/updates"
+          >
+            <span aria-hidden="true">←</span>
+            Back to all updates
+          </a>
+          <Heading palette="cream" subtitle={createdOn} title={title} />
+          <div
+            className={`grid grid-cols-12 gap-8 justify-items-center ${!isMobile ? "pt-8" : "pt-0"} ${isMobile ? "px-8" : ""}`}
+          >
+            <div className="col-span-9 sm:col-span-5 order-2 sm:order-1">
+              <div className="bg-white p-[1%] pb-[2%] shadow-[7px_7px_0_0_rgba(0,0,0,0.25)]">
+                {
+                  image
+                    ? (
+                      <SanityImage
+                        alt={title}
+                        image={image}
+                        style={{
+                          width: "100%",
+                          height: "auto",
+                          objectFit: "cover",
+                          objectPosition: "center",
+                          borderRadius: 2,
+                          display: "block"
+                        }}
+                      />
+                    )
+                    : (
+                      <img
+                        alt={title}
+                        src={resolveAssetSrc(donateImg)}
+                        style={{
+                          width: "100%",
+                          height: "auto",
+                          display: "block"
+                        }}
+                      />
+                    )
+                }
+              </div>
             </div>
-          </div>
-          <div className="col-span-12 sm:col-span-7 order-1 sm:order-2">
-            <div className="mt-8">
-              {content ? <Block value={content as never} /> : null}
+            <div className="col-span-12 sm:col-span-7 order-1 sm:order-2">
+              <div className="mt-8">
+                {content ? <Block value={content as never} /> : null}
+              </div>
             </div>
           </div>
         </div>
-
       </Section>
 
       <Footer />

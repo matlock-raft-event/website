@@ -19,64 +19,67 @@ const Content = ({ sponsor }: SingleSponsorPageProps) => {
       <InnerHeroSection title={title} />
 
       <Section palette="cream">
-        <a
-          className="inline-flex items-center gap-1 font-label font-medium text-raft hover:underline"
-          href="/sponsors"
-        >
-          <span aria-hidden="true">←</span>
-          Back to all sponsors
-        </a>
-        <Heading palette="cream" subtitle="Sponsor" title={title} />
-        <div className="grid grid-cols-12 gap-10">
-          <div className="col-span-12 sm:col-span-4">
-            <SponsorItem
-              altText={sponsor.name ?? undefined}
-              image={sponsor.logoTrimmed ?? sponsor.logo}
-              readOnly
-            />
-          </div>
-          <div className="col-span-12 sm:col-span-8">
-            <div className="flex flex-col gap-4">
-              {
-                sponsor.description &&
-                                <div>
-                                  <h6 className="font-label font-medium text-sm sm:text-base md:text-lg">What we do</h6>
-                                  <p className="text-sm sm:text-base lg:text-lg leading-relaxed">{sponsor.description}</p>
-                                </div>
-              }
-              {
-                sponsor.address &&
-                                <div>
-                                  <h6 className="font-label font-medium text-sm sm:text-base md:text-lg">Where to find us</h6>
-                                  <p className="text-sm sm:text-base lg:text-lg leading-relaxed">{sponsor.address}</p>
-                                </div>
-              }
-              {
-                sponsor.url &&
-                                <div>
-                                  <h6 className="font-label font-medium text-sm sm:text-base md:text-lg">Our website</h6>
-                                  <a
-                                    className="text-raft text-base hover:underline"
-                                    href={sponsor.url}
-                                    rel="noopener"
-                                    target="_blank"
-                                  >
-                                    {sponsor.url}
-                                  </a>
-                                </div>
-              }
-              {
-                sponsor.testimonial &&
-                                <div>
-                                  <h6 className="font-label font-medium text-sm sm:text-base md:text-lg">Why we sponsored The Matlock Raft Event</h6>
-                                  <p className="text-sm sm:text-base lg:text-lg leading-relaxed">{sponsor.testimonial}</p>
-                                </div>
-              }
+        {/* Same max-w-5xl width as the site's other grid and image sections */}
+        <div className="mx-auto w-full max-w-5xl px-4">
+          <a
+            className="inline-flex items-center gap-1 font-label font-medium text-raft hover:underline"
+            href="/sponsors"
+          >
+            <span aria-hidden="true">←</span>
+            Back to all sponsors
+          </a>
+          <Heading palette="cream" subtitle="Sponsor" title={title} />
+          <div className="grid grid-cols-12 gap-10">
+            <div className="col-span-12 sm:col-span-4">
+              <SponsorItem
+                altText={sponsor.name ?? undefined}
+                image={sponsor.logoTrimmed ?? sponsor.logo}
+                readOnly
+              />
+            </div>
+            <div className="col-span-12 sm:col-span-8">
+              <div className="flex flex-col gap-4">
+                {
+                  sponsor.description &&
+                                  <div>
+                                    <h6 className="font-label font-medium text-sm sm:text-base md:text-lg">What we do</h6>
+                                    <p className="text-sm sm:text-base lg:text-lg leading-relaxed">{sponsor.description}</p>
+                                  </div>
+                }
+                {
+                  sponsor.address &&
+                                  <div>
+                                    <h6 className="font-label font-medium text-sm sm:text-base md:text-lg">Where to find us</h6>
+                                    <p className="text-sm sm:text-base lg:text-lg leading-relaxed">{sponsor.address}</p>
+                                  </div>
+                }
+                {
+                  sponsor.url &&
+                                  <div>
+                                    <h6 className="font-label font-medium text-sm sm:text-base md:text-lg">Our website</h6>
+                                    <a
+                                      className="text-raft text-base hover:underline"
+                                      href={sponsor.url}
+                                      rel="noopener"
+                                      target="_blank"
+                                    >
+                                      {sponsor.url}
+                                    </a>
+                                  </div>
+                }
+                {
+                  sponsor.testimonial &&
+                                  <div>
+                                    <h6 className="font-label font-medium text-sm sm:text-base md:text-lg">Why we sponsored The Matlock Raft Event</h6>
+                                    <p className="text-sm sm:text-base lg:text-lg leading-relaxed">{sponsor.testimonial}</p>
+                                  </div>
+                }
+              </div>
             </div>
           </div>
-        </div>
-        <div className="flex flex-row justify-center mt-16">
-          <Button href="/sponsors">View all sponsors</Button>
+          <div className="flex flex-row justify-center mt-16">
+            <Button href="/sponsors">View all sponsors</Button>
+          </div>
         </div>
       </Section>
 

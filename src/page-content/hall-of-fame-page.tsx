@@ -60,10 +60,13 @@ const Content = ({ winners }: Props) => {
                 )
               }
               <Section palette={palette}>
-                <h3 className={`font-display uppercase text-2xl sm:text-3xl text-center ${palette === "pine" ? "text-sun" : "text-ink"}`}>
-                  {year}
-                </h3>
-                <PodiumGrid tiltSeed={index} winners={winnersForYear(year)} />
+                {/* Same max-w-5xl width as the site's other grid and image sections */}
+                <div className="mx-auto w-full max-w-5xl px-4">
+                  <h3 className={`font-display uppercase text-2xl sm:text-3xl text-center ${palette === "pine" ? "text-sun" : "text-ink"}`}>
+                    {year}
+                  </h3>
+                  <PodiumGrid tiltSeed={index} winners={winnersForYear(year)} />
+                </div>
               </Section>
             </div>
           );
