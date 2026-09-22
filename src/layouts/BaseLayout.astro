@@ -8,6 +8,8 @@ type Props = {
     ogImage?: string;
     ogImageAlt?: string;
     jsonLd?: Record<string, unknown>[];
+    /** Home page: the header sits transparent over the hero photo. */
+    overlayHeader?: boolean;
 };
 
 const {
@@ -16,6 +18,7 @@ const {
     ogImage = new URL("og-image.jpg", Astro.site).href,
     ogImageAlt = "Raft crews having a water fight on the River Derwent during the Matlock Raft Event",
     jsonLd = [],
+    overlayHeader = false,
 } = Astro.props;
 
 const canonical = new URL(Astro.url.pathname, Astro.site).href;
@@ -95,7 +98,7 @@ const organizationJsonLd = {
         >
             Skip to content
         </a>
-        <Header client:load />
+        <Header client:load overlay={overlayHeader} />
         <slot />
     </body>
 </html>
