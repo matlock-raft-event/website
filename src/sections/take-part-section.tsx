@@ -16,14 +16,14 @@ const STEPS = [
   },
   {
     key: "Step 3",
-    description: "Arrive at Cawdor Quarry (near Sainsbury’s) in Matlock at around 7am on Boxing Day with your " +
+    description: "Arrive at Cawdor Quarry (near Sainsbury’s) in Matlock at around 9am on Boxing Day with your " +
             "entry fees (£15 each) and team form signed and in hand. Your mode of transport should be a sturdy DIY " +
             "raft built entirely by the crew"
   }
 ];
 
 const TakePartSection = () => (
-  <Section palette="cream">
+  <Section color="sun" plain>
     <div className="mx-auto w-full max-w-5xl px-4">
       <div className="flex flex-col items-center gap-4">
         <div className="flex flex-col items-center gap-2">

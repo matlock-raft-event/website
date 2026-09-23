@@ -27,22 +27,22 @@ const TIMINGS = [
   {
     time: "2:00pm",
     description: "The ceremony takes place at The Fishpond in Matlock Bath to " +
-            "announce the winner of this years raft event!"
+            "announce the winner of this year\u2019s raft event!"
   }
 ];
 
 const TimingsSection = () => (
-  <Section palette="cream">
+  <Section color="river" plain>
     <div className="mx-auto w-full max-w-5xl px-4">
       <Heading
         align="left"
-        palette="cream"
+        palette="river"
         subtitle="What time is it?"
         title="What happens and when?"
       />
       <p className="text-sm sm:text-base lg:text-lg leading-relaxed mb-8">
                     Once the rafts have set off, the timings always vary based on how fast the river is flowing, if
-                    there’s any obstacles along the route etc, so we’d recommend getting there slightly earlier just
+                    there are any obstacles along the route, so we’d recommend getting there slightly earlier just
                     in case, it’s always worth the wait!
       </p>
       <ol className="relative border-l-2 border-raft ml-6">
