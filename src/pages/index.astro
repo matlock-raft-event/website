@@ -2,6 +2,10 @@
 import { getImage } from "astro:assets";
 import BaseLayout from "~/layouts/BaseLayout.astro";
 import HeaderImg from "~/assets/images/header.jpg";
+import takePartImg from "~/assets/images/take-part-img.jpg";
+import helpOutImg from "~/assets/images/help-out-img.jpg";
+import donateImg from "~/assets/images/donate-img.jpg";
+import sponsorUsImg from "~/assets/images/sponsor-us-img.jpg";
 import IndexPage from "~/page-content/index-page";
 import { sanityClient } from "~/lib/sanity";
 import {
@@ -33,6 +37,21 @@ const heroImage = await getImage({
     widths: [640, 1024, 1600, 2400],
     sizes: "100vw",
 });
+
+/* The Get Involved cards are a quarter of a 1024px row at most, so webp at
+   these widths replaces ~3.3MB of raw JPEG with a fraction of it. */
+const getInvolvedImages = await Promise.all(
+    [takePartImg, helpOutImg, donateImg, sponsorUsImg].map(async (src) => {
+        const img = await getImage({
+            src,
+            format: "webp",
+            widths: [320, 480, 720],
+            sizes: "(min-width: 960px) 240px, (min-width: 600px) 45vw, 90vw",
+        });
+
+        return { src: img.src, srcSet: img.srcSet.attribute };
+    })
+);
 
 const eventYear = event?.date
     ? new Date(event.date).getFullYear()
@@ -79,6 +98,7 @@ const eventJsonLd = {
         updates={updates}
         heroImageSrc={heroImage.src}
         heroImageSrcset={heroImage.srcSet.attribute}
+        getInvolvedImages={getInvolvedImages}
         eventDate={event?.date ?? undefined}
     />
 </BaseLayout>

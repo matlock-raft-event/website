@@ -4,6 +4,7 @@ import Waves from "~/components/waves";
 import ClosingCta from "~/components/closing-cta";
 import ComingToWatchSection from "~/sections/coming-to-watch-section";
 import GetInvolvedSection from "~/sections/get-involved-section";
+import type { GetInvolvedImage } from "~/sections/get-involved-section";
 import HeroSection from "~/sections/hero-section";
 import MarqueeSection from "~/sections/marquee-section";
 import PodiumSection from "~/sections/podium-section";
@@ -24,10 +25,20 @@ type Props = {
   updates: UpdatesQueryResult;
   heroImageSrc?: string;
   heroImageSrcset?: string;
+  getInvolvedImages?: GetInvolvedImage[];
   eventDate?: string;
 };
 
-const Content = ({ hero, summary, winners, updates, heroImageSrc, heroImageSrcset, eventDate }: Props) => (
+const Content = ({
+  hero,
+  summary,
+  winners,
+  updates,
+  heroImageSrc,
+  heroImageSrcset,
+  getInvolvedImages,
+  eventDate
+}: Props) => (
   <main id="main" tabIndex={-1}>
     <HeroSection eventDate={eventDate} hero={hero} imgSrc={heroImageSrc} imgSrcset={heroImageSrcset} />
     <MarqueeSection />
@@ -52,7 +63,7 @@ const Content = ({ hero, summary, winners, updates, heroImageSrc, heroImageSrcse
       topColor="var(--color-pine)"
       variant={3}
     />
-    <GetInvolvedSection />
+    <GetInvolvedSection images={getInvolvedImages} />
     <Waves
       bottomColor="var(--color-pine)"
       topColor="var(--color-river)"
