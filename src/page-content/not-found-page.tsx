@@ -17,7 +17,7 @@ const Content = () => {
   return (
     <main id="main" tabIndex={-1}>
       <h1 className="sr-only">Page not found</h1>
-      <Section palette="cream">
+      <Section color="cream" plain>
         <Heading
           palette="cream"
           subtitle="Error 404"
@@ -56,7 +56,7 @@ const Content = () => {
           }
         </div>
       </Section>
-      <Footer />
+      <Footer waveTopColor="var(--color-cream)" />
     </main>
   );
 };

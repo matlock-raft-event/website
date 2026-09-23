@@ -12,7 +12,7 @@ type Props = { summary: SummaryQueryResult };
    shapes washing behind. Facts per the Take Part page: ~3 miles, weir
    descents totalling ~30m of rapid white water, homemade rafts only. */
 const RaceSection = ({ summary }: Props) => (
-  <Section palette="river">
+  <Section color="river">
     <div className="mx-auto grid w-full max-w-5xl items-center gap-10 md:grid-cols-[1.1fr_0.9fr] md:gap-14 px-4">
       <Reveal className="text-left">
         <Heading

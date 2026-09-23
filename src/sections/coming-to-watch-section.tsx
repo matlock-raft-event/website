@@ -14,7 +14,7 @@ const mapSrc = resolveAssetSrc(routeMap);
    artwork sits on the page rather than looking pasted onto it. */
 const ComingToWatchSection = () => (
   <div id="coming-to-watch">
-    <Section palette="pine">
+    <Section color="pine">
       <div className="mx-auto grid w-full max-w-5xl items-center gap-10 md:grid-cols-[1fr_1.1fr] md:gap-14 px-4">
         <Reveal>
           <Heading

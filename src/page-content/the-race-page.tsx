@@ -2,7 +2,6 @@ import ClosingCta from "~/components/closing-cta";
 import Footer from "~/components/footer";
 import { PageHeader } from "~/components/page-header";
 import PageShell from "~/components/page-shell";
-import Waves from "~/components/waves";
 import EventRouteSection from "~/sections/event-route-section";
 import TimingsSection from "~/sections/timings-section";
 
@@ -10,10 +9,9 @@ const Content = () => (
   <main id="main" tabIndex={-1}>
     <PageHeader backLink={{ href: "/info", label: "Event information" }} title="The race" />
     <EventRouteSection />
-    <Waves bottomColor="var(--color-pine)" topColor="var(--color-cream)" variant={3} />
     <TimingsSection />
     <ClosingCta
-      waveTopColor="var(--color-pine)"
+      waveTopColor="var(--color-river)"
       primary={{ label: "Take part", href: "/take-part" }}
       secondary={{ label: "Plan your visit", href: "/info/getting-here" }}
       text="Now you know the route and timings, get ready for Boxing Day."

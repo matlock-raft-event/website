@@ -59,7 +59,10 @@ const TakePartSection = () => (
           }
         </div>
 
-        <div className="flex flex-row py-4 gap-4">
+        {/* Wraps: the three labels are 620px wide and the Section clips, so
+            without this the end buttons are cut off and unreachable on a
+            phone. */}
+        <div className="flex flex-row flex-wrap py-4 gap-4">
           <Button
             download="Raft-Event-Rules"
             href={RulesPdf}

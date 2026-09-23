@@ -9,9 +9,9 @@ import Section from "~/components/section.tsx";
 import { resolveAssetSrc } from "~/lib/assets";
 
 const EventRouteSection = () => (
-    <Section palette="cream">
+    <Section color="river" plain>
         <Heading
-            palette="cream"
+            palette="river"
             subtitle="Where we're going, we don't need roads..."
             title="Event Route"
         />

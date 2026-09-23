@@ -9,13 +9,13 @@ type Props = { cookiesInfo: CookiesInfoQueryResult };
 
 const Content = ({ cookiesInfo }: Props) => (
   <main id="main" tabIndex={-1}>
-    <PageHeader color="pine-dark" eyebrow="How this site uses cookies" eyebrowStyle="plain" title="Cookies policy" />
-    <Section palette="cream">
+    <PageHeader color="cream" eyebrow="How this site uses cookies" eyebrowStyle="plain" title="Cookies policy" />
+    <Section color="cream" plain>
       <div className="mx-auto w-full max-w-5xl px-4">
-        {cookiesInfo?.content ? <Block value={cookiesInfo.content as never} /> : null}
+        {cookiesInfo?.content ? <Block startLevel={2} value={cookiesInfo.content as never} /> : null}
       </div>
     </Section>
-    <Footer />
+    <Footer waveTopColor="var(--color-cream)" />
   </main>
 );
 

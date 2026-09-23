@@ -20,9 +20,9 @@ const Content = ({ update }: SingleUpdatePageProps) => {
 
   return (
     <main id="main" tabIndex={-1}>
-      <PageHeader backLink={{ href: "/updates", label: "Latest updates" }} color="pine" eyebrow={createdOn} eyebrowStyle="plain" title={title} />
+      <PageHeader backLink={{ href: "/updates", label: "Latest updates" }} color="cream" eyebrow={createdOn} eyebrowStyle="plain" title={title} />
 
-      <Section palette="cream">
+      <Section color="cream" plain>
         {/* Same max-w-5xl width as the site's other grid and image sections */}
         <div className="mx-auto w-full max-w-5xl px-4">
           {/* Phones stack the text above the photo card; from sm the card sits
@@ -63,14 +63,14 @@ const Content = ({ update }: SingleUpdatePageProps) => {
             </div>
             <div className="order-1 min-w-0 sm:order-2 sm:col-span-7">
               <div className="sm:mt-8">
-                {content ? <Block value={content as never} /> : null}
+                {content ? <Block startLevel={2} value={content as never} /> : null}
               </div>
             </div>
           </div>
         </div>
       </Section>
 
-      <Footer />
+      <Footer waveTopColor="var(--color-cream)" />
     </main>
   );
 };

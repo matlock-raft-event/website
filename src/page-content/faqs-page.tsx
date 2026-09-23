@@ -10,7 +10,7 @@ const Content = ({ faqs }: Props) => (
   <main id="main" tabIndex={-1}>
     <PageHeader backLink={{ href: "/info", label: "Event information" }} eyebrow="You asked, we answered!" title="Frequently asked questions" />
     <FaqsSection faqs={faqs} />
-    <Footer />
+    <Footer waveTopColor="var(--color-river)" />
   </main>
 );
 

@@ -8,9 +8,9 @@ type Props = { contactInstructions: ContactInstructionsQueryResult };
 
 const Content = ({ contactInstructions }: Props) => (
   <main id="main" tabIndex={-1}>
-    <PageHeader color="pine-dark" eyebrow="Need to get in touch?" title="Contact us" />
+    <PageHeader color="cream" eyebrow="Need to get in touch?" title="Contact us" />
     <ContactUsSection contactInstructions={contactInstructions} />
-    <Footer />
+    <Footer waveTopColor="var(--color-cream)" />
   </main>
 );
 

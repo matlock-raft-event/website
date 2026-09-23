@@ -40,7 +40,7 @@ const FaqsSection = ({ faqs }: Props) => {
     : items.filter(faq => getAudience(faq) === active);
 
   return (
-    <Section palette="cream">
+    <Section color="river" plain>
       <div className="mx-auto w-full max-w-5xl px-4">
         {
           available.length > 1 && (
@@ -51,7 +51,7 @@ const FaqsSection = ({ faqs }: Props) => {
             >
               <Button
                 aria-pressed={active === "all"}
-                color="raft"
+                color="cream"
                 onClick={() => setActive("all")}
                 size="sm"
                 variant={active === "all" ? "solid" : "outline"}
@@ -62,7 +62,7 @@ const FaqsSection = ({ faqs }: Props) => {
                 available.map(audience => (
                   <Button
                     aria-pressed={active === audience}
-                    color="raft"
+                    color="cream"
                     key={audience}
                     onClick={() => setActive(audience)}
                     size="sm"
@@ -79,7 +79,7 @@ const FaqsSection = ({ faqs }: Props) => {
           {
             filtered.map(faq => (
               <AccordionItem key={faq.question} value={faq.question ?? ""}>
-                <AccordionTrigger className="text-cream-contrast font-display uppercase text-xl py-4">
+                <AccordionTrigger className="font-display uppercase text-xl py-4" headingLevel={2}>
                   {faq.question}
                 </AccordionTrigger>
                 <AccordionContent>

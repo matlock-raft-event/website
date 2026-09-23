@@ -18,7 +18,7 @@ const PodiumSection = ({ winners }: Props) => {
   const latestWinners = (winners ?? []).filter(winner => winner.year === latestYear);
 
   return (
-    <Section palette="pine">
+    <Section color="pine">
       {/* Same max-w-5xl width as the site's other grid and image sections */}
       <div className="mx-auto w-full max-w-5xl px-4">
         <Heading

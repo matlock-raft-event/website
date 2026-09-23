@@ -7,7 +7,7 @@ import type { AboutQueryResult } from "~/lib/sanity.types";
 type Props = { about: AboutQueryResult };
 
 const RnliSection = ({ about }: Props) => (
-  <Section palette="river">
+  <Section color="river" plain>
     <div className="mx-auto flex w-full max-w-5xl flex-col items-start gap-4 px-4 text-river-contrast">
       <Heading
         align="left"

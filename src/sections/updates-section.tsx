@@ -31,7 +31,7 @@ const UpdatesSection = ({ preview = false, updates }: UpdatesSectionProps) => {
      green "Come and watch" section and the pine-dark closing, and the update cards
      are designed for a light ground. */
   return (
-    <Section palette="cream">
+    <Section color="cream" plain={!preview}>
       {/* Same max-w-5xl width as the site's other grid and image sections */}
       <div className="mx-auto w-full max-w-5xl px-4">
         {
@@ -55,6 +55,7 @@ const UpdatesSection = ({ preview = false, updates }: UpdatesSectionProps) => {
                   image={update.img}
                   tilt={TILTS[index % TILTS.length]}
                   title={update.title ?? ""}
+                  titleLevel={preview ? 3 : 2}
                 />
               </div>
             ))

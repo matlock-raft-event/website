@@ -8,9 +8,9 @@ type Props = { updates: UpdatesQueryResult };
 
 const Content = ({ updates }: Props) => (
   <main id="main" tabIndex={-1}>
-    <PageHeader color="pine" eyebrow="Keep ahead of the tide" title="Latest updates" />
+    <PageHeader color="cream" eyebrow="Keep ahead of the tide" title="Latest updates" />
     <UpdatesSection updates={updates} />
-    <Footer />
+    <Footer waveTopColor="var(--color-cream)" />
   </main>
 );
 

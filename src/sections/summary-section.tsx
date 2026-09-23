@@ -7,7 +7,7 @@ type Props = { summary: SummaryQueryResult };
 
 /* openTop: the marquee sits directly above, with no wave over the top edge. */
 const SummarySection = ({ summary }: Props) => (
-  <Section openTop palette="cream">
+  <Section openTop color="cream">
     <Heading
       palette="cream"
       subtitle="Hello daring adventurer"

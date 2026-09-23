@@ -1,26 +1,13 @@
-import type { ReactNode } from "react";
-
 import Footer from "~/components/footer";
 import { PageHeader } from "~/components/page-header";
 import PageShell from "~/components/page-shell";
+import { Para, Subheading } from "~/components/prose";
 import Section from "~/components/section";
-
-const Subheading = ({ children }: { children: string }) => (
-  <h3 className="font-display uppercase text-xl md:text-2xl mt-10 first:mt-0">
-    {children}
-  </h3>
-);
-
-const Para = ({ children }: { children: ReactNode }) => (
-  <p className="text-sm sm:text-base lg:text-lg leading-relaxed mt-3">
-    {children}
-  </p>
-);
 
 const Content = () => (
   <main id="main" tabIndex={-1}>
     <PageHeader backLink={{ href: "/info", label: "Event information" }} eyebrow="Travel & parking" title="Getting here" />
-    <Section palette="cream">
+    <Section color="river" plain>
       <div className="mx-auto w-full max-w-5xl px-4">
         <Para>
           The event runs down the River Derwent from Matlock, through Matlock Bath, to the finish at
@@ -48,7 +35,7 @@ const Content = () => (
         </Para>
       </div>
     </Section>
-    <Footer />
+    <Footer waveTopColor="var(--color-river)" />
   </main>
 );
 

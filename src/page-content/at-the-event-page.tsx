@@ -1,27 +1,14 @@
-import type { ReactNode } from "react";
-
 import ClosingCta from "~/components/closing-cta";
 import Footer from "~/components/footer";
 import { PageHeader } from "~/components/page-header";
 import PageShell from "~/components/page-shell";
+import { Para, Subheading } from "~/components/prose";
 import Section from "~/components/section";
-
-const Subheading = ({ children }: { children: string }) => (
-  <h3 className="font-display uppercase text-xl md:text-2xl mt-10 first:mt-0">
-    {children}
-  </h3>
-);
-
-const Para = ({ children }: { children: ReactNode }) => (
-  <p className="text-sm sm:text-base lg:text-lg leading-relaxed mt-3">
-    {children}
-  </p>
-);
 
 const Content = () => (
   <main id="main" tabIndex={-1}>
     <PageHeader backLink={{ href: "/info", label: "Event information" }} eyebrow="Know before you go" title="At the event" />
-    <Section palette="cream">
+    <Section color="river" plain>
       <div className="mx-auto w-full max-w-5xl px-4">
         <Para>
           Thousands of people line the banks of the Derwent on Boxing Day to cheer the rafts on.
@@ -32,9 +19,10 @@ const Content = () => (
         <Para>
           You can watch from anywhere along the route, but the most popular spots are Hall Leys Park
           in Matlock, the riverside through Matlock Bath, and Masson Weir, where the rafts tackle the
-          white water. The finish and prize-giving are at Cromford Meadows. Check the
+          white water. The finish is at Cromford Meadows, and the prize-giving is at The Fishpond in
+          Matlock Bath. Check the
           {" "}
-          <a className="text-raft hover:underline" href="/info/the-race">route and timings</a>
+          <a className="text-(--surface-link) hover:underline" href="/info/the-race">route and timings</a>
           {" "}
           to plan where to stand.
         </Para>
@@ -71,7 +59,7 @@ const Content = () => (
           The event goes ahead in most weather, but in rare cases (such as dangerous river levels) it
           may be cancelled on safety grounds. We&apos;ll always post the latest on our
           {" "}
-          <a className="text-raft hover:underline" href="/updates">updates page</a>
+          <a className="text-(--surface-link) hover:underline" href="/updates">updates page</a>
           {" "}
           and our Facebook page, so check before you set off.
         </Para>
@@ -82,6 +70,7 @@ const Content = () => (
       secondary={{ label: "Donate", href: "/donate" }}
       text="Coming along? You can also be part of the event by entering a raft or supporting the RNLI."
       title="See you on Boxing Day"
+      waveTopColor="var(--color-river)"
     />
     <Footer waveTopColor="var(--color-pine-dark)" />
   </main>
