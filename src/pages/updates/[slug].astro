@@ -60,6 +60,7 @@ const articleJsonLd = {
     title={title}
     ogImage={ogImage}
     ogImageAlt={ogImage ? (update.title ?? "Matlock Raft Event update") : undefined}
+    ogType="article"
     jsonLd={[articleJsonLd]}
 >
     <SingleUpdatePage client:load update={update} />

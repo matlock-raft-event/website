@@ -1,26 +1,13 @@
-import type { ReactNode } from "react";
-
 import Footer from "~/components/footer";
 import { PageHeader } from "~/components/page-header";
 import PageShell from "~/components/page-shell";
+import { Para, Subheading } from "~/components/prose";
 import Section from "~/components/section";
-
-const Subheading = ({ children }: { children: string }) => (
-  <h3 className="font-display uppercase text-xl md:text-2xl mt-8 first:mt-0">
-    {children}
-  </h3>
-);
-
-const Para = ({ children }: { children: ReactNode }) => (
-  <p className="text-sm sm:text-base lg:text-lg leading-relaxed mt-3">
-    {children}
-  </p>
-);
 
 const Content = () => (
   <main id="main" tabIndex={-1}>
-    <PageHeader color="pine-dark" eyebrow="Your data and your rights" eyebrowStyle="plain" title="Privacy policy" />
-    <Section palette="cream">
+    <PageHeader color="cream" eyebrow="Your data and your rights" eyebrowStyle="plain" title="Privacy policy" />
+    <Section color="cream" plain>
       <div className="mx-auto w-full max-w-5xl px-4">
         <Para>
           This privacy policy explains how Dasac&apos;s Matlock Raft Event (&quot;we&quot;,
@@ -47,19 +34,20 @@ const Content = () => (
 
         <Subheading>Cookies and analytics</Subheading>
         <Para>
-          Details of any cookies used by this website are set out in our
+          This website sets no cookies and uses no analytics or tracking of any kind. We do not
+          build a profile of you or share anything about your visit. Our
           {" "}
-          <a className="text-raft hover:underline" href="/cookies">Cookies Policy</a>
-          .
+          <a className="text-(--surface-link) hover:underline" href="/cookies">Cookies Policy</a>
+          {" "}
+          sets this out in full.
         </Para>
 
         <Subheading>Third-party services</Subheading>
         <Para>
           Some parts of this site rely on third parties who have their own privacy policies: online
-          donations and our event page are hosted on Facebook; the &quot;Vote for your boat&quot;
-          poll is provided by StrawPoll; and our photo gallery and content are managed through our
-          content system. Following links to these services means your information is handled under
-          their policies.
+          donations and our event page are hosted on Facebook; and our photo gallery and content are
+          managed through our content system. Following links to these services means your
+          information is handled under their policies.
         </Para>
 
         <Subheading>Your rights</Subheading>
@@ -68,7 +56,7 @@ const Content = () => (
           information we hold about you, to have it corrected or deleted, and to object to how we
           use it. To make a request, please get in touch via our
           {" "}
-          <a className="text-raft hover:underline" href="/contact">contact page</a>
+          <a className="text-(--surface-link) hover:underline" href="/contact">contact page</a>
           .
         </Para>
 
@@ -78,7 +66,7 @@ const Content = () => (
         </Para>
       </div>
     </Section>
-    <Footer />
+    <Footer waveTopColor="var(--color-cream)" />
   </main>
 );
 
