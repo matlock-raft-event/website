@@ -9,9 +9,9 @@ const pageHeaderTitleVariants = cva(
   {
     variants: {
       size: {
-        default: "text-[clamp(3.375rem,9vw,7.75rem)]",
-        long: "text-[clamp(2.75rem,7vw,6rem)]",
-        "extra-long": "text-[clamp(2.25rem,5.6vw,5rem)]"
+        default: "text-[clamp(2.75rem,7vw,6rem)]",
+        long: "text-[clamp(2.25rem,5.6vw,5rem)]",
+        "extra-long": "text-[clamp(2rem,4.6vw,4.25rem)]"
       }
     },
     defaultVariants: {

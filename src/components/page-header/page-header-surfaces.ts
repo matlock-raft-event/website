@@ -2,8 +2,10 @@ import type { CSSProperties } from "react";
 import type { VariantProps } from "class-variance-authority";
 
 import type { buttonVariants } from "~/components/ui/button";
+import type { SurfaceColor } from "~/lib/surface-color";
 
-export type PageHeaderColor = "river" | "pine" | "pine-dark" | "raft" | "sun";
+/** The header takes the same grounds as the sections under it. */
+export type PageHeaderColor = SurfaceColor;
 
 type SurfaceVars = {
   /** Dots and wallpaper text: the ground's own shade, never a new colour. */
@@ -38,6 +40,22 @@ const darkTitleShadow = (shade: string, amount: string) =>
    The parts only read the custom properties, so a new colour is one entry
    here and nothing else. */
 const SURFACES: Record<PageHeaderColor, Surface> = {
+  /* The quiet ground, for pages that are mostly reading: ink on cream, with
+     the pattern in pine so it stays a texture rather than a second colour. */
+  cream: {
+    className: "bg-cream text-ink",
+    vars: {
+      "--header-pattern": "color-mix(in oklab, var(--color-pine) 30%, transparent)",
+      "--header-stripe": "color-mix(in oklab, var(--color-cream) 80%, var(--color-cream-dark))",
+      "--header-title-shadow": "0.035em 0.04em 0 var(--color-paper), 0.06em 0.075em 0 rgb(8 64 44 / 0.22)",
+      "--header-accent": "var(--color-pine)",
+      "--header-sticker": "var(--color-sun)",
+      "--header-sticker-ink": "var(--color-sun-contrast)",
+      "--header-ribbon": "var(--color-pine-dark)",
+      "--header-ribbon-ink": "var(--color-cream)"
+    },
+    backLinkColor: "pine"
+  },
   river: {
     className: "bg-river text-cream",
     vars: {
