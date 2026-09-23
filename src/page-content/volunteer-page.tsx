@@ -1,6 +1,6 @@
 import Block from "~/components/block";
 import Footer from "~/components/footer";
-import Heading from "~/components/heading";
+import { PageHeader } from "~/components/page-header";
 import PageShell from "~/components/page-shell";
 import SanityImage from "~/components/sanity-image";
 import Section from "~/components/section";
@@ -10,11 +10,10 @@ type Props = { volunteerPage: VolunteerPageQueryResult };
 
 const Content = ({ volunteerPage }: Props) => (
   <main id="main" tabIndex={-1}>
-    <h1 className="sr-only">Volunteer</h1>
-    <Section palette="cream">
+    <PageHeader backLink={{ href: "/get-involved", label: "Get involved" }} background="stripes" color="sun" eyebrow="How to help out" title="Volunteer" />
+    <Section color="sun" plain>
       {/* Same max-w-5xl width as the site's other grid and image sections */}
       <div className="mx-auto w-full max-w-5xl px-4">
-        <Heading align="left" palette="cream" subtitle="How to help out" title="Volunteer" />
         <div className="flex flex-col gap-12">
           <div>
             {volunteerPage?.intro && <Block value={volunteerPage.intro as never} />}
@@ -26,14 +25,14 @@ const Content = ({ volunteerPage }: Props) => (
             >
               <div className="flex flex-col md:flex-1">
                 {role.title && (
-                  <h3 className="font-display uppercase text-3xl md:text-4xl mb-4">
+                  <h2 className="font-display uppercase text-3xl md:text-4xl mb-4">
                     {role.title}
-                  </h3>
+                  </h2>
                 )}
-                {role.body && <Block value={role.body as never} />}
+                {role.body && <Block startLevel={3} value={role.body as never} />}
                 {role.contactInstructions && (
                   <div className="mt-2">
-                    <Block value={role.contactInstructions as never} />
+                    <Block startLevel={3} value={role.contactInstructions as never} />
                   </div>
                 )}
               </div>
@@ -57,7 +56,7 @@ const Content = ({ volunteerPage }: Props) => (
         </div>
       </div>
     </Section>
-    <Footer />
+    <Footer waveTopColor="var(--color-sun)" />
   </main>
 );
 

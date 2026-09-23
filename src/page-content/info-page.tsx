@@ -2,58 +2,49 @@ import ClosingCta from "~/components/closing-cta";
 import Footer from "~/components/footer";
 import { PageHeader } from "~/components/page-header";
 import PageShell from "~/components/page-shell";
+import PhotoTile from "~/components/photo-tile";
 import Section from "~/components/section";
 
 type Props = { cardImages?: string[] };
 
 type InfoCard = {
   title: string;
-  description: string;
   href: string;
-  bg: string;
+  /* Runs the full width under the grid. */
   wide?: boolean;
 };
 
+/* Six pages fill two rows of three. Latest updates closes the page as a band
+   rather than a seventh tile stranded on its own row — and it is a feed, not a
+   page about the event, so a different shape is honest about that. Hall of
+   fame is here because it and "Our story" are both the event's history. */
 const CARDS: InfoCard[] = [
-  { title: "The race", description: "Route & timings", href: "/info/the-race", bg: "bg-pine" },
-  { title: "Getting here", description: "Travel & parking", href: "/info/getting-here", bg: "bg-sun" },
-  { title: "At the event", description: "Where to watch & facilities", href: "/info/at-the-event", bg: "bg-river" },
-  { title: "FAQs", description: "Your questions, answered", href: "/info/faqs", bg: "bg-raft" },
-  { title: "Our story", description: "The history of the event & the RNLI", href: "/about", bg: "bg-ink", wide: true }
+  { title: "The race", href: "/info/the-race" },
+  { title: "Getting here", href: "/info/getting-here" },
+  { title: "At the event", href: "/info/at-the-event" },
+  { title: "FAQs", href: "/info/faqs" },
+  { title: "Our story", href: "/info/history" },
+  { title: "Hall of fame", href: "/hall-of-fame" },
+  { title: "Latest updates", href: "/updates", wide: true }
 ];
 
 const Content = ({ cardImages = [] }: Props) => (
   <main id="main" tabIndex={-1}>
+    {/* Photo cards, so the page stays one colour under them (decision 014). */}
     <PageHeader eyebrow="Everything you need to know" title="Event information" />
-    <Section palette="cream">
-      <div className="mx-auto grid w-full max-w-5xl grid-cols-1 gap-6 px-4 sm:grid-cols-2">
+    <Section color="river" plain>
+      <div className="mx-auto grid w-full max-w-5xl grid-cols-1 gap-6 px-4 sm:grid-cols-2 md:grid-cols-3">
         {
           CARDS.map((card, i) => (
-            <a
+            <PhotoTile
               key={card.href}
-              className={`group relative block overflow-hidden rounded-[2px] border-[6px] border-white shadow-[7px_7px_0_0_rgba(0,0,0,0.25)] transition-all duration-300 ease-[cubic-bezier(0.165,0.84,0.44,1)] hover:-translate-y-1 hover:shadow-[11px_11px_0_0_rgba(0,0,0,0.25)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink ${card.bg} ${card.wide ? "aspect-[16/9] sm:col-span-2 sm:aspect-[16/6]" : "aspect-[4/3]"}`}
+              aspect={card.wide ? "16 / 5" : "4 / 3"}
+              className={card.wide ? "sm:col-span-2 md:col-span-3" : ""}
               href={card.href}
-            >
-              {
-                cardImages[i] &&
-                  <img
-                    alt=""
-                    className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 ease-out group-hover:scale-105"
-                    loading="lazy"
-                    src={cardImages[i]}
-                  />
-              }
-              <div className="absolute inset-0 bg-[linear-gradient(to_top,rgba(0,0,0,0.85),rgba(0,0,0,0.2)_55%,transparent)]" />
-              <div className="absolute inset-x-0 bottom-0 flex flex-col gap-1 p-5 text-white">
-                <h3 className="font-display uppercase text-2xl md:text-3xl leading-tight">
-                  {card.title}
-                </h3>
-                <span className="inline-flex items-center gap-1.5 font-label font-bold uppercase tracking-wide text-sm transition-all group-hover:gap-2.5">
-                  {card.description}
-                  <span aria-hidden="true">→</span>
-                </span>
-              </div>
-            </a>
+              src={cardImages[i]}
+              title={card.title}
+              width={card.wide ? 1600 : 900}
+            />
           ))
         }
       </div>
@@ -63,6 +54,7 @@ const Content = ({ cardImages = [] }: Props) => (
       secondary={{ label: "Donate", href: "/donate" }}
       text="Got the info you need? Be part of Matlock's favourite Boxing Day tradition."
       title="Ready to get involved?"
+      waveTopColor="var(--color-river)"
     />
     <Footer waveTopColor="var(--color-pine-dark)" />
   </main>

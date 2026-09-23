@@ -7,14 +7,15 @@ import { Button } from "~/components/ui/button";
 
 const Content = () => (
   <main id="main" tabIndex={-1}>
-    <PageHeader color="raft" eyebrow="Help us to raise more than ever" title="Donate" />
-    <Section palette="cream">
+    <PageHeader backLink={{ href: "/get-involved", label: "Get involved" }} background="stripes" color="sun" eyebrow="Help us to raise more than ever" title="Donate" />
+    <Section color="sun" plain>
       <div className="mx-auto w-full max-w-5xl px-4">
         <div className="flex flex-col items-center gap-4">
           <p className="text-sm sm:text-base lg:text-lg leading-relaxed">
                             Every year, our volunteer bucket collectors are positioned along the route ready to collect
                             donations from our generous spectators. Can&apos;t make it this year or just can&apos;t wait
-                            until Boxing Day to support the RNLI? donations can be made online now via GoFundMe to
+                            until Boxing Day to support the RNLI? Donations can be made online now via our Facebook
+                            fundraiser to
                             help us raise money for this amazing cause. Any and all donations are appreciated so
                             greatly. Even the smallest of amounts can help to make a difference. Thank you all for
                             your support.
@@ -34,6 +35,7 @@ const Content = () => (
       secondary={{ label: "Become a sponsor", href: "/sponsors" }}
       text="Donating is just one way to help. You could enter a raft, volunteer on the day, or sponsor the event."
       title="Fancy doing even more?"
+      waveTopColor="var(--color-sun)"
     />
     <Footer waveTopColor="var(--color-pine-dark)" />
   </main>

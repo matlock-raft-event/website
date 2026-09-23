@@ -6,11 +6,11 @@ import type { AboutQueryResult } from "~/lib/sanity.types";
 type Props = { about: AboutQueryResult };
 
 const AboutSection = ({ about }: Props) => (
-  <Section palette="cream">
+  <Section color="river" plain>
     <div className="mx-auto w-full max-w-5xl px-4">
       <Heading
         align="left"
-        palette="cream"
+        palette="river"
         subtitle="It all started in 1961"
         title="What is The Matlock Raft Event?"
       />

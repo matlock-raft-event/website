@@ -16,18 +16,19 @@ import { ListIcon } from "@phosphor-icons/react";
 
    On the home page the bar starts transparent over the hero photo and goes
    solid once the page scrolls. */
+/* Four items, each a place rather than a page: two hubs, the pictures and a
+   way to reach us. Everything else on the site hangs off a hub, so nothing is
+   more than two clicks away and the bar stays short enough to read at a
+   glance. Sponsors moved into "Get involved" — it is a page for a handful of
+   local businesses, not for the thousands who come to watch. */
 const links = [
-  {
-    label: "Take Part",
-    to: "/take-part"
-  },
   {
     label: "Info",
     to: "/info"
   },
   {
-    label: "Sponsors",
-    to: "/sponsors"
+    label: "Get Involved",
+    to: "/get-involved"
   },
   {
     label: "Gallery",
@@ -70,7 +71,7 @@ const Header = ({ overlay = false }: HeaderProps) => {
   const solid = !overlay || scrolled;
 
   return (
-    <header className={`sticky top-0 z-20 ${overlay ? "-mb-[59px]" : ""}`}>
+    <header className={`sticky top-0 z-20 [--surface-focus:var(--color-sun)] ${overlay ? "-mb-[59px]" : ""}`}>
       <div
         className={`border-b-[3px] transition-colors duration-200 ${
           solid ? "bg-pine border-pine-dark" : "bg-transparent border-transparent"

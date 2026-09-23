@@ -1,0 +1,19 @@
+---
+import BaseLayout from "~/layouts/BaseLayout.astro";
+import GetInvolvedPage from "~/page-content/get-involved-page";
+import { sanityClient, urlFor } from "~/lib/sanity";
+
+/* Skips the pictures /info uses so the two hubs don't show the same photos. */
+const galleryImgs = await sanityClient.fetch<Array<{ img: unknown }>>(
+    `*[_type == "galleryImage" && defined(img)][7...11]{ img }`
+);
+const cardImages = galleryImgs.map((g) =>
+    urlFor(g.img).width(900).height(700).fit("crop").auto("format").url()
+);
+---
+<BaseLayout
+    description="Enter a raft, volunteer on the day, donate to the RNLI or sponsor The Matlock Raft Event — four ways to be part of Matlock's Boxing Day tradition."
+    title="Get Involved - Matlock Raft Event"
+>
+    <GetInvolvedPage client:load cardImages={cardImages} />
+</BaseLayout>

@@ -1,5 +1,6 @@
+import { Fragment } from "react";
+
 import FacebookIcon from "./facebook-icon";
-import Logo from "./logo";
 import rnliBadge from "~/assets/images/rnlifundraise.png";
 import SanityImage from "~/components/sanity-image";
 import Waves from "~/components/waves";
@@ -20,41 +21,23 @@ type FooterProps = {
   sponsorStrip?: boolean;
 };
 
-const columns = [
-  {
-    title: "Take part",
-    links: [
-      { label: "Enter a raft", to: "/take-part" },
-      { label: "Volunteer", to: "/volunteer" },
-      { label: "Donate", to: "/donate" },
-      { label: "Become a sponsor", to: "/sponsors" }
-    ]
-  },
-  {
-    title: "Plan your day",
-    links: [
-      { label: "Event info", to: "/info" },
-      { label: "FAQs", to: "/info/faqs" },
-      { label: "Hall of fame", to: "/hall-of-fame" },
-      { label: "Vote for your boat", to: "/vote" }
-    ]
-  },
-  {
-    title: "Discover",
-    links: [
-      { label: "About", to: "/about" },
-      { label: "Latest updates", to: "/updates" },
-      { label: "Gallery", to: "/gallery" },
-      { label: "Contact us", to: "/contact" }
-    ]
-  }
-];
+/* Separates the small print's parts on the one line they share. The ones
+   between the three groups are hidden below md, where the row stacks and a
+   separator would dangle at the end of a line. */
+const Dot = ({ className = "" }: { className?: string }) => (
+  <span aria-hidden="true" className={`text-cream/35 ${className}`}>
+    &#183;
+  </span>
+);
 
 const legalLinks = [
   { label: "Privacy Policy", to: "/privacy" },
   { label: "Cookies Policy", to: "/cookies" }
 ];
 
+/* Three things and nothing else: who pays for it, who it raises for, and the
+   small print. The site's navigation and its logo live in the header, so the
+   footer doesn't repeat either. */
 const Footer = ({ waveTopColor = "var(--color-cream)", sponsorStrip: showStrip = true }: FooterProps) => (
   <>
     {
@@ -63,125 +46,112 @@ const Footer = ({ waveTopColor = "var(--color-cream)", sponsorStrip: showStrip =
       waveTopColor !== "var(--color-pine-dark)" &&
         <Waves bottomColor="var(--color-pine-dark)" topColor={waveTopColor} variant={3} />
     }
-    <footer className="w-full pt-12 pb-8 bg-pine-dark text-cream">
-    <div className="mx-auto w-full container px-4 flex flex-col gap-10">
-      <div className="mx-auto grid w-full max-w-5xl grid-cols-2 gap-x-8 gap-y-10 md:grid-cols-[1.4fr_1fr_1fr_1fr]">
-        <div className="col-span-2 md:col-span-1 flex flex-col items-start gap-4">
-          <a aria-label="The Matlock Raft Event — home" href="/">
-            <Logo className="w-28" />
-          </a>
-          <p className="text-sm leading-relaxed text-cream/75 max-w-[30ch]">
-            Dasac&apos;s Matlock Raft Event &mdash; in aid of the Royal National
-            Lifeboat Institution.
-          </p>
-          <div className="flex flex-row items-center gap-4">
-            <img alt="RNLI fundraising badge" className="w-24" loading="lazy" src={rnliSrc} />
-            <FacebookIcon color="var(--color-cream)" href="https://www.facebook.com/matlockraftevent/" />
-          </div>
+    {/* The frame is pine-dark and isn't a Section, so it names its own focus
+        ring; ink would be invisible down here. */}
+    <footer className="w-full pt-10 pb-6 bg-pine-dark text-cream [--surface-focus:var(--color-sun)]">
+      <div className="mx-auto w-full container px-4 flex flex-col gap-8">
+        <div className="mx-auto flex w-full max-w-5xl flex-col gap-8">
+          {
+            showStrip &&
+              <div className="flex flex-col items-center gap-3">
+                <p className="label-caps text-xs text-sun">
+                  Supported by
+                </p>
+                {/* One white card holding every logo: the light backing the
+                    small-business logos need, without per-logo chips.
+                    mix-blend-multiply folds their white backgrounds in. */}
+                <div className="flex flex-row flex-wrap items-center justify-center gap-x-7 gap-y-4 rounded-[10px] bg-white px-7 py-5">
+                  {
+                    sponsorStrip.map(sponsor => {
+                      const scale = opticalScale(sponsor.logo, CELL_W, CELL_H);
+                      /* Identical cells give the wall its rhythm; the optical
+                         scale then evens out how much ink each logo actually
+                         puts on the card. */
+                      const logo = (
+                        <SanityImage
+                          alt={sponsor.name ?? undefined}
+                          className="mix-blend-multiply"
+                          image={sponsor.logo}
+                          width={320}
+                          style={{
+                            height: `${scale * 100}%`,
+                            width: `${scale * 100}%`,
+                            objectFit: "contain"
+                          }}
+                        />
+                      );
+                      const cell = "flex h-16 w-32 items-center justify-center";
+
+                      /* A sponsor with no website on file shows as a logo
+                         rather than as a link to nowhere — this wall is on
+                         every page. */
+                      if (!sponsor.url) {
+                        return <div key={sponsor.name} className={cell}>{logo}</div>;
+                      }
+
+                      return (
+                        <a
+                          key={sponsor.name}
+                          aria-label={sponsor.name ? `${sponsor.name} (opens in a new tab)` : undefined}
+                          className={`${cell} transition-transform duration-300 ease-out hover:-translate-y-0.5 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-pine`}
+                          href={sponsor.url}
+                          rel="noreferrer"
+                          target="_blank"
+                        >
+                          {logo}
+                        </a>
+                      );
+                    })
+                  }
+                </div>
+              </div>
+          }
         </div>
-        {
-          columns.map(column => (
-            <nav key={column.title} aria-label={column.title} className="flex flex-col gap-3">
-              <p className="label-caps text-xs text-sun">
-                {column.title}
-              </p>
-              <ul className="flex flex-col gap-2.5">
-                {
-                  column.links.map(link => (
-                    <li key={link.to}>
-                      <a
-                        className="text-sm text-cream/85 hover:text-sun hover:underline"
-                        href={link.to}
-                      >
-                        {link.label}
-                      </a>
-                    </li>
-                  ))
-                }
-              </ul>
-            </nav>
-          ))
-        }
-      </div>
 
-      {
-        showStrip &&
-          <div className="mx-auto flex w-full max-w-5xl flex-col items-center gap-4 border-t border-cream/20 pt-6">
-            <p className="label-caps text-xs text-sun">
-              Supported by
-            </p>
-            {/* One white card holding every logo: the light backing the
-                small-business logos need, without per-logo chips.
-                mix-blend-multiply folds their white backgrounds in. */}
-            <div className="flex flex-row flex-wrap items-center justify-center gap-x-7 gap-y-4 rounded-[10px] bg-white px-7 py-5">
-              {
-                sponsorStrip.map(sponsor => {
-                  const scale = opticalScale(sponsor.logo, CELL_W, CELL_H);
-
-                  return (
-                    <a
-                      key={sponsor.name}
-                      aria-label={sponsor.name ?? undefined}
-                      className="flex h-16 w-32 items-center justify-center transition-transform duration-300 ease-out hover:-translate-y-0.5 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-pine"
-                      href={sponsor.slug ? `/sponsors/${sponsor.slug}` : undefined}
-                    >
-                      {/* Identical cells give the wall its rhythm; the optical
-                          scale then evens out how much ink each logo actually
-                          puts on the card. */}
-                      <SanityImage
-                        alt={sponsor.name ?? undefined}
-                        className="mix-blend-multiply"
-                        image={sponsor.logo}
-                        width={320}
-                        style={{
-                          height: `${scale * 100}%`,
-                          width: `${scale * 100}%`,
-                          objectFit: "contain"
-                        }}
-                      />
-                    </a>
-                  );
-                })
-              }
-            </div>
-          </div>
-      }
-
-      <div className="mx-auto flex w-full max-w-5xl flex-col gap-3 border-t border-cream/20 pt-6">
-        <div className="flex flex-row flex-wrap items-center justify-between gap-x-6 gap-y-2">
-          <p className="text-sm text-cream/75">
-            &#169; Copyright
+        {/* One line of small print: the notice, the policies and the credit,
+            in that order, wrapping to more lines only when they must. */}
+        <div className="mx-auto flex w-full max-w-5xl flex-col items-center gap-y-1 border-t border-cream/20 pt-5 text-center text-xs text-cream/75 md:flex-row md:flex-wrap md:justify-center md:gap-x-4">
+          <p>
+            &#169;
             {" "}
             {new Date().getFullYear()}
-            {" "}
-            &mdash;
             {" "}
             <strong className="text-cream">Dasac&apos;s Matlock Raft Event</strong>
             {" "}
             &mdash; In aid of the RNLI
           </p>
-          <nav aria-label="Legal" className="flex flex-row flex-wrap items-center gap-x-6 gap-y-1">
+          <Dot className="hidden md:inline" />
+          <nav aria-label="Legal" className="flex flex-row items-center gap-x-4">
             {
-              legalLinks.map(link => (
-                <a key={link.to} className="text-sm text-cream/85 hover:text-sun hover:underline" href={link.to}>
-                  {link.label}
-                </a>
+              legalLinks.map((link, i) => (
+                <Fragment key={link.to}>
+                  {i > 0 && <Dot />}
+                  <a className="text-cream/85 hover:text-sun hover:underline" href={link.to}>
+                    {link.label}
+                  </a>
+                </Fragment>
               ))
             }
           </nav>
+          <Dot className="hidden md:inline" />
+          <p className="text-cream/60">
+            Designed and coded with &#9829; by
+            {" "}
+            <strong className="text-cream/80">Ian Ryde</strong>
+            {" "}
+            and
+            {" "}
+            <strong className="text-cream/80">Sam Hepburn</strong>
+          </p>
         </div>
-        <p className="text-sm leading-relaxed text-cream/75">
-          Website designed and coded with &#9829; by
-          {" "}
-          <strong className="text-cream">Ian Ryde</strong>
-          {" "}
-          and
-          {" "}
-          <strong className="text-cream">Sam Hepburn</strong>
-          .
-        </p>
+
+        {/* Who it raises for, and the one place to follow it — the last thing
+            on the page, under the small print. */}
+        <div className="flex flex-row items-center justify-center gap-7">
+          <img alt="RNLI fundraising badge" className="w-24 shrink-0" loading="lazy" src={rnliSrc} />
+          <FacebookIcon color="var(--color-cream)" height={44} href="https://www.facebook.com/matlockraftevent/" width={44} />
+        </div>
       </div>
-    </div>
     </footer>
   </>
 );

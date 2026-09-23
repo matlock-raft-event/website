@@ -13,6 +13,7 @@ export default defineConfig({
   redirects: {
       "/plan-your-visit": "/info/getting-here",
       "/results": "/hall-of-fame",
+      "/about": "/info/history",
   },
 
   integrations: [
