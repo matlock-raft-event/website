@@ -1,3 +1,6 @@
 # Sponsors used to have a page each; their logos now link straight to their own
 # sites, so any old sponsor URL lands on the wall instead of a 404.
-/sponsors/* /sponsors 301
+# :slug, not *: a splat also matches the empty string, so "/sponsors/*" caught
+# /sponsors/ itself and looped against the trailing-slash redirect.
+/sponsors/:slug   /sponsors/ 301
+/sponsors/:slug/  /sponsors/ 301
