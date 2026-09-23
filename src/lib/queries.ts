@@ -45,7 +45,7 @@ export const sponsorTestimonialsQuery = defineQuery(
 );
 
 export const galleryQuery = defineQuery(
-  `*[_type == "galleryImage"]{ _id, year, author, img }`
+  `*[_type == "galleryImage"]{ _id, year, author, img, cover }`
 );
 
 export const cookiesInfoQuery = defineQuery(

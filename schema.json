@@ -1702,6 +1702,13 @@
           "type": "string"
         },
         "optional": true
+      },
+      "cover": {
+        "type": "objectAttribute",
+        "value": {
+          "type": "boolean"
+        },
+        "optional": true
       }
     }
   },
