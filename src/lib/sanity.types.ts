@@ -257,6 +257,7 @@ export type GalleryImage = {
   year?: number;
   author?: string;
   caption?: string;
+  cover?: boolean;
 };
 
 export type Faq = {
@@ -911,7 +912,7 @@ export type SponsorTestimonialsQueryResult = Array<{
 
 // Source: src/lib/queries.ts
 // Variable: galleryQuery
-// Query: *[_type == "galleryImage"]{ _id, year, author, img }
+// Query: *[_type == "galleryImage"]{ _id, year, author, img, cover }
 export type GalleryQueryResult = Array<{
   _id: string;
   year: number | null;
@@ -923,6 +924,7 @@ export type GalleryQueryResult = Array<{
     crop?: SanityImageCrop;
     _type: "image";
   } | null;
+  cover: boolean | null;
 }>;
 
 // Source: src/lib/queries.ts
@@ -1034,7 +1036,7 @@ declare module "@sanity/client" {
     '*[_type == "faq"]{ question, answer, audience }': FaqsQueryResult;
     '*[_type == "sponsor"]{ name, url, logo, logoTrimmed }': SponsorsQueryResult;
     '*[_type == "sponsor" && defined(testimonial)]{ name, url, testimonial, logo, logoTrimmed }': SponsorTestimonialsQueryResult;
-    '*[_type == "galleryImage"]{ _id, year, author, img }': GalleryQueryResult;
+    '*[_type == "galleryImage"]{ _id, year, author, img, cover }': GalleryQueryResult;
     '*[_type == "cookiesInfo"][0]{ content }': CookiesInfoQueryResult;
     '*[_type == "volunteerPage"][0]{\n    intro,\n    roles[]{\n      title,\n      image,\n      body,\n      contactInstructions\n    }\n  }': VolunteerPageQueryResult;
   }
