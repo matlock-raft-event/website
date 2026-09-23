@@ -3,12 +3,19 @@ import { CaretDownIcon, CaretUpIcon } from "@phosphor-icons/react";
 
 import { cn } from "~/lib/utils";
 
+type AccordionTriggerProps = AccordionPrimitive.Trigger.Props & {
+  /** The level the question sits at: 2 when the accordion IS the page (FAQs),
+      3 under a section heading. base-ui's Header renders an h3 otherwise. */
+  headingLevel?: 2 | 3;
+};
+
 const AccordionTrigger = ({
   className,
   children,
+  headingLevel = 3,
   ...props
-}: AccordionPrimitive.Trigger.Props) => (
-  <AccordionPrimitive.Header className="flex">
+}: AccordionTriggerProps) => (
+  <AccordionPrimitive.Header className="flex" render={headingLevel === 2 ? <h2 /> : <h3 />}>
     <AccordionPrimitive.Trigger
       className={cn(
         "group/accordion-trigger relative flex flex-1 items-center justify-between rounded-none border border-transparent py-2.5 text-left text-xs font-medium transition-all outline-none hover:underline focus-visible:border-ring focus-visible:ring-1 focus-visible:ring-ring/50 focus-visible:after:border-ring aria-disabled:pointer-events-none aria-disabled:opacity-50 **:data-[slot=accordion-trigger-icon]:ml-auto **:data-[slot=accordion-trigger-icon]:size-5 **:data-[slot=accordion-trigger-icon]:text-muted-foreground",

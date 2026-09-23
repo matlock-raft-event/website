@@ -5,7 +5,7 @@ import type { ContactInstructionsQueryResult } from "~/lib/sanity.types";
 type Props = { contactInstructions: ContactInstructionsQueryResult };
 
 const ContactUsSection = ({ contactInstructions }: Props) => (
-  <Section palette="cream">
+  <Section color="cream" plain>
 
     <div className="mx-auto w-full max-w-5xl px-4">
 
@@ -16,19 +16,19 @@ const ContactUsSection = ({ contactInstructions }: Props) => (
                     fill you in on all the details. We&apos;ll get back to you as soon as we can!
       </p>
 
-      <p className="font-display uppercase text-base">General Enquiries</p>
+      <h2 className="font-display uppercase text-base">General Enquiries</h2>
       {
         contactInstructions?.general &&
                     <Block value={contactInstructions.general as never} />
       }
 
-      <p className="font-display uppercase text-base">Sponsors</p>
+      <h2 className="font-display uppercase text-base">Sponsors</h2>
       {
         contactInstructions?.sponsors &&
                     <Block value={contactInstructions.sponsors as never} />
       }
 
-      <p className="font-display uppercase text-base">Press</p>
+      <h2 className="font-display uppercase text-base">Press</h2>
       {
         contactInstructions?.press &&
                     <Block value={contactInstructions.press as never} />

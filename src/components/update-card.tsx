@@ -12,6 +12,9 @@ type UpdateCardProps = {
   image?: unknown;
   /** Degrees of tilt; keep within the design language's ±2.4° range. */
   tilt?: number;
+  /** 3 under a section heading (the homepage preview), 2 where the cards are
+      the page's own top-level items (/updates). */
+  titleLevel?: 2 | 3;
 };
 
 const formatDate = (date?: string): string | undefined => {
@@ -32,12 +35,13 @@ const formatDate = (date?: string): string | undefined => {
    The tilt is the design language's pinned-photo rule; Tailwind's translate
    utilities compile to the `translate` property, so the hover lift composes
    with this rotate. */
-const UpdateCard = ({ title, description, date, href, image, tilt = 0 }: UpdateCardProps) => {
+const UpdateCard = ({ title, description, date, href, image, tilt = 0, titleLevel = 3 }: UpdateCardProps) => {
+  const Title = titleLevel === 2 ? "h2" : "h3";
   const formattedDate = formatDate(date);
 
   return (
     <a
-      className="group/card flex h-full flex-col overflow-hidden rounded-[4px] border-[3px] border-cream-dark bg-paper shadow-card transition-[transform,box-shadow] duration-300 ease-[cubic-bezier(0.165,0.84,0.44,1)] hover:-translate-y-1 hover:shadow-card-hard focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink"
+      className="group/card flex h-full flex-col overflow-hidden rounded-[4px] border-[3px] border-cream-dark bg-paper shadow-card transition-[transform,box-shadow] duration-300 ease-[cubic-bezier(0.165,0.84,0.44,1)] hover:-translate-y-1 hover:shadow-card-hard focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--surface-focus)"
       href={href}
       style={tilt ? { transform: `rotate(${tilt}deg)` } : undefined}
     >
@@ -70,9 +74,9 @@ const UpdateCard = ({ title, description, date, href, image, tilt = 0 }: UpdateC
               {formattedDate}
             </p>
         }
-        <h3 className="font-display uppercase text-lg md:text-xl leading-tight line-clamp-2 text-ink">
+        <Title className="font-display uppercase text-lg md:text-xl leading-tight line-clamp-2 text-ink">
           {title}
-        </h3>
+        </Title>
         {
           description &&
             <p className="line-clamp-3 text-sm leading-relaxed text-ink-light">
