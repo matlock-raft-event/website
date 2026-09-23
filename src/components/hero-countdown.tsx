@@ -33,14 +33,27 @@ type HeroCountdownProps = {
   date?: string;
 };
 
+/* The next Boxing Day at 11am, worked out from today. A hardcoded year would
+   quietly start counting down to a date in the past, and the fallback is
+   exactly what runs when the CMS has no date to correct it. */
+const nextBoxingDay = () => {
+  const now = new Date();
+  const thisYear = new Date(now.getFullYear(), 11, 26, 11, 0, 0, 0);
+
+  return now.getTime() <= thisYear.getTime()
+    ? thisYear
+    : new Date(now.getFullYear() + 1, 11, 26, 11, 0, 0, 0);
+};
+
 const HeroCountdown = ({ date }: HeroCountdownProps) => {
-  const targetDate = date ? new Date(date) : new Date("12/26/2026 11:00");
+  const fromCms = date ? new Date(date) : null;
+  const targetDate = fromCms && !Number.isNaN(fromCms.getTime()) ? fromCms : nextBoxingDay();
   const {
     days,
     hours,
     minutes,
     seconds
-  } = useCountdownDate(Number.isNaN(targetDate.getTime()) ? new Date("12/26/2026 11:00") : targetDate);
+  } = useCountdownDate(targetDate);
 
   const items = [
     { label: "Days", value: days },
