@@ -7,8 +7,9 @@ interface PodiumCardProps {
   title: string;
 }
 
+/* Paper carries its own ink, whatever ground the podium is standing on. */
 const PodiumCard = ({ image, podium, title }: PodiumCardProps) => (
-  <div className="relative p-[4%] pb-[8%] rounded-[2px] bg-white shadow-[7px_7px_0_0_rgba(0,0,0,0.25)] transition-all duration-[600ms] ease-[cubic-bezier(0.165,0.84,0.44,1)] flex">
+  <div className="relative p-[4%] pb-[8%] rounded-[4px] bg-paper text-ink shadow-card-hard transition-[transform,box-shadow] duration-[600ms] ease-[cubic-bezier(0.165,0.84,0.44,1)] flex">
     <div
       style={{
         position: "absolute",
@@ -26,7 +27,9 @@ const PodiumCard = ({ image, podium, title }: PodiumCardProps) => (
     <div className="flex w-full flex-col gap-2">
       <SanityImage
         alt={title}
+        height={800}
         image={image}
+        width={800}
         style={{
           height: "100%",
           width: "100%",
@@ -37,7 +40,7 @@ const PodiumCard = ({ image, podium, title }: PodiumCardProps) => (
           maxWidth: "100%"
         }}
       />
-      <h3 className="font-display font-bold text-xl md:text-2xl text-center">
+      <h3 className="font-display uppercase text-xl md:text-2xl text-center">
         {title}
       </h3>
     </div>

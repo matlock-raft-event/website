@@ -1,16 +1,12 @@
 import donateImg from "~/assets/images/donate-img.jpg";
 import Block from "~/components/block";
 import Footer from "~/components/footer";
-import Heading from "~/components/heading";
+import { PageHeader } from "~/components/page-header";
 import PageShell from "~/components/page-shell";
 import SanityImage from "~/components/sanity-image";
 import Section from "~/components/section";
-import Waves from "~/components/waves";
-import useResponsive from "~/hooks/use-responsive";
 import type { UpdatesForPathsQueryResult } from "~/lib/sanity.types";
-import InnerHeroSection from "~/sections/inner-hero-section";
-
-const resolveSrc = (asset: unknown): string => (asset as { src?: string }).src ?? (asset as unknown as string);
+import { resolveAssetSrc } from "~/lib/assets";
 
 type SingleUpdatePageProps = {
   update: UpdatesForPathsQueryResult[number];
@@ -22,68 +18,59 @@ const Content = ({ update }: SingleUpdatePageProps) => {
   const createdOn = update.date ? new Date(update.date).toDateString() : undefined;
   const image = update.img;
 
-  const isMobile = useResponsive("down", "sm");
-
   return (
     <main id="main" tabIndex={-1}>
-      <InnerHeroSection title={title} />
+      <PageHeader backLink={{ href: "/updates", label: "Latest updates" }} color="cream" eyebrow={createdOn} eyebrowStyle="plain" title={title} />
 
-      <Section palette="cream">
-        <a
-          className="inline-flex items-center gap-1 font-serif font-medium text-red hover:underline"
-          href="/updates"
-        >
-          <span aria-hidden="true">←</span>
-          Back to all updates
-        </a>
-        <Heading palette="cream" subtitle={createdOn} title={title} />
-        <div
-          className={`grid grid-cols-12 gap-8 justify-items-center ${!isMobile ? "pt-8" : "pt-0"} ${isMobile ? "px-8" : ""}`}
-        >
-          <div className="col-span-9 sm:col-span-5 order-2 sm:order-1">
-            <div className="bg-white p-[1%] pb-[2%] shadow-[7px_7px_0_0_rgba(0,0,0,0.25)]">
-              {
-                image
-                  ? (
-                    <SanityImage
-                      alt={title}
-                      image={image}
-                      style={{
-                        width: "100%",
-                        height: "auto",
-                        objectFit: "cover",
-                        objectPosition: "center",
-                        borderRadius: 2,
-                        display: "block"
-                      }}
-                    />
-                  )
-                  : (
-                    <img
-                      alt={title}
-                      src={resolveSrc(donateImg)}
-                      style={{
-                        width: "100%",
-                        height: "auto",
-                        display: "block"
-                      }}
-                    />
-                  )
-              }
+      <Section color="cream" plain>
+        {/* Same max-w-5xl width as the site's other grid and image sections */}
+        <div className="mx-auto w-full max-w-5xl px-4">
+          {/* Phones stack the text above the photo card; from sm the card sits
+              beside the text. Pure CSS, so the server and client render the
+              same markup. */}
+          <div className="grid grid-cols-1 gap-8 sm:grid-cols-12 sm:pt-8">
+            <div className="order-2 w-3/4 justify-self-center sm:order-1 sm:col-span-5 sm:w-full">
+              <div className="bg-white p-[1%] pb-[2%] shadow-[7px_7px_0_0_rgba(0,0,0,0.25)]">
+                {
+                  image
+                    ? (
+                      <SanityImage
+                        alt={title}
+                        image={image}
+                        style={{
+                          width: "100%",
+                          height: "auto",
+                          objectFit: "cover",
+                          objectPosition: "center",
+                          borderRadius: 2,
+                          display: "block"
+                        }}
+                      />
+                    )
+                    : (
+                      <img
+                        alt={title}
+                        src={resolveAssetSrc(donateImg)}
+                        style={{
+                          width: "100%",
+                          height: "auto",
+                          display: "block"
+                        }}
+                      />
+                    )
+                }
+              </div>
             </div>
-          </div>
-          <div className="col-span-12 sm:col-span-7 order-1 sm:order-2">
-            <div className="mt-8">
-              {content ? <Block value={content as never} /> : null}
+            <div className="order-1 min-w-0 sm:order-2 sm:col-span-7">
+              <div className="sm:mt-8">
+                {content ? <Block startLevel={2} value={content as never} /> : null}
+              </div>
             </div>
           </div>
         </div>
-
       </Section>
 
-      <Waves bottomColor="var(--color-cream)" topColor="var(--color-cream)" variant={2} />
-
-      <Footer />
+      <Footer waveTopColor="var(--color-cream)" />
     </main>
   );
 };

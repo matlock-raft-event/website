@@ -13,6 +13,9 @@ export default defineConfig({
   redirects: {
       "/plan-your-visit": "/info/getting-here",
       "/results": "/hall-of-fame",
+      "/about": "/info/history",
+      // The 2023 StrawPoll vote page is retired; the winners live here now.
+      "/vote": "/hall-of-fame",
   },
 
   integrations: [

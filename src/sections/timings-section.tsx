@@ -4,7 +4,7 @@ import Section from "~/components/section";
 
 const TIMINGS = [
   {
-    time: "09:30am",
+    time: "9:00am",
     description: "After an evening of festivities, the rafters are up bright and early to arrive at Cawdor " +
             "Quarry, register for the event and make final preparations (all nuts tightened)."
   },
@@ -27,35 +27,32 @@ const TIMINGS = [
   {
     time: "2:00pm",
     description: "The ceremony takes place at The Fishpond in Matlock Bath to " +
-            "announce the winner of this years raft event!"
+            "announce the winner of this year\u2019s raft event!"
   }
 ];
 
 const TimingsSection = () => (
-  <Section palette="cream">
-    <Heading
-      palette="cream"
-      subtitle="What time is it?"
-      title="What happens and when?"
-    />
-
-    <div className="mx-auto w-full max-w-4xl px-4">
+  <Section color="river" plain>
+    <div className="mx-auto w-full max-w-5xl px-4">
+      <Heading
+        align="left"
+        palette="river"
+        subtitle="What time is it?"
+        title="What happens and when?"
+      />
       <p className="text-sm sm:text-base lg:text-lg leading-relaxed mb-8">
                     Once the rafts have set off, the timings always vary based on how fast the river is flowing, if
-                    there’s any obstacles along the route etc, so we’d recommend getting there slightly earlier just
+                    there are any obstacles along the route, so we’d recommend getting there slightly earlier just
                     in case, it’s always worth the wait!
       </p>
-    </div>
-
-    <div className="mx-auto w-full max-w-4xl px-4">
-      <ol className="relative border-l-2 border-red ml-6">
+      <ol className="relative border-l-2 border-raft ml-6">
         {
           TIMINGS.map(item => (
             <li key={item.time} className="mb-8 ml-8 last:mb-0">
-              <span className="absolute -left-5 flex h-10 w-10 items-center justify-center rounded-full bg-red shadow-[2px_2px_0_0_rgba(0,0,0,0.25)]">
-                <Iconify color="var(--color-red-contrast)" icon="ph:clock" width={20} />
+              <span className="absolute -left-5 flex h-10 w-10 items-center justify-center rounded-full bg-raft shadow-[2px_2px_0_0_rgba(0,0,0,0.25)]">
+                <Iconify color="var(--color-raft-contrast)" icon="ph:clock" width={20} />
               </span>
-              <span className="block font-serif font-medium text-sm sm:text-base md:text-lg">
+              <span className="block font-label font-medium text-sm sm:text-base md:text-lg">
                 {item.time}
               </span>
               <p className="text-sm sm:text-base lg:text-lg leading-relaxed">{item.description}</p>

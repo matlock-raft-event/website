@@ -4,10 +4,14 @@ import InfoPage from "~/page-content/info-page";
 import { sanityClient, urlFor } from "~/lib/sanity";
 
 const galleryImgs = await sanityClient.fetch<Array<{ img: unknown }>>(
-    `*[_type == "galleryImage" && defined(img)][0...5]{ img }`
+    `*[_type == "galleryImage" && defined(img)][0...7]{ img }`
 );
-const cardImages = galleryImgs.map((g) =>
-    urlFor(g.img).width(900).height(700).fit("crop").auto("format").url()
+/* The last card is the full-width updates band, so it is cropped wide and
+   asked for at the width it actually renders at. */
+const cardImages = galleryImgs.map((g, i) =>
+    i === 6
+        ? urlFor(g.img).width(1600).height(500).fit("crop").auto("format").url()
+        : urlFor(g.img).width(900).height(700).fit("crop").auto("format").url()
 );
 ---
 <BaseLayout

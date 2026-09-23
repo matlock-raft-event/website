@@ -1,7 +1,6 @@
 import ApplicationFormPdf from "~/assets/documents/Application-Form.pdf";
 import SafetyPdf from "~/assets/documents/Pre-Event-Safety.pdf";
 import RulesPdf from "~/assets/documents/Raft-Event-Rules.pdf";
-import Heading from "~/components/heading";
 import Section from "~/components/section";
 import StepCard from "~/components/step-card";
 import { Button } from "~/components/ui/button";
@@ -17,16 +16,15 @@ const STEPS = [
   },
   {
     key: "Step 3",
-    description: "Arrive at Cawdor Quarry (near Sainsbury’s) in Matlock at around 7am on Boxing Day with your " +
+    description: "Arrive at Cawdor Quarry (near Sainsbury’s) in Matlock at around 9am on Boxing Day with your " +
             "entry fees (£15 each) and team form signed and in hand. Your mode of transport should be a sturdy DIY " +
             "raft built entirely by the crew"
   }
 ];
 
 const TakePartSection = () => (
-  <Section palette="cream">
-    <Heading palette="cream" subtitle="So you're brave enough?" title="Take Part" />
-    <div className="mx-auto w-full max-w-4xl px-4">
+  <Section color="sun" plain>
+    <div className="mx-auto w-full max-w-5xl px-4">
       <div className="flex flex-col items-center gap-4">
         <div className="flex flex-col items-center gap-2">
           <p className="text-sm sm:text-base lg:text-lg leading-relaxed">
@@ -43,7 +41,7 @@ const TakePartSection = () => (
           </p>
         </div>
         <div className="flex flex-col items-center gap-4">
-          <p className="font-display font-semibold text-base">
+          <p className="font-display uppercase text-base">
                             To take part in the raft event, you need to complete the following steps:
           </p>
           {
@@ -61,7 +59,10 @@ const TakePartSection = () => (
           }
         </div>
 
-        <div className="flex flex-row py-4 gap-4">
+        {/* Wraps: the three labels are 620px wide and the Section clips, so
+            without this the end buttons are cut off and unreachable on a
+            phone. */}
+        <div className="flex flex-row flex-wrap py-4 gap-4">
           <Button
             download="Raft-Event-Rules"
             href={RulesPdf}

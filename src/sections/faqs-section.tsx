@@ -1,7 +1,6 @@
 import { useMemo, useState } from "react";
 
 import Block from "~/components/block";
-import Heading from "~/components/heading";
 import Section from "~/components/section";
 import Accordion from "~/components/ui/accordion/accordion";
 import AccordionContent from "~/components/ui/accordion/accordion-content";
@@ -41,23 +40,18 @@ const FaqsSection = ({ faqs }: Props) => {
     : items.filter(faq => getAudience(faq) === active);
 
   return (
-    <Section palette="cream">
-      <Heading
-        palette="cream"
-        subtitle="You asked, we answered!"
-        title="Frequently Asked Questions"
-      />
-      <div className="mx-auto w-full max-w-4xl px-4">
+    <Section color="river" plain>
+      <div className="mx-auto w-full max-w-5xl px-4">
         {
           available.length > 1 && (
             <div
               aria-label="Filter questions by audience"
-              className="flex flex-row flex-wrap justify-center gap-2 pb-6"
+              className="flex flex-row flex-wrap gap-2 pb-6"
               role="group"
             >
               <Button
                 aria-pressed={active === "all"}
-                color="red"
+                color="cream"
                 onClick={() => setActive("all")}
                 size="sm"
                 variant={active === "all" ? "solid" : "outline"}
@@ -68,7 +62,7 @@ const FaqsSection = ({ faqs }: Props) => {
                 available.map(audience => (
                   <Button
                     aria-pressed={active === audience}
-                    color="red"
+                    color="cream"
                     key={audience}
                     onClick={() => setActive(audience)}
                     size="sm"
@@ -85,7 +79,7 @@ const FaqsSection = ({ faqs }: Props) => {
           {
             filtered.map(faq => (
               <AccordionItem key={faq.question} value={faq.question ?? ""}>
-                <AccordionTrigger className="text-cream-contrast font-display text-xl py-4">
+                <AccordionTrigger className="font-display uppercase text-xl py-4" headingLevel={2}>
                   {faq.question}
                 </AccordionTrigger>
                 <AccordionContent>

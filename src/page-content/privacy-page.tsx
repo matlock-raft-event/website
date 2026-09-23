@@ -1,30 +1,14 @@
-import type { ReactNode } from "react";
-
 import Footer from "~/components/footer";
-import Heading from "~/components/heading";
+import { PageHeader } from "~/components/page-header";
 import PageShell from "~/components/page-shell";
+import { Para, Subheading } from "~/components/prose";
 import Section from "~/components/section";
-import Waves from "~/components/waves";
-import InnerHeroSection from "~/sections/inner-hero-section";
-
-const Subheading = ({ children }: { children: string }) => (
-  <h3 className="font-display font-bold text-xl md:text-2xl mt-8 first:mt-0">
-    {children}
-  </h3>
-);
-
-const Para = ({ children }: { children: ReactNode }) => (
-  <p className="text-sm sm:text-base lg:text-lg leading-relaxed mt-3">
-    {children}
-  </p>
-);
 
 const Content = () => (
   <main id="main" tabIndex={-1}>
-    <InnerHeroSection title="Privacy policy" />
-    <Section palette="cream">
-      <Heading palette="cream" subtitle="Your data and your rights" title="Privacy Policy" />
-      <div className="mx-auto w-full max-w-4xl px-4">
+    <PageHeader color="cream" eyebrow="Your data and your rights" eyebrowStyle="plain" title="Privacy policy" />
+    <Section color="cream" plain>
+      <div className="mx-auto w-full max-w-5xl px-4">
         <Para>
           This privacy policy explains how Dasac&apos;s Matlock Raft Event (&quot;we&quot;,
           &quot;us&quot;) handles personal information when you visit this website or take part in
@@ -50,19 +34,20 @@ const Content = () => (
 
         <Subheading>Cookies and analytics</Subheading>
         <Para>
-          Details of any cookies used by this website are set out in our
+          This website sets no cookies and uses no analytics or tracking of any kind. We do not
+          build a profile of you or share anything about your visit. Our
           {" "}
-          <a className="text-red hover:underline" href="/cookies">Cookies Policy</a>
-          .
+          <a className="text-(--surface-link) hover:underline" href="/cookies">Cookies Policy</a>
+          {" "}
+          sets this out in full.
         </Para>
 
         <Subheading>Third-party services</Subheading>
         <Para>
           Some parts of this site rely on third parties who have their own privacy policies: online
-          donations and our event page are hosted on Facebook; the &quot;Vote for your boat&quot;
-          poll is provided by StrawPoll; and our photo gallery and content are managed through our
-          content system. Following links to these services means your information is handled under
-          their policies.
+          donations and our event page are hosted on Facebook; and our photo gallery and content are
+          managed through our content system. Following links to these services means your
+          information is handled under their policies.
         </Para>
 
         <Subheading>Your rights</Subheading>
@@ -71,7 +56,7 @@ const Content = () => (
           information we hold about you, to have it corrected or deleted, and to object to how we
           use it. To make a request, please get in touch via our
           {" "}
-          <a className="text-red hover:underline" href="/contact">contact page</a>
+          <a className="text-(--surface-link) hover:underline" href="/contact">contact page</a>
           .
         </Para>
 
@@ -81,8 +66,7 @@ const Content = () => (
         </Para>
       </div>
     </Section>
-    <Waves bottomColor="var(--color-cream)" topColor="var(--color-cream)" variant={2} />
-    <Footer />
+    <Footer waveTopColor="var(--color-cream)" />
   </main>
 );
 

@@ -1,15 +1,13 @@
 import Block from "~/components/block";
-import Heading from "~/components/heading";
 import Section from "~/components/section";
 import type { ContactInstructionsQueryResult } from "~/lib/sanity.types";
 
 type Props = { contactInstructions: ContactInstructionsQueryResult };
 
 const ContactUsSection = ({ contactInstructions }: Props) => (
-  <Section palette="cream">
-    <Heading palette="cream" subtitle="Need to get in touch?" title="Contact us" />
+  <Section color="cream" plain>
 
-    <div className="mx-auto w-full max-w-4xl px-4">
+    <div className="mx-auto w-full max-w-5xl px-4">
 
       <p className="text-sm sm:text-base lg:text-lg leading-relaxed mb-8">
                     We&apos;re all ears for participants and those eager to join the excitement! Connect with us on our
@@ -18,19 +16,19 @@ const ContactUsSection = ({ contactInstructions }: Props) => (
                     fill you in on all the details. We&apos;ll get back to you as soon as we can!
       </p>
 
-      <p className="font-display font-semibold text-base">General Enquiries</p>
+      <h2 className="font-display uppercase text-base">General Enquiries</h2>
       {
         contactInstructions?.general &&
                     <Block value={contactInstructions.general as never} />
       }
 
-      <p className="font-display font-semibold text-base">Sponsors</p>
+      <h2 className="font-display uppercase text-base">Sponsors</h2>
       {
         contactInstructions?.sponsors &&
                     <Block value={contactInstructions.sponsors as never} />
       }
 
-      <p className="font-display font-semibold text-base">Press</p>
+      <h2 className="font-display uppercase text-base">Press</h2>
       {
         contactInstructions?.press &&
                     <Block value={contactInstructions.press as never} />

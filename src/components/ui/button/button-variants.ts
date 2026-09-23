@@ -1,119 +1,128 @@
 import { cva } from "class-variance-authority";
 
+/* The design-language button: a chunky pill that presses like a real thing.
+   Solid buttons carry a hard underside shadow (--btn-under, the colour's own
+   dark shade) that compresses on press. Colour says what it does: raft acts,
+   sun donates, cream navigates on dark surfaces. Outline exists for filter
+   chips; ghost/link for nav-like actions. */
 const buttonVariants = cva(
-  "group/button inline-flex shrink-0 font-serif leading-0! items-center justify-center uppercase rounded-none border border-transparent bg-clip-padding text-base font-medium whitespace-nowrap transition-all outline-none select-none focus-visible:border-ring focus-visible:ring-1 focus-visible:ring-ring/50 active:not-aria-[haspopup]:translate-y-px disabled:pointer-events-none disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-1 aria-invalid:ring-destructive/20 dark:aria-invalid:border-destructive/50 dark:aria-invalid:ring-destructive/40 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
+  "group/button inline-flex shrink-0 font-label leading-0! items-center justify-center uppercase rounded-full border border-transparent bg-clip-padding text-sm font-extrabold tracking-wider whitespace-nowrap transition-[transform,box-shadow,filter,background-color,color] duration-150 ease-out outline-none select-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--surface-focus) disabled:pointer-events-none disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-1 aria-invalid:ring-destructive/20 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
   {
     variants: {
       variant: {
-        solid: "shadow-[2px_2px_0_0_rgba(0,0,0,0.25)]",
-        outline: "bg-transparent",
-        ghost: "bg-transparent border-transparent",
+        solid: "shadow-[0_3px_0_0_var(--btn-under),0_5px_8px_rgba(8,64,44,0.12)] hover:-translate-y-0.5 hover:brightness-105 hover:shadow-[0_4px_0_0_var(--btn-under),0_7px_10px_rgba(8,64,44,0.14)] active:translate-y-[2px] active:shadow-[0_1px_0_0_var(--btn-under)]",
+        outline: "bg-transparent active:translate-y-px",
+        ghost: "bg-transparent border-transparent active:translate-y-px",
         link: "bg-transparent border-transparent underline-offset-4 hover:underline"
       },
       color: {
-        red: "",
-        green: "",
-        yellow: "",
-        mint: "",
+        raft: "",
+        pine: "",
+        sun: "",
+        river: "",
         cream: "",
-        dark: ""
+        ink: ""
       },
       size: {
-        default: "h-9 gap-1.5 px-4 has-data-[icon=inline-end]:pr-2 has-data-[icon=inline-start]:pl-2",
-        xs: "h-6 gap-1 rounded-none px-2 text-sm has-data-[icon=inline-end]:pr-1.5 has-data-[icon=inline-start]:pl-1.5 [&_svg:not([class*='size-'])]:size-3",
-        sm: "h-8 gap-1 rounded-none px-2.5 has-data-[icon=inline-end]:pr-1.5 has-data-[icon=inline-start]:pl-1.5 [&_svg:not([class*='size-'])]:size-3.5",
-        lg: "h-11 gap-1.5 px-5 has-data-[icon=inline-end]:pr-2 has-data-[icon=inline-start]:pl-2",
-        icon: "size-9",
-        "icon-xs": "size-6 rounded-none [&_svg:not([class*='size-'])]:size-3",
-        "icon-sm": "size-8 rounded-none",
-        "icon-lg": "size-10"
+        default: "h-11 gap-1.5 px-7 has-data-[icon=inline-end]:pr-4 has-data-[icon=inline-start]:pl-4",
+        xs: "h-7 gap-1 px-3 text-xs has-data-[icon=inline-end]:pr-2 has-data-[icon=inline-start]:pl-2 [&_svg:not([class*='size-'])]:size-3",
+        sm: "h-9 gap-1 px-4 has-data-[icon=inline-end]:pr-2.5 has-data-[icon=inline-start]:pl-2.5 [&_svg:not([class*='size-'])]:size-3.5",
+        lg: "h-12 gap-1.5 px-8 has-data-[icon=inline-end]:pr-5 has-data-[icon=inline-start]:pl-5",
+        icon: "size-11",
+        "icon-xs": "size-7 [&_svg:not([class*='size-'])]:size-3",
+        "icon-sm": "size-9",
+        "icon-lg": "size-12"
       }
     },
     compoundVariants: [
-      // Solid
+      // Solid — bg + contrast text + the colour's own dark shade underneath
       {
         variant: "solid",
-        color: "red",
-        class: "bg-red text-red-contrast hover:bg-red-dark"
+        color: "raft",
+        class: "bg-raft text-raft-contrast [--btn-under:var(--color-raft-dark)]"
       },
       {
         variant: "solid",
-        color: "green",
-        class: "bg-green text-green-contrast hover:bg-green-dark"
+        color: "pine",
+        class: "bg-pine text-pine-contrast [--btn-under:var(--color-pine-dark)]"
       },
       {
         variant: "solid",
-        color: "yellow",
-        class: "bg-yellow text-yellow-contrast hover:bg-yellow-dark"
+        color: "sun",
+        class: "bg-sun text-sun-contrast [--btn-under:var(--color-sun-dark)]"
       },
       {
         variant: "solid",
-        color: "mint",
-        class: "bg-mint text-mint-contrast hover:bg-mint-dark"
+        color: "river",
+        class: "bg-river text-river-contrast [--btn-under:var(--color-river-dark)]"
       },
       {
         variant: "solid",
         color: "cream",
-        class: "bg-cream text-cream-contrast hover:bg-cream-dark"
+        class: "bg-cream text-cream-contrast [--btn-under:#c9c3a5]"
       },
       {
         variant: "solid",
-        color: "dark",
-        class: "bg-dark text-dark-contrast hover:bg-dark-dark"
+        color: "ink",
+        class: "bg-ink text-ink-contrast [--btn-under:var(--color-ink-dark)]"
       },
 
       // Outline
       {
         variant: "outline",
-        color: "red",
-        class: "border-red text-red hover:bg-red hover:text-red-contrast"
+        color: "raft",
+        class: "border-raft text-raft hover:bg-raft hover:text-raft-contrast"
       },
       {
         variant: "outline",
-        color: "green",
-        class: "border-green text-green hover:bg-green hover:text-green-contrast"
+        color: "pine",
+        class: "border-pine text-pine hover:bg-pine hover:text-pine-contrast"
+      },
+      /* An outline button wears its own colour, like raft/pine/ink above. The
+         `*-contrast` tokens are the text to put ON that colour, so using them
+         here painted ink on cream and sun chips — invisible on any dark
+         ground. The fill colour only arrives on hover. */
+      {
+        variant: "outline",
+        color: "sun",
+        class: "border-sun text-sun hover:bg-sun hover:text-sun-contrast"
       },
       {
         variant: "outline",
-        color: "yellow",
-        class: "border-yellow text-yellow-contrast hover:bg-yellow hover:text-yellow-contrast"
-      },
-      {
-        variant: "outline",
-        color: "mint",
-        class: "border-mint text-mint-contrast hover:bg-mint"
+        color: "river",
+        class: "border-river text-river hover:bg-river hover:text-river-contrast"
       },
       {
         variant: "outline",
         color: "cream",
-        class: "border-cream-dark text-cream-contrast hover:bg-cream"
+        class: "border-cream-dark text-cream hover:bg-cream hover:text-cream-contrast"
       },
       {
         variant: "outline",
-        color: "dark",
-        class: "border-dark text-dark hover:bg-dark hover:text-dark-contrast"
+        color: "ink",
+        class: "border-ink text-ink hover:bg-ink hover:text-ink-contrast"
       },
 
       // Ghost
       {
         variant: "ghost",
-        color: "red",
-        class: "text-red hover:bg-red/10"
+        color: "raft",
+        class: "text-raft hover:bg-raft/10"
       },
       {
         variant: "ghost",
-        color: "green",
-        class: "text-green hover:bg-green/10"
+        color: "pine",
+        class: "text-pine hover:bg-pine/10"
       },
       {
         variant: "ghost",
-        color: "yellow",
-        class: "text-yellow-contrast hover:bg-yellow/20"
+        color: "sun",
+        class: "text-sun-contrast hover:bg-sun/20"
       },
       {
         variant: "ghost",
-        color: "mint",
-        class: "text-mint-contrast hover:bg-mint/30"
+        color: "river",
+        class: "text-river-contrast hover:bg-river/30"
       },
       {
         variant: "ghost",
@@ -122,30 +131,30 @@ const buttonVariants = cva(
       },
       {
         variant: "ghost",
-        color: "dark",
-        class: "text-dark hover:bg-dark/10"
+        color: "ink",
+        class: "text-ink hover:bg-ink/10"
       },
 
       // Link
       {
         variant: "link",
-        color: "red",
-        class: "text-red"
+        color: "raft",
+        class: "text-raft"
       },
       {
         variant: "link",
-        color: "green",
-        class: "text-green"
+        color: "pine",
+        class: "text-pine"
       },
       {
         variant: "link",
-        color: "yellow",
-        class: "text-yellow"
+        color: "sun",
+        class: "text-sun"
       },
       {
         variant: "link",
-        color: "mint",
-        class: "text-mint"
+        color: "river",
+        class: "text-river"
       },
       {
         variant: "link",
@@ -154,13 +163,13 @@ const buttonVariants = cva(
       },
       {
         variant: "link",
-        color: "dark",
-        class: "text-dark"
+        color: "ink",
+        class: "text-ink"
       }
     ],
     defaultVariants: {
       variant: "solid",
-      color: "red",
+      color: "raft",
       size: "default"
     }
   }

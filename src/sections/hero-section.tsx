@@ -1,13 +1,12 @@
 import { Fragment } from "react";
-import { CalendarBlankIcon, ClockIcon, EyeIcon, MapPinAreaIcon, UsersThreeIcon } from "@phosphor-icons/react";
 
 import HeaderImg from "~/assets/images/header.jpg";
 import HeroCountdown from "~/components/hero-countdown";
+import Logo from "~/components/logo";
 import { Button } from "~/components/ui/button";
 import type { HeroQueryResult } from "~/lib/sanity.types";
-
-const resolveSrc = (asset: unknown): string =>
-  (asset as { src?: string }).src ?? (asset as unknown as string);
+import { resolveAssetSrc } from "~/lib/assets";
+import { EVENT_FACTS } from "~/lib/event-facts";
 
 type Props = {
   hero: HeroQueryResult;
@@ -17,7 +16,7 @@ type Props = {
 };
 
 // Replace the "&nbsp;" token with a real non-breaking space (keeps words together).
-const withNbsp = (s: string) => s.replace(/&nbsp;/g, " ");
+const withNbsp = (s: string) => s.replace(/&nbsp;/g, " ");
 
 // Render a string with line breaks: each newline becomes a <br>.
 const renderLines = (s: string) =>
@@ -30,71 +29,87 @@ const renderLines = (s: string) =>
 
 const headerImgMeta = HeaderImg as unknown as { width?: number; height?: number };
 
+/* On phones the pair shares one row at equal widths; from md they're the
+   usual large pills. */
+const CTA_CLASSES = "flex-1 max-md:h-11 max-md:px-3 md:flex-none";
+
+/* After the Red Bull event pages: the photo fades into pine-dark, and the
+   badge and headline sit where the fade ends, followed by the key facts,
+   the buttons and the countdown.
+
+   Phones: the photo is a band across the top and the content stacks
+   centred beneath it, starting with the badge on the fade.
+   md and up: the photo fills the hero and the content sits vertically
+   centred on the left. */
 const HeroSection = ({ hero, imgSrc, imgSrcset, eventDate }: Props) => {
-  const title = hero?.title ?? "Ready To Brave The Cold Derwent Waters?";
+  const title = hero?.title ?? "Ready to brave";
+  const titleAccent = hero?.titleAccent;
   const buttonLink = hero?.buttonLink ?? "/take-part";
-  const buttonText = hero?.buttonText ?? "Get involved";
+  const buttonText = hero?.buttonText ?? "Enter a raft";
+  const secondaryButtonLink = hero?.secondaryButtonLink;
+  const secondaryButtonText = hero?.secondaryButtonText;
 
   return (
-    <div className="relative flex flex-col min-h-screen">
-      <div className="relative flex flex-col flex-1">
-        <div className="relative md:absolute md:inset-0">
-          <img
-            alt="Rafts on the River Derwent during the Matlock Raft Event"
-            className="block w-full h-auto md:h-full md:object-cover object-center"
-            decoding="async"
-            fetchPriority="high"
-            height={headerImgMeta.height}
-            sizes="100vw"
-            src={imgSrc ?? resolveSrc(HeaderImg)}
-            srcSet={imgSrcset}
-            width={headerImgMeta.width}
-          />
-          <div className="absolute inset-0 bg-[linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.2),rgba(53,58,60,1))] md:bg-[linear-gradient(to_right,rgba(0,0,0,0.8),rgba(0,0,0,0.35)_45%,transparent_75%)]" />
+    <section className="relative flex flex-col bg-pine-dark md:min-h-[min(100svh,880px)] md:justify-center">
+      <div className="absolute inset-x-0 top-0 h-[470px] md:h-full">
+        <img
+          alt="Rafts on the River Derwent during the Matlock Raft Event"
+          className="size-full object-cover object-[55%_30%]"
+          decoding="async"
+          fetchPriority="high"
+          height={headerImgMeta.height}
+          sizes="100vw"
+          src={imgSrc ?? resolveAssetSrc(HeaderImg)}
+          srcSet={imgSrcset}
+          width={headerImgMeta.width}
+        />
+        {/* Shaded at the top for the header, clear through the middle, then
+            fading to solid pine-dark where the content starts */}
+        <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(8,64,44,0.45),rgba(8,64,44,0)_22%,rgba(8,64,44,0)_45%,rgba(8,64,44,0.7)_72%,var(--color-pine-dark)_96%)]" />
+      </div>
+
+      <div className="relative mx-auto flex w-full container flex-col items-center gap-3.5 px-4 pt-80 pb-10 text-center md:items-start md:pt-26 md:pb-12 md:text-left">
+        {/* The badge's one big moment: it never goes in the header bar */}
+        <Logo className="w-28 [filter:drop-shadow(0_6px_0_rgba(0,0,0,0.3))]" />
+
+        <h1 className="font-display uppercase text-5xl sm:text-6xl lg:text-7xl leading-[0.97] text-cream">
+          {renderLines(title)}
+          {
+            titleAccent &&
+              <span className="block text-sun">
+                {renderLines(titleAccent)}
+              </span>
+          }
+        </h1>
+
+        <ul className="mt-1 flex flex-row flex-wrap justify-center gap-x-6 gap-y-2 label-caps-row text-xs text-cream [text-shadow:0_2px_0_rgba(5,43,30,0.55)] md:justify-start">
+          {
+            EVENT_FACTS.slice(0, 4).map(({ icon: Icon, label }) => (
+              <li key={label} className="inline-flex items-center gap-1.5">
+                <Icon className="shrink-0 text-sun" size={15} weight="bold" />
+                {label}
+              </li>
+            ))
+          }
+        </ul>
+
+        <div className="mt-2.5 flex w-full gap-2.5 md:w-auto md:gap-4">
+          <Button className={CTA_CLASSES} href={buttonLink} size="lg">
+            {buttonText}
+          </Button>
+          {
+            secondaryButtonText && secondaryButtonLink &&
+              <Button className={CTA_CLASSES} color="cream" href={secondaryButtonLink} size="lg">
+                {secondaryButtonText}
+              </Button>
+          }
         </div>
 
-        <div className="bg-dark flex-1 md:bg-transparent md:flex-none md:absolute md:inset-0 md:z-10 flex items-center">
-          <div className="mx-auto w-full container px-4">
-            <div className="flex flex-col gap-4 py-4 text-center md:text-left md:w-[61.8vw] md:py-0">
-              <p className="font-sans font-bold text-lg md:text-xl text-yellow">
-                Boxing Day raft racing, in aid of the RNLI
-              </p>
-              <h1 className="font-display font-extrabold text-3xl sm:text-4xl md:text-5xl lg:text-6xl leading-tight text-secondary">
-                {renderLines(title)}
-              </h1>
-              <ul className="flex flex-row flex-wrap gap-x-5 gap-y-2 justify-center md:justify-start text-secondary">
-                <li className="inline-flex items-center gap-1.5 text-sm font-semibold">
-                  <MapPinAreaIcon className="text-yellow shrink-0" weight="fill" />
-                  Matlock, Derbyshire
-                </li>
-                <li className="inline-flex items-center gap-1.5 text-sm font-semibold">
-                  <CalendarBlankIcon className="text-yellow shrink-0" weight="fill" />
-                  Boxing Day, 26 Dec
-                </li>
-                <li className="inline-flex items-center gap-1.5 text-sm font-semibold">
-                  <ClockIcon className="text-yellow shrink-0" weight="fill" />
-                  11am start
-                </li>
-                <li className="inline-flex items-center gap-1.5 text-sm font-semibold">
-                  <EyeIcon className="text-yellow shrink-0" weight="fill" />
-                  Free to watch
-                </li>
-                <li className="inline-flex items-center gap-1.5 text-sm font-semibold">
-                  <UsersThreeIcon className="text-yellow shrink-0" weight="fill" />
-                  Family friendly
-                </li>
-              </ul>
-              <div className="flex flex-row items-center gap-4 justify-center md:justify-start">
-                <Button href={buttonLink} size="lg">
-                  {buttonText}
-                </Button>
-              </div>
-              <HeroCountdown date={eventDate} />
-            </div>
-          </div>
+        <div className="mt-3">
+          <HeroCountdown date={eventDate} />
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 

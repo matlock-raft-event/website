@@ -1,7 +1,7 @@
 import { defineQuery } from "groq";
 
 export const heroQuery = defineQuery(
-  `*[_type == "hero" && _id == "hero"][0]{ title, subtitle, buttonLink, buttonText }`
+  `*[_type == "hero" && _id == "hero"][0]{ title, titleAccent, buttonLink, buttonText, secondaryButtonLink, secondaryButtonText }`
 );
 
 export const eventQuery = defineQuery(
@@ -37,11 +37,11 @@ export const faqsQuery = defineQuery(
 );
 
 export const sponsorsQuery = defineQuery(
-  `*[_type == "sponsor"]{ name, slug, logo }`
+  `*[_type == "sponsor"]{ name, url, logo, logoTrimmed }`
 );
 
-export const sponsorsForPathsQuery = defineQuery(
-  `*[_type == "sponsor" && defined(slug)]{ name, slug, logo, url, address, description, testimonial }`
+export const sponsorTestimonialsQuery = defineQuery(
+  `*[_type == "sponsor" && defined(testimonial)]{ name, url, testimonial, logo, logoTrimmed }`
 );
 
 export const galleryQuery = defineQuery(

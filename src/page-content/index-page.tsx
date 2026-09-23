@@ -1,11 +1,14 @@
 import Footer from "~/components/footer";
 import PageShell from "~/components/page-shell";
 import Waves from "~/components/waves";
+import ClosingCta from "~/components/closing-cta";
 import ComingToWatchSection from "~/sections/coming-to-watch-section";
 import GetInvolvedSection from "~/sections/get-involved-section";
+import type { GetInvolvedImage } from "~/sections/get-involved-section";
 import HeroSection from "~/sections/hero-section";
 import MarqueeSection from "~/sections/marquee-section";
 import PodiumSection from "~/sections/podium-section";
+import RaceSection from "~/sections/race-section";
 import SummarySection from "~/sections/summary-section";
 import UpdatesSection from "~/sections/updates-section";
 import type {
@@ -22,43 +25,67 @@ type Props = {
   updates: UpdatesQueryResult;
   heroImageSrc?: string;
   heroImageSrcset?: string;
+  getInvolvedImages?: GetInvolvedImage[];
   eventDate?: string;
 };
 
-const Content = ({ hero, summary, winners, updates, heroImageSrc, heroImageSrcset, eventDate }: Props) => (
+const Content = ({
+  hero,
+  summary,
+  winners,
+  updates,
+  heroImageSrc,
+  heroImageSrcset,
+  getInvolvedImages,
+  eventDate
+}: Props) => (
   <main id="main" tabIndex={-1}>
     <HeroSection eventDate={eventDate} hero={hero} imgSrc={heroImageSrc} imgSrcset={heroImageSrcset} />
     <MarqueeSection />
     <SummarySection summary={summary} />
     <Waves
-      bottomColor="var(--color-green)"
+      bottomColor="var(--color-river)"
       style={{ marginTop: -1 }}
       topColor="var(--color-cream)"
       variant={2}
     />
+    <RaceSection summary={summary} />
+    <Waves
+      bottomColor="var(--color-pine)"
+      style={{ marginTop: -1 }}
+      topColor="var(--color-river)"
+      variant={4}
+    />
     <PodiumSection winners={winners} />
     <Waves
-      bottomColor="var(--color-yellow)"
+      bottomColor="var(--color-river)"
       style={{ marginTop: -1 }}
-      topColor="var(--color-green)"
+      topColor="var(--color-pine)"
       variant={3}
     />
-    <GetInvolvedSection />
+    <GetInvolvedSection images={getInvolvedImages} />
     <Waves
-      bottomColor="var(--color-cream)"
-      topColor="var(--color-yellow)"
+      bottomColor="var(--color-pine)"
+      topColor="var(--color-river)"
       variant={4}
     />
     <ComingToWatchSection />
     <Waves
-      bottomColor="var(--color-mint)"
+      bottomColor="var(--color-cream)"
       style={{ marginTop: -1 }}
-      topColor="var(--color-cream)"
-      variant={2}
+      topColor="var(--color-pine)"
+      variant={1}
     />
     <UpdatesSection preview updates={updates} />
-    <Waves bottomColor="var(--color-cream)" style={{ marginTop: -1 }} />
-    <Footer />
+    <ClosingCta
+      primary={{ label: "Enter a raft", href: "/take-part" }}
+      secondary={{ label: "Donate to the RNLI", href: "/donate" }}
+      text="Do it once and we promise you'll be hooked. Build a raft, bring the family, and help Matlock raise a fortune for the lifeboats."
+      title="See you on"
+      titleAccent="the riverbank"
+      waveTopColor="var(--color-cream)"
+    />
+    <Footer waveTopColor="var(--color-pine-dark)" />
   </main>
 );
 

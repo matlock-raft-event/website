@@ -1,0 +1,112 @@
+[
+  {
+    "logo": {
+      "_type": "image",
+      "asset": {
+        "_ref": "image-24012466dd32636fffbe74456535978912ab49f5-808x231-png",
+        "_type": "reference"
+      }
+    },
+    "name": "Darwin Forest",
+    "url": "https://www.darwinforest.co.uk"
+  },
+  {
+    "logo": {
+      "_type": "image",
+      "asset": {
+        "_ref": "image-efc5defd00e68e3949a4b048981e3d7b7ae1d296-338x73-png",
+        "_type": "reference"
+      }
+    },
+    "name": "H.A. Briddon",
+    "url": "https://www.habriddon.co.uk"
+  },
+  {
+    "logo": {
+      "_type": "image",
+      "asset": {
+        "_ref": "image-316eecec627a65e942f220b8d258c1c19d7cf680-851x673-png",
+        "_type": "reference"
+      }
+    },
+    "name": "Heights of Abraham",
+    "url": "https://www.heightsofabraham.com/"
+  },
+  {
+    "logo": {
+      "_type": "image",
+      "asset": {
+        "_ref": "image-2f6d9f339e76d40018e5a063fbf3a34149384411-1200x449-png",
+        "_type": "reference"
+      }
+    },
+    "name": "Longcliffe",
+    "url": "https://www.longcliffe.co.uk/"
+  },
+  {
+    "logo": {
+      "_type": "image",
+      "asset": {
+        "_ref": "image-30c9e9f5e255039c71d72d5be3d29d970ab9b9d3-824x825-png",
+        "_type": "reference"
+      }
+    },
+    "name": "Matlock Bath Parish Council",
+    "url": "https://www.matlockbathparishcouncil.gov.uk"
+  },
+  {
+    "logo": {
+      "_type": "image",
+      "asset": {
+        "_ref": "image-43ed47ecb8bc9b19e6024a48f3b2a37d3da97804-541x194-png",
+        "_type": "reference"
+      }
+    },
+    "name": "Peak Rail",
+    "url": "https://www.peakrail.co.uk"
+  },
+  {
+    "logo": {
+      "_type": "image",
+      "asset": {
+        "_ref": "image-f928c289516711c6ce7456655777f667d8623346-1200x308-png",
+        "_type": "reference"
+      }
+    },
+    "name": "Ron Brooks",
+    "url": "https://www.ronbrooks.co.uk"
+  },
+  {
+    "logo": {
+      "_type": "image",
+      "asset": {
+        "_ref": "image-66e3364ff8166fabacef8684c0b1671cb22e973f-375x474-png",
+        "_type": "reference"
+      }
+    },
+    "name": "The Fishpond",
+    "url": "https://thefishpondmatlockbath.co.uk"
+  },
+  {
+    "logo": {
+      "_type": "image",
+      "asset": {
+        "_ref": "image-d0b0cf6579dd596bd11c6c38aec966c8d3f68b35-920x922-png",
+        "_type": "reference"
+      }
+    },
+    "name": "The Garden Room",
+    "url": "http://thegardenroom.online/"
+  },
+  {
+    "logo": {
+      "_type": "image",
+      "asset": {
+        "_ref": "image-f2e00d2a1953a6c9847255fefab7b4c4a1170f77-594x208-png",
+        "_type": "reference"
+      }
+    },
+    "name": "Universal Group",
+    "url": "https://www.universal-group.uk"
+  }
+]

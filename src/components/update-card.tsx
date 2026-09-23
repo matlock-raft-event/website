@@ -1,7 +1,8 @@
 import logoSvg from "~/assets/images/logo.svg";
 import SanityImage from "~/components/sanity-image";
+import { resolveAssetSrc } from "~/lib/assets";
 
-const fallbackLogo = (logoSvg as { src?: string }).src ?? (logoSvg as unknown as string);
+const fallbackLogo = resolveAssetSrc(logoSvg);
 
 type UpdateCardProps = {
   title: string;
@@ -9,6 +10,11 @@ type UpdateCardProps = {
   date?: string;
   href: string;
   image?: unknown;
+  /** Degrees of tilt; keep within the design language's ±2.4° range. */
+  tilt?: number;
+  /** 3 under a section heading (the homepage preview), 2 where the cards are
+      the page's own top-level items (/updates). */
+  titleLevel?: 2 | 3;
 };
 
 const formatDate = (date?: string): string | undefined => {
@@ -22,15 +28,24 @@ const formatDate = (date?: string): string | undefined => {
   });
 };
 
-const UpdateCard = ({ title, description, date, href, image }: UpdateCardProps) => {
+/* A photo card, so it wears the photo radius and a hard shadow like the podium
+   cards rather than the 10px panel radius of the stat tiles. Unlike those, it
+   sits on cream: paper against cream is a ~9/255 step and the offset shadow
+   only falls bottom-right, so without a border the top and left edges vanish.
+   The tilt is the design language's pinned-photo rule; Tailwind's translate
+   utilities compile to the `translate` property, so the hover lift composes
+   with this rotate. */
+const UpdateCard = ({ title, description, date, href, image, tilt = 0, titleLevel = 3 }: UpdateCardProps) => {
+  const Title = titleLevel === 2 ? "h2" : "h3";
   const formattedDate = formatDate(date);
 
   return (
     <a
-      className="group/card flex h-full flex-col overflow-hidden rounded-[2px] border-[6px] border-white bg-white shadow-[7px_7px_0_0_rgba(0,0,0,0.25)] transition-all duration-300 ease-[cubic-bezier(0.165,0.84,0.44,1)] hover:-translate-y-1 hover:shadow-[11px_11px_0_0_rgba(0,0,0,0.25)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-dark"
+      className="group/card flex h-full flex-col overflow-hidden rounded-[4px] border-[3px] border-cream-dark bg-paper shadow-card transition-[transform,box-shadow] duration-300 ease-[cubic-bezier(0.165,0.84,0.44,1)] hover:-translate-y-1 hover:shadow-card-hard focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--surface-focus)"
       href={href}
+      style={tilt ? { transform: `rotate(${tilt}deg)` } : undefined}
     >
-      <div className="relative aspect-[3/2] overflow-hidden rounded-[2px] bg-cream">
+      <div className="relative aspect-[3/2] overflow-hidden bg-cream">
         {
           image
             ? (
@@ -55,20 +70,20 @@ const UpdateCard = ({ title, description, date, href, image }: UpdateCardProps) 
       <div className="flex flex-1 flex-col gap-2 p-5">
         {
           formattedDate &&
-            <p className="font-serif text-xs uppercase tracking-wider text-dark-light">
+            <p className="font-label text-xs uppercase tracking-wider text-ink-light">
               {formattedDate}
             </p>
         }
-        <h3 className="font-display text-lg md:text-xl leading-tight line-clamp-2 text-dark">
+        <Title className="font-display uppercase text-lg md:text-xl leading-tight line-clamp-2 text-ink">
           {title}
-        </h3>
+        </Title>
         {
           description &&
-            <p className="line-clamp-3 text-sm leading-relaxed text-dark-light">
+            <p className="line-clamp-3 text-sm leading-relaxed text-ink-light">
               {description}
             </p>
         }
-        <span className="mt-auto inline-flex items-center gap-1.5 pt-3 font-serif font-bold uppercase tracking-wide text-sm text-red transition-all group-hover/card:gap-2.5">
+        <span className="mt-auto inline-flex items-center gap-1.5 pt-3 font-label font-bold uppercase tracking-wide text-sm text-raft transition-all group-hover/card:gap-2.5">
           Read more
           <span aria-hidden="true">→</span>
         </span>

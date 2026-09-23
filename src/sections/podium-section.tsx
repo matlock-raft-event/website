@@ -1,5 +1,6 @@
 import Heading from "~/components/heading";
 import PodiumGrid from "~/components/podium-grid";
+import Reveal from "~/components/reveal";
 import Section from "~/components/section";
 import { Button } from "~/components/ui/button";
 import type { WinnersQueryResult } from "~/lib/sanity.types";
@@ -17,19 +18,24 @@ const PodiumSection = ({ winners }: Props) => {
   const latestWinners = (winners ?? []).filter(winner => winner.year === latestYear);
 
   return (
-    <Section palette="green">
-      <Heading
-        palette="green"
-        subtitle={latestYear ? `Proud to present ${latestYear}'s` : "Proud to present our"}
-        title="Heroic Winners"
-      />
+    <Section color="pine">
+      {/* Same max-w-5xl width as the site's other grid and image sections */}
+      <div className="mx-auto w-full max-w-5xl px-4">
+        <Heading
+          palette="pine"
+          subtitle={latestYear ? `Proud to present ${latestYear}'s` : "Proud to present our"}
+          title="Heroic Winners"
+        />
 
-      <PodiumGrid winners={latestWinners} />
+        <Reveal>
+          <PodiumGrid winners={latestWinners} />
+        </Reveal>
 
-      <div className="flex justify-center pt-12">
-        <Button color="cream" href="/hall-of-fame" size="lg">
-          See our hall of fame
-        </Button>
+        <div className="flex justify-center pt-12">
+          <Button color="cream" href="/hall-of-fame" size="lg">
+            See our hall of fame
+          </Button>
+        </div>
       </div>
     </Section>
   );

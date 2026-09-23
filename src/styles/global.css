@@ -1,5 +1,3 @@
-@import url("https://p.typekit.net/p.css?s=1&k=lwm2jkk&ht=tk&f=52098.52100&a=1532853&app=typekit&e=css");
-
 @import "tailwindcss";
 
 @import "tw-animate-css";
@@ -8,51 +6,101 @@
 
 @import "@fontsource-variable/albert-sans";
 
-@import "@fontsource/dela-gothic-one";
-
-@import "@fontsource-variable/rokkitt";
+@import "@fontsource/anton";
 
 @custom-variant dark (&:is(.dark *));
 
+/* The label voice: extrabold caps in the body face. label-caps is the wide-
+   tracked eyebrow/caption treatment; label-caps-row is the tighter variant
+   for horizontal fact rows and nav links. Font size stays explicit at the
+   usage site (text-xs unless noted). */
+@utility label-caps {
+    font-family: var(--font-label);
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+}
+
+@utility label-caps-row {
+    font-family: var(--font-label);
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
 @theme {
-    /* Literal palette ---------------------------------------------------- */
-    --color-mint: #bbf1df;
-    --color-mint-light: #c9f4e5;
-    --color-mint-dark: #96c1b2;
-    --color-mint-contrast: #1c5053;
+    /* Matlock Raft Event design language — palette (v1) ------------------
+       Three section surfaces (cream, river, pine) + one frame colour
+       (pine-dark). Sun is a ribbon accent, raft red means "you can act
+       here". Each family: base / light / dark / contrast, where contrast
+       is the text colour that passes WCAG AA on the base. */
+    --color-pine: #0d5c3f;
+    --color-pine-light: #3f8a68;
+    --color-pine-dark: #08402c;
+    --color-pine-contrast: #ffffff;
 
-    --color-cream: #f3f3e5;
-    --color-cream-light: #f6f6ec;
-    --color-cream-dark: #dbdbce;
-    --color-cream-contrast: #353a3c;
+    --color-river: #1d6a72;
+    --color-river-light: #2c8a7f;
+    --color-river-dark: #14505a;
+    --color-river-contrast: #f6f3e2;
 
-    --color-red: #cb2a33;
-    --color-red-light: #d5555c;
-    --color-red-dark: #a22229;
-    --color-red-contrast: #ffffff;
+    --color-sun: #fbba47;
+    --color-sun-light: #fcc86c;
+    --color-sun-dark: #d9971c;
+    --color-sun-contrast: #4b2f00;
 
-    /* Green is tuned so white text passes WCAG AA (4.5:1) on bg-green and
-       bg-green-dark, and cream text passes on both (#0a7d4e vs cream = 4.63:1). */
-    --color-green: #0a7d4e;
-    --color-green-light: #59ad87;
-    --color-green-dark: #086e44;
-    --color-green-contrast: #ffffff;
+    --color-raft: #d23a34;
+    --color-raft-light: #e0605a;
+    --color-raft-dark: #a92722;
+    --color-raft-contrast: #ffffff;
 
-    --color-yellow: #fbba47;
-    --color-yellow-light: #fcc86c;
-    --color-yellow-dark: #c99539;
-    --color-yellow-contrast: #4b2f00;
+    --color-ink: #26302c;
+    --color-ink-light: #4c5551;
+    --color-ink-dark: #1a211e;
+    --color-ink-contrast: #ffffff;
 
-    --color-dark: #353a3c;
-    --color-dark-light: #5d6163;
-    --color-dark-dark: #2a2e30;
-    --color-dark-contrast: #ffffff;
+    --color-paper: #fffdf4;
+
+    --color-cream: #f6f3e2;
+    --color-cream-light: #faf8ee;
+    --color-cream-dark: #e7e2c9;
+    --color-cream-contrast: var(--color-ink);
+
+    /* Status colours ------------------------------------------------------
+       For messaging, form states, banners and badges — separate from the
+       brand accents so "red button" never collides with "error text".
+       Base passes WCAG AA as text on cream and paper, and takes white
+       text when used as a background. light = pale wash for banners. */
+    --color-success: #17714a;
+    --color-success-light: #dcefe4;
+    --color-success-dark: #0f5636;
+    --color-success-contrast: #ffffff;
+
+    --color-warning: #8a6800;
+    --color-warning-light: #f7eccb;
+    --color-warning-dark: #6b5000;
+    --color-warning-contrast: #ffffff;
+
+    --color-error: #c9372c;
+    --color-error-light: #f9e3e0;
+    --color-error-dark: #a52a21;
+    --color-error-contrast: #ffffff;
+
+    --color-info: #0c66e4;
+    --color-info-light: #e0ebfb;
+    --color-info-dark: #0952b8;
+    --color-info-contrast: #ffffff;
+
+    --color-discovery: #6e5dc6;
+    --color-discovery-light: #eae6f8;
+    --color-discovery-dark: #5545a8;
+    --color-discovery-contrast: #ffffff;
 
     /* Semantic aliases — for shadcn / brand conventions ------------------ */
-    --color-primary: var(--color-red);
-    --color-primary-light: var(--color-red-light);
-    --color-primary-dark: var(--color-red-dark);
-    --color-primary-contrast: var(--color-red-contrast);
+    --color-primary: var(--color-raft);
+    --color-primary-light: var(--color-raft-light);
+    --color-primary-dark: var(--color-raft-dark);
+    --color-primary-contrast: var(--color-raft-contrast);
 
     --color-secondary: var(--color-cream);
     --color-secondary-light: var(--color-cream-light);
@@ -60,9 +108,22 @@
     --color-secondary-contrast: var(--color-cream-contrast);
 
     --font-sans: "Albert Sans Variable", sans-serif;
-    --font-serif: "Rokkitt Variable", serif;
-    --font-display: "Dela Gothic One", serif;
-    --font-avenir: "avenir", sans-serif;
+    --font-label: "Albert Sans Variable", sans-serif;
+    --font-display: "Anton", "Arial Narrow", sans-serif;
+
+    /* The hard-offset shadow language — pine-tinted, never blurred-black.
+       card = stat tiles, card-hard = polaroids, card-soft(+raised) = info
+       cards at rest/hover, card-heavy = paper cards sitting on photos. */
+    --shadow-card: 5px 5px 0 0 rgba(8, 64, 44, 0.2);
+    --shadow-card-hard: 8px 8px 0 0 rgba(8, 64, 44, 0.28);
+    --shadow-card-soft: 5px 5px 0 0 rgba(8, 64, 44, 0.12);
+    --shadow-card-soft-raised: 8px 8px 0 0 rgba(8, 64, 44, 0.14);
+    --shadow-card-heavy: 5px 5px 0 0 rgba(8, 64, 44, 0.4);
+
+    /* Stickers sit on coloured grounds, so their shadow is darker than the
+       card shadows. drop-shadow is for shapes a box-shadow can't follow. */
+    --shadow-sticker: 4px 5px 0 0 rgba(3, 30, 20, 0.5);
+    --drop-shadow-sticker: 4px 5px 0 rgba(3, 30, 20, 0.5);
 
     --breakpoint-sm: 600px;
     --breakpoint-md: 960px;
@@ -70,21 +131,8 @@
     --breakpoint-xl: 1536px;
 }
 
-@font-face {
-    font-family: "avenir";
-    src: url("/fonts/avenir/AvenirLTProRoman.otf") format("opentype");
-    font-display: auto;
-    font-style: normal;
-    font-weight: 400;
-    font-stretch: normal;
-}
-
-.tk-thirsty-rough-two {
-    font-family: "thirsty-rough-two", sans-serif;
-}
-
 body {
-    background-color: #f3f3e5;
+    background-color: #f6f3e2;
     -webkit-font-smoothing: subpixel-antialiased;
     -webkit-text-stroke: 1px transparent;
 }
@@ -95,7 +143,7 @@ body {
 
 :root {
     --background: oklch(1 0 0);
-    --foreground: var(--color-dark);
+    --foreground: var(--color-ink);
     --card: oklch(1 0 0);
     --card-foreground: oklch(0.153 0.006 107.1);
     --popover: oklch(1 0 0);
@@ -108,7 +156,7 @@ body {
     --muted-foreground: oklch(0.58 0.031 107.3);
     --accent: oklch(0.527 0.154 150.069);
     --accent-foreground: oklch(0.982 0.018 155.826);
-    --destructive: oklch(0.577 0.245 27.325);
+    --destructive: var(--color-error);
     --border: oklch(0.93 0.007 106.5);
     --input: oklch(0.93 0.007 106.5);
     --ring: oklch(0.737 0.021 106.9);
@@ -203,6 +251,15 @@ body {
     --radius-4xl: calc(var(--radius) * 2.6);
 }
 
+/* What sits on a ground, set by Section for the surface it paints. The
+   defaults are cream's, so anything outside a Section still reads. */
+:root {
+    --surface-link: var(--color-raft);
+    --surface-link-hover: var(--color-raft-dark);
+    --surface-rule: color-mix(in oklab, var(--color-ink) 18%, transparent);
+    --surface-focus: var(--color-ink);
+}
+
 @layer base {
   * {
     @apply border-border outline-ring/50;
@@ -213,6 +270,12 @@ body {
   html {
     @apply font-sans;
     }
+}
+
+/* In-page jumps (the skip link, FAQ anchors) land below the sticky header
+   bar instead of underneath it. */
+[id] {
+  scroll-margin-top: 5rem;
 }
 
 @keyframes marquee {

@@ -1,54 +1,61 @@
-import { CalendarBlankIcon, ClockIcon, EyeIcon, MapPinAreaIcon, UsersThreeIcon } from "@phosphor-icons/react";
-
-import Map from "~/assets/images/event-map.svg";
+import routeMap from "~/assets/images/route-map.svg";
 import Heading from "~/components/heading";
+import Reveal from "~/components/reveal";
 import Section from "~/components/section";
 import { Button } from "~/components/ui/button";
+import { resolveAssetSrc } from "~/lib/assets";
+import { EVENT_FACTS } from "~/lib/event-facts";
 
-const mapSrc = (Map as { src?: string }).src ?? (Map as unknown as string);
+const mapSrc = resolveAssetSrc(routeMap);
 
-const FACTS = [
-  { icon: MapPinAreaIcon, label: "Matlock, Derbyshire" },
-  { icon: CalendarBlankIcon, label: "Boxing Day, 26 Dec" },
-  { icon: ClockIcon, label: "11am start" },
-  { icon: EyeIcon, label: "Free to watch" },
-  { icon: UsersThreeIcon, label: "Family friendly" }
-];
-
+/* Reading layout, mirroring the race section: the copy + facts + CTA read on
+   the left, the route map takes the right column. Pine, because the map is
+   drawn on #0d5c3f — the section colour is the map's own background, so the
+   artwork sits on the page rather than looking pasted onto it. */
 const ComingToWatchSection = () => (
   <div id="coming-to-watch">
-    <Section palette="cream">
-      <Heading palette="cream" subtitle="Where, when and how" title="Coming To Watch?" />
-    <div className="flex flex-col items-center gap-8">
-      <p className="mx-auto w-full max-w-3xl px-4 text-center text-sm sm:text-base lg:text-lg leading-relaxed">
-        Pick a spot on the riverbank, or follow the rafts the whole way from Matlock down to
-        Cromford. Here&apos;s everything you need to know for the day.
-      </p>
-
-      <div className="mx-auto w-full max-w-4xl px-4">
-        <img
-          alt="The event route from Matlock to Cromford"
-          className="w-full rounded-lg"
-          src={mapSrc}
-        />
+    <Section color="pine">
+      <div className="mx-auto grid w-full max-w-5xl items-center gap-10 md:grid-cols-[1fr_1.1fr] md:gap-14 px-4">
+        <Reveal>
+          <Heading
+            align="left"
+            palette="pine"
+            subtitle="Where, when and how"
+            title="Come and watch."
+            titleAccent="Cheer them home."
+          />
+          <p className="text-sm sm:text-base lg:text-lg leading-relaxed text-pine-contrast">
+            Pick a spot on the riverbank, or follow the rafts the whole way from Matlock down to
+            Cromford. Here&apos;s everything you need to know for the day.
+          </p>
+          <ul className="mt-6 flex flex-col gap-2.5 label-caps-row text-xs text-pine-contrast">
+            {
+              EVENT_FACTS.map(fact => {
+                const Icon = fact.icon;
+                return (
+                  <li key={fact.label} className="inline-flex items-center gap-2">
+                    <Icon className="text-sun shrink-0" size={16} weight="bold" />
+                    {fact.label}
+                  </li>
+                );
+              })
+            }
+          </ul>
+          <div className="mt-7">
+            {/* cream navigates on dark surfaces, per the button colour rules */}
+            <Button color="cream" href="/info" size="lg">See event info</Button>
+          </div>
+        </Reveal>
+        <Reveal>
+          {/* No rounding: the map's own ground is this section's colour, so
+              corners would carve a visible card edge out of the page. */}
+          <img
+            alt="The event route from Matlock to Cromford"
+            className="w-full"
+            src={mapSrc}
+          />
+        </Reveal>
       </div>
-
-      <ul className="flex flex-row flex-wrap justify-center gap-x-5 gap-y-2 text-cream-contrast">
-        {
-          FACTS.map(fact => {
-            const Icon = fact.icon;
-            return (
-              <li key={fact.label} className="inline-flex items-center gap-1.5 text-sm font-semibold">
-                <Icon className="text-green shrink-0" weight="fill" />
-                {fact.label}
-              </li>
-            );
-          })
-        }
-      </ul>
-
-      <Button href="/info" size="lg">See event info</Button>
-    </div>
     </Section>
   </div>
 );

@@ -7,19 +7,15 @@ import type { AboutQueryResult } from "~/lib/sanity.types";
 type Props = { about: AboutQueryResult };
 
 const RnliSection = ({ about }: Props) => (
-  <Section palette="mint">
-    <Heading
-      palette="mint"
-      subtitle="Saving lives at sea with your support"
-      title="RNLI"
-    />
-    <div className="flex flex-col items-center gap-4">
-      {
-        about?.rnliBio &&
-                    <div className="mx-auto w-full max-w-4xl px-4">
-                      <Block value={about.rnliBio as never} />
-                    </div>
-      }
+  <Section color="river" plain>
+    <div className="mx-auto flex w-full max-w-5xl flex-col items-start gap-4 px-4 text-river-contrast">
+      <Heading
+        align="left"
+        palette="river"
+        subtitle="Saving lives at sea with your support"
+        title="RNLI"
+      />
+      {about?.rnliBio && <Block value={about.rnliBio as never} />}
       {
         about?.rnliLink &&
                     <Button

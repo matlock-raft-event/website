@@ -17,7 +17,7 @@ const Content = () => {
   return (
     <main id="main" tabIndex={-1}>
       <h1 className="sr-only">Page not found</h1>
-      <Section palette="cream">
+      <Section color="cream" plain>
         <Heading
           palette="cream"
           subtitle="Error 404"
@@ -32,14 +32,14 @@ const Content = () => {
           <div className="flex flex-row flex-wrap justify-center gap-4">
             {
               recoveryLinks.map(link => (
-                <Button color="red" href={link.to} key={link.to} size="lg">
+                <Button color="raft" href={link.to} key={link.to} size="lg">
                   {link.label}
                 </Button>
               ))
             }
           </div>
 
-          <Button color="dark" href="/" variant="link">
+          <Button color="ink" href="/" variant="link">
             ← Back to the homepage
           </Button>
 
@@ -56,7 +56,7 @@ const Content = () => {
           }
         </div>
       </Section>
-      <Footer />
+      <Footer waveTopColor="var(--color-cream)" />
     </main>
   );
 };

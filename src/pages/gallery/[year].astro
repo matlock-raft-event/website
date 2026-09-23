@@ -1,0 +1,26 @@
+---
+import BaseLayout from "~/layouts/BaseLayout.astro";
+import GalleryYearPage from "~/page-content/gallery-year-page";
+import { sanityClient } from "~/lib/sanity";
+import { galleryQuery } from "~/lib/queries";
+import { galleryYears, photoCount, type GalleryImage } from "~/lib/gallery";
+import type { GalleryQueryResult } from "~/lib/sanity.types";
+
+export async function getStaticPaths() {
+    const galleryImages = await sanityClient.fetch<GalleryQueryResult>(galleryQuery);
+
+    return galleryYears(galleryImages).map(({ year, images }) => ({
+        params: { year },
+        props: { year, images },
+    }));
+}
+
+const { year, images } = Astro.props as { year: string; images: GalleryImage[] };
+---
+
+<BaseLayout
+    description={`${photoCount(images.length)} from the ${year} Matlock Raft Event — the Boxing Day charity raft race down the River Derwent, in aid of the RNLI.`}
+    title={`Gallery ${year} - Matlock Raft Event`}
+>
+    <GalleryYearPage client:load images={images} year={year} />
+</BaseLayout>

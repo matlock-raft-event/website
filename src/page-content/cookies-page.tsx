@@ -1,23 +1,21 @@
 import Block from "~/components/block";
 import Footer from "~/components/footer";
-import Heading from "~/components/heading";
+import { PageHeader } from "~/components/page-header";
 import PageShell from "~/components/page-shell";
 import Section from "~/components/section";
-import Waves from "~/components/waves";
 import type { CookiesInfoQueryResult } from "~/lib/sanity.types";
-import InnerHeroSection from "~/sections/inner-hero-section";
 
 type Props = { cookiesInfo: CookiesInfoQueryResult };
 
 const Content = ({ cookiesInfo }: Props) => (
   <main id="main" tabIndex={-1}>
-    <InnerHeroSection title="Cookies policy" />
-    <Section palette="cream">
-      <Heading palette="cream" title="Cookies Policy" />
-      {cookiesInfo?.content ? <Block value={cookiesInfo.content as never} /> : null}
+    <PageHeader color="cream" eyebrow="How this site uses cookies" eyebrowStyle="plain" title="Cookies policy" />
+    <Section color="cream" plain>
+      <div className="mx-auto w-full max-w-5xl px-4">
+        {cookiesInfo?.content ? <Block startLevel={2} value={cookiesInfo.content as never} /> : null}
+      </div>
     </Section>
-    <Waves bottomColor="var(--color-cream)" topColor="var(--color-cream)" />
-    <Footer />
+    <Footer waveTopColor="var(--color-cream)" />
   </main>
 );
 

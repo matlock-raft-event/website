@@ -8,7 +8,7 @@ import type { ContactInstructionsQueryResult } from "~/lib/sanity.types";
 const contactInstructions = await sanityClient.fetch<ContactInstructionsQueryResult>(contactInstructionsQuery);
 ---
 <BaseLayout
-    description="Have questions, feedback, or inquiries? Feel free to contact us. We're here to assist you and provide the information you need."
+    description="Have questions, feedback, or enquiries? Feel free to contact us. We're here to assist you and provide the information you need."
     title="Contact Us - Matlock Raft Event"
 >
     <ContactPage client:load contactInstructions={contactInstructions} />

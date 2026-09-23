@@ -7,10 +7,21 @@ type WavesProps = DivProps & {
   topColor?: string;
   variant?: 1 | 2 | 3 | 4;
 };
+
+/**
+ * The seam between two sections. Design-language rules:
+ * - Sections never meet in a straight line — every seam is a wave.
+ * - `bottomColor` is the INCOMING section's colour (the wave belongs to the
+ *   section below); `topColor` matches the section above.
+ * - Vary `variant` so no two adjacent seams on a page use the same curve.
+ * - Waves are static by choice — no drift animation.
+ * - The final seam on every page flows into the pine-dark footer frame.
+ */
 const Waves = ({
   variant = 1,
-  topColor = "var(--color-mint)",
+  topColor = "var(--color-river)",
   bottomColor = "var(--color-cream)",
+  style,
   ...other
 }: WavesProps) => {
   const variant1 = "M0 50L120 55.5556C240 61.1111 480 72.2222 720 75C960 77.7778 1200 72.2222 1320 69.4444L1440 66.6667V100H1320C1200 100 960 100 720 100C480 100 240 100 120 100H0V50Z";
@@ -23,7 +34,11 @@ const Waves = ({
   ];
 
   return (
-    <div {...other}>
+    // 1px overlap on both edges: the svg's height can land on a fractional
+    // device pixel, and the antialiased edge otherwise shows as a hairline
+    // between sections. The adjacent sections paint over the overlap, and the
+    // wave's edge rows are solid topColor/bottomColor, so nothing is visible.
+    <div {...other} style={{ marginTop: -1, marginBottom: -1, ...style }}>
       <svg
         aria-hidden="true"
         focusable="false"

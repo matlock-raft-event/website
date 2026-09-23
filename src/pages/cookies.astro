@@ -8,7 +8,7 @@ import type { CookiesInfoQueryResult } from "~/lib/sanity.types";
 const cookiesInfo = await sanityClient.fetch<CookiesInfoQueryResult>(cookiesInfoQuery);
 ---
 <BaseLayout
-    description="Learn how we use cookies on our website to enhance your browsing experience, analyze site traffic, and personalize content. Your privacy is important to us."
+    description="The Matlock Raft Event website sets no cookies and runs no analytics or tracking. Here is what that means and who else is involved in delivering the site."
     title="Cookies Policy - Matlock Raft Event"
 >
     <CookiesPage client:load cookiesInfo={cookiesInfo} />

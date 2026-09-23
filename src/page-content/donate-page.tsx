@@ -1,23 +1,21 @@
 import ClosingCta from "~/components/closing-cta";
 import Footer from "~/components/footer";
-import Heading from "~/components/heading";
+import { PageHeader } from "~/components/page-header";
 import PageShell from "~/components/page-shell";
 import Section from "~/components/section";
 import { Button } from "~/components/ui/button";
-import Waves from "~/components/waves";
-import InnerHeroSection from "~/sections/inner-hero-section";
 
 const Content = () => (
   <main id="main" tabIndex={-1}>
-    <InnerHeroSection title="Donate" />
-    <Section palette="cream">
-      <Heading palette="cream" subtitle="Help us to raise more than ever" title="Donate" />
-      <div className="mx-auto w-full max-w-4xl px-4">
+    <PageHeader backLink={{ href: "/get-involved", label: "Get involved" }} background="stripes" color="sun" eyebrow="Help us to raise more than ever" title="Donate" />
+    <Section color="sun" plain>
+      <div className="mx-auto w-full max-w-5xl px-4">
         <div className="flex flex-col items-center gap-4">
           <p className="text-sm sm:text-base lg:text-lg leading-relaxed">
                             Every year, our volunteer bucket collectors are positioned along the route ready to collect
                             donations from our generous spectators. Can&apos;t make it this year or just can&apos;t wait
-                            until Boxing Day to support the RNLI? donations can be made online now via GoFundMe to
+                            until Boxing Day to support the RNLI? Donations can be made online now via our Facebook
+                            fundraiser to
                             help us raise money for this amazing cause. Any and all donations are appreciated so
                             greatly. Even the smallest of amounts can help to make a difference. Thank you all for
                             your support.
@@ -37,9 +35,9 @@ const Content = () => (
       secondary={{ label: "Become a sponsor", href: "/sponsors" }}
       text="Donating is just one way to help. You could enter a raft, volunteer on the day, or sponsor the event."
       title="Fancy doing even more?"
+      waveTopColor="var(--color-sun)"
     />
-    <Waves bottomColor="var(--color-cream)" topColor="var(--color-cream)" variant={2} />
-    <Footer />
+    <Footer waveTopColor="var(--color-pine-dark)" />
   </main>
 );
 

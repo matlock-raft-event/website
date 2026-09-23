@@ -18,7 +18,9 @@ const SanityImage = ({ image, alt, width, height, style, className }: SanityImag
   if (width) builder = builder.width(width);
   if (height) builder = builder.height(height);
 
-  const src = builder.auto("format").fit("max").url();
+  /* With both dimensions the CDN crops to that exact shape, centred on the
+     image's hotspot when one is set; otherwise scale down within bounds. */
+  const src = builder.auto("format").fit(width && height ? "crop" : "max").url();
 
   return (
     <img
