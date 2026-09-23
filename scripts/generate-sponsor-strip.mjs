@@ -17,7 +17,7 @@ const client = createClient({
 });
 
 const sponsors = await client.fetch(
-    `*[_type == "sponsor"]{ name, slug, "logo": coalesce(logoTrimmed, logo) } | order(lower(name) asc)`
+    `*[_type == "sponsor"]{ name, url, "logo": coalesce(logoTrimmed, logo) } | order(lower(name) asc)`
 );
 
 writeFileSync(

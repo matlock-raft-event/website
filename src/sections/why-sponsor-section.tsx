@@ -37,28 +37,28 @@ const Benefit = ({ icon, title, text, tilt = 0 }: BenefitProps) => (
    sponsors actually get on the right. Claims mirror the long-standing
    sponsors-page copy — posters/banners, website and socials, the RNLI. */
 const WhySponsorSection = () => (
-  <Section palette="river">
+  <Section color="sun" plain>
     <div className="mx-auto grid w-full max-w-5xl items-center gap-10 md:grid-cols-[1.1fr_0.9fr] md:gap-14 px-4">
       <Reveal className="text-left">
         <Heading
           align="left"
           className="!pb-0"
-          palette="river"
+          palette="sun"
           subtitle="Want to support the event?"
           title="Why sponsor"
           titleAccent="the race?"
         />
-        <p className="mt-5 max-w-prose text-sm sm:text-base lg:text-lg leading-relaxed text-cream">
+        <p className="mt-5 max-w-prose text-sm sm:text-base lg:text-lg leading-relaxed">
           The impact of our event and the funds we raise would not be possible
           without our fantastic sponsors &mdash; the local businesses that keep
           the raft event alive year after year.
         </p>
-        <p className="mt-4 max-w-prose text-sm sm:text-base lg:text-lg leading-relaxed text-cream">
+        <p className="mt-4 max-w-prose text-sm sm:text-base lg:text-lg leading-relaxed">
           Ready to make a difference and team up with us? Get in touch &mdash;
           let&apos;s make waves together and raise more than ever for the RNLI.
         </p>
         <div className="mt-7">
-          <Button color="sun" href="/contact" size="lg">
+          <Button href="/contact" size="lg">
             Become a sponsor
           </Button>
         </div>
@@ -72,7 +72,7 @@ const WhySponsorSection = () => (
         />
         <Benefit
           icon={<GlobeIcon weight="duotone" />}
-          text="Featured on our website, with your own sponsor page, and across our social channels."
+          text="Your logo on our website, linked to your own site, and a shout-out across our social channels."
           tilt={1.4}
           title="Website & socials"
         />

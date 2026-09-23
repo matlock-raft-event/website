@@ -1,0 +1,3 @@
+# Sponsors used to have a page each; their logos now link straight to their own
+# sites, so any old sponsor URL lands on the wall instead of a 404.
+/sponsors/* /sponsors 301

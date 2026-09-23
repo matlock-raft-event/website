@@ -17,9 +17,9 @@ const CELL_H = 80;
    light backing they need without per-logo chips, and mix-blend-multiply
    folds each logo's own white background into it. */
 const SponsorsSection = ({ sponsors }: Props) => (
-  <Section palette="cream">
+  <Section color="sun" plain>
     <Heading
-      palette="cream"
+      palette="sun"
       subtitle="The people we couldn't do this without"
       title="Our Amazing Sponsors"
     />
@@ -37,23 +37,37 @@ const SponsorsSection = ({ sponsors }: Props) => (
             const logo = sponsor.logoTrimmed ?? sponsor.logo;
             const scale = opticalScale(logo, CELL_W, CELL_H);
 
+            const mark = (
+              <SanityImage
+                alt={sponsor.name ?? undefined}
+                className="mix-blend-multiply"
+                image={logo}
+                width={400}
+                style={{
+                  height: `${scale * 100}%`,
+                  width: `${scale * 100}%`,
+                  objectFit: "contain"
+                }}
+              />
+            );
+            const cell = "flex h-16 w-full items-center justify-center sm:h-20";
+
+            /* No website on file — show the logo rather than an anchor that
+               goes nowhere. */
+            if (!sponsor.url) {
+              return <div key={sponsor.name} className={cell}>{mark}</div>;
+            }
+
             return (
               <a
                 key={sponsor.name}
-                className="flex h-16 w-full items-center justify-center transition-transform duration-300 ease-out hover:-translate-y-1 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-pine sm:h-20"
-                href={sponsor.slug ? `/sponsors/${sponsor.slug}` : undefined}
+                aria-label={sponsor.name ? `${sponsor.name} (opens in a new tab)` : undefined}
+                className={`${cell} transition-transform duration-300 ease-out hover:-translate-y-1 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-pine`}
+                href={sponsor.url}
+                rel="noreferrer"
+                target="_blank"
               >
-                <SanityImage
-                  alt={sponsor.name ?? undefined}
-                  className="mix-blend-multiply"
-                  image={logo}
-                  width={400}
-                  style={{
-                    height: `${scale * 100}%`,
-                    width: `${scale * 100}%`,
-                    objectFit: "contain"
-                  }}
-                />
+                {mark}
               </a>
             );
           })

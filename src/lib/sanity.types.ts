@@ -285,11 +285,7 @@ export type Faq = {
     _key: string;
   }>;
   audience?:
-    | "general"
-    | "participants"
-    | "spectators"
-    | "volunteers"
-    | "sponsors";
+    "general" | "participants" | "spectators" | "volunteers" | "sponsors";
 };
 
 export type Event = {
@@ -870,10 +866,10 @@ export type FaqsQueryResult = Array<{
 
 // Source: src/lib/queries.ts
 // Variable: sponsorsQuery
-// Query: *[_type == "sponsor"]{ name, slug, logo, logoTrimmed }
+// Query: *[_type == "sponsor"]{ name, url, logo, logoTrimmed }
 export type SponsorsQueryResult = Array<{
   name: string | null;
-  slug: string | null;
+  url: string | null;
   logo: {
     asset?: SanityImageAssetReference;
     media?: unknown;
@@ -891,11 +887,12 @@ export type SponsorsQueryResult = Array<{
 }>;
 
 // Source: src/lib/queries.ts
-// Variable: sponsorsForPathsQuery
-// Query: *[_type == "sponsor" && defined(slug)]{ name, slug, logo, logoTrimmed, url, address, description, testimonial }
-export type SponsorsForPathsQueryResult = Array<{
+// Variable: sponsorTestimonialsQuery
+// Query: *[_type == "sponsor" && defined(testimonial)]{ name, url, testimonial, logo, logoTrimmed }
+export type SponsorTestimonialsQueryResult = Array<{
   name: string | null;
-  slug: string;
+  url: string | null;
+  testimonial: string;
   logo: {
     asset?: SanityImageAssetReference;
     media?: unknown;
@@ -910,10 +907,6 @@ export type SponsorsForPathsQueryResult = Array<{
     crop?: SanityImageCrop;
     _type: "image";
   } | null;
-  url: string | null;
-  address: string | null;
-  description: string | null;
-  testimonial: string | null;
 }>;
 
 // Source: src/lib/queries.ts
@@ -1039,8 +1032,8 @@ declare module "@sanity/client" {
     '*[_type == "about"][0]{ bio, rnliBio, rnliLink, dasacBio, dasacLink }': AboutQueryResult;
     '*[_type == "contactInstructions"][0]{ general, sponsors, press }': ContactInstructionsQueryResult;
     '*[_type == "faq"]{ question, answer, audience }': FaqsQueryResult;
-    '*[_type == "sponsor"]{ name, slug, logo, logoTrimmed }': SponsorsQueryResult;
-    '*[_type == "sponsor" && defined(slug)]{ name, slug, logo, logoTrimmed, url, address, description, testimonial }': SponsorsForPathsQueryResult;
+    '*[_type == "sponsor"]{ name, url, logo, logoTrimmed }': SponsorsQueryResult;
+    '*[_type == "sponsor" && defined(testimonial)]{ name, url, testimonial, logo, logoTrimmed }': SponsorTestimonialsQueryResult;
     '*[_type == "galleryImage"]{ _id, year, author, img }': GalleryQueryResult;
     '*[_type == "cookiesInfo"][0]{ content }': CookiesInfoQueryResult;
     '*[_type == "volunteerPage"][0]{\n    intro,\n    roles[]{\n      title,\n      image,\n      body,\n      contactInstructions\n    }\n  }': VolunteerPageQueryResult;

@@ -8,7 +8,7 @@
       }
     },
     "name": "Darwin Forest",
-    "slug": "darwin"
+    "url": "https://www.darwinforest.co.uk"
   },
   {
     "logo": {
@@ -19,7 +19,7 @@
       }
     },
     "name": "H.A. Briddon",
-    "slug": "ha-briddon"
+    "url": "https://www.habriddon.co.uk"
   },
   {
     "logo": {
@@ -30,7 +30,7 @@
       }
     },
     "name": "Heights of Abraham",
-    "slug": "heights"
+    "url": "https://www.heightsofabraham.com/"
   },
   {
     "logo": {
@@ -41,7 +41,7 @@
       }
     },
     "name": "Longcliffe",
-    "slug": "longcliffe"
+    "url": "https://www.longcliffe.co.uk/"
   },
   {
     "logo": {
@@ -52,7 +52,7 @@
       }
     },
     "name": "Matlock Bath Parish Council",
-    "slug": "matlock-bath-parish-council"
+    "url": "https://www.matlockbathparishcouncil.gov.uk"
   },
   {
     "logo": {
@@ -63,7 +63,7 @@
       }
     },
     "name": "Peak Rail",
-    "slug": "peak-rail"
+    "url": "https://www.peakrail.co.uk"
   },
   {
     "logo": {
@@ -74,7 +74,7 @@
       }
     },
     "name": "Ron Brooks",
-    "slug": "ron-brooks"
+    "url": "https://www.ronbrooks.co.uk"
   },
   {
     "logo": {
@@ -85,7 +85,7 @@
       }
     },
     "name": "The Fishpond",
-    "slug": "fishpond"
+    "url": "https://thefishpondmatlockbath.co.uk"
   },
   {
     "logo": {
@@ -96,7 +96,7 @@
       }
     },
     "name": "The Garden Room",
-    "slug": "garden-room"
+    "url": "http://thegardenroom.online/"
   },
   {
     "logo": {
@@ -107,6 +107,6 @@
       }
     },
     "name": "Universal Group",
-    "slug": "universal-group"
+    "url": "https://www.universal-group.uk"
   }
 ]

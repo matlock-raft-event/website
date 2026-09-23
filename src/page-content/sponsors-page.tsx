@@ -1,22 +1,26 @@
 import Footer from "~/components/footer";
 import { PageHeader } from "~/components/page-header";
 import PageShell from "~/components/page-shell";
-import Waves from "~/components/waves";
-import type { SponsorsQueryResult } from "~/lib/sanity.types";
+import type { SponsorTestimonialsQueryResult, SponsorsQueryResult } from "~/lib/sanity.types";
+import SponsorWordsSection from "~/sections/sponsor-words-section";
 import SponsorsSection from "~/sections/sponsors-section";
 import WhySponsorSection from "~/sections/why-sponsor-section";
 
-type Props = { sponsors: SponsorsQueryResult };
+type Props = {
+  sponsors: SponsorsQueryResult;
+  testimonials: SponsorTestimonialsQueryResult;
+};
 
-/* Pitch first, gratitude last: the page opens by selling sponsorship and
-   closes with the thank-you logo wall sitting right above the footer. */
-const Content = ({ sponsors }: Props) => (
+/* Pitch, proof, gratitude: the page opens by selling sponsorship, backs it
+   with what current sponsors say, and closes with the thank-you logo wall
+   sitting right above the footer. */
+const Content = ({ sponsors, testimonials }: Props) => (
   <main id="main" tabIndex={-1}>
-    <PageHeader background="wallpaper" color="pine-dark" eyebrow="The backers of Boxing Day" title="Our sponsors" wavesColor="var(--color-river)" />
+    <PageHeader backLink={{ href: "/get-involved", label: "Get involved" }} background="wallpaper" color="sun" eyebrow="The backers of Boxing Day" title="Our sponsors" />
     <WhySponsorSection />
-    <Waves bottomColor="var(--color-cream)" topColor="var(--color-river)" variant={2} />
+    <SponsorWordsSection testimonials={testimonials} />
     <SponsorsSection sponsors={sponsors} />
-    <Footer sponsorStrip={false} />
+    <Footer waveTopColor="var(--color-sun)" sponsorStrip={false} />
   </main>
 );
 

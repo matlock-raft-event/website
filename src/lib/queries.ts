@@ -37,11 +37,11 @@ export const faqsQuery = defineQuery(
 );
 
 export const sponsorsQuery = defineQuery(
-  `*[_type == "sponsor"]{ name, slug, logo, logoTrimmed }`
+  `*[_type == "sponsor"]{ name, url, logo, logoTrimmed }`
 );
 
-export const sponsorsForPathsQuery = defineQuery(
-  `*[_type == "sponsor" && defined(slug)]{ name, slug, logo, logoTrimmed, url, address, description, testimonial }`
+export const sponsorTestimonialsQuery = defineQuery(
+  `*[_type == "sponsor" && defined(testimonial)]{ name, url, testimonial, logo, logoTrimmed }`
 );
 
 export const galleryQuery = defineQuery(
