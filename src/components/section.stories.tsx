@@ -11,14 +11,16 @@ const meta = {
     docs: {
       description: {
         component:
-          "The page is built from three section surfaces — **cream**, **river** and **pine** — with pine-dark "
-          + "reserved for the page frame (header, closing, footer). Each palette brings its own decorative "
-          + "shadow shapes (trees on pine, clouds on cream, water on river)."
+          "A section takes the same colours as the page header, so an inner page can be one ground from the "
+          + "header down to the closing (decision 014). Cream is the reading surface and keeps ink text; the "
+          + "greens and the river carry cream text; sun and raft are for short, loud pages. Each ground brings "
+          + "its own shadow shapes (trees on the greens, clouds on cream, water on river), which `plain` drops "
+          + "for sections carrying photographs."
       }
     }
   },
   argTypes: {
-    palette: { control: "select", options: ["cream", "river", "pine"] }
+    color: { control: "select", options: ["cream", "river", "pine", "pine-dark", "raft", "sun"] }
   }
 } satisfies Meta<typeof Section>;
 
@@ -26,10 +28,10 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Cream: Story = {
-  args: { palette: "cream" },
+  args: { color: "cream" },
   render: args => (
     <Section {...args}>
-      <Heading palette={args.palette} subtitle="It's for a mighty good cause" title="Get Involved" />
+      <Heading palette={args.color} subtitle="It's for a mighty good cause" title="Get Involved" />
       <p className="mx-auto max-w-2xl text-center">
         Brave the water, marshal the banks, shake a bucket or back the event.
       </p>
@@ -39,10 +41,21 @@ export const Cream: Story = {
 
 export const River: Story = {
   ...Cream,
-  args: { palette: "river" }
+  args: { color: "river" }
 };
 
 export const Pine: Story = {
   ...Cream,
-  args: { palette: "pine" }
+  args: { color: "pine" }
+};
+
+export const PineDark: Story = {
+  ...Cream,
+  args: { color: "pine-dark" }
+};
+
+/** No shapes, for a section that carries photographs. */
+export const Plain: Story = {
+  ...Cream,
+  args: { color: "river", plain: true }
 };

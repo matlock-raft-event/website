@@ -1,23 +1,30 @@
-import type { Palette } from "./section";
+import type { SurfaceColor } from "~/lib/surface-color";
 
-const PALETTE_TEXT: Record<Palette, string> = {
+const PALETTE_TEXT: Record<SurfaceColor, string> = {
   river: "text-river-contrast",
   cream: "text-cream-contrast",
-  pine: "text-pine-contrast"
+  pine: "text-pine-contrast",
+  "pine-dark": "text-cream",
+  raft: "text-raft-contrast",
+  sun: "text-sun-contrast"
 };
 
 /* The surface's highlight colour, shared by the eyebrow and the title accent:
    sun on the dark surfaces, pine on cream. Sun on cream would sit at ~1.5:1,
    and raft red reads as an alarm against so much warm cream; pine is the
    family green and clears 7:1. */
-const ACCENT_TEXT: Record<Palette, string> = {
+const ACCENT_TEXT: Record<SurfaceColor, string> = {
   cream: "text-pine",
   river: "text-sun",
-  pine: "text-sun"
+  pine: "text-sun",
+  "pine-dark": "text-sun",
+  raft: "text-sun",
+  // Raft on sun is 2.8:1; pine-dark is the accent that reads on yellow.
+  sun: "text-pine-dark"
 };
 
 type HeadingProps = {
-  palette?: Palette;
+  palette?: SurfaceColor;
   subtitle?: string;
   title: string;
   /** Optional trailing words rendered in sun — "Three miles. One weir. [No engines.]" */

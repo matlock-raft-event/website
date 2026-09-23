@@ -6,7 +6,7 @@ import { cva } from "class-variance-authority";
    sun donates, cream navigates on dark surfaces. Outline exists for filter
    chips; ghost/link for nav-like actions. */
 const buttonVariants = cva(
-  "group/button inline-flex shrink-0 font-label leading-0! items-center justify-center uppercase rounded-full border border-transparent bg-clip-padding text-sm font-extrabold tracking-wider whitespace-nowrap transition-[transform,box-shadow,filter,background-color,color] duration-150 ease-out outline-none select-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sun disabled:pointer-events-none disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-1 aria-invalid:ring-destructive/20 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
+  "group/button inline-flex shrink-0 font-label leading-0! items-center justify-center uppercase rounded-full border border-transparent bg-clip-padding text-sm font-extrabold tracking-wider whitespace-nowrap transition-[transform,box-shadow,filter,background-color,color] duration-150 ease-out outline-none select-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--surface-focus) disabled:pointer-events-none disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-1 aria-invalid:ring-destructive/20 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
   {
     variants: {
       variant: {
@@ -49,7 +49,7 @@ const buttonVariants = cva(
       {
         variant: "solid",
         color: "sun",
-        class: "bg-sun text-sun-contrast [--btn-under:var(--color-sun-dark)] focus-visible:outline-ink"
+        class: "bg-sun text-sun-contrast [--btn-under:var(--color-sun-dark)]"
       },
       {
         variant: "solid",
@@ -78,20 +78,24 @@ const buttonVariants = cva(
         color: "pine",
         class: "border-pine text-pine hover:bg-pine hover:text-pine-contrast"
       },
+      /* An outline button wears its own colour, like raft/pine/ink above. The
+         `*-contrast` tokens are the text to put ON that colour, so using them
+         here painted ink on cream and sun chips — invisible on any dark
+         ground. The fill colour only arrives on hover. */
       {
         variant: "outline",
         color: "sun",
-        class: "border-sun text-sun-contrast hover:bg-sun hover:text-sun-contrast"
+        class: "border-sun text-sun hover:bg-sun hover:text-sun-contrast"
       },
       {
         variant: "outline",
         color: "river",
-        class: "border-river text-river-contrast hover:bg-river"
+        class: "border-river text-river hover:bg-river hover:text-river-contrast"
       },
       {
         variant: "outline",
         color: "cream",
-        class: "border-cream-dark text-cream-contrast hover:bg-cream"
+        class: "border-cream-dark text-cream hover:bg-cream hover:text-cream-contrast"
       },
       {
         variant: "outline",

@@ -251,6 +251,15 @@ body {
     --radius-4xl: calc(var(--radius) * 2.6);
 }
 
+/* What sits on a ground, set by Section for the surface it paints. The
+   defaults are cream's, so anything outside a Section still reads. */
+:root {
+    --surface-link: var(--color-raft);
+    --surface-link-hover: var(--color-raft-dark);
+    --surface-rule: color-mix(in oklab, var(--color-ink) 18%, transparent);
+    --surface-focus: var(--color-ink);
+}
+
 @layer base {
   * {
     @apply border-border outline-ring/50;

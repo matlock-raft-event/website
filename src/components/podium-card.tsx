@@ -7,8 +7,9 @@ interface PodiumCardProps {
   title: string;
 }
 
+/* Paper carries its own ink, whatever ground the podium is standing on. */
 const PodiumCard = ({ image, podium, title }: PodiumCardProps) => (
-  <div className="relative p-[4%] pb-[8%] rounded-[4px] bg-paper shadow-card-hard transition-[transform,box-shadow] duration-[600ms] ease-[cubic-bezier(0.165,0.84,0.44,1)] flex">
+  <div className="relative p-[4%] pb-[8%] rounded-[4px] bg-paper text-ink shadow-card-hard transition-[transform,box-shadow] duration-[600ms] ease-[cubic-bezier(0.165,0.84,0.44,1)] flex">
     <div
       style={{
         position: "absolute",

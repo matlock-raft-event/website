@@ -7,7 +7,7 @@ const AccordionItem = ({
   ...props
 }: AccordionPrimitive.Item.Props) => (
   <AccordionPrimitive.Item
-    className={cn("not-last:border-b", className)}
+    className={cn("not-last:border-b not-last:border-(--surface-rule)", className)}
     data-slot="accordion-item"
     {...props}
   />
