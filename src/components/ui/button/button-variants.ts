@@ -4,9 +4,12 @@ import { cva } from "class-variance-authority";
    Solid buttons carry a hard underside shadow (--btn-under, the colour's own
    dark shade) that compresses on press. Colour says what it does: raft acts,
    sun donates, cream navigates on dark surfaces. Outline exists for filter
-   chips; ghost/link for nav-like actions. */
+   chips; ghost/link for nav-like actions.
+
+   No outline-none here: in Tailwind 4 it sets --tw-outline-style to none,
+   which the focus-visible outline then reads, so the focus ring never shows. */
 const buttonVariants = cva(
-  "group/button inline-flex shrink-0 font-label leading-0! items-center justify-center uppercase rounded-full border border-transparent bg-clip-padding text-sm font-extrabold tracking-wider whitespace-nowrap transition-[transform,box-shadow,filter,background-color,color] duration-150 ease-out outline-none select-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--surface-focus) disabled:pointer-events-none disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-1 aria-invalid:ring-destructive/20 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
+  "group/button inline-flex shrink-0 font-label leading-0! items-center justify-center uppercase rounded-full border border-transparent bg-clip-padding text-sm font-extrabold tracking-wider whitespace-nowrap transition-[transform,box-shadow,filter,background-color,color] duration-150 ease-out select-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--surface-focus) disabled:pointer-events-none disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-1 aria-invalid:ring-destructive/20 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
   {
     variants: {
       variant: {

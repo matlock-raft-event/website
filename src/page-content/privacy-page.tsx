@@ -34,8 +34,12 @@ const Content = () => (
 
         <Subheading>Cookies and analytics</Subheading>
         <Para>
-          This website sets no cookies and uses no analytics or tracking of any kind. We do not
-          build a profile of you or share anything about your visit. Our
+          This website sets no cookies. To count visits we use Cloudflare Web Analytics, which
+          records the pages viewed, the site that sent the visitor, their country, the type of
+          device and browser, and how quickly each page loads. It works without cookies or any
+          other storage on your device, and it does not fingerprint you or follow you across other
+          sites. We use the totals to see how many people the site reaches and to keep it fast; we
+          do not build a profile of you or share anything about your visit. Our
           {" "}
           <a className="text-(--surface-link) hover:underline" href="/cookies">Cookies Policy</a>
           {" "}
@@ -44,10 +48,11 @@ const Content = () => (
 
         <Subheading>Third-party services</Subheading>
         <Para>
-          Some parts of this site rely on third parties who have their own privacy policies: online
-          donations and our event page are hosted on Facebook; and our photo gallery and content are
-          managed through our content system. Following links to these services means your
-          information is handled under their policies.
+          Some parts of this site rely on third parties who have their own privacy policies:
+          Cloudflare hosts the site and provides the visitor statistics above; online donations go
+          through the fundraising platform linked from our Donate page, and our event page is on
+          Facebook; and our photo gallery and content are managed through our content system.
+          Following links to these services means your information is handled under their policies.
         </Para>
 
         <Subheading>Your rights</Subheading>

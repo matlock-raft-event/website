@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 import FacebookIcon from "~/components/facebook-icon";
 import Iconify from "~/components/iconify";
@@ -59,6 +59,7 @@ type HeaderProps = {
 const Header = ({ overlay = false }: HeaderProps) => {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const menuButton = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
     if (!overlay) return undefined;
@@ -96,6 +97,9 @@ const Header = ({ overlay = false }: HeaderProps) => {
               Donate
             </Button>
             <Button
+              ref={menuButton}
+              aria-expanded={open}
+              aria-haspopup="dialog"
               aria-label="open menu"
               className="md:hidden"
               color="cream"
@@ -109,9 +113,17 @@ const Header = ({ overlay = false }: HeaderProps) => {
         </div>
       </div>
 
-    <Drawer direction="top" onOpenChange={setOpen} open={open}>
+    {/* Vaul holds focus back unless asked (autoFocus), and the menu button
+        isn't a Drawer.Trigger, so hand focus back to it on close ourselves.
+        Otherwise a keyboard user tabs through the hidden page behind the
+        open menu, and lands on <body> when it closes. */}
+    <Drawer autoFocus direction="top" onOpenChange={setOpen} open={open}>
       <DrawerContent
-        className="bg-pine border-0 data-[vaul-drawer-direction=top]:h-screen data-[vaul-drawer-direction=top]:max-h-screen data-[vaul-drawer-direction=top]:mb-0 data-[vaul-drawer-direction=top]:rounded-none">
+        className="bg-pine border-0 [--surface-focus:var(--color-sun)] data-[vaul-drawer-direction=top]:h-screen data-[vaul-drawer-direction=top]:max-h-screen data-[vaul-drawer-direction=top]:mb-0 data-[vaul-drawer-direction=top]:rounded-none"
+        onCloseAutoFocus={event => {
+          event.preventDefault();
+          menuButton.current?.focus();
+        }}>
         <DrawerTitle className="sr-only">Mobile navigation</DrawerTitle>
 
         <Button

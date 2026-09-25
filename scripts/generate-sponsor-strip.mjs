@@ -13,7 +13,8 @@ const client = createClient({
     projectId: "6m6e8mul",
     dataset: "production",
     apiVersion: "2024-01-01",
-    useCdn: true
+    // Fresh reads, not the API CDN: a build triggered by a publish must see it.
+    useCdn: false
 });
 
 const sponsors = await client.fetch(

@@ -50,7 +50,7 @@ const HeroSection = ({ hero, imgSrc, imgSrcset, eventDate }: Props) => {
   const secondaryButtonText = hero?.secondaryButtonText;
 
   return (
-    <section className="relative flex flex-col bg-pine-dark md:min-h-[min(100svh,880px)] md:justify-center">
+    <section className="relative flex flex-col bg-pine-dark [--surface-focus:var(--color-sun)] md:min-h-[min(100svh,880px)] md:justify-center">
       <div className="absolute inset-x-0 top-0 h-[470px] md:h-full">
         <img
           alt="Rafts on the River Derwent during the Matlock Raft Event"
