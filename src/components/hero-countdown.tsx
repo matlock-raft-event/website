@@ -1,6 +1,7 @@
 import { Fragment } from "react";
 
 import { useCountdownDate } from "~/hooks/use-countdown-date";
+import { eventStart } from "~/lib/event";
 
 /* The countdown as little paper cards — same family as the polaroids and
    stat tiles: paper ground, hard pine-tinted shadow, slight alternating
@@ -33,21 +34,8 @@ type HeroCountdownProps = {
   date?: string;
 };
 
-/* The next Boxing Day at 11am, worked out from today. A hardcoded year would
-   quietly start counting down to a date in the past, and the fallback is
-   exactly what runs when the CMS has no date to correct it. */
-const nextBoxingDay = () => {
-  const now = new Date();
-  const thisYear = new Date(now.getFullYear(), 11, 26, 11, 0, 0, 0);
-
-  return now.getTime() <= thisYear.getTime()
-    ? thisYear
-    : new Date(now.getFullYear() + 1, 11, 26, 11, 0, 0, 0);
-};
-
 const HeroCountdown = ({ date }: HeroCountdownProps) => {
-  const fromCms = date ? new Date(date) : null;
-  const targetDate = fromCms && !Number.isNaN(fromCms.getTime()) ? fromCms : nextBoxingDay();
+  const targetDate = eventStart({ date });
   const {
     days,
     hours,

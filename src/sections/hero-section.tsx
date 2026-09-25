@@ -8,11 +8,19 @@ import type { HeroQueryResult } from "~/lib/sanity.types";
 import { resolveAssetSrc } from "~/lib/assets";
 import { EVENT_FACTS } from "~/lib/event-facts";
 
+export type Cancellation = {
+  year: number;
+  href: string;
+  label: string;
+};
+
 type Props = {
   hero: HeroQueryResult;
   imgSrc?: string;
   imgSrcset?: string;
   eventDate?: string;
+  /** Set while the Studio's Event status is Cancelled. */
+  cancellation?: Cancellation;
 };
 
 // Replace the "&nbsp;" token with a real non-breaking space (keeps words together).
@@ -41,7 +49,22 @@ const CTA_CLASSES = "flex-1 max-md:h-11 max-md:px-3 md:flex-none";
    centred beneath it, starting with the badge on the fade.
    md and up: the photo fills the hero and the content sits vertically
    centred on the left. */
-const HeroSection = ({ hero, imgSrc, imgSrcset, eventDate }: Props) => {
+/* Takes the countdown's place when the event is off: the same paper card
+   family, so it reads as part of the hero rather than an error. */
+const CancelledCard = ({ year, href, label }: Cancellation) => (
+  <div className="max-w-sm rounded-[5px] bg-paper px-5 py-4 text-center shadow-card-heavy -rotate-1 md:text-left">
+    <p className="font-display uppercase text-4xl leading-none text-raft">Cancelled</p>
+    <p className="mt-2 text-sm sm:text-base text-ink">The {year} raft event will not go ahead.</p>
+    <a
+      className="mt-1 inline-block text-sm sm:text-base font-semibold text-raft-dark underline underline-offset-2 hover:no-underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink"
+      href={href}
+    >
+      {label}
+    </a>
+  </div>
+);
+
+const HeroSection = ({ hero, imgSrc, imgSrcset, eventDate, cancellation }: Props) => {
   const title = hero?.title ?? "Ready to brave";
   const titleAccent = hero?.titleAccent;
   const buttonLink = hero?.buttonLink ?? "/take-part";
@@ -106,7 +129,7 @@ const HeroSection = ({ hero, imgSrc, imgSrcset, eventDate }: Props) => {
         </div>
 
         <div className="mt-3">
-          <HeroCountdown date={eventDate} />
+          {cancellation ? <CancelledCard {...cancellation} /> : <HeroCountdown date={eventDate} />}
         </div>
       </div>
     </section>

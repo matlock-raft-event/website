@@ -2,6 +2,7 @@
 import "~/styles/global.css";
 import albertSansUrl from "@fontsource-variable/albert-sans/files/albert-sans-latin-wght-normal.woff2?url";
 import antonUrl from "@fontsource/anton/files/anton-latin-400-normal.woff2?url";
+import CancelledBanner from "~/components/cancelled-banner.astro";
 import Header from "~/components/header";
 
 type Props = {
@@ -92,6 +93,7 @@ const organizationJsonLd = {
         >
             Skip to content
         </a>
+        <CancelledBanner />
         <Header client:load overlay={overlayHeader} />
         <slot />
     </body>

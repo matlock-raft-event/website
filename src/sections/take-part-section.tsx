@@ -4,8 +4,10 @@ import RulesPdf from "~/assets/documents/Raft-Event-Rules.pdf";
 import Section from "~/components/section";
 import StepCard from "~/components/step-card";
 import { Button } from "~/components/ui/button";
+import type { EventFacts } from "~/lib/event";
 
-const STEPS = [
+/* Meeting point, arrival time and fee come from the Studio's Event details. */
+const steps = ({ meetingPoint, arrivalTime, entryFee }: EventFacts) => [
   {
     key: "Step 1",
     description: "Read and make sure you understand the Rules and Guidelines and Safety Brief"
@@ -16,14 +18,16 @@ const STEPS = [
   },
   {
     key: "Step 3",
-    description: "Arrive at Cawdor Quarry (near Sainsbury’s) in Matlock at around 9am on Boxing Day with your " +
-            "entry fees (£15 each) and team form signed and in hand, and every crew member wearing a wetsuit, " +
+    description: `Arrive at ${meetingPoint} at around ${arrivalTime} on Boxing Day with your entry fees ` +
+            `(${entryFee}) and team form signed and in hand, and every crew member wearing a wetsuit, ` +
             "semi-dry or dry suit. Suits are compulsory: no suit, no raft. Your mode of transport should be a " +
             "sturdy DIY raft built entirely by the crew"
   }
 ];
 
-const TakePartSection = () => (
+type Props = { facts: EventFacts };
+
+const TakePartSection = ({ facts }: Props) => (
   <Section color="sun" plain>
     <div className="mx-auto w-full max-w-5xl px-4">
       <div className="flex flex-col items-center gap-4">
@@ -46,7 +50,7 @@ const TakePartSection = () => (
                             To take part in the raft event, you need to complete the following steps:
           </p>
           {
-            STEPS.map(item => (
+            steps(facts).map(item => (
               <StepCard
                 key={item.key}
                 content={

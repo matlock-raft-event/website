@@ -4,9 +4,7 @@ import { PageHeader } from "~/components/page-header";
 import PageShell from "~/components/page-shell";
 import Section from "~/components/section";
 import { Button } from "~/components/ui/button";
-import type { DonationQueryResult } from "~/lib/sanity.types";
-
-type Props = { donation: DonationQueryResult };
+type Props = { donationUrl?: string; year: number };
 
 const FACEBOOK_PAGE = "https://www.facebook.com/matlockraftevent/";
 
@@ -34,10 +32,9 @@ const paragraph = "text-sm sm:text-base lg:text-lg leading-relaxed";
    link": with one, it's a donate page; without one, it says when giving opens
    and where the link will appear, rather than sending people to last year's
    closed fundraiser. */
-const Content = ({ donation }: Props) => {
-  const url = donation?.donationUrl;
+const Content = ({ donationUrl: url, year }: Props) => {
   const platform = url ? platformOf(url) : null;
-  const fundraiser = `${donation?.year ? `${donation.year} ` : ""}online fundraiser`;
+  const fundraiser = `${year} online fundraiser`;
 
   return (
     <main id="main" tabIndex={-1}>

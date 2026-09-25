@@ -6,6 +6,7 @@ import ComingToWatchSection from "~/sections/coming-to-watch-section";
 import GetInvolvedSection from "~/sections/get-involved-section";
 import type { GetInvolvedImage } from "~/sections/get-involved-section";
 import HeroSection from "~/sections/hero-section";
+import type { Cancellation } from "~/sections/hero-section";
 import MarqueeSection from "~/sections/marquee-section";
 import PodiumSection from "~/sections/podium-section";
 import RaceSection from "~/sections/race-section";
@@ -27,6 +28,7 @@ type Props = {
   heroImageSrcset?: string;
   getInvolvedImages?: GetInvolvedImage[];
   eventDate?: string;
+  cancellation?: Cancellation;
 };
 
 const Content = ({
@@ -37,10 +39,11 @@ const Content = ({
   heroImageSrc,
   heroImageSrcset,
   getInvolvedImages,
-  eventDate
+  eventDate,
+  cancellation
 }: Props) => (
   <main id="main" tabIndex={-1}>
-    <HeroSection eventDate={eventDate} hero={hero} imgSrc={heroImageSrc} imgSrcset={heroImageSrcset} />
+    <HeroSection cancellation={cancellation} eventDate={eventDate} hero={hero} imgSrc={heroImageSrc} imgSrcset={heroImageSrcset} />
     <MarqueeSection />
     <SummarySection summary={summary} />
     <Waves
