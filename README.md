@@ -116,7 +116,7 @@ Invite a Sanity user via the [project members page](https://www.sanity.io/manage
 
 ### CORS
 
-The Studio authenticates against the Sanity API directly from the browser. Every origin that serves `/studio` must be whitelisted at [Sanity → API → CORS Origins](https://www.sanity.io/manage/project/6m6e8mul/api):
+The Studio authenticates against the Sanity API directly from the browser. Every origin that serves `/studio` must be whitelisted at [Sanity → API → CORS Origins](https://www.sanity.io/manage/project/6m6e8mul/api), with **Allow credentials** ticked (without it the origin is allowed to read, but sign-in fails and the Studio shows "Connect this studio to your project"):
 
 - `https://www.matlockraftevent.co.uk` (production)
 - `http://localhost:4321` (dev)
@@ -132,6 +132,17 @@ The hosting platform's build configuration should be:
 - **Publish directory:** `dist`
 - **Node version:** 22+
 - **Install command:** `pnpm install --frozen-lockfile`
+
+### Publishing in the Studio rebuilds the site
+
+Every page reads Sanity at build time, so a publish only reaches the site through a new build. A Sanity webhook calls a Cloudflare Workers Builds deploy hook on every publish:
+
+1. **Cloudflare:** Workers & Pages → `website` → Settings → Builds → Deploy Hooks. One hook, named "Sanity publish", on the `main` branch.
+2. **Sanity:** [API → Webhooks](https://www.sanity.io/manage/project/6m6e8mul/api/webhooks). URL is the deploy hook, dataset `production`, triggers on create, update and delete, method `POST`, no filter or projection, drafts off.
+
+A publish is live a few minutes later. Cloudflare skips repeat builds that queue up while one is waiting, so a burst of publishes (a batch of gallery photos) costs one build, not fifty. The hook URL starts a build for anyone who has it: keep it in those two dashboards and nowhere else. Builds read Sanity with `useCdn: false`, so they see a publish straight away rather than the API CDN's cached copy.
+
+A failed build still leaves the previous version live without telling anyone, so if a publish doesn't appear, check the build log in Workers & Pages → `website` → Deployments.
 
 ## Contributing
 
