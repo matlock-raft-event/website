@@ -30,7 +30,7 @@ const ClosingCta = ({
 }: ClosingCtaProps) => (
   <>
     <Waves bottomColor="var(--color-pine-dark)" topColor={waveTopColor} variant={3} />
-    <div className="bg-pine-dark text-cream">
+    <div className="bg-pine-dark text-cream [--surface-focus:var(--color-sun)]">
       <div className="mx-auto w-full container px-4 py-20 sm:py-24 text-center">
         <Reveal className="flex flex-col items-center gap-5">
           <p className="label-caps text-xs text-sun">

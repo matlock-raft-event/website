@@ -20,6 +20,8 @@ type SurfaceVars = {
   "--header-sticker-ink": string;
   "--header-ribbon": string;
   "--header-ribbon-ink": string;
+  /** The focus ring, chosen against the ground as Section does. */
+  "--surface-focus": string;
 };
 
 type ButtonColor = NonNullable<VariantProps<typeof buttonVariants>["color"]>;
@@ -52,7 +54,8 @@ const SURFACES: Record<PageHeaderColor, Surface> = {
       "--header-sticker": "var(--color-sun)",
       "--header-sticker-ink": "var(--color-sun-contrast)",
       "--header-ribbon": "var(--color-pine-dark)",
-      "--header-ribbon-ink": "var(--color-cream)"
+      "--header-ribbon-ink": "var(--color-cream)",
+      "--surface-focus": "var(--color-ink)"
     },
     backLinkColor: "pine"
   },
@@ -66,7 +69,8 @@ const SURFACES: Record<PageHeaderColor, Surface> = {
       "--header-sticker": "var(--color-sun)",
       "--header-sticker-ink": "var(--color-sun-contrast)",
       "--header-ribbon": "var(--color-raft)",
-      "--header-ribbon-ink": "var(--color-raft-contrast)"
+      "--header-ribbon-ink": "var(--color-raft-contrast)",
+      "--surface-focus": "var(--color-cream)"
     },
     backLinkColor: "cream"
   },
@@ -80,7 +84,8 @@ const SURFACES: Record<PageHeaderColor, Surface> = {
       "--header-sticker": "var(--color-sun)",
       "--header-sticker-ink": "var(--color-sun-contrast)",
       "--header-ribbon": "var(--color-raft)",
-      "--header-ribbon-ink": "var(--color-raft-contrast)"
+      "--header-ribbon-ink": "var(--color-raft-contrast)",
+      "--surface-focus": "var(--color-sun)"
     },
     backLinkColor: "cream"
   },
@@ -94,7 +99,8 @@ const SURFACES: Record<PageHeaderColor, Surface> = {
       "--header-sticker": "var(--color-sun)",
       "--header-sticker-ink": "var(--color-sun-contrast)",
       "--header-ribbon": "var(--color-raft)",
-      "--header-ribbon-ink": "var(--color-raft-contrast)"
+      "--header-ribbon-ink": "var(--color-raft-contrast)",
+      "--surface-focus": "var(--color-sun)"
     },
     backLinkColor: "cream"
   },
@@ -108,7 +114,8 @@ const SURFACES: Record<PageHeaderColor, Surface> = {
       "--header-sticker": "var(--color-sun)",
       "--header-sticker-ink": "var(--color-sun-contrast)",
       "--header-ribbon": "var(--color-pine-dark)",
-      "--header-ribbon-ink": "var(--color-cream)"
+      "--header-ribbon-ink": "var(--color-cream)",
+      "--surface-focus": "var(--color-cream)"
     },
     backLinkColor: "cream"
   },
@@ -123,7 +130,8 @@ const SURFACES: Record<PageHeaderColor, Surface> = {
       "--header-sticker": "var(--color-raft)",
       "--header-sticker-ink": "var(--color-raft-contrast)",
       "--header-ribbon": "var(--color-pine-dark)",
-      "--header-ribbon-ink": "var(--color-cream)"
+      "--header-ribbon-ink": "var(--color-cream)",
+      "--surface-focus": "var(--color-ink)"
     },
     backLinkColor: "pine"
   }
