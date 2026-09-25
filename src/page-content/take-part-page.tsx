@@ -2,12 +2,15 @@ import ClosingCta from "~/components/closing-cta";
 import Footer from "~/components/footer";
 import { PageHeader } from "~/components/page-header";
 import PageShell from "~/components/page-shell";
+import type { EventFacts } from "~/lib/event";
 import TakePartSection from "~/sections/take-part-section";
 
-const Content = () => (
+type Props = { facts: EventFacts };
+
+const Content = ({ facts }: Props) => (
   <main id="main" tabIndex={-1}>
     <PageHeader backLink={{ href: "/get-involved", label: "Get involved" }} background="stripes" color="sun" eyebrow="So you&apos;re brave enough?" title="Take part" />
-    <TakePartSection />
+    <TakePartSection facts={facts} />
     <ClosingCta
       primary={{ label: "Volunteer with us", href: "/volunteer" }}
       secondary={{ label: "Donate", href: "/donate" }}
@@ -19,9 +22,9 @@ const Content = () => (
   </main>
 );
 
-const TakePartPage = () => (
+const TakePartPage = (props: Props) => (
   <PageShell>
-    <Content />
+    <Content {...props} />
   </PageShell>
 );
 
