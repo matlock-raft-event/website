@@ -8,6 +8,10 @@ export const eventQuery = defineQuery(
   `*[_type == "event"][0]{ year, date, meetingPoint, arrivalTime, entryFee, distance, weirDescent, beneficiary, status }`
 );
 
+export const donationQuery = defineQuery(
+  `*[_type == "event"][0]{ year, donationUrl }`
+);
+
 export const summaryQuery = defineQuery(
   `*[_type == "summary"][0]{ _id, yearsActive, bio, eventCount, moneyRaised }`
 );

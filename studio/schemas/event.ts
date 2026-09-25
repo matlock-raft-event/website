@@ -57,6 +57,13 @@ export default {
             initialValue: "RNLI"
         },
         {
+            name: "donationUrl",
+            type: "url",
+            title: "Online donation link",
+            description: "This year's online fundraiser (Facebook, JustGiving…). Paste it once the fundraiser is live and the Donate page gets a \"Donate online now\" button. Leave it empty until then: the page says online giving opens nearer Boxing Day and points people to Facebook instead of a dead link.",
+            validation: (Rule: any) => Rule.uri({ scheme: ["https"] })
+        },
+        {
             name: "status",
             type: "string",
             title: "Event status",

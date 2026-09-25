@@ -303,6 +303,7 @@ export type Event = {
   distance?: string;
   weirDescent?: string;
   beneficiary?: string;
+  donationUrl?: string;
   status?: "scheduled" | "cancelled";
 };
 
@@ -614,6 +615,14 @@ export type EventQueryResult = {
   weirDescent: string | null;
   beneficiary: string | null;
   status: "cancelled" | "scheduled" | null;
+} | null;
+
+// Source: src/lib/queries.ts
+// Variable: donationQuery
+// Query: *[_type == "event"][0]{ year, donationUrl }
+export type DonationQueryResult = {
+  year: number | null;
+  donationUrl: string | null;
 } | null;
 
 // Source: src/lib/queries.ts
@@ -1027,6 +1036,7 @@ declare module "@sanity/client" {
   interface SanityQueries {
     '*[_type == "hero" && _id == "hero"][0]{ title, titleAccent, buttonLink, buttonText, secondaryButtonLink, secondaryButtonText }': HeroQueryResult;
     '*[_type == "event"][0]{ year, date, meetingPoint, arrivalTime, entryFee, distance, weirDescent, beneficiary, status }': EventQueryResult;
+    '*[_type == "event"][0]{ year, donationUrl }': DonationQueryResult;
     '*[_type == "summary"][0]{ _id, yearsActive, bio, eventCount, moneyRaised }': SummaryQueryResult;
     '*[_type == "winner"]{ name, year, position, img }': WinnersQueryResult;
     '*[_type == "update"]{ title, slug, date, img, content }': UpdatesQueryResult;
