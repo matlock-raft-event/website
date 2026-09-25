@@ -17,8 +17,9 @@ const STEPS = [
   {
     key: "Step 3",
     description: "Arrive at Cawdor Quarry (near Sainsbury’s) in Matlock at around 9am on Boxing Day with your " +
-            "entry fees (£15 each) and team form signed and in hand. Your mode of transport should be a sturdy DIY " +
-            "raft built entirely by the crew"
+            "entry fees (£15 each) and team form signed and in hand, and every crew member wearing a wetsuit, " +
+            "semi-dry or dry suit. Suits are compulsory: no suit, no raft. Your mode of transport should be a " +
+            "sturdy DIY raft built entirely by the crew"
   }
 ];
 
