@@ -3,7 +3,7 @@ export default {
     name: "event",
     type: "document",
     title: "Event details",
-    description: "This year's event. The date drives the homepage countdown and the year shown across the site; the meeting point, arrival time and entry fee appear on the Take Part and The Race pages.",
+    description: "This year's event. The date drives the homepage countdown and the year shown across the site; the meeting point, arrival time, entry fee and the three PDFs appear on the Take Part and The Race pages.",
     fields: [
         {
             name: "date",
@@ -36,6 +36,27 @@ export default {
             title: "Online donation link",
             description: "This year's online fundraiser (Facebook, JustGiving…). Paste it once the fundraiser is live and the Donate page gets a \"Donate online now\" button. Leave it empty until then: the page says online giving opens nearer Boxing Day and points people to Facebook instead of a dead link.",
             validation: (Rule: any) => Rule.uri({ scheme: ["https"] })
+        },
+        {
+            name: "registrationFormPdf",
+            type: "file",
+            title: "Registration form (PDF)",
+            description: "This year's registration form. The Take Part page's \"Registration Form\" button downloads it. Replace it each year; if it's empty the page falls back to the copy bundled with the site.",
+            options: { accept: "application/pdf" }
+        },
+        {
+            name: "rulesPdf",
+            type: "file",
+            title: "Rules & guidelines (PDF)",
+            description: "This year's rules and guidelines. The Take Part page's \"Rules & Guidelines\" button downloads it. Replace it each year; if it's empty the page falls back to the copy bundled with the site.",
+            options: { accept: "application/pdf" }
+        },
+        {
+            name: "safetyBriefPdf",
+            type: "file",
+            title: "Safety brief (PDF)",
+            description: "This year's pre-event safety brief. The Take Part page's \"Safety Brief\" button downloads it. Replace it each year; if it's empty the page falls back to the copy bundled with the site.",
+            options: { accept: "application/pdf" }
         },
         {
             name: "status",

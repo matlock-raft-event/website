@@ -13,6 +13,9 @@ export const eventQuery = defineQuery(
     arrivalTime,
     entryFee,
     donationUrl,
+    "registrationFormPdf": registrationFormPdf.asset->url,
+    "rulesPdf": rulesPdf.asset->url,
+    "safetyBriefPdf": safetyBriefPdf.asset->url,
     status,
     "latestUpdate": *[_type == "update" && defined(slug)] | order(date desc)[0]{ title, slug }
   }`
