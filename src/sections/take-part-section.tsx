@@ -1,6 +1,6 @@
-import ApplicationFormPdf from "~/assets/documents/Application-Form.pdf";
-import SafetyPdf from "~/assets/documents/Pre-Event-Safety.pdf";
-import RulesPdf from "~/assets/documents/Raft-Event-Rules.pdf";
+import RegistrationFormPdf from "~/assets/documents/Registration-Form.pdf";
+import RulesPdf from "~/assets/documents/Rules-and-Guidelines.pdf";
+import SafetyPdf from "~/assets/documents/Safety-Brief.pdf";
 import Section from "~/components/section";
 import StepCard from "~/components/step-card";
 import { Button } from "~/components/ui/button";
@@ -14,12 +14,12 @@ const steps = ({ meetingPoint, arrivalTime, entryFee }: EventFacts) => [
   },
   {
     key: "Step 2",
-    description: "Print out and complete your team form with all relevant information"
+    description: "Print out and complete your registration form with all relevant information"
   },
   {
     key: "Step 3",
     description: `Arrive at ${meetingPoint} at around ${arrivalTime} on Boxing Day with your entry fees ` +
-            `(${entryFee}) and team form signed and in hand, and every crew member wearing a wetsuit, ` +
+            `(${entryFee}) and registration form signed and in hand, and every crew member wearing a wetsuit, ` +
             "semi-dry or dry suit. Suits are compulsory: no suit, no raft. Your mode of transport should be a " +
             "sturdy DIY raft built entirely by the crew"
   }
@@ -69,7 +69,7 @@ const TakePartSection = ({ facts }: Props) => (
             phone. */}
         <div className="flex flex-row flex-wrap py-4 gap-4">
           <Button
-            download="Raft-Event-Rules"
+            download="Rules-and-Guidelines"
             href={RulesPdf}
             rel="noreferrer"
             target="_blank"
@@ -77,7 +77,7 @@ const TakePartSection = ({ facts }: Props) => (
                             Rules & Guidelines
           </Button>
           <Button
-            download="Pre-Event-Safety"
+            download="Safety-Brief"
             href={SafetyPdf}
             rel="noreferrer"
             target="_blank"
@@ -85,12 +85,12 @@ const TakePartSection = ({ facts }: Props) => (
                             Safety Brief
           </Button>
           <Button
-            download="Application-Form"
-            href={ApplicationFormPdf}
+            download="Registration-Form"
+            href={RegistrationFormPdf}
             rel="noreferrer"
             target="_blank"
           >
-                            Application Form
+                            Registration Form
           </Button>
         </div>
 
