@@ -471,6 +471,44 @@ export type About = {
   dasacLink?: string;
 };
 
+export type SanityReleaseMetadata = {
+  _type: "sanity.releaseMetadata";
+  title?: string;
+  description?: string;
+  releaseType?: "asap" | "scheduled" | "undecided";
+  intendedPublishAt?: string;
+  cardinality?: "many" | "one";
+};
+
+export type SystemRelease = {
+  _id: string;
+  _type: "system.release";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  name?: string;
+  state?:
+    | "active"
+    | "archiving"
+    | "unarchiving"
+    | "archived"
+    | "published"
+    | "publishing"
+    | "scheduled"
+    | "scheduling";
+  error?: {
+    message?: string;
+  };
+  publishAt?: string;
+  publishedAt?: string;
+  metadata?: SanityReleaseMetadata;
+  finalDocumentStates?: Array<{
+    id?: string;
+    _key: string;
+  }>;
+  userId?: string;
+};
+
 export type SanityImagePaletteSwatch = {
   _type: "sanity.imagePaletteSwatch";
   background?: string;
@@ -592,6 +630,8 @@ export type AllSanitySchemaTypes =
   | CookiesInfo
   | ContactInstructions
   | About
+  | SanityReleaseMetadata
+  | SystemRelease
   | SanityImagePaletteSwatch
   | SanityImagePalette
   | SanityImageDimensions
@@ -1040,8 +1080,7 @@ export type VolunteerPageQueryResult = {
 } | null;
 
 // Query TypeMap
-import "@sanity/client";
-declare module "@sanity/client" {
+declare global {
   interface SanityQueries {
     '*[_type == "hero" && _id == "hero"][0]{ title, titleAccent, buttonLink, buttonText, secondaryButtonLink, secondaryButtonText }': HeroQueryResult;
     '*[_type == "event"][0]{\n    date,\n    meetingPoint,\n    arrivalTime,\n    inspectionTime,\n    entryFee,\n    donationUrl,\n    "registrationFormPdf": registrationFormPdf.asset->url,\n    "rulesPdf": rulesPdf.asset->url,\n    "safetyBriefPdf": safetyBriefPdf.asset->url,\n    status,\n    "latestUpdate": *[_type == "update" && defined(slug)] | order(date desc)[0]{ title, slug }\n  }': EventQueryResult;
@@ -1058,4 +1097,8 @@ declare module "@sanity/client" {
     '*[_type == "cookiesInfo"][0]{ content }': CookiesInfoQueryResult;
     '*[_type == "volunteerPage"][0]{\n    intro,\n    roles[]{\n      title,\n      image,\n      body,\n      contactInstructions\n    }\n  }': VolunteerPageQueryResult;
   }
+}
+// Lets @sanity/client releases that predate the global registry read it too
+declare module "@sanity/client" {
+  interface SanityQueries extends globalThis.SanityQueries {}
 }
