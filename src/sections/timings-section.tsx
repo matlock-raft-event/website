@@ -8,7 +8,7 @@ import type { EventFacts } from "~/lib/event";
    usual pace of the river. */
 const timings = ({ meetingPoint, arrivalTime, inspectionTime }: Pick<EventFacts, "meetingPoint" | "arrivalTime" | "inspectionTime">) => [
   {
-    time: arrivalTime,
+    time: `Around ${arrivalTime}`,
     description: "After an evening of festivities, the rafters are up bright and early to arrive at " +
             `${meetingPoint}, register for the event and start assembling their rafts.`
   },
@@ -22,15 +22,15 @@ const timings = ({ meetingPoint, arrivalTime, inspectionTime }: Pick<EventFacts,
     description: "The rafts set off on their journey down the Derwent"
   },
   {
-    time: "11:30am",
+    time: "Around 11:30am",
     description: "The rafts arrive at Hall Leys Park in Matlock"
   },
   {
-    time: "12:30pm",
+    time: "Around 12:30pm",
     description: "The rafts arrive at Derwent Gardens in Matlock Bath"
   },
   {
-    time: "1:00pm",
+    time: "Around 1:00pm",
     description: "The rafts arrive at the finish line at Cromford Meadows in Cromford"
   },
   {
