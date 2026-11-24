@@ -13,14 +13,14 @@ import {
     summaryQuery,
     winnersQuery,
     updatesQuery,
-    eventQuery,
 } from "~/lib/queries";
+import { cancellationUpdateLink, eventStart, eventYear, isCancelled } from "~/lib/event";
+import { getEvent } from "~/lib/get-event";
 import type {
     HeroQueryResult,
     SummaryQueryResult,
     WinnersQueryResult,
     UpdatesQueryResult,
-    EventQueryResult,
 } from "~/lib/sanity.types";
 
 const [hero, summary, winners, updates, event] = await Promise.all([
@@ -28,7 +28,7 @@ const [hero, summary, winners, updates, event] = await Promise.all([
     sanityClient.fetch<SummaryQueryResult>(summaryQuery),
     sanityClient.fetch<WinnersQueryResult>(winnersQuery),
     sanityClient.fetch<UpdatesQueryResult>(updatesQuery),
-    sanityClient.fetch<EventQueryResult>(eventQuery),
+    getEvent(),
 ]);
 
 const heroImage = await getImage({
@@ -53,15 +53,16 @@ const getInvolvedImages = await Promise.all(
     })
 );
 
-const eventYear = event?.date
-    ? new Date(event.date).getFullYear()
-    : new Date().getFullYear();
+const cancelled = isCancelled(event);
 const eventJsonLd = {
     "@context": "https://schema.org",
     "@type": "Event",
-    name: `The Matlock Raft Event ${eventYear}`,
-    startDate: event?.date ?? `${eventYear}-12-26T11:00:00+00:00`,
-    eventStatus: "https://schema.org/EventScheduled",
+    name: `The Matlock Raft Event ${eventYear(event)}`,
+    startDate: eventStart(event).toISOString(),
+    // Google shows a cancelled event as cancelled in search results
+    eventStatus: cancelled
+        ? "https://schema.org/EventCancelled"
+        : "https://schema.org/EventScheduled",
     eventAttendanceMode: "https://schema.org/OfflineEventAttendanceMode",
     location: {
         "@type": "Place",
@@ -100,5 +101,8 @@ const eventJsonLd = {
         heroImageSrcset={heroImage.srcSet.attribute}
         getInvolvedImages={getInvolvedImages}
         eventDate={event?.date ?? undefined}
+        cancellation={cancelled
+            ? { year: eventYear(event), ...cancellationUpdateLink(event) }
+            : undefined}
     />
 </BaseLayout>

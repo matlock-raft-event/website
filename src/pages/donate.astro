@@ -1,15 +1,14 @@
 ---
 import BaseLayout from "~/layouts/BaseLayout.astro";
 import DonatePage from "~/page-content/donate-page";
-import { sanityClient } from "~/lib/sanity";
-import { donationQuery } from "~/lib/queries";
-import type { DonationQueryResult } from "~/lib/sanity.types";
+import { eventYear } from "~/lib/event";
+import { getEvent } from "~/lib/get-event";
 
-const donation = await sanityClient.fetch<DonationQueryResult>(donationQuery);
+const event = await getEvent();
 ---
 <BaseLayout
     description="Donate to the Matlock Raft Event and help us raise more than ever for the RNLI."
     title="Donate - Matlock Raft Event"
 >
-    <DonatePage client:load donation={donation} />
+    <DonatePage client:load donationUrl={event?.donationUrl ?? undefined} year={eventYear(event)} />
 </BaseLayout>

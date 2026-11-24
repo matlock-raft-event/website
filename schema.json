@@ -1999,13 +1999,6 @@
           "type": "string"
         }
       },
-      "year": {
-        "type": "objectAttribute",
-        "value": {
-          "type": "number"
-        },
-        "optional": true
-      },
       "date": {
         "type": "objectAttribute",
         "value": {
@@ -2028,27 +2021,6 @@
         "optional": true
       },
       "entryFee": {
-        "type": "objectAttribute",
-        "value": {
-          "type": "string"
-        },
-        "optional": true
-      },
-      "distance": {
-        "type": "objectAttribute",
-        "value": {
-          "type": "string"
-        },
-        "optional": true
-      },
-      "weirDescent": {
-        "type": "objectAttribute",
-        "value": {
-          "type": "string"
-        },
-        "optional": true
-      },
-      "beneficiary": {
         "type": "objectAttribute",
         "value": {
           "type": "string"

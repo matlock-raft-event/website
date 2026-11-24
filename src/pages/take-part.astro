@@ -1,10 +1,14 @@
 ---
 import BaseLayout from "~/layouts/BaseLayout.astro";
 import TakePartPage from "~/page-content/take-part-page";
+import { eventFacts } from "~/lib/event";
+import { getEvent } from "~/lib/get-event";
+
+const facts = eventFacts(await getEvent());
 ---
 <BaseLayout
     description="Learn how you can participate in the upcoming event and be a part of the unforgettable experience. Find all the details you need to take part."
     title="Take Part - Matlock Raft Event"
 >
-    <TakePartPage client:load />
+    <TakePartPage client:load facts={facts} />
 </BaseLayout>

@@ -1,12 +1,15 @@
 import Heading from "~/components/heading";
 import Iconify from "~/components/iconify";
 import Section from "~/components/section";
+import type { EventFacts } from "~/lib/event";
 
-const TIMINGS = [
+/* The first entry follows the Studio's arrival time and meeting point; the
+   rest are the usual pace of the river. */
+const timings = ({ meetingPoint, arrivalTime }: Pick<EventFacts, "meetingPoint" | "arrivalTime">) => [
   {
-    time: "9:00am",
-    description: "After an evening of festivities, the rafters are up bright and early to arrive at Cawdor " +
-            "Quarry, register for the event and make final preparations (all nuts tightened)."
+    time: arrivalTime,
+    description: "After an evening of festivities, the rafters are up bright and early to arrive at " +
+            `${meetingPoint}, register for the event and make final preparations (all nuts tightened).`
   },
   {
     time: "11:00am",
@@ -31,7 +34,9 @@ const TIMINGS = [
   }
 ];
 
-const TimingsSection = () => (
+type Props = { facts: Pick<EventFacts, "meetingPoint" | "arrivalTime"> };
+
+const TimingsSection = ({ facts }: Props) => (
   <Section color="river" plain>
     <div className="mx-auto w-full max-w-5xl px-4">
       <Heading
@@ -47,7 +52,7 @@ const TimingsSection = () => (
       </p>
       <ol className="relative border-l-2 border-raft ml-6">
         {
-          TIMINGS.map(item => (
+          timings(facts).map(item => (
             <li key={item.time} className="mb-8 ml-8 last:mb-0">
               <span className="absolute -left-5 flex h-10 w-10 items-center justify-center rounded-full bg-raft shadow-[2px_2px_0_0_rgba(0,0,0,0.25)]">
                 <Iconify color="var(--color-raft-contrast)" icon="ph:clock" width={20} />

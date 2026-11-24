@@ -295,14 +295,10 @@ export type Event = {
   _createdAt: string;
   _updatedAt: string;
   _rev: string;
-  year?: number;
   date?: string;
   meetingPoint?: string;
   arrivalTime?: string;
   entryFee?: string;
-  distance?: string;
-  weirDescent?: string;
-  beneficiary?: string;
   donationUrl?: string;
   status?: "scheduled" | "cancelled";
 };
@@ -604,25 +600,18 @@ export type HeroQueryResult = {
 
 // Source: src/lib/queries.ts
 // Variable: eventQuery
-// Query: *[_type == "event"][0]{ year, date, meetingPoint, arrivalTime, entryFee, distance, weirDescent, beneficiary, status }
+// Query: *[_type == "event"][0]{    date,    meetingPoint,    arrivalTime,    entryFee,    donationUrl,    status,    "latestUpdate": *[_type == "update" && defined(slug)] | order(date desc)[0]{ title, slug }  }
 export type EventQueryResult = {
-  year: number | null;
   date: string | null;
   meetingPoint: string | null;
   arrivalTime: string | null;
   entryFee: string | null;
-  distance: string | null;
-  weirDescent: string | null;
-  beneficiary: string | null;
-  status: "cancelled" | "scheduled" | null;
-} | null;
-
-// Source: src/lib/queries.ts
-// Variable: donationQuery
-// Query: *[_type == "event"][0]{ year, donationUrl }
-export type DonationQueryResult = {
-  year: number | null;
   donationUrl: string | null;
+  status: "cancelled" | "scheduled" | null;
+  latestUpdate: {
+    title: string | null;
+    slug: string;
+  } | null;
 } | null;
 
 // Source: src/lib/queries.ts
@@ -1035,8 +1024,7 @@ import "@sanity/client";
 declare module "@sanity/client" {
   interface SanityQueries {
     '*[_type == "hero" && _id == "hero"][0]{ title, titleAccent, buttonLink, buttonText, secondaryButtonLink, secondaryButtonText }': HeroQueryResult;
-    '*[_type == "event"][0]{ year, date, meetingPoint, arrivalTime, entryFee, distance, weirDescent, beneficiary, status }': EventQueryResult;
-    '*[_type == "event"][0]{ year, donationUrl }': DonationQueryResult;
+    '*[_type == "event"][0]{\n    date,\n    meetingPoint,\n    arrivalTime,\n    entryFee,\n    donationUrl,\n    status,\n    "latestUpdate": *[_type == "update" && defined(slug)] | order(date desc)[0]{ title, slug }\n  }': EventQueryResult;
     '*[_type == "summary"][0]{ _id, yearsActive, bio, eventCount, moneyRaised }': SummaryQueryResult;
     '*[_type == "winner"]{ name, year, position, img }': WinnersQueryResult;
     '*[_type == "update"]{ title, slug, date, img, content }': UpdatesQueryResult;

@@ -3,58 +3,32 @@ export default {
     name: "event",
     type: "document",
     title: "Event details",
-    description: "Core facts about this year's event. Editing these updates the countdown, schedule and Take Part page across the site.",
+    description: "This year's event. The date drives the homepage countdown and the year shown across the site; the meeting point, arrival time and entry fee appear on the Take Part and The Race pages.",
     fields: [
-        {
-            name: "year",
-            type: "number",
-            title: "Event year",
-            description: "The year this event takes place, e.g. 2026.",
-            validation: (Rule: any) => Rule.required()
-        },
         {
             name: "date",
             type: "datetime",
             title: "Date & start time",
-            description: "The day and time the rafts set off. This powers the homepage countdown — keep it accurate.",
+            description: "The day and time the rafts set off. This powers the homepage countdown and sets the year shown on the site, so keep it accurate.",
             validation: (Rule: any) => Rule.required()
         },
         {
             name: "meetingPoint",
             type: "string",
             title: "Meeting point",
-            description: "Where rafters gather, e.g. \"Cawdor Quarry (near Sainsbury's), Matlock\"."
+            description: "Where rafters gather to register, e.g. \"Cawdor Quarry (near Sainsbury's) in Matlock\". It's used mid-sentence (\"Arrive at … at around 9:00am\"), so write it to read that way."
         },
         {
             name: "arrivalTime",
             type: "string",
             title: "Rafter arrival time",
-            description: "When participants should arrive to register, e.g. \"around 7am\"."
+            description: "When crews should arrive to register, written like \"9:00am\". The Take Part page adds \"around\" in front, and it heads The Race page's timings."
         },
         {
             name: "entryFee",
             type: "string",
             title: "Entry fee (per person)",
             description: "Shown on the Take Part page, e.g. \"£15 each\"."
-        },
-        {
-            name: "distance",
-            type: "string",
-            title: "Course distance",
-            description: "Approximate length of the course, e.g. \"3 miles\"."
-        },
-        {
-            name: "weirDescent",
-            type: "string",
-            title: "Weir descent",
-            description: "Description of the weir, e.g. \"around 30 metres of rapid white water\"."
-        },
-        {
-            name: "beneficiary",
-            type: "string",
-            title: "Charity beneficiary",
-            description: "The charity the event raises money for.",
-            initialValue: "RNLI"
         },
         {
             name: "donationUrl",
@@ -67,7 +41,7 @@ export default {
             name: "status",
             type: "string",
             title: "Event status",
-            description: "Set to \"Cancelled\" if the event can't go ahead (e.g. flooding).",
+            description: "If the event can't go ahead (e.g. flooding), first publish an Update saying so, then set this to Cancelled. Every page then shows a cancelled banner linking to that newest Update, the homepage countdown is replaced, and Google is told the event is cancelled.",
             options: {
                 list: [
                     { title: "Scheduled", value: "scheduled" },

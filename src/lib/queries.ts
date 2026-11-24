@@ -4,12 +4,18 @@ export const heroQuery = defineQuery(
   `*[_type == "hero" && _id == "hero"][0]{ title, titleAccent, buttonLink, buttonText, secondaryButtonLink, secondaryButtonText }`
 );
 
+/* latestUpdate: when the event is cancelled, the banner links to the update
+   that explains why, which is the newest one. */
 export const eventQuery = defineQuery(
-  `*[_type == "event"][0]{ year, date, meetingPoint, arrivalTime, entryFee, distance, weirDescent, beneficiary, status }`
-);
-
-export const donationQuery = defineQuery(
-  `*[_type == "event"][0]{ year, donationUrl }`
+  `*[_type == "event"][0]{
+    date,
+    meetingPoint,
+    arrivalTime,
+    entryFee,
+    donationUrl,
+    status,
+    "latestUpdate": *[_type == "update" && defined(slug)] | order(date desc)[0]{ title, slug }
+  }`
 );
 
 export const summaryQuery = defineQuery(
