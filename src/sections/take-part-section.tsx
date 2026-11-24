@@ -30,7 +30,7 @@ const steps = ({ meetingPoint, arrivalTime, inspectionTime, entryFee }: EventFac
   },
   {
     key: "Step 2",
-    description: "Print out and complete your registration form with all relevant information"
+    description: "Print out and complete your registration form with all relevant information, or fill in the copy in your pack on the day"
   },
   {
     key: "Step 3",
