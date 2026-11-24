@@ -9,8 +9,8 @@ type Props = { summary: SummaryQueryResult };
 
 /* The river section from the design language: the race facts sit in the
    water — copy on the left, stat tiles on the right, the Section's water
-   shapes washing behind. Facts per the Take Part page: ~3 miles, weir
-   descents totalling ~30m of rapid white water, homemade rafts only. */
+   shapes washing behind. Facts per the Take Part page: ~3 miles, a steep
+   drop at Masson Weir, homemade rafts only. */
 const RaceSection = ({ summary }: Props) => (
   <Section color="river">
     <div className="mx-auto grid w-full max-w-5xl items-center gap-10 md:grid-cols-[1.1fr_0.9fr] md:gap-14 px-4">
@@ -26,7 +26,7 @@ const RaceSection = ({ summary }: Props) => (
         <p className="mt-5 max-w-prose text-sm sm:text-base lg:text-lg leading-relaxed text-cream">
           The course runs roughly three miles from Matlock to the finish at
           Cromford Meadows. The water is cold, in places deep and turbulent,
-          and the weir descents total around 30 metres of rapid white water.
+          and Masson Weir is a steep drop and the most dangerous part of the course.
           Rafts must be homemade, built entirely by the crew &mdash; and the
           banks will be full of spectators cheering you through.
         </p>

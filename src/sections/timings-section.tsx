@@ -3,17 +3,19 @@ import Iconify from "~/components/iconify";
 import Section from "~/components/section";
 import type { EventFacts } from "~/lib/event";
 
-/* The first entry follows the Studio's arrival time and meeting point; the
-   rest are the usual pace of the river. */
-const timings = ({ meetingPoint, arrivalTime }: Pick<EventFacts, "meetingPoint" | "arrivalTime">) => [
+/* The first entry follows the Studio's inspection time and meeting point, the
+   start times and prize-giving are in the Rules & Guidelines, and the stops
+   between are the usual pace of the river. */
+const timings = ({ meetingPoint, inspectionTime }: Pick<EventFacts, "meetingPoint" | "inspectionTime">) => [
   {
-    time: arrivalTime,
-    description: "After an evening of festivities, the rafters are up bright and early to arrive at " +
-            `${meetingPoint}, register for the event and make final preparations (all nuts tightened).`
+    time: inspectionTime,
+    description: `At ${meetingPoint}, every crew has registered, collected its raft number and assembled its ` +
+            "raft (all nuts tightened). Marshals check every suit and every raft, and no raft goes on the " +
+            "river until it has passed."
   },
   {
     time: "11:00am",
-    description: "The rafts set off on their journey down the Derwent"
+    description: "The plain rafts set off on their journey down the Derwent, and the themed rafts follow at 11:15am"
   },
   {
     time: "11:30am",
@@ -34,7 +36,7 @@ const timings = ({ meetingPoint, arrivalTime }: Pick<EventFacts, "meetingPoint" 
   }
 ];
 
-type Props = { facts: Pick<EventFacts, "meetingPoint" | "arrivalTime"> };
+type Props = { facts: Pick<EventFacts, "meetingPoint" | "inspectionTime"> };
 
 const TimingsSection = ({ facts }: Props) => (
   <Section color="river" plain>

@@ -23,7 +23,7 @@ const documentHref = (sanityUrl: string | undefined, filename: string, fallback:
   sanityUrl ? `${sanityUrl}?dl=${filename}.pdf` : fallback;
 
 /* Meeting point, arrival time and fee come from the Studio's Event details. */
-const steps = ({ meetingPoint, arrivalTime, entryFee }: EventFacts) => [
+const steps = ({ meetingPoint, inspectionTime, entryFee }: EventFacts) => [
   {
     key: "Step 1",
     description: "Read and make sure you understand the Rules and Guidelines and Safety Brief"
@@ -34,10 +34,10 @@ const steps = ({ meetingPoint, arrivalTime, entryFee }: EventFacts) => [
   },
   {
     key: "Step 3",
-    description: `Arrive at ${meetingPoint} at around ${arrivalTime} on Boxing Day with your entry fees ` +
-            `(${entryFee}) and registration form signed and in hand, and every crew member wearing a wetsuit, ` +
-            "semi-dry or dry suit. Suits are compulsory: no suit, no raft. Your mode of transport should be a " +
-            "sturdy DIY raft built entirely by the crew"
+    description: `Arrive at ${meetingPoint} on Boxing Day with your entry fees (${entryFee}) and ` +
+            "registration form signed and in hand, and every crew member wearing a wetsuit, semi-dry or dry " +
+            "suit. Suits are compulsory: no suit, no raft. Your mode of transport should be a sturdy DIY raft " +
+            `built entirely by the crew, unloaded, assembled and ready for the marshals' inspection by ${inspectionTime}`
   }
 ];
 
@@ -50,7 +50,7 @@ const TakePartSection = ({ documents, facts }: Props) => (
         <div className="flex flex-col items-center gap-2">
           <p className="text-sm sm:text-base lg:text-lg leading-relaxed">
                             The Raft Event is approximately 3 miles long, the water is cold and in places deep and
-                            turbulent. There is a weir with a descent totalling around 30 metres of rapid white water.
+                            turbulent. There is a weir, Masson Weir, with a steep drop: it is the most dangerous part of the course.
                             Are you okay with that? Still want to get cold and wet on Boxing Day? Don’t say we didn’t
                             warn
                             you!
