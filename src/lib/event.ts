@@ -35,12 +35,12 @@ export const cancellationUpdateLink = (event: EventQueryResult) => {
 };
 
 /* What the Take Part and race pages print when a field is empty in the Studio:
-   the values in the Rules & Guidelines. inspectionTime is the Studio's
-   arrivalTime field, which keeps its original name so existing content
-   carries over: the Rules ask for rafts ready for inspection by then. */
+   the values the site carried before they were editable, and the 2026 Rules'
+   deadline for rafts to be ready for inspection. */
 export const eventFacts = (event: EventQueryResult) => ({
   meetingPoint: event?.meetingPoint || "Cawdor Quarry (near Sainsbury’s) in Matlock",
-  inspectionTime: event?.arrivalTime || "10:30am",
+  arrivalTime: event?.arrivalTime || "9:00am",
+  inspectionTime: event?.inspectionTime || "10:30am",
   entryFee: event?.entryFee || "£15 each"
 });
 

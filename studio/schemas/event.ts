@@ -3,7 +3,7 @@ export default {
     name: "event",
     type: "document",
     title: "Event details",
-    description: "This year's event. The date drives the homepage countdown and the year shown across the site; the meeting point, inspection time, entry fee and the three PDFs appear on the Take Part and The Race pages.",
+    description: "This year's event. The date drives the homepage countdown and the year shown across the site; the meeting point, arrival time, inspection time, entry fee and the three PDFs appear on the Take Part and The Race pages.",
     fields: [
         {
             name: "date",
@@ -16,13 +16,19 @@ export default {
             name: "meetingPoint",
             type: "string",
             title: "Meeting point",
-            description: "Where rafters register and assemble their rafts, e.g. \"Cawdor Quarry (near Sainsbury's) in Matlock\". It's used mid-sentence (\"Arrive at … on Boxing Day\"), so write it to read that way."
+            description: "Where rafters gather to register, e.g. \"Cawdor Quarry (near Sainsbury's) in Matlock\". It's used mid-sentence (\"Arrive at … at around 9:00am\"), so write it to read that way."
         },
         {
             name: "arrivalTime",
             type: "string",
+            title: "Rafter arrival time",
+            description: "When crews should arrive to register, written like \"9:00am\". The Take Part page adds \"around\" in front, and it heads The Race page's timings."
+        },
+        {
+            name: "inspectionTime",
+            type: "string",
             title: "Rafts ready for inspection by",
-            description: "The time every raft must be unloaded, assembled and ready for the marshals' inspection, written like \"10:30am\" (it's in the Rules & Guidelines). It appears on the Take Part page and heads The Race page's timings."
+            description: "The time every raft must be assembled and ready for the marshals' inspection, written like \"10:30am\" (it's in the Rules & Guidelines). It appears on the Take Part page and The Race page's timings. If it's empty the pages say 10:30am."
         },
         {
             name: "entryFee",

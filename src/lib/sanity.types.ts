@@ -298,6 +298,7 @@ export type Event = {
   date?: string;
   meetingPoint?: string;
   arrivalTime?: string;
+  inspectionTime?: string;
   entryFee?: string;
   donationUrl?: string;
   registrationFormPdf?: {
@@ -615,11 +616,12 @@ export type HeroQueryResult = {
 
 // Source: src/lib/queries.ts
 // Variable: eventQuery
-// Query: *[_type == "event"][0]{    date,    meetingPoint,    arrivalTime,    entryFee,    donationUrl,    "registrationFormPdf": registrationFormPdf.asset->url,    "rulesPdf": rulesPdf.asset->url,    "safetyBriefPdf": safetyBriefPdf.asset->url,    status,    "latestUpdate": *[_type == "update" && defined(slug)] | order(date desc)[0]{ title, slug }  }
+// Query: *[_type == "event"][0]{    date,    meetingPoint,    arrivalTime,    inspectionTime,    entryFee,    donationUrl,    "registrationFormPdf": registrationFormPdf.asset->url,    "rulesPdf": rulesPdf.asset->url,    "safetyBriefPdf": safetyBriefPdf.asset->url,    status,    "latestUpdate": *[_type == "update" && defined(slug)] | order(date desc)[0]{ title, slug }  }
 export type EventQueryResult = {
   date: string | null;
   meetingPoint: string | null;
   arrivalTime: string | null;
+  inspectionTime: string | null;
   entryFee: string | null;
   donationUrl: string | null;
   registrationFormPdf: string | null;
@@ -1042,7 +1044,7 @@ import "@sanity/client";
 declare module "@sanity/client" {
   interface SanityQueries {
     '*[_type == "hero" && _id == "hero"][0]{ title, titleAccent, buttonLink, buttonText, secondaryButtonLink, secondaryButtonText }': HeroQueryResult;
-    '*[_type == "event"][0]{\n    date,\n    meetingPoint,\n    arrivalTime,\n    entryFee,\n    donationUrl,\n    "registrationFormPdf": registrationFormPdf.asset->url,\n    "rulesPdf": rulesPdf.asset->url,\n    "safetyBriefPdf": safetyBriefPdf.asset->url,\n    status,\n    "latestUpdate": *[_type == "update" && defined(slug)] | order(date desc)[0]{ title, slug }\n  }': EventQueryResult;
+    '*[_type == "event"][0]{\n    date,\n    meetingPoint,\n    arrivalTime,\n    inspectionTime,\n    entryFee,\n    donationUrl,\n    "registrationFormPdf": registrationFormPdf.asset->url,\n    "rulesPdf": rulesPdf.asset->url,\n    "safetyBriefPdf": safetyBriefPdf.asset->url,\n    status,\n    "latestUpdate": *[_type == "update" && defined(slug)] | order(date desc)[0]{ title, slug }\n  }': EventQueryResult;
     '*[_type == "summary"][0]{ _id, yearsActive, bio, eventCount, moneyRaised }': SummaryQueryResult;
     '*[_type == "winner"]{ name, year, position, img }': WinnersQueryResult;
     '*[_type == "update"]{ title, slug, date, img, content }': UpdatesQueryResult;

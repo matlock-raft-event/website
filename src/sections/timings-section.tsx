@@ -3,19 +3,23 @@ import Iconify from "~/components/iconify";
 import Section from "~/components/section";
 import type { EventFacts } from "~/lib/event";
 
-/* The first entry follows the Studio's inspection time and meeting point, the
-   start times and prize-giving are in the Rules & Guidelines, and the stops
-   between are the usual pace of the river. */
-const timings = ({ meetingPoint, inspectionTime }: Pick<EventFacts, "meetingPoint" | "inspectionTime">) => [
+/* The first two entries follow the Studio's meeting point, arrival time and
+   inspection time; the stops between the start and the prize-giving are the
+   usual pace of the river. */
+const timings = ({ meetingPoint, arrivalTime, inspectionTime }: Pick<EventFacts, "meetingPoint" | "arrivalTime" | "inspectionTime">) => [
+  {
+    time: arrivalTime,
+    description: "After an evening of festivities, the rafters are up bright and early to arrive at " +
+            `${meetingPoint}, register for the event and start assembling their rafts.`
+  },
   {
     time: inspectionTime,
-    description: `At ${meetingPoint}, every crew has registered, collected its raft number and assembled its ` +
-            "raft (all nuts tightened). Marshals check every suit and every raft, and no raft goes on the " +
-            "river until it has passed."
+    description: "Every raft is ready for the marshals' inspection, with final preparations made (all nuts " +
+            "tightened). No raft goes on the river until it has passed."
   },
   {
     time: "11:00am",
-    description: "The plain rafts set off on their journey down the Derwent, and the themed rafts follow at 11:15am"
+    description: "The rafts set off on their journey down the Derwent"
   },
   {
     time: "11:30am",
@@ -36,7 +40,7 @@ const timings = ({ meetingPoint, inspectionTime }: Pick<EventFacts, "meetingPoin
   }
 ];
 
-type Props = { facts: Pick<EventFacts, "meetingPoint" | "inspectionTime"> };
+type Props = { facts: Pick<EventFacts, "meetingPoint" | "arrivalTime" | "inspectionTime"> };
 
 const TimingsSection = ({ facts }: Props) => (
   <Section color="river" plain>

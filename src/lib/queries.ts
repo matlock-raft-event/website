@@ -11,6 +11,7 @@ export const eventQuery = defineQuery(
     date,
     meetingPoint,
     arrivalTime,
+    inspectionTime,
     entryFee,
     donationUrl,
     "registrationFormPdf": registrationFormPdf.asset->url,

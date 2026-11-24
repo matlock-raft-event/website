@@ -23,7 +23,7 @@ const documentHref = (sanityUrl: string | undefined, filename: string, fallback:
   sanityUrl ? `${sanityUrl}?dl=${filename}.pdf` : fallback;
 
 /* Meeting point, arrival time and fee come from the Studio's Event details. */
-const steps = ({ meetingPoint, inspectionTime, entryFee }: EventFacts) => [
+const steps = ({ meetingPoint, arrivalTime, inspectionTime, entryFee }: EventFacts) => [
   {
     key: "Step 1",
     description: "Read and make sure you understand the Rules and Guidelines and Safety Brief"
@@ -34,10 +34,10 @@ const steps = ({ meetingPoint, inspectionTime, entryFee }: EventFacts) => [
   },
   {
     key: "Step 3",
-    description: `Arrive at ${meetingPoint} on Boxing Day with your entry fees (${entryFee}) and ` +
-            "registration form signed and in hand, and every crew member wearing a wetsuit, semi-dry or dry " +
-            "suit. Suits are compulsory: no suit, no raft. Your mode of transport should be a sturdy DIY raft " +
-            `built entirely by the crew, unloaded, assembled and ready for the marshals' inspection by ${inspectionTime}`
+    description: `Arrive at ${meetingPoint} at around ${arrivalTime} on Boxing Day with your entry fees ` +
+            `(${entryFee}) and registration form signed and in hand, and every crew member wearing a wetsuit, ` +
+            "semi-dry or dry suit. Suits are compulsory: no suit, no raft. Your mode of transport should be a " +
+            "sturdy DIY raft built entirely by the crew, ready for the marshals' inspection by " + inspectionTime
   }
 ];
 
