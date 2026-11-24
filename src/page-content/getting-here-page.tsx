@@ -19,7 +19,8 @@ const Content = () => (
         <Para>
           Town-centre car parks in Matlock and Matlock Bath are the most convenient, but they fill up
           fast on Boxing Day. Arrive early, or park a little further out and walk in. Expect the area
-          around the river to be busy.
+          around the river to be busy. Pay and display charges in and around Matlock still apply on
+          Boxing Day, and parking on the grass at Cromford Meadows isn&apos;t permitted.
         </Para>
 
         <Subheading>Roads &amp; closures</Subheading>

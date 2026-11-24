@@ -110,6 +110,10 @@ The following documents are configured as singletons in the structure builder â€
 - `contactInstructions` (contact page sections)
 - `cookiesInfo` (cookies page content)
 
+### Event documents (PDFs)
+
+The Take Part page's Rules & Guidelines, Safety Brief and Registration Form buttons link to the PDFs attached to **Event details** in the Studio, so each year's documents are replaced there without a code change. A field left empty falls back to the copy in `src/assets/documents/` (`Rules-and-Guidelines.pdf`, `Safety-Brief.pdf`, `Registration-Form.pdf`), which should be refreshed too when the documents change.
+
 ### Adding new editors
 
 Invite a Sanity user via the [project members page](https://www.sanity.io/manage/project/6m6e8mul/members). Permissions inherit from the project's role config; the standard role for content editors is "Editor".

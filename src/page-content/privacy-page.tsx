@@ -21,7 +21,7 @@ const Content = () => (
         <Para>
           You can browse this website without giving us any personal information. We collect
           personal details only when you choose to give them to us — for example, when you complete
-          a raft entry / application form, volunteer to help, or contact us. This may include your
+          a raft registration form, volunteer to help, or contact us. This may include your
           name, contact details and team information.
         </Para>
 

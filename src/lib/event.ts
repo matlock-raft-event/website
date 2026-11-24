@@ -35,11 +35,24 @@ export const cancellationUpdateLink = (event: EventQueryResult) => {
 };
 
 /* What the Take Part and race pages print when a field is empty in the Studio:
-   the values the site carried before they were editable. */
+   the values the site carried before they were editable, and the 2026 Rules'
+   deadline for rafts to be ready for inspection. */
 export const eventFacts = (event: EventQueryResult) => ({
   meetingPoint: event?.meetingPoint || "Cawdor Quarry (near Sainsbury’s) in Matlock",
   arrivalTime: event?.arrivalTime || "9:00am",
+  inspectionTime: event?.inspectionTime || "10:30am",
   entryFee: event?.entryFee || "£15 each"
 });
 
 export type EventFacts = ReturnType<typeof eventFacts>;
+
+/* The Studio's PDFs for this year's event. One that hasn't been uploaded is
+   undefined, and the Take Part page falls back to the copy bundled in
+   src/assets/documents. */
+export const eventDocuments = (event: EventQueryResult) => ({
+  registrationForm: event?.registrationFormPdf ?? undefined,
+  rules: event?.rulesPdf ?? undefined,
+  safetyBrief: event?.safetyBriefPdf ?? undefined
+});
+
+export type EventDocuments = ReturnType<typeof eventDocuments>;
