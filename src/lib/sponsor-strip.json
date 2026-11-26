@@ -36,6 +36,17 @@
     "logo": {
       "_type": "image",
       "asset": {
+        "_ref": "image-2cfe6d021719c1bf8f949c4f283841754243a28f-1200x384-png",
+        "_type": "reference"
+      }
+    },
+    "name": "LandMap Surveys",
+    "url": "https://landmapsurveys.co.uk/"
+  },
+  {
+    "logo": {
+      "_type": "image",
+      "asset": {
         "_ref": "image-2f6d9f339e76d40018e5a063fbf3a34149384411-1200x449-png",
         "_type": "reference"
       }
@@ -64,6 +75,17 @@
     },
     "name": "Peak Rail",
     "url": "https://www.peakrail.co.uk"
+  },
+  {
+    "logo": {
+      "_type": "image",
+      "asset": {
+        "_ref": "image-2558457630ba6339288ef018ac1066c9991e8f71-638x448-png",
+        "_type": "reference"
+      }
+    },
+    "name": "Robinsons Longcliffe",
+    "url": "https://www.robinsons-longcliffe.co.uk"
   },
   {
     "logo": {
