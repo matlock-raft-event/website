@@ -431,6 +431,19 @@ export type About = {
     _type: "block";
     _key: string;
   }>;
+  storyPhotos?: Array<{
+    image?: {
+      asset?: SanityImageAssetReference;
+      media?: unknown;
+      hotspot?: SanityImageHotspot;
+      crop?: SanityImageCrop;
+      _type: "image";
+    };
+    alt?: string;
+    caption?: string;
+    _type: "storyPhoto";
+    _key: string;
+  }>;
   rnliBio?: Array<{
     children?: Array<{
       marks?: Array<string>;
@@ -771,7 +784,7 @@ export type UpdatesForPathsQueryResult = Array<{
 
 // Source: src/lib/queries.ts
 // Variable: aboutQuery
-// Query: *[_type == "about"][0]{ bio, rnliBio, rnliLink, dasacBio, dasacLink }
+// Query: *[_type == "about"][0]{ bio, storyPhotos[]{ image, alt, caption }, rnliBio, rnliLink, dasacBio, dasacLink }
 export type AboutQueryResult = {
   bio: Array<{
     children?: Array<{
@@ -790,6 +803,17 @@ export type AboutQueryResult = {
     level?: number;
     _type: "block";
     _key: string;
+  }> | null;
+  storyPhotos: Array<{
+    image: {
+      asset?: SanityImageAssetReference;
+      media?: unknown;
+      hotspot?: SanityImageHotspot;
+      crop?: SanityImageCrop;
+      _type: "image";
+    } | null;
+    alt: string | null;
+    caption: string | null;
   }> | null;
   rnliBio: Array<{
     children?: Array<{
@@ -1088,7 +1112,7 @@ declare global {
     '*[_type == "winner"]{ name, year, position, img }': WinnersQueryResult;
     '*[_type == "update"]{ title, slug, date, img, content }': UpdatesQueryResult;
     '*[_type == "update" && defined(slug)]{ title, slug, date, img, content }': UpdatesForPathsQueryResult;
-    '*[_type == "about"][0]{ bio, rnliBio, rnliLink, dasacBio, dasacLink }': AboutQueryResult;
+    '*[_type == "about"][0]{ bio, storyPhotos[]{ image, alt, caption }, rnliBio, rnliLink, dasacBio, dasacLink }': AboutQueryResult;
     '*[_type == "contactInstructions"][0]{ general, sponsors, press }': ContactInstructionsQueryResult;
     '*[_type == "faq"]{ question, answer, audience }': FaqsQueryResult;
     '*[_type == "sponsor"]{ name, url, logo, logoTrimmed }': SponsorsQueryResult;
