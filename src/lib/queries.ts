@@ -39,7 +39,7 @@ export const updatesForPathsQuery = defineQuery(
 );
 
 export const aboutQuery = defineQuery(
-  `*[_type == "about"][0]{ bio, rnliBio, rnliLink, dasacBio, dasacLink }`
+  `*[_type == "about"][0]{ bio, storyPhotos[]{ image, alt, caption }, rnliBio, rnliLink, dasacBio, dasacLink }`
 );
 
 export const contactInstructionsQuery = defineQuery(
